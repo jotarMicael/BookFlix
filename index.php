@@ -17,7 +17,7 @@
 		}
 	?>
 </head>
-<body background="C:\Users\Micael\Desktop\Mica\Facultad\ISII\Bookflix-master\1.jpg" >
+<body background="Imagenes\1.jpg" >
 	    <h1 class="tituloPrincipal">BookFlix</h1>
 	    <h1 class= "subtitulo"> Todos los libros al alcance de su mano... </h1>
 		<form action="verificadorLogin.php" method="post" id="formularioIndex" onsubmit="return validar();">
