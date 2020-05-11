@@ -18,9 +18,10 @@
 		$link = conectar();
 	?>
 </head>
-<body background="1.jpg">
+<body background="Imagenes/2.jpg">
+	<div>
 		<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
-			<h2 class="tituloSecundarioRegistro">Bienvenido a BookFlix</h2>
+			<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">Bienvenido a BookFlix</h2>
 			<h3 class="tituloSecundarioRegistro">A continuacion ingrese sus datos:</h3>
 			<div class="registro">
 				<label class="labelWhite">E-mail: </label><br>
@@ -53,10 +54,7 @@
 				<input type="text" maxlength="5" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
 				<input type="submit"class="boton" value="Ingresar"><br>
 		    </div>
-
+		    </div>
 		</form>
-		
-		<div class="margenI"></div>
-		<div class="margenD"></div>
 </body>
 </html>
