@@ -1,4 +1,5 @@
 
+
 body{
  background-position: center;
  text-align: center;
@@ -29,15 +30,15 @@ div::after {
 }
 .tituloSecundarioIndex, .tituloSecundarioRegistro{
 	text-align: center;
-	font-style: italic;
+	font-style: oblique;
 	font-size: medium;
 }
 .tituloSecundarioIndex{
 	font-size: 50px;
     margin-bottom: 2px;
-    color: black;
+    color: red;
     font-family: serif;
-    text-shadow: 2px 1px white;
+    text-shadow: 2px 1px black;
     position: relative;
     top: -24px;
 }
@@ -435,4 +436,8 @@ div::after {
 }
 .mensajeError{
 	background-color: rgba(0,0,0,0.7);
+}
+.imagenTitulo{
+	width: 1000px;
+	height: 500px;
 }
