@@ -1,5 +1,6 @@
 function validar(){
 	var nombre, apellido, email,Usuario, nuevaClave, nuevaClaveRepetida;
+	//asdf
 
 	nombre = document.getElementById('unNombre').value;
 	apellido = document.getElementById('unApellido').value;
