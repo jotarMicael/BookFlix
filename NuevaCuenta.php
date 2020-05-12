@@ -20,10 +20,12 @@
 </head>
 <body background="Imagenes/2.jpg">
 	<div>
-		<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
-			<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">Bienvenido a BookFlix</h2>
-			<h3 class="tituloSecundarioRegistro">A continuacion ingrese sus datos:</h3>
-			<div class="registro">
+			<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
+			<h3 class="tituloSecundarioRegistro">A CONTINUACION INGRESE SUS DATOS:</h3>
+			<div class="divRegistro">
+				<div class="registro">
+					<h3 class="tituloSecundarioRegistro"> DATOS PERSONALES </h3>
+				<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
 				<label class="labelWhite">E-mail: </label><br>
 				<input type="E-mail" class="redondeado" id="unEmail" name="unEmail"><br>
 				<label class="labelWhite">Nombre: </label><br>
@@ -36,12 +38,11 @@
 				<input type="password" class="redondeado" id="unContraseña" name="unContraseña"><br>
 				<label class="labelWhite">Vuelva a ingresar la clave: </label><br>
 				<input type="password" class="redondeado" id="unContraseña2" name="unContraseña2"><br>
-				
-		    </div>
-		</form>
-		<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
-			<div class="registro">
-				<h1 class="tituloSecundarioRegistro"> Datos de la Tarjeta </h2> <br>
+			  	</form>
+		    	</div>
+				<div class="registro">
+				<h3 class="tituloSecundarioRegistro"> DATOS DE LA TARJETA </h3>
+				<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();"><br>
 				<label class="labelWhite">Nombre: </label><br>
 				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
 				<label class="labelWhite">Apellido: </label><br>
@@ -52,9 +53,12 @@
 				<input type="text" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
 				<label class="labelWhite">Fecha de Expiracion: </label><br>
 				<input type="text" maxlength="5" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
-				<input type="submit"class="boton" value="Ingresar"><br>
-		    </div>
-		    </div>
-		</form>
+				</form>
+		   		</div>
+		   	</div>
+    </div>
+    <div class="divRegistro">
+    			<input type="submit"class="boton" value="Ingresar"><br>
+    </div>
 </body>
 </html>
