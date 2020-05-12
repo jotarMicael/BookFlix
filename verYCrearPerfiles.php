@@ -32,23 +32,9 @@
 		    	</div>
 				<div class="registro">
 				<h3 class="tituloSecundarioRegistro"> Perfiles creados </h3>
-				<!--<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();"><br>
-				<label class="labelWhite">Nombre: </label><br>
-				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
-				<label class="labelWhite">Apellido: </label><br>
-				<input type="text" class="redondeado" id="unApellido" name="unApellido"><br>
-				<label class="labelWhite">N° de Tarjeta: </label><br>
-				<input type="text" maxlength="16" class="redondeado" id="unN°Tarjeta" name="unN°Tarjeta"><br>
-				<label class="labelWhite">Codigo de Seguridad: </label><br>
-				<input type="text" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
-				<label class="labelWhite">Fecha de Expiracion: </label><br>
-				<input type="text" maxlength="5" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
-				</form>-->
+				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
 		   		</div>
 		   	</div>
-    </div>
-    <div class="divRegistro">
-    			<input type="submit"class="boton" value="Ingresar"><br>
-    </div>
+    
 </body>
 </html>
