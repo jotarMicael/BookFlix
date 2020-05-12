@@ -21,7 +21,6 @@
 <body background="Imagenes/2.jpg">
 	<div>
 			<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
-			<h3 class="tituloSecundarioRegistro">Perfiles</h3>
 			<div class="divRegistro">
 				<div class="registro">
 					<h3 class="tituloSecundarioRegistro"> Crear Perfil </h3>
@@ -30,6 +29,7 @@
 				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
 				<label class="labelWhite">Seleccionar imagen: </label>
 				<input type="file" class="redondeado" id="unaImagen" name="unaImagen"><br>
+				<button type="submit" class="boton"><strong>Aceptar</strong></button>
 			  	</form>
 		    	</div>
 				<div class="registro">
