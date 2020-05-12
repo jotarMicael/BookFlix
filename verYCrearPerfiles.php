@@ -28,11 +28,28 @@
 				<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
 				<label class="labelWhite">Nombre: </label><br>
 				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
+				<label class="labelWhite">Seleccionar imagen: </label>
+				<input type="file" class="redondeado" id="unaImagen" name="unaImagen"><br>
 			  	</form>
 		    	</div>
 				<div class="registro">
 				<h3 class="tituloSecundarioRegistro"> Perfiles creados </h3>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
+				<?php 
+					$sql="SELECT * from perfiles";
+					$result=mysqli_query($conexion,$sql);
+
+					while($mostrar=mysqli_fetch_array($result)){
+				?>
+
+				<tr>
+					<td><?php echo $mostrar['imagen'] ?></td>
+					<td><?php echo $mostrar['nombre'] ?></td>
+					
+				</tr>
+	 <?php 
+	}
+	 ?>
 		   		</div>
 		   	</div>
     
