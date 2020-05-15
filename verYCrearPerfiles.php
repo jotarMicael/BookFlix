@@ -16,6 +16,13 @@
 	<?php
 		include('conexion.php');
 		$link = conectar();
+		if ($link){
+			echo "Conexion exitosa";
+		}
+		else {
+			echo "Conexion Fallida";
+		}
+
 	?>
 </head>
 <body background="Imagenes/2.jpg">
@@ -24,11 +31,11 @@
 			<div class="divRegistro">
 				<div class="registro">
 					<h3 class="tituloSecundarioRegistro"> Crear Perfil </h3>
-				<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
+				<form action="verYCrearPerfiles.php" method="post" enctype="multipart/form-data">
 				<label class="labelWhite">Nombre: </label><br>
-				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
+				<input type="text" class="redondeado" id="nombre" name="nombre"><br>
 				<label class="labelWhite">Seleccionar imagen: </label>
-				<input type="file" class="redondeado" id="unaImagen" name="unaImagen"><br>
+				<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
 				<button type="submit" class="boton"><strong>Aceptar</strong></button>
 			  	</form>
 		    	</div>
@@ -48,6 +55,10 @@
 					
 				</tr>
 	 <?php 
+	 	if(isset($_POST["imagen"])){
+
+
+		 }
 	}
 	 ?>
 		   		</div>
