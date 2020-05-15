@@ -15,8 +15,7 @@
 	<script type="text/javascript" src="scriptRegistro.js"></script>
 	<?php
 		include('conexion.php');
-		$link = conectar();
-		if ($link){
+		if ($conexion){
 			echo "Conexion exitosa";
 		}
 		else {
