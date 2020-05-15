@@ -15,14 +15,14 @@
 	<script type="text/javascript" src="scriptRegistro.js"></script>
 	<?php
 		include('conexion.php');
-		$link = conectar();
 	?>
 	<style>
-		body{background-color: #4642B8;padding: 10px;font-family: Arial;}
+		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
 		
 		#menu{
 			background-color: #000;
-
+			position: relative;
+		
 		}
 
 		#menu ul{
@@ -32,13 +32,13 @@
 		}
 
 		#menu ul li{
-			display: inline-block;
+			display: flex;
 		}
 
 		#menu ul li a{
 			color: white;
 			display: block;
-			padding: 20px 10px;
+			padding: 10px 5px;
 			text-decoration: none;
 		}
 
@@ -55,9 +55,13 @@
 <body background="Imagenes/2.jpg">
 	<div id="menu">
 		<ul>
+			<label class="labelWhite">Buscar: </label>
+			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
 			<li><a href="#">Inicio</a></li>
 			<li><a href="#">Mi Perfil</a></li>
 			<li><a href="#">Configuracion</a></li>
+			<li><a href="#">Cerrar Sesion</a></li>
+			
 		</ul>
 	</div>
 	
