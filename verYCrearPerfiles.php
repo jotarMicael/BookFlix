@@ -42,7 +42,7 @@
 				<h3 class="tituloSecundarioRegistro"> Perfiles creados </h3>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
 				<?php 
-					if (!empty($_FILES['imagen'])) {
+					if (empty($_FILES['imagen'])) {
 						echo "No hay perfiles creados";
 					}
 					$sql="SELECT * from perfiles";
