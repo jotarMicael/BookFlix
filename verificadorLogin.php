@@ -2,7 +2,6 @@
 	session_start();
 
 	include('conexion.php');
-	$link = conectar();
 
 	if (empty($_POST['nickname'])) {
 		$_SESSION['error'] = 'ingresar usuario';
@@ -15,7 +14,7 @@
 		exit;
 	}
 	
-	 $result = mysqli_query($link, "SELECT * FROM usuarios WHERE nombreusuario = '" . $_POST['nickname'] . "' AND contrasenia = '" . $_POST['contraseña'] . "' ");
+	 $result = mysqli_query($link, "SELECT * FROM cuenta WHERE nombre_Usuario = '" . $_POST['nickname'] . "' AND contraseña = '" . $_POST['contraseña'] . "' ");
 
 	if( mysqli_num_rows($result) == 0 ){
 		$_SESSION['error'] = 'No existe el usuario ingresado';
@@ -24,7 +23,7 @@
 	}
 	else{
 		$_SESSION['usuario'] = mysqli_fetch_array($result);	
-		header('Location: PagInicio.php');
+		header('Location: verYCrearPerfiles.php');
 		exit;
 	}
 ?>
