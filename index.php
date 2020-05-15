@@ -9,8 +9,6 @@
 	<script type="text/javascript" src="scriptIndex.js"></script>
 	<?php 
 		include("conexion.php");
-		$link = conectar();
-
 		if (!empty($_SESSION['error'])) {
 			echo $_SESSION['error'];
 			unset($_SESSION['error']);
