@@ -55,7 +55,8 @@
 
 				<tr>
 					<td><?php echo $mostrar['imagen'] ?></td>
-					<td><?php echo $mostrar['nombre_Perfil'] ?></td>
+				
+					<td> <a href= "Home.php"> <strong> <?php echo $mostrar['nombre_Perfil']?> </strong> </a> &nbsp;&nbsp;&nbsp;   </td> 
 					
 				</tr>
 	 <?php 
