@@ -45,10 +45,15 @@
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
 				<?php 
 					//Agrega un Perfil a la BBDD.
-				$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
-				mysqli_query($conexion,$sql);
+					$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
+					$result=mysqli_query($conexion,$sql);
+					//
+				?>
+				<?php
+					//Se fija si hay perfiles
 					$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
 					$result=mysqli_query($conexion,$sql);
+					//
 					if( mysqli_num_rows($result) == 0 )
 						echo " No hay ningun perfil creado" ;
 					else {
@@ -58,7 +63,8 @@
 
 				<tr>
 					<td><?php echo $mostrar['imagen'] ?></td> &nbsp;&nbsp; 
-					<td> <a href= "Home.php"> <strong> <?php echo $mostrar['nombre_Perfil']?> </strong> </a>  </td>
+					<td> <a href= "Home.php"> <strong> <?php  echo $mostrar['nombre_Perfil'] ?>
+					</strong> </a>  </td>
 				</tr>
 	 <?php 
 		 }
