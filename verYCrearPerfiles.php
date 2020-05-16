@@ -45,8 +45,10 @@
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
 				<?php 
 					//Agrega un Perfil a la BBDD.
-					$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
-					$result=mysqli_query($conexion,$sql);
+					if (isset($_POST['nombre'])){
+						$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
+						$result=mysqli_query($conexion,$sql);
+					}
 					//
 				?>
 				<?php
@@ -62,9 +64,9 @@
 				?>
 
 				<tr>
-					<td><?php echo $mostrar['imagen'] ?></td> &nbsp;&nbsp; 
-					<td> <a href= "Home.php"> <strong> <?php  echo $mostrar['nombre_Perfil'] ?>
-					</strong> </a>  </td>
+					<td><?php echo $mostrar['imagen'] ?></td> &nbsp;&nbsp;
+					<td><a href= "Home.php"> <strong> <?php echo $mostrar['nombre_Perfil'] ?> </strong> </a></td> &nbsp;&nbsp;
+					
 				</tr>
 	 <?php 
 		 }
