@@ -58,9 +58,9 @@
 			<label class="labelWhite">Buscar: </label>
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
 			<li><a href="#">Inicio</a></li>
-			<li><a href="#">Mi Perfil</a></li>
+			<li><a href="miPerfil.php">Mi Perfil</a></li>
 			<li><a href="#">Configuracion</a></li>
-			<li><a href="#">Cerrar Sesion</a></li>
+			<li><a href="verYCrearPerfiles.php">Cerrar Sesion</a></li>
 			
 		</ul>
 	</div>
