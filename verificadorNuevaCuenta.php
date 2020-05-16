@@ -89,17 +89,12 @@
 		$result = mysqli_query($conexion, "INSERT INTO cuentausuario (nombre_Usuario, numero_Tarjeta, codigo_Seguridad)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['numero_Tarjeta'] . "', '" . $_POST['Codigo_Seguridad'] . "')");
 		$result = mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['fecha'] . "')");
 
- /*   if(!$result){
-    	$_SESSION['error']= "Hubo un error en la creacion de la cuenta";
-    	header("Location: NuevaCuenta.php");
-    	exit;
-    }
-   else{*/
+
     	$_SESSION['usuario'] = mysqli_fetch_array($result);	
     	$_SESSION['usuario']['id'] = mysqli_insert_id($conexion);
     	header('Location: PagInicio.php');
     	exit;
-    //}
+ 
     }
     else
     	$_SESSION['error']= "Cuenta ya existente";
