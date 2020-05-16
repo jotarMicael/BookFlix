@@ -25,7 +25,9 @@
 	?>
 </head>
 <body background="Imagenes/2.jpg">
-	<div>
+	<div>	
+	<h3 class="tituloSecundarioRegistro"> Bienvenido: </h3>
+		<?php echo $_SESSION["usuario"]["nombre_Usuario"] ?>
 		<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 		<div class="divRegistro">
 			<div class="registro">
@@ -42,26 +44,23 @@
 				<h3 class="tituloSecundarioRegistro"> Perfiles creados </h3>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
 				<?php 
-					if (empty($_FILES['imagen'])) {
-						echo "No hay perfiles creados";
-					}
-					$sql="SELECT * from perfiles";
+					$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
 					$result=mysqli_query($conexion,$sql);
+					if( mysqli_num_rows($result) == 0 )
+						echo " No hay ningun perfil creado" ;
+					else {
 
 					while($mostrar=mysqli_fetch_array($result)){
 				?>
 
 				<tr>
 					<td><?php echo $mostrar['imagen'] ?></td>
-					<td><?php echo $mostrar['nombre'] ?></td>
+					<td><?php echo $mostrar['nombre_Perfil'] ?></td>
 					
 				</tr>
 	 <?php 
-	 	if(isset($_POST["imagen"])){
-
-
 		 }
-	}
+		}
 	 ?>
 		   		</div>
 		   	</div>
