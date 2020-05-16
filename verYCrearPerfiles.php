@@ -58,14 +58,15 @@
 
 				<tr>
 					<td><?php echo $mostrar['imagen'] ?></td> &nbsp;&nbsp;
-					<td><a href= "Home.php"> <strong> <?php echo $mostrar['nombre_Perfil'] ?> </strong> </a></td> &nbsp;&nbsp;
+					<td> <a href= "Home.php?perfil=Mi Perfil"> <strong>;<?php echo $mostrar['nombre_Perfil'] ?> </strong> </a></td> &nbsp;&nbsp;
 					
 				</tr>
 	 <?php 
 		 }
 		}
 	 ?>
-	 	<?php 
+		 <?php       
+		 			//agrega un perfil a la bbdd
 					$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
 					$result=mysqli_query($conexion,$sql);
 
@@ -79,7 +80,7 @@
 							echo "Solo se permiten crear hasta 2 usuarios en una cuenta basica";
 							
 					}
-					//
+
 				?>
 		   		</div>
 		   	</div>
