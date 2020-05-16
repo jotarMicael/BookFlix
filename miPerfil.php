@@ -17,7 +17,7 @@
           <a class="botonInicio" href="Home.php"> Inicio </a>
 	    </div>
 	    <div class="divBotones">
-          <a class="botonInicio" href="miPerfil.php"> Perfil </a>
+          <a class="botonInicio" href="miPerfil.php?perfil=Mi Perfil"> Perfil </a>
 	    </div>
 	    <div class="divBotones">
         <form action="Busqueda.php" method="post">
@@ -35,7 +35,7 @@
 			<img src="foto.php?id=<?php echo $_SESSION['usuario']['id']; ?>">
 		</div>
 		<div class="nombreUsuarioPanelPerfil">
-			<label class="labelWhite"><?php echo $_GET['perfil'] ?></label>
+			<label class="labelWhite"><?php echo $_GET["perfil"] ?></label>
 		</div>
 		<div class="nombrePanelPerfil">
 			<label class="labelWhite"><?php echo $_SESSION['usuario']['nombre_Perfil'] ?> </label>
