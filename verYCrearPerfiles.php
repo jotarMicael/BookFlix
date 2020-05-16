@@ -44,16 +44,9 @@
 				<h3 class="tituloSecundarioRegistro"> Perfiles creados </h3>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
 				<?php 
-					$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
-					$result=mysqli_query($conexion,$sql);
-					if(mysqli_num_rows($result) == 2)
-						echo " No puede crear mas de 2 perfiles" ;
-					else {
 					//Agrega un Perfil a la BBDD.
 				$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
 				mysqli_query($conexion,$sql);
-					}
-
 					$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
 					$result=mysqli_query($conexion,$sql);
 					if( mysqli_num_rows($result) == 0 )
@@ -64,10 +57,8 @@
 				?>
 
 				<tr>
-					<td><?php echo $mostrar['imagen'] ?></td>
-					<br>
-					<td> <a href= "Home.php"> <strong> <?php echo $mostrar['nombre_Perfil']?> </strong> </a> &nbsp;&nbsp;&nbsp;   </td>
-					
+					<td><?php echo $mostrar['imagen'] ?></td> &nbsp;&nbsp; 
+					<td> <a href= "Home.php"> <strong> <?php echo $mostrar['nombre_Perfil']?> </strong> </a>  </td>
 				</tr>
 	 <?php 
 		 }
