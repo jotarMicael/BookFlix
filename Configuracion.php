@@ -30,7 +30,7 @@
 				<form action="configurarDatosSimples.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
 				  <div class="registroConfiguracion">
 					<label class="labelWhite">Cuenta: </label><br>
-					<input type="E-mail" class="redondeado" autocomplete="on" id="cuenta" name="cuenta" value="<?php echo $_SESSION['usuario']; ?>"><br>
+					<input type="E-mail" class="redondeado" autocomplete="on" id="cuenta" name="cuenta" value="<?php echo $_SESSION["cuenta"]; ?>"><br>
 					<label class="labelWhite">Nombre: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="unNombre" name="unNombre" value="<?php echo $_SESSION['usuario']['nombre']; ?>"><br>
 					<label class="labelWhite">Apellido: </label><br>
@@ -38,18 +38,18 @@
 					<label class="labelWhite">Foto: </label><br>
 					<input type="file" class= "boton" accept="jpg" id="unImagen" name="unImagen"><br>
 					<div class="registro">
-				<h3 class="tituloSecundarioRegistro"> DATOS DE LA TARJETA </h3>
-				<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();"><br>
-				<label class="labelWhite">Nombre: </label><br>
-				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
-				<label class="labelWhite">Apellido: </label><br>
-				<input type="text" class="redondeado" id="unApellido" name="unApellido"><br>
-				<label class="labelWhite">N° de Tarjeta: </label><br>
-				<input type="text" maxlength="16" class="redondeado" id="unN°Tarjeta" name="unN°Tarjeta"><br>
-				<label class="labelWhite">Codigo de Seguridad: </label><br>
-				<input type="text" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
-				<label class="labelWhite">Fecha de Expiracion: </label><br>
-				<input type="text" maxlength="5" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
+					<h1 class="tituloTerciarioConfiguracion"> DATOS DE LA TARJETA </h1>
+					<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();"><br>
+					<label class="labelWhite">Nombre: </label><br>
+					<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
+					<label class="labelWhite">Apellido: </label><br>
+					<input type="text" class="redondeado" id="unApellido" name="unApellido"><br>
+					<label class="labelWhite">N° de Tarjeta: </label><br>
+					<input type="text" maxlength="16" class="redondeado" id="unN°Tarjeta" name="unN°Tarjeta"><br>
+					<label class="labelWhite">Codigo de Seguridad: </label><br>
+					<input type="text" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
+					<label class="labelWhite">Fecha de Expiracion: </label><br>
+					<input type="text" maxlength="5" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
 				</form>
 		   		</div>
 					<input type="submit" class="boton" value="Guardar Cambios"><br>
