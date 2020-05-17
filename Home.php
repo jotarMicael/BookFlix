@@ -16,6 +16,14 @@
 	<?php
 		include('conexion.php');
 	?>
+	<?php
+		if (empty($_SESSION['usuario'])) {
+			header('Location: index.php');
+			exit;}
+		if (!empty($_SESSION['error'])){
+			echo $_SESSION['error'];
+			unset($_SESSION['error']);}
+ 		?>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
 		
@@ -59,8 +67,9 @@
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
 			<li><a href="#">Inicio</a></li>
 			<li><a href="miPerfil.php?perfil=Mi Perfil">Mi Perfil</a></li>
-			<li><a href="#">Configuracion</a></li>
-			<li><a href="verYCrearPerfiles.php">Cerrar Sesion</a></li>
+			<li><a href="Configuracion.php">Configuracion</a></li>
+			<li><a href="index.php">Cerrar Sesion</a></li>
+			<li><a href="verYCrearPerfiles.php">Cambiar Perfil</a></li>
 			
 		</ul>
 	</div>
