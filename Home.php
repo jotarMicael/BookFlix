@@ -1,9 +1,11 @@
 <?php
 	session_start();
-	if (empty($_SESSION['perfilNombre'])){
+	if (empty($_SESSION['entrar'])){
+		$_SESSION['entrar'] = "hola";
 		$_SESSION['perfilImagen']= $_GET['img'];
 		$_SESSION['perfilNombre']= $_GET['perfil'];
 	}
+	
 	if (!empty($_SESSION['error'])) {
 		echo $_SESSION['error'];
 		unset($_SESSION['error']);
