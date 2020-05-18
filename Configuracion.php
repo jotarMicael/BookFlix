@@ -50,10 +50,10 @@
 					<input type="password" class="redondeado" id="unContraseña2" name="unContraseña2"><br>
 					<label class="labelWhite">Repita la nueva clave: </label><br>
 					<input type="password" class="redondeado" id="unContraseña3" name="unContraseña3"><br>
-					<br>
-					</div>
+					
 					<input type="submit" class="boton" value="Guardar Cambios"><br>
 				</form>
+					</div>
 				 <div class="registro">
 					<h3 class="tituloSecundarioRegistro"> DATOS DE LA TARJETA </h3>
 					<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();"><br>
