@@ -8,7 +8,7 @@
 	<title>Configuracion</title>
 	<script type="text/javascript" src="scriptConfiguracion.js"></script>
 </head>
-<body>
+<body background= "Imagenes/2.jpg">
 	<h3 class="tituloTerciarioConfiguracion">
 		<?php if (!empty($_SESSION['error'])){
     		echo $_SESSION['error'];
