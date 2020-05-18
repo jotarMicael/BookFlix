@@ -64,14 +64,9 @@
 		 }
 		}
 	 ?>
-		 <?php       
-		 			//agrega un perfil a la bbdd
-					 //$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
-					 //$result=mysqli_query($conexion,$sql);
+		 <?php    
 
 					if (isset($_POST['nombre'])&&(mysqli_num_rows($result) <= 1 )){
-						//$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
-						//$result=mysqli_query($conexion,$sql);
 
 						if(isset($_FILES['imagen'])){
 							$nombre_Imagen = $_FILES ['imagen']['name'];
