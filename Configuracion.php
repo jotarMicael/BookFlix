@@ -50,7 +50,6 @@
 					<input type="password" class="redondeado" id="unContraseña2" name="unContraseña2"><br>
 					<label class="labelWhite">Repita la nueva clave: </label><br>
 					<input type="password" class="redondeado" id="unContraseña3" name="unContraseña3"><br>
-					
 					<input type="submit" class="boton" value="Guardar Cambios"><br>
 				</form>
 					</div>
