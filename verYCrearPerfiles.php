@@ -46,7 +46,7 @@
 			
 				<?php
 					//Se fija si hay perfiles
-					$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
+					$sql="SELECT nombre_Perfil, imagen from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
 					$result=mysqli_query($conexion,$sql);
 					//
 					if( mysqli_num_rows($result) == 0 )
@@ -66,12 +66,12 @@
 	 ?>
 		 <?php       
 		 			//agrega un perfil a la bbdd
-					$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
-					$result=mysqli_query($conexion,$sql);
+					 //$sql="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
+					 //$result=mysqli_query($conexion,$sql);
 
 					if (isset($_POST['nombre'])&&(mysqli_num_rows($result) <= 1 )){
-						$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
-						$result=mysqli_query($conexion,$sql);
+						//$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
+						//$result=mysqli_query($conexion,$sql);
 
 						if(isset($_FILES['imagen'])){
 							$nombre_Imagen = $_FILES ['imagen']['name'];
@@ -89,10 +89,14 @@
 								else {
 									echo "Solo se puede subir: png, jpg, jpeg";
 								}
+								
 							}
 							else{
 								echo "El tamaño de la imagen es demasiado grande";
 							}
+							$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','$nombre_Imagen')";
+							$result=mysqli_query($conexion,$sql);
+							
 						}
 					}
 					else { 
