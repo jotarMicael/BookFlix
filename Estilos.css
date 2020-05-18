@@ -265,7 +265,7 @@ div::after {
 	max-width: 500px;
 	max-height: auto;
 }
-.textoBarraBot. .textoBarraBot-respuesta{
+.textoBarraBot, .textoBarraBot-respuesta{
 	color: white;
 }
 .textoBarraBot{
@@ -369,7 +369,7 @@ div::after {
 	padding: 0px;
 	color: white;
 }
-.iconoCorazon: hover{
+.iconoCorazonhover{
 	color: red;
 }
 
