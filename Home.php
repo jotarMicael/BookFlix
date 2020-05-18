@@ -1,8 +1,9 @@
 <?php
 	session_start();
-	$_SESSION['perfilImagen']= $_GET['img'];
-	$_SESSION['perfilNombre']= $_GET['perfil'];
-
+	if (empty($_SESSION['perfilNombre'])){
+		$_SESSION['perfilImagen']= $_GET['img'];
+		$_SESSION['perfilNombre']= $_GET['perfil'];
+	}
 	if (!empty($_SESSION['error'])) {
 		echo $_SESSION['error'];
 		unset($_SESSION['error']);
@@ -71,7 +72,7 @@
 			<li><a href="#">Inicio</a></li>
 			<li><a href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a></li>
 			<li><a href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
-			<li><a href="index.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cerrar Sesion</a></li>
+			<li><a href="index.php">Cerrar Sesion</a></li>
 			<li><a href="verYCrearPerfiles.php">Cambiar Perfil</a></li>
 			
 		</ul>
