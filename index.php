@@ -5,7 +5,6 @@
 	<title>BookFlix</title>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg"> 
-	<link href="https://file.myfontastic.com/FwupGsg3U5qovJgADFSKVC/icons.css" rel="stylesheet">
 	<script type="text/javascript" src="scriptIndex.js"></script>
 	<?php 
 		include("conexion.php");
