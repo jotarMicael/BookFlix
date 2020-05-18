@@ -57,7 +57,7 @@
 				?>
 
 				<tr>
-					<td><?php echo $mostrar['imagen'] ?></td> &nbsp;&nbsp;
+					<td> <image src="/BookFlix/ImagenesServer/<?php echo $mostrar['imagen'];?>" width="50" /> </td> &nbsp;&nbsp;
 					<td> <a href= "Home.php?perfil=Mi Perfil"> <strong><?php echo $mostrar['nombre_Perfil']?> </strong> </a></td> &nbsp;&nbsp;
 				</tr>
 	 <?php 
@@ -104,6 +104,7 @@
 
 				?>
 		   		</div>
+				   
 		   	</div>
     
 </body>
