@@ -12,7 +12,11 @@
 						$verificar = mysqli_query ($conexion,"SELECT nombre_Usuario FROM cuenta WHERE (nombre_Usuario = '$cuenta') AND (id_Cuenta != '". $_SESSION['usuario']['id_Cuenta']."') " );
 						if(mysqli_num_rows($verificar)== 0){
 
-						$consulta = "UPDATE cuenta SET nombre = '$nombre', apellido = '$apellido', nombre_Usuario = '$cuenta' WHERE id = '" . $_SESSION['usuario']['id_Cuenta'] . "' ";
+						$consulta = "UPDATE cuenta SET nombre = '$nombre', apellido = '$apellido', nombre_Usuario = '$cuenta' WHERE id_Cuenta = '" . $_SESSION['usuario']['id_Cuenta'] . "' ";
+
+						mysqli_query($conexion, $consulta);
+
+						$consulta = "UPDATE perfil SET nombre_Usuario = '$cuenta' WHERE nombre_Usuario = '" . $_SESSION['usuario']['nombre_Usuario'] . "' ";
 
 						mysqli_query($conexion, $consulta);
 
