@@ -16,11 +16,11 @@
 	?>
 </head>
 <body background="Imagenes\2.jpg" >
-	    <img class="imagenTitulo" src="Imagenes\Titulo.png">
 		<form action="verificadorLogin.php" method="post" id="formularioIndex" onsubmit="return validar();">
 			<h2 class="tituloSecundarioIndex">Iniciar Sesion</h2>
 			<br>
 			<br>
+			<img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<div class="login">
 				<label class="labelWhite">Cuenta: </label>
 				<input type="text" class="redondeado" autocomplete="on" id="nickname" name="nickname">
