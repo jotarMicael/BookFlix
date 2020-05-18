@@ -33,14 +33,13 @@
 	<div class="fondoPerfil">
 	<div class="panelPerfil">
 		<div class="imagenPanelPerfil">
-			<img src="foto.php?id=<?php echo $_SESSION['usuario']['id']; ?>">
+		<image src="/BookFlix/ImagenesServer/<?php echo $_GET['img'];?>" width="100" />
 		</div>
 		<div class="nombreUsuarioPanelPerfil">
 			<label class="labelWhite"><?php echo $_SESSION ['usuario']['nombre_Usuario'] ?></label>
 		</div>
 		<div class="nombrePanelPerfil">
-			<label class="labelWhite"><?php echo $_SESSION['usuario']['nombre_Perfil'] ?> </label>
-			<label class="labelWhite"><?php echo $_SESSION['usuario']['apellido'] ?></label>
+			<label class="labelWhite"><?php echo $_GET['perfil'] ?> </label>
 		</div>
 	  <div class="barraFin">
 		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin</p>
