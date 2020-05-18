@@ -32,7 +32,7 @@
 				<form action="configurarDatosSimples.php" method="post" enctype="multipart/form-data" onsubmit="return validar();">
 				  <div class="registroConfiguracion">
 					<label class="labelWhite">Cuenta: </label><br>
-					<input type="E-mail" class="redondeado" autocomplete="on" id="cuenta" name="cuenta" value="<?php echo $_SESSION['usuario']['cuenta']; ?>"><br>
+					<input type="E-mail" class="redondeado" autocomplete="on" id="cuenta" name="cuenta" value="<?php echo $_SESSION['usuario']['nombre_Usuario']; ?>"><br>
 					<label class="labelWhite">Nombre: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombre" name="nombre" value="<?php echo $_SESSION['usuario']['nombre']; ?>"><br>
 					<label class="labelWhite">Apellido: </label><br>
