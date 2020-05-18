@@ -1,10 +1,8 @@
 <?php
 	session_start();
-	if (empty($_SESSION['entrar'])){
-		$_SESSION['entrar'] = "hola";
 		$_SESSION['perfilImagen']= $_GET['img'];
 		$_SESSION['perfilNombre']= $_GET['perfil'];
-	}
+	
 	
 	if (!empty($_SESSION['error'])) {
 		echo $_SESSION['error'];
@@ -76,7 +74,14 @@
 			<li><a href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
 			<li><a href="index.php">Cerrar Sesion</a></li>
 			<li><a href="verYCrearPerfiles.php">Cambiar Perfil</a></li>
-			
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) == 1){
+					?>
+					<li><a href="cargarLibros.php">Cargar Libros</a></li>;
+				<?php
+				}
+			?>
 		</ul>
 		
 	</div>
