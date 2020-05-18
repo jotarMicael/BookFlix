@@ -35,7 +35,7 @@
 			<img src="foto.php?id=<?php echo $_SESSION['usuario']['id']; ?>">
 		</div>
 		<div class="nombreUsuarioPanelPerfil">
-			<label class="labelWhite"><?php echo $_GET["perfil"] ?></label>
+			<label class="labelWhite"><?php echo $_SESSION ['usuario']['nombre_Usuario'] ?></label>
 		</div>
 		<div class="nombrePanelPerfil">
 			<label class="labelWhite"><?php echo $_SESSION['usuario']['nombre_Perfil'] ?> </label>
