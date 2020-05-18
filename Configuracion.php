@@ -76,7 +76,7 @@
 		    </div>
 		</form>
 	<div class="barraFin">
-		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6</p>
+		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Valentin Gallardo 15292/9</p>
     </div>
 </body>
 </html>

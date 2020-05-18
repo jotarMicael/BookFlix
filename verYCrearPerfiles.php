@@ -21,13 +21,11 @@
 		else {
 			echo "Conexion Fallida";
 		}
-
 	?>
 </head>
 <body background="Imagenes/2.jpg">
 	<div>	
 	<h3 class="tituloSecundarioRegistro"> Bienvenido: </h3>
-		<?php echo $_SESSION["usuario"]["nombre_Usuario"] ?>
 		<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 		<div class="divRegistro">
 			<div class="registro">
