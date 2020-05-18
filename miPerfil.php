@@ -35,9 +35,6 @@
 		<div class="imagenPanelPerfil">
 		<image src="/BookFlix/ImagenesServer/<?php echo $_SESSION['perfilImagen'];?>" width="100" />
 		</div>
-		<div class="nombreUsuarioPanelPerfil">
-			<label class="labelWhite"><?php echo $_SESSION ['usuario']['nombre_Usuario'] ?></label>
-		</div>
 		<div class="nombrePanelPerfil">
 			<label class="labelWhite"><?php echo $_SESSION['perfilNombre'] ?> </label>
 		</div>
