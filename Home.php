@@ -61,6 +61,7 @@
 
 </head>
 <body background="Imagenes/2.jpg">
+
 	<div id="menu">
 		<ul>
 			<label class="labelWhite">Buscar: </label>
@@ -72,7 +73,9 @@
 			<li><a href="verYCrearPerfiles.php">Cambiar Perfil</a></li>
 			
 		</ul>
+		
 	</div>
+	<img class="imagenTitulo" src="Imagenes\Titulo.png">
 	
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los libros que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al libro en concreto-->
 				<?php 
