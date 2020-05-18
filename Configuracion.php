@@ -15,13 +15,13 @@
 			unset($_SESSION['error']);} ?> </h3>
 	<div class="barraInicio">	
 		<div class="divBotones"> 
-		<a class="botonInicio" href="Home.php"> Inicio </a>
+		<a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
 	    </div>
 	    <div class="divBotones">
-		<a class="botonInicio" href="miPerfil.php"> Perfil </a>
+		<a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Perfil </a>
 	    </div>
 	    <div class="divBotones">
-		<a class="botonInicio" href="Configuracion.php"> Configuracion </a>
+		<a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Configuracion </a>
 	    </div>
 		
 	 </div>
