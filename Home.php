@@ -67,7 +67,7 @@
 			<label class="labelWhite">Buscar: </label>
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
 			<li><a href="#">Inicio</a></li>
-			<li><a href="miPerfil.php?perfil=Mi Perfil">Mi Perfil</a></li>
+			<li><a href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a></li>
 			<li><a href="Configuracion.php">Configuracion</a></li>
 			<li><a href="index.php">Cerrar Sesion</a></li>
 			<li><a href="verYCrearPerfiles.php">Cambiar Perfil</a></li>
