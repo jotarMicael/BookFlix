@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	$_SESSION['perfilImagen']= $_GET['img'];
+	$_SESSION['perfilNombre']= $_GET['perfil'];
 
 	if (!empty($_SESSION['error'])) {
 		echo $_SESSION['error'];
