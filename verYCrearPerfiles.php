@@ -56,9 +56,12 @@
 					while($mostrar=mysqli_fetch_array($result)){
 				?>
 
-				<tr>
-					<td> <image src="/BookFlix/ImagenesServer/<?php echo $mostrar['imagen'];?>" width="50" /> </td> &nbsp;&nbsp;
+				<tr>	
+					<div
+					<td> <image src="/BookFlix/ImagenesServer/<?php echo $mostrar['imagen'];?>" width="100" /> </td> &nbsp;&nbsp;
+					<br>
 					<td> <a href= "Home.php?perfil=Mi Perfil"> <strong><?php echo $mostrar['nombre_Perfil']?> </strong> </a></td> &nbsp;&nbsp;
+					</div>
 				</tr>
 	 <?php 
 		 }
