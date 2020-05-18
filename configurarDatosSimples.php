@@ -20,15 +20,17 @@
 
 						mysqli_query($conexion, $consulta);
 
-						if(!empty($_FILES['unImagen']['tmp_name'])){
-							$fotocontenido= addslashes(file_get_contents($_FILES['unImagen']['tmp_name']));
-							$tipofoto=explode('/', $_FILES['unImagen']['type']);
-							mysqli_query($conexion, "UPDATE usuarios SET foto_contenido = '$fotocontenido', foto_tipo = '$tipofoto[1]' WHERE id = '" . $_SESSION['usuario']['id_Cuenta'] . "' ");
+						if(!empty($_FILES['unImagen']/*['tmp_name'])*/)){
+							//$fotocontenido= addslashes(file_get_contents($_FILES['unImagen']['tmp_name']));
+							$nombre_Imagen = $_FILES ['unImagen']['name'];
+							//$tipofoto=explode('/', $_FILES['unImagen']['type']);
+							mysqli_query($conexion, "UPDATE perfil SET imagen = '$nombre_Imagen' WHERE nombre_Perfil = '" . $_SESSION['perfilNombre'] . "' ");
 	                    }
 
 	                    $_SESSION['usuario']['nombre'] = $nombre;
 	                    $_SESSION['usuario']['apellido'] = $apellido;
-	                    $_SESSION['usuario']['nombre_Usuario'] = $cuenta;
+						$_SESSION['usuario']['nombre_Usuario'] = $cuenta;
+						$_SESSION['perfilImagen'] = $nombre_Imagen;
 	                    header("Location: Configuracion.php");
 	                }
 	                else{
