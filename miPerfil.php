@@ -14,10 +14,10 @@
 <body background="Imagenes/2.jpg">
 	<div class="barraInicio" >
 		<div class="divBotones">
-          <a class="botonInicio" href="Home.php"> Inicio </a>
+          <a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
 	    </div>
 	    <div class="divBotones">
-          <a class="botonInicio" href="miPerfil.php?perfil=Mi Perfil"> Perfil </a>
+          <a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a>
 	    </div>
 	    <div class="divBotones">
         <form action="Busqueda.php" method="post">
@@ -26,20 +26,20 @@
         </form>
         </div>
 	    <div class="divBotones">
-            <a class="botonInicio" href="Configuracion.php"> Configuracion </a>
+            <a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Configuracion </a>
 	    </div>  
 	</div>
 	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<div class="fondoPerfil">
 	<div class="panelPerfil">
 		<div class="imagenPanelPerfil">
-		<image src="/BookFlix/ImagenesServer/<?php echo $_GET['img'];?>" width="100" />
+		<image src="/BookFlix/ImagenesServer/<?php echo $_SESSION['perfilImagen'];?>" width="100" />
 		</div>
 		<div class="nombreUsuarioPanelPerfil">
 			<label class="labelWhite"><?php echo $_SESSION ['usuario']['nombre_Usuario'] ?></label>
 		</div>
 		<div class="nombrePanelPerfil">
-			<label class="labelWhite"><?php echo $_GET['perfil'] ?> </label>
+			<label class="labelWhite"><?php echo $_SESSION['perfilNombre'] ?> </label>
 		</div>
 	  <div class="barraFin">
 		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin</p>
