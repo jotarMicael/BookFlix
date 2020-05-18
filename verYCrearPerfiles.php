@@ -72,6 +72,16 @@
 					if (isset($_POST['nombre'])&&(mysqli_num_rows($result) <= 1 )){
 						$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','" .$_POST["imagen" ] ."')";
 						$result=mysqli_query($conexion,$sql);
+						
+						if(isset($_FILES['imagen'])){
+							$nombre_Imagen = $_FILES ['imagen']['name'];
+							$tipo_Imagen = $_FILES ['imagen']['type'];
+							$tamagno_Imagen = $_FILES ['imagen']['size'];
+							//Ruta de la carpeta destino
+							$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/ImagenesServer/';
+							//Mover imagen del directorio temporal al directorio escogido
+							move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
+						}
 					}
 					else { 
 						if (mysqli_num_rows($result) == 2 )
