@@ -12,6 +12,7 @@
 	<title>Perfil</title>
 </head>
 <body background="Imagenes/2.jpg">
+	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<div class="barraInicio" >
 		<div class="divBotones">
           <a class="botonInicio" href="Home.php"> Inicio </a>
