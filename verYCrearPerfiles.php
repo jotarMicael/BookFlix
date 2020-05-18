@@ -58,9 +58,11 @@
 
 				<tr>	
 					<div
+					<br>
 					<td> <image src="/BookFlix/ImagenesServer/<?php echo $mostrar['imagen'];?>" width="100" /> </td> &nbsp;&nbsp;
 					<br>
 					<td> <a href= "Home.php?perfil=Mi Perfil"> <strong><?php echo $mostrar['nombre_Perfil']?> </strong> </a></td> &nbsp;&nbsp;
+					<br>
 					</div>
 				</tr>
 	 <?php 
