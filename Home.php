@@ -99,9 +99,15 @@
 			<label class="labelWhite">Buscar: </label>
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
 		    </div>
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+				?>
 		    <div class="divBotones">
 			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
 			</div>
+			<?php
+			 }?>			
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 1){
