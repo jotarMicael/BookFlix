@@ -28,12 +28,16 @@ include('conexion.php');
 				  <div class="registroConfiguracion">
 				  <form action="cargarLibro.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre del Libro: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="nombreAutor" name="nombreAutor"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="nombreLibro" name="nombreLibro"><br>
 					<label class="labelWhite">ISBN: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" length="13" name="apellidoAutor"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="ISBN" length="13" name="ISBN"><br>
+					<label class="labelWhite">Fecha de Lanzamiento: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento"><br>
+					<label class="labelWhite">Fecha de Baja: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" length="13" name="fecha_Baja"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
-					<select name="editorial" id="editorial">
+					<select name="nombreEditorial" id="nombreEditorial">
 						<?php 
 							$sql= "SELECT nombre_Editorial FROM editorial";
 							$result=mysqli_query($conexion,$sql);
@@ -62,6 +66,7 @@ include('conexion.php');
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
+						$nombreComp= 
 						<option> <?php echo  $mostrar ['nombreAutor'] ." ". $mostrar['apellidoAutor'] ?> </option>
 
 						<?php 
@@ -71,29 +76,26 @@ include('conexion.php');
 					</select>
 					</div>
 					<br>
+					<label class="labelWhite">Seleccionar portada: </label>
+					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
+					<label class="labelWhite">Seleccionar pdf: </label>
+					<input type="file" class="redondeado" id="pdf" name="pdf" accept="application/pdf"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
 				
 		   	</div>
 			<?php 
-				if (isset($_POST['nombreAutor'])&&isset($_POST['apellidoAutor'])){
-
-					//Consulto en la bbdd si ya existe el autor que quiero ingresar
-					$sql= "SELECT apellidoAutor FROM autoreslibro WHERE apellidoAutor = '".$_POST['apellidoAutor']."'";
+				//if ((isset($_POST['nombreAutor']))&&isset(($_POST['nombreLibro']))&&(isset($_POST['ISBN']))&&(isset($_POST['nombreEditorial']))&&(isset($_FILES['imagen']))&&(isset($_FILES['pdf']))){
+					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" . $_POST["nombreEditorial"] ."'";
+					$idEditorial=mysqli_query($conexion,$sql);
+					$sql= "INSERT INTO libro (nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, ImagenTapaLibro,pdf) VALUES ('" .$_POST["nombreLibro" ]."', '$idEditorial', '".$_POST["fecha_Lanzamiento"]."',  '".$_POST["fecha_Baja"]."','$nombre_Imagen', '$nombre_pdf')";
 					$result=mysqli_query($conexion,$sql);
+					echo "el libro se ha cargado correctamente";
 					
-					if( mysqli_num_rows($result) == 1 ){
-						echo "Este autor ya se encuentra ingresado" ;
-						//ingreso el autor
-					}
-					else {
-						$sql= "INSERT INTO autoreslibro (nombreAutor, apellidoAutor,bibliografia) VALUES ('" .$_POST["nombreAutor"]."', '".$_POST["apellidoAutor"]."','".$_POST["bibliografia"]."' )";
-						$result=mysqli_query($conexion,$sql);
-						echo "El autor se ha cargado correctamente";
-
-					}
-				}
+				//} 
+					
+			
 			?>
 	 </div>
 		
