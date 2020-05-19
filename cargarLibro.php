@@ -56,7 +56,7 @@ include('conexion.php');
 					</select> <br> 
 					<br>
 					<label class="labelWhite">Autor: </label><br>
-					<select name="nombreAutor" id="nombreAutor">
+					<select name="nombreCompletoAutor" id="nombreCompletoAutor">
 						<?php 
 							$sql= "SELECT nombreAutor,apellidoAutor FROM autoreslibro";
 							$result=mysqli_query($conexion,$sql);
@@ -86,10 +86,11 @@ include('conexion.php');
 				
 		   	</div>
 			<?php 
-				//if ((isset($_POST['nombreAutor']))&&isset(($_POST['nombreLibro']))&&(isset($_POST['ISBN']))&&(isset($_POST['nombreEditorial']))&&(isset($_FILES['imagen']))&&(isset($_FILES['pdf']))){
-					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" . $_POST["nombreEditorial"] ."'";
+				//if ((isset($_POST['nombreCompletoAutor']))&&isset(($_POST['nombreLibro']))&&((isset($_POST['ISBN']))&&((isset($_POST['nombreEditorial']))&&((isset($_FILES['imagen']))&&((isset($_FILES['pdf']))){
+
+					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST["nombreEditorial"] ."' ";
 					$idEditorial=mysqli_query($conexion,$sql);
-					$sql= "INSERT INTO libro (nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, ImagenTapaLibro,pdf) VALUES ('" .$_POST["nombreLibro" ]."', '$idEditorial', '".$_POST["fecha_Lanzamiento"]."',  '".$_POST["fecha_Baja"]."','$nombre_Imagen', '$nombre_pdf')";
+					$sql= "INSERT INTO libro (nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf) VALUES ('" .$_POST["nombreLibro" ]."', '$idEditorial', '".$_POST["fecha_Lanzamiento"]."',  '".$_POST["fecha_Baja"]."','$nombre_Imagen', '$nombre_pdf')";
 					$result=mysqli_query($conexion,$sql);
 					echo "el libro se ha cargado correctamente";
 					
