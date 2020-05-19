@@ -138,6 +138,7 @@ div::after {
  .divBotones{
  	padding-right: 10px;
  	padding-left: 10px;
+ 	margin: auto;
  }
 
 /*--------------------- TABLAS DE ENTRADA ---------------------*/
@@ -254,8 +255,8 @@ div::after {
     overflow: hidden;
 }
 .imagenPerfil{
-	margin-top: 10px;
-	width: 300px;
+	margin: auto;
+	width: 100px;
 	height: 100px;
 }
 .imagenPerfil img, .imagenPanelPerfil img{
@@ -452,3 +453,41 @@ div::after {
 	display: flex;
 	justify-content: center;
 }
+
+.imagenBarraSuperior{
+	width: 100px;
+}
+
+.divBarraBlanca{
+	background: white;
+	border-radius: 10px;
+}
+
+.divLibro{
+	border: 5px solid white;
+ 	border-radius: 20px;
+ 	padding: 10px;
+ 	background-color: rgba(0,0,0,0.7);
+ 	color: black;
+ 	cursor: pointer;
+ 	text-align: center;
+ 	position: center;
+ 	box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.3);
+ 	position: relative;
+ 	width: 150px;
+ 	height: auto;
+ 	margin: auto;
+ }
+
+ .imagenPortada{
+ 	width: 100px;
+ 	height: 150px;
+ }
+
+ .divLibrosRandom{
+ 	height: auto;
+ 	display: flex;
+	justify-content: space-between;	
+	margin-top: 15px;
+
+ }

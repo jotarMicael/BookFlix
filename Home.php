@@ -65,15 +65,23 @@
 </head>
 <body background="Imagenes/2.jpg">
 
-	<div id="menu">
-		<ul>
+	<div id="menu" class="barraInicio">
+			<div class="divBotones">
+			<li><a href="#" class="botonInicio">Inicio</a></li>
+			</div>
+			<div class="divBotones">
+			<li><a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a></li>
+		    </div>
+		    <div class="divBotones">
+		    	<img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
+		    </div>
+		    <div class="divBotones">
 			<label class="labelWhite">Buscar: </label>
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
-			<li><a href="#">Inicio</a></li>
-			<li><a href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a></li>
-			<li><a href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
-			<li><a href="index.php">Cerrar Sesion</a></li>
-			<li><a href="verYCrearPerfiles.php">Cambiar Perfil</a></li>
+		    </div>
+		    <div class="divBotones">
+			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
+			</div>
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 1){
@@ -82,28 +90,50 @@
 				<?php
 				}
 			?>
-		</ul>
-		
+	</div>	
 	</div>
-	<img class="imagenTitulo" src="Imagenes\Titulo.png">
-	
+
+				<div class="divLibrosRandom">
+				<div class="divLibro">
+					<img class="imagenPortada" src="Imagenes\Portada3.jpg"><br><br>
+					<label class="labelWhite"> Bajo la misma estrella </label>
+				</div>
+				<div class="divLibro">
+					<img class="imagenPortada" src="Imagenes\Portada3.jpg"><br><br>
+					<label class="labelWhite"> Bajo la misma estrella </label>
+				</div>
+				<div class="divLibro">
+					<img class="imagenPortada" src="Imagenes\Portada3.jpg"><br><br>
+					<label class="labelWhite"> Bajo la misma estrella </label>
+				</div>
+				<div class="divLibro">
+					<img class="imagenPortada" src="Imagenes\Portada3.jpg"><br><br>
+					<label class="labelWhite"> Bajo la misma estrella </label>
+				</div>
+				<div class="divLibro">
+					<img class="imagenPortada" src="Imagenes\Portada3.jpg"><br><br>
+					<label class="labelWhite"> Bajo la misma estrella </label>
+				</div>
+				<div class="divLibro">
+					<img class="imagenPortada" src="Imagenes\Portada3.jpg"><br><br>
+					<label class="labelWhite"> Bajo la misma estrella </label>
+				</div>
+				</div>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los libros que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al libro en concreto-->
-				<?php 
-					$sql="SELECT * from libros";
-					$result=mysqli_query($conexion,$sql);
+						<?php 
+							$sql="SELECT * from libros";
+							$result=mysqli_query($conexion,$sql);
 
-					while($mostrar=mysqli_fetch_array($result)){
-				?>
-
-				<tr>
-					<td><?php echo $mostrar['portada'] ?></td>
-					<td><?php echo $mostrar['nombre'] ?></td>
+							while($mostrar=mysqli_fetch_array($result)){
+						?>
+						<tr>
+							<td><?php echo $mostrar['portada'] ?></td>
+							<td><?php echo $mostrar['nombre'] ?></td>
 					
-				</tr>
-	<?php 
-	}
-	 ?>
-		   	</div>
+						</tr>
+						<?php 
+							}
+						 ?>
     
 </body>
 </html>
