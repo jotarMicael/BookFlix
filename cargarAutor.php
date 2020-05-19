@@ -1,4 +1,5 @@
 <?php session_start(); 
+include('conexion.php');
  ?>
 <!DOCTYPE html>
 <html>
@@ -27,20 +28,23 @@
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del autor</h2>
 			<div class="divConfiguracion">
-				<form action="cargarAutor.php" method="post" enctype="multipart/form-data">
+				
 				  <div class="registroConfiguracion">
+				  <form action="cargarAutor.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="nombreAutor" name="nombreAutor" value="Ingrese el nombre"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="nombreAutor" name="nombreAutor"><br>
 					<label class="labelWhite">Apellido: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" name="apellidoAutor" value="Ingrese el apellido"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" name="apellidoAutor"><br>
 					<label class="labelWhite">Enlace a bibliografia: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="bibliografia" name="bibliografia" value="Ingrese un link"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="bibliografia" name="bibliografia"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
+					</form>
 				  </div>
-				</form>
+				
 		   	</div>
 			<?php 
-				if ((isset($_POST['nombreAutor'])) && (isset($_POST['apellidoAutor']))) {
+				if (isset($_POST['nombreAutor'])&&isset($_POST['apellidoAutor'])){
+
 					//Consulto en la bbdd si ya existe el autor que quiero ingresar
 					$sql= "SELECT apellidoAutor FROM autoreslibro WHERE apellidoAutor = '".$_POST['apellidoAutor']."'";
 					$result=mysqli_query($conexion,$sql);
@@ -52,7 +56,7 @@
 					else {
 						$sql= "INSERT INTO autoreslibro (nombreAutor, apellidoAutor,bibliografia) VALUES ('" .$_POST["nombreAutor"]."', '".$_POST["apellidoAutor"]."','".$_POST["bibliografia"]."' )";
 						$result=mysqli_query($conexion,$sql);
-						echo "Se ha ingresado correctamente";
+						echo "El autor se ha cargado correctamente";
 
 					}
 				}
