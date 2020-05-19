@@ -33,7 +33,7 @@ include('conexion.php');
 					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" length="13" name="apellidoAutor"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
-					<select name="editorial">
+					<select name="editorial" id="editorial">
 						<?php 
 							$sql= "SELECT nombre_Editorial FROM editorial";
 							$result=mysqli_query($conexion,$sql);
@@ -52,7 +52,7 @@ include('conexion.php');
 					</select> <br> 
 					<br>
 					<label class="labelWhite">Autor: </label><br>
-					<select name="autor">
+					<select name="nombreAutor" id="nombreAutor">
 						<?php 
 							$sql= "SELECT nombreAutor,apellidoAutor FROM autoreslibro";
 							$result=mysqli_query($conexion,$sql);
@@ -62,7 +62,7 @@ include('conexion.php');
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
-						<option> <?php echo $mostrar ['nombreAutor']; echo  $mostrar ['apellidoAutor'] ?> </option>
+						<option> <?php echo  '$mostrar ['nombreAutor'] . $mostrar['apellidoAutor']' ?> </option>
 
 						<?php 
 							}
