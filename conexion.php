@@ -3,7 +3,7 @@
 	$host = "localhost";    // sera el valor de nuestra BD 
 	$basededatos = "bookflix";    // sera el valor de nuestra BD 
 	$usuariodb = "root";    // sera el valor de nuestra BD 
-	$clavedb = "";    // sera el valor de nuestra BD 
+	$clavedb = "4509221m";    // sera el valor de nuestra BD 
 
 	//Lista de Tablas
 	$tabla_db1 = "cuenta"; 	   // tabla de usuarios
