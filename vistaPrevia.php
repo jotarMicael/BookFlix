@@ -1,32 +1,15 @@
-<?php
-	session_start();
-		$_SESSION['perfilImagen']= $_GET['img'];
-		$_SESSION['perfilNombre']= $_GET['perfil'];
-	
-	
-	if (!empty($_SESSION['error'])) {
-		echo $_SESSION['error'];
-		unset($_SESSION['error']);
-	}
+<?php session_start();
+ include('conexion.php');
 ?>
 <!DOCTYPE html>
 <html>
-<head >
-	<title>Inicio</title>
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity=" sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="all.css" rel="stylesheet" type="text/css">
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
-	<link rel="shortcut icon" href="logotipo.jpg"> 
-	<script type="text/javascript" src="scriptRegistro.js"></script>
-	<?php
-		include('conexion.php');
-	?>
-	<?php
-		if (empty($_SESSION['usuario'])) {
-			header('Location: index.php');
-			exit;}
-		if (!empty($_SESSION['error'])){
-			echo $_SESSION['error'];
-			unset($_SESSION['error']);}
- 		?>
+	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript" src="scriptInicio.js"></script>
+	<title>Vista Previa</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
 		
@@ -81,10 +64,8 @@
 		}
 	</style>
 
-
 </head>
 <body background="Imagenes/2.jpg">
-
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
 			<li><a href="#" class="botonInicio">Inicio</a></li>
@@ -124,21 +105,25 @@
 				}
 			?>	
 	</div>
+	<div class="divLibrosRandom">
+		<div class="divLibro">
+			<!-- Aca se van a tomar los datos del libro que pertenecen a otra tabla para ser mostrados en la vista previa del libro -->
+		  <?php $resultUno = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' "); 
+		  $resultDos = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+		  $resultTres = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");?>
+			<img src="src=/BookFlix/ImagenesServer/<?php echo $libro['imagen'];?>">
+			<label class="labelWhite">Titulo:</label><br>
+			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
+			<label class="labelWhite">Titulo:</label><br>
+			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
+			<label class="labelWhite">Titulo:</label><br>
+			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
+		</div>
+		
+	</div>
+<div class="barraFin">
+	<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin</p>
+</div>
 
-				<div class="divLibrosRandom">
-						<?php 
-							$sql="SELECT * from libros";
-							$result=mysqli_query($conexion,$sql);
-
-							while($mostrar=mysqli_fetch_array($result)){
-						?>
-							<div class="divLibro">
-								<a href="vistaPrevia.php?libro=<?php echo $mostrar;?>"><image src="/BookFlix/ImagenesServer/<?php echo $mostrar['imagen'];?>"/></a><br><br>
-							</div>
-						<?php 
-							}
-						 ?>
-				</div>
-				<!--En esta parte del codigo hay que consultar a la base de datos todos los libros que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al libro en concreto-->
 </body>
 </html>
