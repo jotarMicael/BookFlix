@@ -112,7 +112,7 @@
 						<ul>
 							<a class="botonInicio" href="cargarLibro.php">Cargar Libro</a></li>
 							<a class="botonInicio" href="cargarAutor.php">Cargar Autor</a></li>
-							<a class="botonInicio" href="">Cargar Genero</a></li>
+							<a class="botonInicio" href="cargarGenero.php">Cargar Genero</a></li>
 						</ul>
 						</li>
 							
