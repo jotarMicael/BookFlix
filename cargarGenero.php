@@ -6,7 +6,7 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
-	<title>Cargar Autor</title>
+	<title>Cargar Genero</title>
 </head>
 <body background= "Imagenes/2.jpg">
 	<h3 class="tituloTerciarioConfiguracion">
@@ -22,37 +22,33 @@ include('conexion.php');
 	    </div>		
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
-			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del autor</h2>
+			<h2 class="tituloSecundarioConfiguracion" >Ingrese el nombre del genero</h2>
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-				  <form action="cargarAutor.php" method="post" enctype="multipart/form-data">
-					<label class="labelWhite">Nombre: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="nombreAutor" name="nombreAutor"><br>
-					<label class="labelWhite">Apellido: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" name="apellidoAutor"><br>
-					<label class="labelWhite">Enlace a bibliografia: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="bibliografia" name="bibliografia"><br>
+				  <form action="cargarGenero.php" method="post" enctype="multipart/form-data">
+					<label class="labelWhite">Nombre del genero: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="nombreGenero" name="nombreGenero"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
 				
 		   	</div>
 			<?php 
-				if (isset($_POST['nombreAutor'])&&isset($_POST['apellidoAutor'])){
+				if (isset($_POST['nombreGenero'])){
 
-					//Consulto en la bbdd si ya existe el autor que quiero ingresar
-					$sql= "SELECT apellidoAutor FROM autoreslibro WHERE apellidoAutor = '".$_POST['apellidoAutor']."'";
+					//Consulto en la bbdd si ya existe el genero que quiero ingresar
+					$sql= "SELECT nombre_Genero FROM genero WHERE nombre_Genero = '".$_POST['nombreGenero']."'";
 					$result=mysqli_query($conexion,$sql);
 					
 					if( mysqli_num_rows($result) == 1 ){
-						echo "Este autor ya se encuentra ingresado" ;
-						//ingreso el autor
+						echo "Este genero ya se encuentra cargado en el sistema" ;
+						//ingreso el genero
 					}
 					else {
-						$sql= "INSERT INTO autoreslibro (nombreAutor, apellidoAutor,bibliografia) VALUES ('" .$_POST["nombreAutor"]."', '".$_POST["apellidoAutor"]."','".$_POST["bibliografia"]."' )";
+						$sql= "INSERT INTO genero (nombre_Genero) VALUES ('" .$_POST["nombreGenero"]."')";
 						$result=mysqli_query($conexion,$sql);
-						echo "El autor se ha cargado correctamente";
+						echo "El genero se ha cargado correctamente";
 
 					}
 				}
