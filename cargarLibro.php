@@ -62,7 +62,7 @@ include('conexion.php');
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
-						<option> <?php echo  '$mostrar ['nombreAutor'] . $mostrar['apellidoAutor']' ?> </option>
+						<option> <?php echo  $mostrar ['nombreAutor'] ." ". $mostrar['apellidoAutor'] ?> </option>
 
 						<?php 
 							}
