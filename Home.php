@@ -60,7 +60,27 @@
 		.item-r{
 			float: right;
 		}
+
+		.nav li ul {
+			display:none;
+			position:absolute;
+			min-width:140px;
+
+		}
+		.nav li:hover > ul{
+
+			display:block;
+		}
+		.nav li ul li{
+			position:absolute;
+		}
+		.nav li ul li ul{
+			position:absolute;
+			right: -140px;
+			top: 0px;
+		}
 	</style>
+
 
 </head>
 <body background="Imagenes/2.jpg">
@@ -86,11 +106,23 @@
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 1){
 					?>
-					<li><a href="cargarLibros.php">Cargar Libros</a></li>;
+					<ul class="nav">
+						<li><a class="botonInicio" href="" >Administrar datos</a>
+					
+						<ul>
+							<a class="botonInicio" href="cargarLibro.php">Cargar Libro</a></li>
+							<a class="botonInicio" href="cargarAutor.php">Cargar Autor</a></li>
+							<a class="botonInicio" href="">Cargar Genero</a></li>
+						</ul>
+						</li>
+							
+					
+					
+					</ul>
+
 				<?php
 				}
-			?>
-	</div>	
+			?>	
 	</div>
 
 				<div class="divLibrosRandom">
