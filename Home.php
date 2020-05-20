@@ -120,6 +120,7 @@
 							<a class="botonInicio" href="cargarLibro.php">Cargar Libro</a></li>
 							<a class="botonInicio" href="cargarAutor.php">Cargar Autor</a></li>
 							<a class="botonInicio" href="cargarGenero.php">Cargar Genero</a></li>
+							<a class="botonInicio" href="cargarNoticia.php">Cargar Noticia</a></li>
 						</ul>
 						</li>
 							
@@ -150,30 +151,13 @@
 							} 
 						 ?>
 				</div>
-
-				<div class="fondoComentarios">
-	<form action="publicar.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
-	<div class="comentario">
-	    <div class="cuerpoComentario">
-	    	<div class="barraTop-publicacion">	
-	    		<h5 class="textoBarraTop"><?php echo $_SESSION['nombrePerfil']; ?></h5>		
-	    	</div>
-	    	<div>
-	    		<textarea cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"></textarea>
-	    	</div>
-	    	<div class="barraBot">
-	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
-	    	</div>
-	    </div>
-	</div>
-	</form>	
 	<?php 
 							$sql="SELECT texto from noticia ";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="cuerpoComentario">
-								<a > <?php echo $mostrar['texto'];?> <image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
+								<a> <?php echo $mostrar['texto'];?> /></a><br><br>
 								<br>
 								<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
 								<br>
