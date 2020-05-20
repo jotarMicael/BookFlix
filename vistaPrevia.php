@@ -118,15 +118,19 @@
 
 			<image class="home" width="200%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
 
-			<label class="labelWhite">Titulo:</label><br>
-			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
+			<label class="labelWhite">Titulo:</label><br> <br>
+			<label class="labelWhite"><strong> <?php echo $_GET['nombreLibro'] ?> </label> </strong>
+			<br>
+			<br>
 			<label class="labelWhite">Autor/es:</label><br>
-			<label class="labelWhite"> <?php 	while($mostrar=mysqli_fetch_array($resultDos)){
-													echo $mostrar['nombre_Autor'];	
-							} 
-						 ?></label>
-			<label class="labelWhite">Genero: </label><br>
-			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultTres); echo $mostrar['nombre_Genero'] ?></label>
+			<br>
+			<label class="labelWhite"> <strong><?php 	//while($mostrar=mysqli_fetch_array($resultDos)){
+													echo $_GET['autor'];	
+							//} 
+						 ?></label> </strong><br><br>
+			<label class="labelWhite">Genero: </label><br> <br>
+			<label class="labelWhite"> <strong> <?php $mostrar=mysqli_fetch_array($resultTres); echo $_GET['genero'] ?></label> </strong>
+			<br><br>
 			<label class="labelWhite">Editorial: </label><br>
 			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?></label>
 		</div>
