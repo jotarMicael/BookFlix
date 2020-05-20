@@ -157,13 +157,8 @@
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="cuerpoComentario">
-								<a> <?php echo $mostrar['texto'];?> /></a><br><br>
+								<a > <?php echo $mostrar['texto'];?></a><br><br>
 								<br>
-								<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
-								<br>
-								<?php echo $mostrar['autor'];?>
-								
-						<br>
 							</div>
 							<?php }?>
 </body>
