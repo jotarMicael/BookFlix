@@ -22,7 +22,7 @@
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del libro</h2>
 			<div class="divConfiguracion">	
 				  <div class="registroConfiguracion">
-				  <form action="cargarLibro.php" method="post" enctype="multipart/form-data">
+				  <form method="POST" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre del Libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreLibro" name="nombreLibro"><br>
 					<label class="labelWhite">ISBN: </label><br>
@@ -113,7 +113,7 @@
 								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/Portadas/';
 								//Mover imagen del directorio temporal al directorio escogido
 								move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
-								header("Location: cargarLibro.php");
+								//header("Location: cargarLibro.php");
 							}
 							else {
 								echo "Solo se puede subir: png, jpg, jpeg";
@@ -133,11 +133,12 @@
 						$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
 
 						echo $nombre_Imagen;
-						$sql1="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST["nombreEditorial"] ."' ";
+						echo $_POST["nombreCompletoAutor"];
+						/*$sql1="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST["nombreEditorial"] ."' ";
 						$idEditorial=mysqli_query($conexion,$sql1);
-						
-						$sql= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor) VALUES ('" .$_POST["nombreLibro" ]."', '$idEditorial', '$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."')";
-						$result=mysqli_query($conexion,$sql);
+						echo $idEditorial;*/
+						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor) VALUES ('" .$_POST["nombreLibro" ]."', '$idEditorial', '$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."')";
+						$result=mysqli_query($conexion,$sql2);
 						echo "el libro se ha cargado correctamente";
 
 					}
