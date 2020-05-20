@@ -115,7 +115,7 @@
 				}
 			?>	
 	</div>
-	<div class="divLibrosRandom">
+	<div class="divLibrosRandom" style="margin-left: 25%;">
 		<div class="divLibroVistaPrevia">
 			<!-- Aca se van a tomar los datos del libro que pertenecen a otra tabla para ser mostrados en la vista previa del libro -->
 		<?php 
@@ -126,27 +126,32 @@
 	    	// Consulta para obtener la editorial
 		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' "); ?>
 		  	<div>
-			<image class="home" style="height: 475px; width: 300px" width="80%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
+			<image class="home" style="height: 475px; width: 300px; border-radius: 20px;" width="80%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
 			</div>
-			<div>
-			<label class="labelWhite">Titulo:</label><br>
-			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
-			<label class="labelWhite" >Autor/es:</label><br>
+			<div style="text-align: center; margin-left: 50px; margin-top: 30px;">
+				<div class="divMargin">
+			<label class="labelWhite">Titulo: </label>
+			<label class="labelWhite"> <strong> <?php echo "hola"; echo $libro['nombre_Libro'] ?> </strong></label><br>
+			</div>
+			<div class="divMargin">
+			<label class="labelWhite" >Autor/es: </label>
 			<label class="labelWhite"> <?php 	while($mostrar=mysqli_fetch_array($resultDos)){
 													echo $mostrar['nombre_Autor'];	
 							} 
-						 ?></label>
-			<label class="labelWhite">Genero: </label><br>
-			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultTres); echo $mostrar['nombre_Genero'] ?></label>
-			<label class="labelWhite">Editorial: </label><br>
-			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?></label>
+						 ?></label> <br>
+			</div>
+			<div class="divMargin">
+			<label class="labelWhite">Genero: </label>
+			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultTres); echo $mostrar['nombre_Genero'] ?></label><br>
+			</div>
+			<div class="divMargin">
+			<label class="labelWhite">Editorial: </label>
+			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?></label><br>
+			</div>
 			</div>
 		</div>
 		
 	</div>
-<div class="barraFin">
-	<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin</p>
-</div>
 
 </body>
 </html>

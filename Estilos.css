@@ -509,3 +509,7 @@ div::after {
  	margin: auto;
  	display: flex;
  }
+
+.divMargin{
+	margin-bottom: 25px;
+}
