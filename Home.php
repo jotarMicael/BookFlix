@@ -126,13 +126,18 @@
 	</div>
 				<div class="divLibrosRandom">
 						<?php 
-							$sql="SELECT * from libros";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,autor from libro ";
 							$result=mysqli_query($conexion,$sql);
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="divLibro">
-								<a href="vistaPrevia.php?libro=<?php echo $mostrar;?>"><image src="/BookFlix/Portadas/<?php echo $mostrar['imagen'];?>"/></a><br><br>
+								<a href="vistaPrevia.php?libro=<?php echo $mostrar;?>"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
+								<br>
+								<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> ;&nbsp;
+								<br>
+								<?php echo $mostrar['autor'];?>
+						<br>
 							</div>
 						<?php 
 							}
