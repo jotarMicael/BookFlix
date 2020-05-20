@@ -124,7 +124,6 @@
 				}
 			?>	
 	</div>
-
 				<div class="divLibrosRandom">
 						<?php 
 							$sql="SELECT * from libros";
@@ -133,7 +132,7 @@
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="divLibro">
-								<a href="vistaPrevia.php?libro=<?php echo $mostrar;?>"><image src="/BookFlix/ImagenesServer/<?php echo $mostrar['imagen'];?>"/></a><br><br>
+								<a href="vistaPrevia.php?libro=<?php echo $mostrar;?>"><image src="/BookFlix/Portadas/<?php echo $mostrar['imagen'];?>"/></a><br><br>
 							</div>
 						<?php 
 							}
