@@ -39,6 +39,7 @@ include('conexion.php');
 				
 		   	</div>
 			<?php 
+			
 				if (isset($_POST['nombreAutor'])&&isset($_POST['apellidoAutor'])){
 
 					//Consulto en la bbdd si ya existe el autor que quiero ingresar
