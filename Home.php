@@ -156,21 +156,29 @@
 							} 
 						 ?>
 				</div>
+				<div style="margin-left: 1080px; margin-top: 160px;" class="divNotificaciones">
 	<?php 
 							$sql="SELECT * from noticia ";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 								<div class="cuerpoComentario">
-									
-									<a > <?php echo $mostrar['texto'];?></a><br><br>
-									<a > <?php echo $mostrar['fecha'];?></a><br><br>
-									<a > <?php echo $mostrar['id_Noticia'];?></a><br><br>
+									<div class="barraTop-publicacion">
+									<label class="labelWhite"> <?php echo $mostrar['fecha'];?></label><br><br>
+									</div>
+									<div>
+	    								<textarea  style="width: 400px; "cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"><?php echo $mostrar['texto'];?></textarea>
+	    							</div>
+	    							<div class="barraBot">
+	    								<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Eliminar Noticia</a></li>
+										<li><a class="botonInicio" href="Home.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Modificar Noticia</a></li>
+	    							</div>
 								
 								</div>
-									<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Eliminar Noticia</a></li>
-									<li><a class="botonInicio" href="Home.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Modificar Noticia</a></li>
+								
+
 							<?php }
 							?>
+				</div>
 </body>
 </html>
