@@ -115,7 +115,7 @@
 		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero = generopertenecelibro.id_Genero WHERE id_Libro = '".$libro['id_Libro']."' ");
 	    	// Consulta para obtener la editorial
 		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' "); ?>
-			<img src="src=/BookFlix/Portadas/<?php echo $_GET['libro'];?>">
+			<image src="src=/BookFlix/Portadas/<?php echo $_GET['libro'];?>">
 			<label class="labelWhite">Titulo:</label><br>
 			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
 			<label class="labelWhite">Autor/es:</label><br>
