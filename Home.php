@@ -167,7 +167,7 @@
 									<label class="labelWhite"> <?php echo $mostrar['fecha'];?></label><br><br>
 									</div>
 									<div>
-	    								<textarea  style="width: 400px; "cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"><?php echo $mostrar['texto'];?></textarea>
+	    								<textarea  style="width: 200px; "cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"><?php echo $mostrar['texto'];?></textarea>
 	    							</div>
 	    							<div class="barraBot">
 	    								<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Eliminar Noticia</a></li>
