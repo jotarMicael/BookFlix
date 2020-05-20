@@ -98,10 +98,17 @@
 		    <div class="divBotones">
 			<label class="labelWhite">Buscar: </label>
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
+			
 		    </div>
-		    <div class="divBotones">
+			<div class="divBotones">
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+					?>
 			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
+			<?php }?>
 			</div>
+				
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 1){
@@ -128,7 +135,6 @@
 						<?php 
 							$sql="SELECT imagenTapaLibro,nombre_Libro,autor from libro ";
 							$result=mysqli_query($conexion,$sql);
-							$cont=0;
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="divLibro">
@@ -141,9 +147,40 @@
 						<br>
 							</div>
 						<?php 
-							} $cont= $cont+1;
+							} 
 						 ?>
 				</div>
-				<!--En esta parte del codigo hay que consultar a la base de datos todos los libros que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al libro en concreto-->
+
+				<div class="fondoComentarios">
+	<form action="publicar.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
+	<div class="comentario">
+	    <div class="cuerpoComentario">
+	    	<div class="barraTop-publicacion">	
+	    		<h5 class="textoBarraTop"><?php echo $_SESSION['nombrePerfil']; ?></h5>		
+	    	</div>
+	    	<div>
+	    		<textarea cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"></textarea>
+	    	</div>
+	    	<div class="barraBot">
+	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
+	    	</div>
+	    </div>
+	</div>
+	</form>	
+	<?php 
+							$sql="SELECT texto from noticia ";
+							$result=mysqli_query($conexion,$sql);
+							while($mostrar=mysqli_fetch_array($result)){
+						?>
+							<div class="cuerpoComentario">
+								<a > <?php echo $mostrar['texto'];?> <image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
+								<br>
+								<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
+								<br>
+								<?php echo $mostrar['autor'];?>
+								
+						<br>
+							</div>
+							<?php }?>
 </body>
 </html>
