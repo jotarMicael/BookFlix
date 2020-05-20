@@ -141,14 +141,14 @@
 	</div>
 				<div class="divLibrosRandom">
 						<?php 
-							$sql="SELECT imagenTapaLibro,nombre_Libro,autor from libro ";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,autor,genero from libro ";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="divLibro">
-								<a href="vistaPrevia.php?libro=<?php $mostrar['imagenTapaLibro'];?>&nombreLibro=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
+								<a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>&nombreLibro=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&genero=<?php echo $mostrar['genero'];?>"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
 								<br>
-								<td> <a <?php echo $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
+								<td> <a <?php echo $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
 								<br>
 								<?php echo $mostrar['autor'];?>
 								
