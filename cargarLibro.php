@@ -72,6 +72,26 @@
 							}
 						}
 						?>
+					</select> <br>
+					<br>
+					<label class="labelWhite">Genero: </label><br>
+					<select name="genero" id="genero">
+						<?php 
+							$sql= "SELECT nombre_Genero FROM genero";
+							$result=mysqli_query($conexion,$sql);
+							if( mysqli_num_rows($result) == 0 )
+								echo " No hay ningun genero creado";
+							else {
+
+							while($mostrar=mysqli_fetch_array($result)){
+						?>
+
+						<option> <?php echo  $mostrar ['nombre_Genero'] ?> </option>
+
+						<?php 
+							}
+						}
+						?>
 					</select>
 					</div>
 					<br>
