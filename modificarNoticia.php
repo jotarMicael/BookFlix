@@ -41,17 +41,18 @@ include('conexion.php');
 	    
 	</div>
 	</form>	
-				
 		   	</div>
+			   <script>  alert ('<?php echo $_GET['idNoti'] ?>') </script>;
 			<?php 
 				if (isset($_POST['publish'])){
-						$id= $_GET['idNoti'];
-						$sql = "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = $id";
-						$result=mysqli_query($conexion,$sql);
+						
+						$sql2 = "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = '17'";
+						$result=mysqli_query($conexion,$sql2);
 						echo "La noticia se ha modificado correctamente";
 
 					}
 			?>
+			
 	 </div>
 		
 	<div class="barraFin">
