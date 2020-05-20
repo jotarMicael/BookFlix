@@ -87,9 +87,8 @@
 
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
-			<li><a href="#" class="botonInicio">Inicio</a></li>
+			<li><a href="Home.php" class="botonInicio">Inicio</a></li>
 			</div>
-
 			<div class="divBotones">
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
