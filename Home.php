@@ -149,7 +149,6 @@
 								<br>
 								<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
 								<br>
-								<?php echo $mostrar['autor'];?>
 								
 						<br>
 							</div>
