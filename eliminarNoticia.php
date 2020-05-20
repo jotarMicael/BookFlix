@@ -2,7 +2,7 @@
 	session_start();
 	include('conexion.php');
 
-	mysqli_query($conexion, "DELETE FROM noticia WHERE '" . $_GET['id_Noticia'] . "' = id_Noticia ");
+	mysqli_query($conexion, "DELETE FROM noticia WHERE  id_Noticia =  '" . $_GET['id_Noti'] . "'");
 
 	header('Location: Home.php');
 ?>
