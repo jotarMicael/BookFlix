@@ -68,7 +68,7 @@
 <body background="Imagenes/2.jpg">
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
-			<li><a href="#" class="botonInicio">Inicio</a></li>
+			<li><a href="Home.php" class="botonInicio">Inicio</a></li>
 			</div>
 			<div class="divBotones">
 			<?php
