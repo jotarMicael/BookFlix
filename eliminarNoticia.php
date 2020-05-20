@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	include('conexion.php');
-
-	mysqli_query($conexion, "DELETE FROM noticia WHERE  id_Noticia =  '" . $_GET['id_Noti'] . "'");
+		$id= $_GET['idNoti'];
+	mysqli_query($conexion, "DELETE FROM noticia WHERE $id = id_Noticia ");
 
 	header('Location: Home.php');
 ?>
