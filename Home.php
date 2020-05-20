@@ -89,12 +89,19 @@
 			<div class="divBotones">
 			<li><a href="#" class="botonInicio">Inicio</a></li>
 			</div>
+
 			<div class="divBotones">
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+					?>
 			<li><a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a></li>
+			<?php }?>
 		    </div>
 		    <div class="divBotones">
 		    	<img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
 		    </div>
+				
 		    <div class="divBotones">
 			<label class="labelWhite">Buscar: </label>
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
@@ -161,7 +168,7 @@
 								<a > <?php echo $mostrar['fecha'];?></a><br><br>;
 							</div>
 							<li><a class="botonInicio" href="eliminarMensajeInicio.php?idNoti=<?php echo $mostrar['id_Noticia'];?>">Eliminar Noticia</a></li>
-							<li><a class="botonInicio" href="eliminar.php?perfil=<?php echo $_GET['id_Noticia'];?>">Modificar Noticia</a></li>
+							<li><a class="botonInicio" href="eliminar.php?perfil=<?php echo $mostrar['id_Noticia'];?>">Modificar Noticia</a></li>
 							<?php }?>
 </body>
 </html>
