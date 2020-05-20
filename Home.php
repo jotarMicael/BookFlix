@@ -159,16 +159,20 @@
 						 ?>
 				</div>
 	<?php 
-							$sql="SELECT texto from noticia ";
+							$sql="SELECT * from noticia ";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
-							<div class="cuerpoComentario">
-								<a > <?php echo $mostrar['texto'];?></a><br><br>;
-								<a > <?php echo $mostrar['fecha'];?></a><br><br>;
-							</div>
-							<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia'];?>">Eliminar Noticia</a></li>
-							<li><a class="botonInicio" href="modificarNoticia.php?perfil=<?php echo $mostrar['id_Noticia'];?>">Modificar Noticia</a></li>
-							<?php }?>
+								<div class="cuerpoComentario">
+									
+									<a > <?php echo $mostrar['texto'];?></a><br><br>
+									<a > <?php echo $mostrar['fecha'];?></a><br><br>
+									<a > <?php echo $mostrar['id_Noticia'];?></a><br><br>
+								
+								</div>
+									<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Eliminar Noticia</a></li>
+									<li><a class="botonInicio" href="modificarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Modificar Noticia</a></li>
+							<?php }
+							?>
 </body>
 </html>
