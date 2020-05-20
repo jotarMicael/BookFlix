@@ -71,7 +71,12 @@
 			<li><a href="#" class="botonInicio">Inicio</a></li>
 			</div>
 			<div class="divBotones">
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+					?>
 			<li><a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a></li>
+				<?php }?>
 		    </div>
 		    <div class="divBotones">
 		    	<img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
@@ -81,7 +86,12 @@
 			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
 		    </div>
 		    <div class="divBotones">
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+					?>		
 			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
+			<?php }?>
 			</div>
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
