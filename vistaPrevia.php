@@ -131,7 +131,7 @@
 			<div style="text-align: center; margin-left: 50px; margin-top: 30px;">
 				<div class="divMargin">
 			<label class="labelWhite">Titulo: </label>
-			<label class="labelWhite"> <strong> <?php echo "hola"; echo $libro['nombre_Libro'] ?> </strong></label><br>
+			<label class="labelWhite"> <strong> <?php echo $libro['nombre_Libro'] ?> </strong></label><br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite" >Autor/es: </label>
