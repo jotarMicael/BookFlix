@@ -126,7 +126,7 @@
 	    	// Consulta para obtener la editorial
 		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' "); ?>
 		  	<div>
-			<image class="home" style="height: 475px; width: 300px; border-radius: 20px;" width="80%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
+			<image class="home" style="height: 475px; width:300px; border-radius: 20px;" width="100%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
 			</div>
 			<div style="text-align: center; margin-left: 50px; margin-top: 30px;">
 				<div class="divMargin">
