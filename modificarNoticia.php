@@ -45,7 +45,8 @@ include('conexion.php');
 		   	</div>
 			<?php 
 				if (isset($_POST['publish'])){
-						$sql = "UPDATE noticia SET texto = '".$_GET['publish']."' WHERE id_Noticia = '".$_GET['idNoti']."'";
+						$id= $_GET['idNoti'];
+						$sql = "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = $id";
 						$result=mysqli_query($conexion,$sql);
 						echo "La noticia se ha modificado correctamente";
 
