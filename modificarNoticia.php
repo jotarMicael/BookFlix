@@ -6,7 +6,7 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
-	<title>Cargar Genero</title>
+	<title>Modificar Noticia</title>
 </head>
 <body background= "Imagenes/2.jpg">
 	<h3 class="tituloTerciarioConfiguracion">
@@ -22,11 +22,11 @@ include('conexion.php');
 	    </div>		
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
-			<h2 class="tituloSecundarioConfiguracion" >Modifique la noticia</h2>
-			
+			<h2 class="tituloSecundarioConfiguracion" >Modifique la noticia:</h2>
+			<div class="divConfiguracion">
 				
 			<div class="fondoComentarios">
-				<form action="publicar.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
+				<form method="POST"enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">	
@@ -38,21 +38,20 @@ include('conexion.php');
 	    	<div class="barraBot">
 	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
 	    	</div>
-	    
-	</div>
-	</form>	
+				
 		   	</div>
-			   <script>  alert ('<?php echo $_GET['idNoti'] ?>') </script>;
 			<?php 
 				if (isset($_POST['publish'])){
-						
-						$sql2 = "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = '17'";
-						$result=mysqli_query($conexion,$sql2);
-						echo "La noticia se ha modificado correctamente";
 
-					}
+					//Consulto en la bbdd si ya existe la noticia que quiero ingresar
+					$sql= "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = '".$_GET['idNoti']."'";
+					$result=mysqli_query($conexion,$sql);
+					echo "La noticia se ha cargado correctamente";
+					header("Location: Home.php");
+
+					
+				}
 			?>
-			
 	 </div>
 		
 	<div class="barraFin">
