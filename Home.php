@@ -167,8 +167,8 @@
 								<a > <?php echo $mostrar['texto'];?></a><br><br>;
 								<a > <?php echo $mostrar['fecha'];?></a><br><br>;
 							</div>
-							<li><a class="botonInicio" href="eliminarMensajeInicio.php?idNoti=<?php echo $mostrar['id_Noticia'];?>">Eliminar Noticia</a></li>
-							<li><a class="botonInicio" href="eliminar.php?perfil=<?php echo $mostrar['id_Noticia'];?>">Modificar Noticia</a></li>
+							<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia'];?>">Eliminar Noticia</a></li>
+							<li><a class="botonInicio" href="modificarNoticia.php?perfil=<?php echo $mostrar['id_Noticia'];?>">Modificar Noticia</a></li>
 							<?php }?>
 </body>
 </html>
