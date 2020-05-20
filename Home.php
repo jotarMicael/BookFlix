@@ -117,10 +117,10 @@
 						<li><a class="botonInicio" href="" >Administrar datos</a>
 					
 						<ul>
-							<a class="botonInicio" href="cargarLibro.php">Cargar Libro</a></li>
-							<a class="botonInicio" href="cargarAutor.php">Cargar Autor</a></li>
-							<a class="botonInicio" href="cargarGenero.php">Cargar Genero</a></li>
-							<a class="botonInicio" href="cargarNoticia.php">Cargar Noticia</a></li>
+							<a class="botonInicio" href="cargarLibro.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Libro</a></li>
+							<a class="botonInicio" href="cargarAutor.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Autor</a></li>
+							<a class="botonInicio" href="cargarGenero.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Genero</a></li>
+							<a class="botonInicio" href="cargarNoticia.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Noticia</a></li>
 						</ul>
 						</li>
 							
@@ -157,9 +157,11 @@
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="cuerpoComentario">
-								<a > <?php echo $mostrar['texto'];?></a><br><br>
-								<br>
+								<a > <?php echo $mostrar['texto'];?></a><br><br>;
+								<a > <?php echo $mostrar['fecha'];?></a><br><br>;
 							</div>
+							<li><a class="botonInicio" href="eliminarMensajeInicio.php?idNoti=<?php echo $mostrar['id_Noticia'];?>">Eliminar Noticia</a></li>
+							<li><a class="botonInicio" href="eliminar.php?perfil=<?php echo $_GET['id_Noticia'];?>">Modificar Noticia</a></li>
 							<?php }?>
 </body>
 </html>
