@@ -106,7 +106,7 @@
 			?>	
 	</div>
 	<div class="divLibrosRandom">
-		<div class="divLibro">
+		<div class="divLibroVistaPrevia">
 			<!-- Aca se van a tomar los datos del libro que pertenecen a otra tabla para ser mostrados en la vista previa del libro -->
 		<?php 
 		  	// Consulta para obtener autores del libro
@@ -115,12 +115,13 @@
 		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero = generopertenecelibro.id_Genero WHERE id_Libro = '".$libro['id_Libro']."' ");
 	    	// Consulta para obtener la editorial
 		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' "); ?>
-
-			<image class="home" width="200%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
-
+		  	<div>
+			<image class="home" style="height: 475px; width: 300px" width="80%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
+			</div>
+			<div>
 			<label class="labelWhite">Titulo:</label><br>
 			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
-			<label class="labelWhite">Autor/es:</label><br>
+			<label class="labelWhite" >Autor/es:</label><br>
 			<label class="labelWhite"> <?php 	while($mostrar=mysqli_fetch_array($resultDos)){
 													echo $mostrar['nombre_Autor'];	
 							} 
@@ -129,6 +130,7 @@
 			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultTres); echo $mostrar['nombre_Genero'] ?></label>
 			<label class="labelWhite">Editorial: </label><br>
 			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?></label>
+			</div>
 		</div>
 		
 	</div>
