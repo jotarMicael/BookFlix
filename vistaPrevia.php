@@ -108,16 +108,25 @@
 	<div class="divLibrosRandom">
 		<div class="divLibro">
 			<!-- Aca se van a tomar los datos del libro que pertenecen a otra tabla para ser mostrados en la vista previa del libro -->
-		  <?php $resultUno = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' "); 
-		  $resultDos = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-		  $resultTres = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");?>
-			<img src="src=/BookFlix/ImagenesServer/<?php echo $libro['imagen'];?>">
+		<?php 
+		  	// Consulta para obtener autores del libro
+		  $resultDos = mysqli_query($conexion, "SELECT nombre_Autor FROM autor INNER JOIN autoreslibro ON autor.id_Autor=autoreslibro.id_Autor WHERE id_Libro = '".$libro['id_Libro']."' ");
+			// Consulta para obtener el genero 
+		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero = generopertenecelibro.id_Genero WHERE id_Libro = '".$libro['id_Libro']."' ");
+	    	// Consulta para obtener la editorial
+		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' "); ?>
+			<img src="src=/BookFlix/Portadas/<?php echo $libro['imagen'];?>">
 			<label class="labelWhite">Titulo:</label><br>
 			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
-			<label class="labelWhite">Titulo:</label><br>
-			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
-			<label class="labelWhite">Titulo:</label><br>
-			<label class="labelWhite"> <?php echo $libro['nombre_Libro'] ?></label>
+			<label class="labelWhite">Autor/es:</label><br>
+			<label class="labelWhite"> <?php 	while($mostrar=mysqli_fetch_array($resultDos)){
+													echo $mostrar['nombre_Autor'];	
+							} 
+						 ?></label>
+			<label class="labelWhite">Genero: </label><br>
+			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultTres); echo $mostrar['nombre_Genero'] ?></label>
+			<label class="labelWhite">Editorial: </label><br>
+			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?></label>
 		</div>
 		
 	</div>
