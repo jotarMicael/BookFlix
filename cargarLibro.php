@@ -16,10 +16,7 @@
 	<div class="barraInicio">	
 		<div class="divBotones"> 
 		<a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
-	    </div>
-	    <div class="divBotones">
-		<a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Perfil </a>
-	    </div>		
+	    </div>	
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del libro</h2>
