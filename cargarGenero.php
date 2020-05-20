@@ -17,9 +17,6 @@ include('conexion.php');
 		<div class="divBotones"> 
 		<a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
 	    </div>
-	    <div class="divBotones">
-		<a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Perfil </a>
-	    </div>		
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese el nombre del genero</h2>
