@@ -129,12 +129,12 @@
 							$sql="SELECT imagenTapaLibro,nombre_Libro,autor from libro ";
 							$result=mysqli_query($conexion,$sql);
 							$cont=0;
-							while($mostrar=mysqli_fetch_array($result)&&($cont<7)){
+							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="divLibro">
-								<a href="vistaPrevia.php?libro=<?php $mostrar['imagenTapaLibro'];?>"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
+								<a href="vistaPrevia.php?libro=<?php $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
 								<br>
-								<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> ;&nbsp;
+								<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> ;&nbsp;
 								<br>
 								<?php echo $mostrar['autor'];?>
 								
