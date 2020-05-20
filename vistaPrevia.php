@@ -114,8 +114,9 @@
 			// Consulta para obtener el genero 
 		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero = generopertenecelibro.id_Genero WHERE id_Libro = '".$libro['id_Libro']."' ");
 	    	// Consulta para obtener la editorial
-		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' "); ?>
-
+		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM editorial WHERE id_Editorial = '".$_GET['idEd']."' "); ?>
+		
+			
 			<image class="home" width="200%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
 
 			<label class="labelWhite">Titulo:</label><br> <br>
@@ -131,10 +132,11 @@
 			<label class="labelWhite">Genero: </label><br> <br>
 			<label class="labelWhite"> <strong> <?php $mostrar=mysqli_fetch_array($resultTres); echo $_GET['genero'] ?></label> </strong>
 			<br><br>
-			<label class="labelWhite">Editorial: </label><br>
-			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?></label>
+			<label class="labelWhite">Editorial: </label><br><br>
+			<label class="labelWhite"> <strong> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?> </strong> </label>
+			<br><br>
+			<a class="labelWhite"><strong> Leer libro...</strong></a>
 		</div>
-		
 	</div>
 <div class="barraFin">
 	<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin</p>
