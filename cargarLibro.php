@@ -1,5 +1,5 @@
 <?php session_start(); 
-include('conexion.php');
+	include('conexion.php');
  ?>
 <!DOCTYPE html>
 <html>
@@ -23,8 +23,7 @@ include('conexion.php');
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del libro</h2>
-			<div class="divConfiguracion">
-				
+			<div class="divConfiguracion">	
 				  <div class="registroConfiguracion">
 				  <form action="cargarLibro.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre del Libro: </label><br>
@@ -83,16 +82,54 @@ include('conexion.php');
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
-				
 		   	</div>
 			<?php 
 				//if ((isset($_POST['nombreCompletoAutor']))&&isset(($_POST['nombreLibro']))&&((isset($_POST['ISBN']))&&((isset($_POST['nombreEditorial']))&&((isset($_FILES['imagen']))&&((isset($_FILES['pdf']))){
+					if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])){
+					if(isset($_FILES['imagen'])){
+						$nombre_Imagen = $_FILES ['imagen']['name'];
+						$tipo_Imagen = $_FILES ['imagen']['type'];
+						$tamagno_Imagen = $_FILES ['imagen']['size'];
+						if ($tamagno_Imagen<=30000000){
+							if(($tipo_Imagen == "image/jpg") || ($tipo_Imagen == "image/png") || ($tipo_Imagen == "image/jpeg")){
+								//Ruta de la carpeta destino
+								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/Portadas/';
+								//Mover imagen del directorio temporal al directorio escogido
+								move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
+								header("Location: cargarLibro.php");
+							}
+							else {
+								echo "Solo se puede subir: png, jpg, jpeg";
+							}
+							
+						}
+						else{
+							echo "El tamaño de la imagen es demasiado grande";
+						}
+						$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
+						$fecha_2 = $_POST["fecha_Baja"]; //Recibe una string en formato dd-mm-yyyy 
+
+						$inicio = strtotime($fecha_1); //Convierte el string a formato de fecha en php
+						$baja = strtotime($fecha_2); //Convierte el string a formato de fecha en php
+
+						$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
+						$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
+
+						echo $nombre_Imagen;
+						$sql1="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST["nombreEditorial"] ."' ";
+						$idEditorial=mysqli_query($conexion,$sql1);
+						
+						$sql= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor) VALUES ('" .$_POST["nombreLibro" ]."', '$idEditorial', '$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."')";
+						$result=mysqli_query($conexion,$sql);
+						echo "el libro se ha cargado correctamente";
+
+					}
+
+				}
+
+
+
 					
-					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST["nombreEditorial"] ."' ";
-					$idEditorial=mysqli_query($conexion,$sql);
-					$sql= "INSERT INTO libro (nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor) VALUES ('" .$_POST["nombreLibro" ]."', '$idEditorial', '".$_POST["fecha_Lanzamiento"]."',  '".$_POST["fecha_Baja"]."','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."')";
-					$result=mysqli_query($conexion,$sql);
-					echo "el libro se ha cargado correctamente";
 					
 				//} 
 					
