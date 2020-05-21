@@ -15,12 +15,6 @@
 	<script type="text/javascript" src="scriptRegistro.js"></script>
 	<?php
 		include('conexion.php');
-		if ($conexion){
-			echo "Conexion exitosa";
-		}
-		else {
-			echo "Conexion Fallida";
-		}
 	?>
 </head>
 <body background="Imagenes/2.jpg">
