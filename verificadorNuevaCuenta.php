@@ -88,10 +88,11 @@
 	if(!$validar){
 		mysqli_query($conexion, "INSERT INTO cuenta (nombre_Usuario, nombre,apellido, contraseña, email)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unNombre'] . "',  '" . $_POST['unApellido'] . "' ,'" . $_POST['unContraseña'] . "' ,'" . $_POST['unEmail'] . "')");
 		mysqli_query($conexion, "INSERT INTO cuentausuario (nombre_Usuario, numero_Tarjeta, codigo_Seguridad,nombre_Tarjeta,apellido_Tarjeta)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unN°Tarjeta'] . "', '" . $_POST['unCodigo'] . "', '" . $_POST['unNombreTar']. "','" . $_POST['unApellidoTar']. "')");
-		$result = mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['unVencimiento'] . "')");
+		mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['unVencimiento'] . "')");
 
+		$result = mysqli_query($conexion, "SELECT * FROM cuenta WHERE nombre_Usuario = '" . $_POST['unUsuario'] . "' ");
 
-		$_SESSION['usuario'] = mysqli_fetch_array($result);	
+		$_SESSION['usuario']= mysqli_fetch_array($result);
     	$_SESSION['usuario']['id'] = mysqli_insert_id($conexion);
     	header('Location: verYCrearPerfiles.php');
     	exit;
