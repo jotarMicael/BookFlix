@@ -182,7 +182,7 @@
 									<label class="labelWhite"> <?php echo $mostrar['fecha'];?></label><br><br>
 									</div>
 									<div>
-	    								<textarea  style="width: 200px; "cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"><?php echo $mostrar['texto'];?></textarea>
+	    								<label class="labelWhite"><?php echo $mostrar['texto'];?></label>
 	    							</div>
 	    							<div class="barraBot">
 									<?php $resultado = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
