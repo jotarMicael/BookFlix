@@ -253,8 +253,15 @@ include('conexion.php');
 
 						$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
 						$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
+
+						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
+						 $result=mysqli_query($conexion,$sql);
+						 
+						$mostrar=mysqli_fetch_array($result); 
+						 			 
+
 					
-					$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor,genero,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', 1,'$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."','" .$_POST["genero" ]."','".$_POST["ISBN"]."')";
+					$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor,genero,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '" .$mostrar["id_Editorial"]."','$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."','" .$_POST["genero" ]."','".$_POST["ISBN"]."')";
 					$result=mysqli_query($conexion,$sql2);
 					ob_start();
  					 echo "El Libro se ha cargado correctamente";
