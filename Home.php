@@ -122,7 +122,7 @@
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) <> 1){
 					?>
-			<li><a href="verYCrearPerfiles.php" class="botonInicio">Cambiar de usuario</a></li>
+			<li><a href="verYCrearPerfiles.php" class="botonInicio">Cambiar de perfil</a></li>
 				<?php }?>
 			</div>
 			<div class="divBotones">
