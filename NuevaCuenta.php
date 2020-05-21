@@ -37,11 +37,9 @@
 				<input type="password" class="redondeado" id="unContraseña" name="unContraseña"><br>
 				<label class="labelWhite">Vuelva a ingresar la clave: </label><br>
 				<input type="password" class="redondeado" id="unContraseña2" name="unContraseña2"><br>
-			  	</form>
 		    	</div>
 				<div class="registro">
 				<h3 class="tituloSecundarioRegistro"> DATOS DE LA TARJETA </h3>
-				<form action="verificadorNuevaCuenta.php" method="post" enctype="multipart/form-data" onsubmit="return validar();"><br>
 				<label class="labelWhite">Nombre: </label><br>
 				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
 				<label class="labelWhite">Apellido: </label><br>
@@ -51,13 +49,13 @@
 				<label class="labelWhite">Codigo de Seguridad: </label><br>
 				<input type="text" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
 				<label class="labelWhite">Fecha de Expiracion: </label><br>
-				<input type="text" maxlength="5" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
+				<input type="text" maxlength="10" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
+				<input type="submit"class="boton" value="Ingresar"><br>
 				</form>
 		   		</div>
+				   
+				   
 		   	</div>
-    </div>
-    <div class="divRegistro">
-    			<input type="submit"class="boton" value="Ingresar"><br>
     </div>
 </body>
 </html>
