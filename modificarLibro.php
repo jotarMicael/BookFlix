@@ -119,15 +119,15 @@ include('conexion.php');
 			<div class="divConfiguracion">
 				
 			<div class="registroConfiguracion">
-				  <form method="POST" action="modificarLibro.php" enctype="multipart/form-data">
+				  <form method="POST" action="modificarLibro.php?idLibro=<?php echo $_GET['idLibro'] ?>" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre del Libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreLibro" name="nombreLibro"><br>
 					<label class="labelWhite">ISBN: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="ISBN" length="13" name="ISBN"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="ISBN" maxlength="13" name="ISBN"><br>
 					<label class="labelWhite">Fecha de Lanzamiento: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" maxlength="10" name="fecha_Lanzamiento"><br>
 					<label class="labelWhite">Fecha de Baja: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" length="13" name="fecha_Baja"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" maxlength="10" name="fecha_Baja"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
 					<select name="nombreEditorial" id="nombreEditorial">
@@ -199,7 +199,6 @@ include('conexion.php');
 		   	</div>	
 		   	</div>
 			<?php 
-			
 				if (isset($_POST['nombreLibro'])||isset($_POST['ISBN'])||isset($_POST['fecha_Lanzamiento'])||isset($_POST['fecha_Baja'])||isset($_FILES['imagen'])||isset($_FILES['pdf'])){
 
 					if(isset($_FILES['imagen'])){
@@ -212,10 +211,12 @@ include('conexion.php');
 								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/Portadas/';
 								//Mover imagen del directorio temporal al directorio escogido
 								move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
-								header("Location: modificarLibro.php");
+								//header("Location: modificarLibro.php");
 							}
 							else {
+								if(isset($_FILES['imagen'])){
 								echo "Solo se puede subir: png, jpg, jpeg";
+								}
 							}
 							
 						}
@@ -224,7 +225,7 @@ include('conexion.php');
 						}
 					}	
 					
-						if(isset($_FILES['pdf'])){
+						//if(isset($_FILES['pdf'])){
 							$nombre_pdf = $_FILES ['pdf']['name'];
 							$tipo_pdf = $_FILES ['pdf']['type'];
 							$tamagno_pdf = $_FILES ['pdf']['size'];
@@ -237,14 +238,16 @@ include('conexion.php');
 									//header("Location: cargarLibro.php");
 								}
 								else {
+									if(isset($_FILES['pdf'])){
 									echo "Solo se puede subir: pdf";
+									}
 								}
 								
 							}
 							else{
 								echo "El tamaño del pdf es demasiado grande";
 							}
-						}
+				//		}
 						$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
 						$fecha_2 = $_POST["fecha_Baja"]; //Recibe una string en formato dd-mm-yyyy 
 
@@ -258,11 +261,11 @@ include('conexion.php');
 						 $result=mysqli_query($conexion,$sql);
 						 
 						$mostrar=mysqli_fetch_array($result); 
-						 			 
 
-					
-					$sql2= "UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro" ]."', id_Editorial= '" .$mostrar["id_Editorial"]."', fecha_Lanzamiento='$inicio', fecha_DeBaja= '$baja', imagenTapaLibro='$nombre_Imagen',pdf='$nombre_pdf',autor='".$_POST["nombreCompletoAutor"]."',genero='" .$_POST["genero" ]."',ISBN='".$_POST["ISBN"]."' WHERE id_Libro = '" .$_GET["idLibro" ]."' ";
-					$result=mysqli_query($conexion,$sql2);
+						 			 
+					$idLibro= $_GET['idLibro'];
+					$sql2= "UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro" ]."', id_Editorial= '" .$mostrar["id_Editorial"]."', fecha_Lanzamiento='$inicio', fecha_DeBaja= '$baja', imagenTapaLibro='$nombre_Imagen',pdf='$nombre_pdf',autor='".$_POST["nombreCompletoAutor"]."',genero='" .$_POST["genero" ]."',ISBN='".$_POST["ISBN"]."' WHERE id_Libro = $idLibro ";
+					$result=mysqli_query($conexion,$sql2) or die(mysql_error());
 					ob_start();
  					echo "El Libro se ha modificado correctamente";
 					header("Location: Home.php");
