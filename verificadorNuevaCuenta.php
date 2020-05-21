@@ -32,12 +32,6 @@
       header('Location: NuevaCuenta.php');
       exit;
 	}
-	if(empty($_FILES['unImagen'])){
-		var_dump($_POST['unImagen']);
-		$_SESSION['error'] = "No se ingreso un imagen";
-		header('Location: NuevaCuenta.php');
-		exit;
-	}
 		if(empty($_POST['unUsuario'])){
 		$_SESSION['error'] = "No se ingreso un usuario";
 		header('Location: NuevaCuenta.php');
@@ -79,20 +73,17 @@
 	   exit;
 	}
 
-	$fotocontenido=addslashes(file_get_contents($_FILES['unImagen']['tmp_name']));
-	$tipofoto=explode('/', $_FILES['unImagen']['type']);
-
-	$validar=mysqli_num_rows(mysqli_query($link, "SELECT * FROM usuarios WHERE email = '" . $_POST['unEmail'] . "' or nombreusuario = '" . $_POST['unUsuario'] . "' "));
+	$validar=mysqli_num_rows(mysqli_query($link, "SELECT * FROM cuenta WHERE email = '" . $_POST['unEmail'] . "' or nombre_Usuario = '" . $_POST['unUsuario'] . "' "));
 
 	if(!$validar){
-		$result = mysqli_query($conexion, "INSERT INTO cuenta (nombre_Usuario, nombre_Apellido, contraseña, email)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unNombreYApellido'] . "', '" . $_POST['unaContraseña'] . "' ,'" . $_POST['unEmail'] . "')");
-		$result = mysqli_query($conexion, "INSERT INTO cuentausuario (nombre_Usuario, numero_Tarjeta, codigo_Seguridad)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['numero_Tarjeta'] . "', '" . $_POST['Codigo_Seguridad'] . "')");
-		$result = mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['fecha'] . "')");
+		$result = mysqli_query($conexion, "INSERT INTO cuenta (nombre_Usuario, nombre,apellido, contraseña, email)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unNombre'] . "',  '" . $_POST['unApellido'] . "' ,'" . $_POST['unContraseña'] . "' ,'" . $_POST['unEmail'] . "')");
+		$result = mysqli_query($conexion, "INSERT INTO cuentausuario (nombre_Usuario, numero_Tarjeta, codigo_Seguridad)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unN°Tarjeta'] . "', '" . $_POST['unCodigo'] . "')");
+		$result = mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['unVencimiento'] . "')");
 
 
     	$_SESSION['usuario'] = mysqli_fetch_array($result);	
     	$_SESSION['usuario']['id'] = mysqli_insert_id($conexion);
-    	header('Location: PagInicio.php');
+    	header('Location: verYCrearPerfiles.php');
     	exit;
  
     }
