@@ -22,8 +22,14 @@
 		exit;
 	}
 	else{
+		$result2 = mysqli_query($conexion, "SELECT * FROM cuentaadministrador WHERE nombre_Usuario = '" . $_POST['nickname'] . "' ");
 		$_SESSION['usuario'] = mysqli_fetch_array($result);	
-		header('Location: verYCrearPerfiles.php');
-		exit;
+		if( mysqli_num_rows($result2) == 0 ){
+			header('Location: verYCrearPerfiles.php');
+			exit;
+		}
+		else{
+			header('Location: Home.php');
+		}
 	}
 ?>
