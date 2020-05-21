@@ -116,6 +116,14 @@
 			<?php }?>
 			</div>
 			<div class="divBotones">
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+					?>
+			<li><a href="verYCrearPerfiles.php" class="botonInicio">Cambiar de usuario</a></li>
+				<?php }?>
+			</div>
+			<div class="divBotones">
 			<li><a href="index.php" class="botonInicio">Cerrar Sesión</a></li>
 			</div>
 				
@@ -134,7 +142,6 @@
 						</ul>
 						</li>
 							
-					
 					
 					</ul>
 
