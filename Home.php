@@ -1,8 +1,10 @@
 <?php
 	session_start();
+	if ($_SESSION['actualizar']==0){
 		$_SESSION['perfilImagen']= $_GET['img'];
 		$_SESSION['perfilNombre']= $_GET['perfil'];
-	
+		$_SESSION['actualizar']=1;
+	}
 	
 	if (!empty($_SESSION['error'])) {
 		echo $_SESSION['error'];
@@ -87,7 +89,7 @@
 
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
-			<li><a href="Home.php" class="botonInicio">Inicio</a></li>
+			<li><a href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>" class="botonInicio">Inicio</a></li>
 			</div>
 			<div class="divBotones">
 			<?php
