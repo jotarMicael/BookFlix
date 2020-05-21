@@ -50,7 +50,7 @@
 					if( mysqli_num_rows($result) == 0 )
 						echo " No hay ningun perfil creado" ;
 					else {
-
+					$_SESSION['actualizar']=0;
 					while($mostrar=mysqli_fetch_array($result)){
 				?>
 
