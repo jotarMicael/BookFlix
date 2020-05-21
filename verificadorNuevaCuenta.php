@@ -91,7 +91,7 @@
 		$result = mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['unVencimiento'] . "')");
 
 
-    	$_SESSION['usuario'] = mysqli_fetch_array($result);	
+		$_SESSION['usuario'] = mysqli_fetch_array($result);	
     	$_SESSION['usuario']['id'] = mysqli_insert_id($conexion);
     	header('Location: verYCrearPerfiles.php');
     	exit;
