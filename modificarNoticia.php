@@ -42,8 +42,7 @@ include('conexion.php');
 		   	</div>
 			<?php 
 				if (isset($_POST['publish'])){
-
-					//Consulto en la bbdd si ya existe la noticia que quiero ingresar
+					
 					$sql= "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = '".$_GET['idNoti']."'";
 					$result=mysqli_query($conexion,$sql);
 					echo "La noticia se ha cargado correctamente";
