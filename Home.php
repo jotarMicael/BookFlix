@@ -124,7 +124,7 @@
 				<?php }?>
 			</div>
 			<div class="divBotones">
-			<li><a href="index.php" class="botonInicio">Cerrar Sesión</a></li>
+			<li><a href="cerrarSesion.php" class="botonInicio">Cerrar Sesión</a></li>
 			</div>
 				
 			<?php
