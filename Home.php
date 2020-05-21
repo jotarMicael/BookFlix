@@ -142,6 +142,7 @@
 						<?php 
 							$sql="SELECT imagenTapaLibro,nombre_Libro,autor,id_Editorial,genero from libro ";
 							$result=mysqli_query($conexion,$sql);
+							$cant=1;
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
 							<div class="divLibro">
@@ -153,7 +154,7 @@
 						<br>
 							</div>
 						<?php 
-							} 
+							 } 
 						 ?>
 				</div>
 				<div style="margin-left: 1080px; margin-top: 160px;" class="divNotificaciones">
@@ -171,7 +172,7 @@
 	    							</div>
 	    							<div class="barraBot">
 	    								<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Eliminar Noticia</a></li>
-										<li><a class="botonInicio" href="Home.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Modificar Noticia</a></li>
+										<li><a class="botonInicio" href="modificarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Modificar Noticia</a></li>
 	    							</div>
 								
 								</div>
