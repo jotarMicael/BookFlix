@@ -153,6 +153,14 @@
 			<div class="divMargin">
 			 <a href="" class="labelWhite"> <strong>Leer libro... </strong> </a>
 			</div>
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) == 1){
+					?>
+			<div class="divMargin">
+			 <a href="modificarLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>" class="labelWhite"> <strong>Modificar libro </strong> </a>
+			</div>
+				<?php }?>
 			</div>
 		</div>
 		
