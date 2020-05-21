@@ -150,6 +150,9 @@
 			<label class="labelWhite">Editorial: </label>
 			<label class="labelWhite"> <strong ><?php $mostrar=mysqli_fetch_array($result); echo $mostrar['nombre_Editorial']; ?> </strong> </label><br>
 			</div>
+			<div class="divMargin">
+			 <a href="" class="labelWhite"> <strong>Leer libro... </strong> </a>
+			</div>
 			</div>
 		</div>
 		
