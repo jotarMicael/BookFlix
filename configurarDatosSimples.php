@@ -24,13 +24,14 @@
 							//$fotocontenido= addslashes(file_get_contents($_FILES['unImagen']['tmp_name']));
 							$nombre_Imagen = $_FILES ['unImagen']['name'];
 							//$tipofoto=explode('/', $_FILES['unImagen']['type']);
+							$_SESSION['perfilImagen'] = $nombre_Imagen;
 							mysqli_query($conexion, "UPDATE perfil SET imagen = '$nombre_Imagen' WHERE nombre_Perfil = '" . $_SESSION['perfilNombre'] . "' ");
+							
 	                    }
 
 	                    $_SESSION['usuario']['nombre'] = $nombre;
 	                    $_SESSION['usuario']['apellido'] = $apellido;
 						$_SESSION['usuario']['nombre_Usuario'] = $cuenta;
-						$_SESSION['perfilImagen'] = $nombre_Imagen;
 	                    header("Location: Configuracion.php");
 	                }
 	                else{
