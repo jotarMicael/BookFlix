@@ -41,9 +41,9 @@
 				<div class="registro">
 				<h3 class="tituloSecundarioRegistro"> DATOS DE LA TARJETA </h3>
 				<label class="labelWhite">Nombre: </label><br>
-				<input type="text" class="redondeado" id="unNombre" name="unNombre"><br>
+				<input type="text" class="redondeado" id="unNombreTar" name="unNombreTar"><br>
 				<label class="labelWhite">Apellido: </label><br>
-				<input type="text" class="redondeado" id="unApellido" name="unApellido"><br>
+				<input type="text" class="redondeado" id="unApellidoTar" name="unApellidoTar"><br>
 				<label class="labelWhite">N° de Tarjeta: </label><br>
 				<input type="text" maxlength="16" class="redondeado" id="unN°Tarjeta" name="unN°Tarjeta"><br>
 				<label class="labelWhite">Codigo de Seguridad: </label><br>
@@ -51,11 +51,14 @@
 				<label class="labelWhite">Fecha de Expiracion: </label><br>
 				<input type="text" maxlength="10" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
 				<input type="submit"class="boton" value="Ingresar"><br>
-				</form>
+				</form>  
+				
 		   		</div>
 				   
 				   
 		   	</div>
+			   
     </div>
+	
 </body>
 </html>
