@@ -72,12 +72,22 @@
 	   header('Location: NuevaCuenta.php');
 	   exit;
 	}
+	if(strlen($_POST['unN°Tarjeta'])<>16){
+		$_SESSION['error'] = "El numero de la tarjeta debe ser de 16 digitos";
+		header('Location: NuevaCuenta.php');
+		exit;
+	 }
+	 if(strlen($_POST['unCodigo'])<>3){
+		$_SESSION['error'] = "El codigo de seguridad debe ser de 3 digitos";
+		header('Location: NuevaCuenta.php');
+		exit;
+	 }
 
 	$validar=mysqli_num_rows(mysqli_query($link, "SELECT * FROM cuenta WHERE email = '" . $_POST['unEmail'] . "' or nombre_Usuario = '" . $_POST['unUsuario'] . "' "));
 
 	if(!$validar){
-		$result = mysqli_query($conexion, "INSERT INTO cuenta (nombre_Usuario, nombre,apellido, contraseña, email)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unNombre'] . "',  '" . $_POST['unApellido'] . "' ,'" . $_POST['unContraseña'] . "' ,'" . $_POST['unEmail'] . "')");
-		$result = mysqli_query($conexion, "INSERT INTO cuentausuario (nombre_Usuario, numero_Tarjeta, codigo_Seguridad)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unN°Tarjeta'] . "', '" . $_POST['unCodigo'] . "')");
+		mysqli_query($conexion, "INSERT INTO cuenta (nombre_Usuario, nombre,apellido, contraseña, email)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unNombre'] . "',  '" . $_POST['unApellido'] . "' ,'" . $_POST['unContraseña'] . "' ,'" . $_POST['unEmail'] . "')");
+		mysqli_query($conexion, "INSERT INTO cuentausuario (nombre_Usuario, numero_Tarjeta, codigo_Seguridad,nombre_Tarjeta,apellido_Tarjeta)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unN°Tarjeta'] . "', '" . $_POST['unCodigo'] . "', '" . $_POST['unNombreTar']. "','" . $_POST['unApellidoTar']. "')");
 		$result = mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['unVencimiento'] . "')");
 
 
