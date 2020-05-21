@@ -94,7 +94,7 @@
 			<?php }?>
 			</div>
 			<?php
-				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				/*$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 1){
 					?>
 					<ul class="nav">
@@ -112,7 +112,7 @@
 					</ul>
 
 				<?php
-				}
+				}*/
 			?>	
 	</div>
 	<div class="divLibrosRandom" style="margin-left: 25%;">
