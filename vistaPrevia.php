@@ -124,29 +124,31 @@
 			// Consulta para obtener el genero 
 		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero = generopertenecelibro.id_Genero WHERE id_Libro = '".$libro['id_Libro']."' ");
 	    	// Consulta para obtener la editorial
-		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' "); ?>
+		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' ");
+		  
+		  $sql="SELECT nombre_Editorial from editorial WHERE id_Editorial = '" .$_GET['idEdi']."'";
+		  $result=mysqli_query($conexion,$sql);
+			 ?>
+		  
 		  	<div>
 			<image class="home" style="height: 475px; width:300px; border-radius: 20px;" width="100%" src="/BookFlix/Portadas/<?php echo  $_GET['libro']?>"/>
 			</div>
 			<div style="text-align: center; margin-left: 50px; margin-top: 30px;">
 				<div class="divMargin">
 			<label class="labelWhite">Titulo: </label>
-			<label class="labelWhite"> <strong> <?php echo $libro['nombre_Libro'] ?> </strong></label><br>
+			<label class="labelWhite"> <strong> <?php echo $_GET['titulo'] ?> </strong></label><br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite" >Autor/es: </label>
-			<label class="labelWhite"> <?php 	while($mostrar=mysqli_fetch_array($resultDos)){
-													echo $mostrar['nombre_Autor'];	
-							} 
-						 ?></label> <br>
+			<label class="labelWhite"> <strong> <?php echo $_GET['autor'] ?> </strong></label> <br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite">Genero: </label>
-			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultTres); echo $mostrar['nombre_Genero'] ?></label><br>
+			<label class="labelWhite"> <strong> <?php echo $_GET['genero'] ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite">Editorial: </label>
-			<label class="labelWhite"> <?php $mostrar=mysqli_fetch_array($resultCuatro); echo $mostrar['nombre_Editorial']; ?></label><br>
+			<label class="labelWhite"> <strong ><?php $mostrar=mysqli_fetch_array($result); echo $mostrar['nombre_Editorial']; ?> </strong> </label><br>
 			</div>
 			</div>
 		</div>
