@@ -91,29 +91,6 @@ include('conexion.php');
 			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
 			<?php }?>
 			</div>
-				
-			<?php
-				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-				if(mysqli_num_rows($result) == 1){
-					?>
-					<ul class="nav">
-						<li><a class="botonInicio" href="" >Administrar datos</a>
-					
-						<ul>
-							<a class="botonInicio" href="cargarLibro.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Libro</a></li>
-							<a class="botonInicio" href="cargarAutor.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Autor</a></li>
-							<a class="botonInicio" href="cargarGenero.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Genero</a></li>
-							<a class="botonInicio" href="cargarNoticia.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Noticia</a></li>
-						</ul>
-						</li>
-							
-					
-					
-					</ul>
-
-				<?php
-				}
-			?>	
 	</div>
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del libro</h2>
 			<div class="divConfiguracion">
