@@ -25,7 +25,7 @@
 </head>
 <body background="Imagenes/2.jpg">
 	<div>	
-	<h3 class="tituloSecundarioRegistro"> Bienvenido: </h3>
+	<h3 class="tituloSecundarioRegistro"> ¡Bienvenido!: <strong> <?php echo $_SESSION['usuario']['nombre_Usuario']?>, ¡Que bueno tenerlo nuevamente! </strong></h3>
 		<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 		<div class="divRegistro">
 			<div class="registro">
