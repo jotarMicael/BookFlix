@@ -154,7 +154,7 @@
 	</div>
 				<div class="divLibrosRandom">
 						<?php 
-							$sql="SELECT imagenTapaLibro,nombre_Libro,autor,id_Editorial,genero,id_Libro from libro ";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,autor,id_Editorial,genero,id_Libro from libro LIMIT 5";
 							$result=mysqli_query($conexion,$sql);
 							$cant=1;
 							while($mostrar=mysqli_fetch_array($result)){
@@ -171,7 +171,7 @@
 							 } 
 						 ?>
 				</div>
-				<div style="margin-left: 1080px; margin-top: 160px;" class="divNotificaciones">
+				<div style="margin-left: 1080px; margin-top: 190px;" class="divNotificaciones">
 	<?php 
 							$sql="SELECT * from noticia ";
 							$result=mysqli_query($conexion,$sql);
