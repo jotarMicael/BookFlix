@@ -88,19 +88,20 @@
 							$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Perfil = '" .$_POST["nombre" ]  ."' and nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'" ;
 							$result2=mysqli_query($conexion,$sql1);
 							if( mysqli_num_rows($result2) == 1 )
-								echo " Ya se encuentra el nombre de perfil ingresado" ;
+								echo "<font color=white  size='5pt'> Ya posee un perfil con este nombre </font>";
 							else{
 							$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','$nombre_Imagen')";
 							$result=mysqli_query($conexion,$sql);
 							}
 							
 						}
+						else{
+							echo "<font color=white  size='5pt'> Debe seleccionar una imagen de perfil </font>";
+						}
 					}
 					else { 
 						if (mysqli_num_rows($result) == 2 )
-
 							echo "Solo se permiten crear hasta 2 usuarios en una cuenta basica";
-							
 							
 					}
 
