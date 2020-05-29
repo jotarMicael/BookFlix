@@ -1,6 +1,7 @@
 <?php 
 	session_start();
 	include('conexion.php');
+	//date_default_timezone_set('America');
 
 	if(empty($_POST['unEmail'])){
 		$_SESSION['error'] = "No se ingreso un mail";
@@ -81,6 +82,18 @@
 		$_SESSION['error'] = "El codigo de seguridad debe ser de 3 digitos";
 		header('Location: NuevaCuenta.php');
 		exit;
+	 }
+
+	 
+	 $actual = date('Y-m-d');
+	 $expiracion =$_POST['unVencimiento'];
+	 $expiracion= date("Y-m-d", strtotime($expiracion));
+
+	 if($actual>$expiracion){
+		$_SESSION['error'] = "Tarjeta vencida";
+		header('Location: NuevaCuenta.php');
+		exit;
+
 	 }
 
 	$validar=mysqli_num_rows(mysqli_query($link, "SELECT * FROM cuenta WHERE email = '" . $_POST['unEmail'] . "' or nombre_Usuario = '" . $_POST['unUsuario'] . "' "));
