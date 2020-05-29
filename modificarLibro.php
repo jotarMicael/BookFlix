@@ -125,9 +125,9 @@ include('conexion.php');
 					<label class="labelWhite">ISBN: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="ISBN" maxlength="13" name="ISBN"><br>
 					<label class="labelWhite">Fecha de Lanzamiento: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" maxlength="10" name="fecha_Lanzamiento"><br>
-					<label class="labelWhite">Fecha de Baja: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" maxlength="10" name="fecha_Baja"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" maxlength="10" name="fecha_Lanzamiento" placeholder="aaaa-mm-dd"><br>
+					<label class="labelWhite">Disponibilidad hasta: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" maxlength="10" name="fecha_Baja" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
 					<select name="nombreEditorial" id="nombreEditorial">
@@ -255,7 +255,7 @@ include('conexion.php');
 						$baja = strtotime($fecha_2); //Convierte el string a formato de fecha en php
 
 						$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
-						$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
+						$baja = date('Y-m-d',$baja); //Lo comvierte a formato de fecha en MySQL
 
 						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
 						 $result=mysqli_query($conexion,$sql);
