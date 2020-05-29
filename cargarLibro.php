@@ -102,9 +102,9 @@ include('conexion.php');
 					<label class="labelWhite">ISBN: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="ISBN" length="13" name="ISBN"><br>
 					<label class="labelWhite">Fecha de Lanzamiento: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento"><br>
-					<label class="labelWhite">Fecha de Baja: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" length="13" name="fecha_Baja"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento" placeholder="aaaa-mm-dd"><br>
+					<label class="labelWhite">Disponibilidad hasta: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" length="13" name="fecha_Baja" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
 					<select name="nombreEditorial" id="nombreEditorial">
