@@ -180,9 +180,11 @@ include('conexion.php');
 				if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])&&isset($_POST['fecha_Lanzamiento'])&&isset($_POST['fecha_Baja'])&&isset($_FILES['imagen'])&&isset($_FILES['pdf'])){
 
 					if(isset($_FILES['imagen'])){
+
 						$nombre_Imagen = $_FILES ['imagen']['name'];
 						$tipo_Imagen = $_FILES ['imagen']['type'];
 						$tamagno_Imagen = $_FILES ['imagen']['size'];
+
 						if ($tamagno_Imagen<=30000000){
 							if(($tipo_Imagen == "image/jpg") || ($tipo_Imagen == "image/png") || ($tipo_Imagen == "image/jpeg")){
 								//Ruta de la carpeta destino
@@ -192,21 +194,24 @@ include('conexion.php');
 								header("Location: cargarLibro.php");
 							}
 							else {
-								echo "Solo se puede subir: png, jpg, jpeg";
+								echo " <font color=white  size='5pt'> Solo se puede subir: png, jpg, jpeg </font>";
 							}
 							
 						}
 						else{
-							echo "El tamaño de la imagen es demasiado grande";
+							echo "<font color=white  size='5pt'> El tamaño de la imagen es demasiado grande </font>";
 						}
 					}
 					
 					if(isset($_FILES['pdf'])){
+
 						$nombre_pdf = $_FILES ['pdf']['name'];
 						$tipo_pdf = $_FILES ['pdf']['type'];
 						$tamagno_pdf = $_FILES ['pdf']['size'];
+
 						if ($tamagno_pdf<=100000000){
 							if($tipo_pdf == 'application/pdf'){
+
 								//Ruta de la carpeta destino
 								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/pdfs/';
 								//Mover imagen del directorio temporal al directorio escogido
@@ -214,12 +219,14 @@ include('conexion.php');
 								//header("Location: cargarLibro.php");
 							}
 							else {
-								echo "Solo se puede subir: pdf";
+
+								echo "<font color=white  size='5pt'> Solo se puede subir pdf </font>";
 							}
 								
 						}
 						else{
-							echo "El tamaño del pdf es demasiado grande";
+
+							echo "<font color=white  size='5pt'> El tamaño del pdf es demasiado grande </font>";
 						}
 					}
 
@@ -237,13 +244,14 @@ include('conexion.php');
 						 
 					$mostrar=mysqli_fetch_array($result); 
 
-					$sql3="SELECT ISBN from libro WHERE ISBN = '" .$_POST['ISBN']."'";
+					$sql3="SELECT * from libro WHERE ISBN = '" .$_POST['ISBN']."' ";
 					$result3=mysqli_query($conexion,$sql3);
-					
+
 					if( mysqli_num_rows($result3) == 1 ){
 						echo "<font color=white  size='5pt'> Ya existe cargado un libro con ese ISBN </font>";
 					}	 
 					else{
+						
 						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor,genero,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '" .$mostrar["id_Editorial"]."','$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."','" .$_POST["genero" ]."','".$_POST["ISBN"]."')";
 						$result=mysqli_query($conexion,$sql2);
 						ob_start();
