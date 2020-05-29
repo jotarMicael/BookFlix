@@ -239,18 +239,19 @@ include('conexion.php');
 					$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
 					$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
 
-					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
-					$result=mysqli_query($conexion,$sql);
-						 
-					$mostrar=mysqli_fetch_array($result); 
+					
 
 					$sql3="SELECT * from libro WHERE ISBN = '" .$_POST['ISBN']."' ";
 					$result3=mysqli_query($conexion,$sql3);
 
 					if( mysqli_num_rows($result3) == 1 ){
 						echo "<font color=white  size='5pt'> Ya existe cargado un libro con ese ISBN </font>";
+						header("Location: cargarLibro.php");
 					}	 
 					else{
+						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
+						$result=mysqli_query($conexion,$sql);
+						$mostrar=mysqli_fetch_array($result); 
 						
 						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor,genero,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '" .$mostrar["id_Editorial"]."','$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."','" .$_POST["genero" ]."','".$_POST["ISBN"]."')";
 						$result=mysqli_query($conexion,$sql2);
