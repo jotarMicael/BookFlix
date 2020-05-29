@@ -15,7 +15,6 @@
 	<script type="text/javascript" src="scriptRegistro.js"></script>
 	<?php
 		include('conexion.php');
-		$actual = date('Y-m-d');
 	?>
 </head>
 <body background="Imagenes/2.jpg">
