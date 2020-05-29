@@ -257,10 +257,20 @@ include('conexion.php');
 						$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
 						$baja = date('Y-m-d',$baja); //Lo comvierte a formato de fecha en MySQL
 
-						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
-						 $result=mysqli_query($conexion,$sql);
+					$sql3="SELECT * from libro WHERE ISBN = '" .$_POST['ISBN']."' ";
+					$result3=mysqli_query($conexion,$sql3);
+
+					if( mysqli_num_rows($result3) == 1 ){
+						echo "<font color=white  size='5pt'> Ya existe cargado un libro con ese ISBN </font>";
+						header("Location: cargarLibro.php");
+					}	 
+					else{
+
+					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
+					$result=mysqli_query($conexion,$sql);
 						 
-						$mostrar=mysqli_fetch_array($result); 
+					$mostrar=mysqli_fetch_array($result); 
+					
 
 						 			 
 					$idLibro= $_GET['idLibro'];
@@ -269,6 +279,7 @@ include('conexion.php');
 					ob_start();
  					echo "El Libro se ha modificado correctamente";
 					header("Location: Home.php");
+					}
 
 					
 				}
