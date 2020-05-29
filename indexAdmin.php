@@ -16,7 +16,7 @@
 </head>
 <body background="Imagenes\2.jpg" >
 <img class="imagenTitulo" src="Imagenes\Titulo.png">
-		<form action="verificadorLogin.php" method="post" id="formularioIndex" onsubmit="return validar();">
+		<form action="verificadorLoginAdmin.php" method="post" id="formularioIndex" onsubmit="return validar();">
 			<h2 class="tituloSecundarioIndex">Iniciar Sesion como administrador del sistema</h2>
 			<br>
 			<br>
