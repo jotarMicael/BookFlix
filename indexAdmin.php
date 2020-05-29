@@ -1,0 +1,43 @@
+<?php session_start() ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BookFlix</title>
+	<link href="Estilos.css" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="logotipo.jpg"> 
+	<script type="text/javascript" src="scriptIndex.js"></script>
+	<?php 
+		include("conexion.php");
+		if (!empty($_SESSION['error'])) {
+			echo $_SESSION['error'];
+			unset($_SESSION['error']);
+		}
+	?>
+</head>
+<body background="Imagenes\2.jpg" >
+<img class="imagenTitulo" src="Imagenes\Titulo.png">
+		<form action="verificadorLogin.php" method="post" id="formularioIndex" onsubmit="return validar();">
+			<h2 class="tituloSecundarioIndex">Iniciar Sesion como administrador del sistema</h2>
+			<br>
+			<br>
+			<div class="login">
+				<label class="labelWhite">Cuenta: </label>
+				<input type="text" class="redondeado" autocomplete="on" id="nickname" name="nickname">
+				<label class="labelWhite">Contraseña: </label>
+				<input type="password" class="redondeado" id="contraseña" name="contraseña">
+				<input type="submit" class="boton" id="botonIngreso" value="Ingresar">
+		    </div>
+		</form>
+		</div>
+		<div class="margenI"></div>
+		<div class="margenD"></div>
+		<div class="divBotones">
+		<br>
+		<br>
+		<br>
+		<br>
+	    <div class="barraFin">
+		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Valentin Gallardo 15292/9</p>
+    	</div>
+</body>
+</html>
