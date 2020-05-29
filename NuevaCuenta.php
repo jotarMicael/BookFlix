@@ -2,7 +2,7 @@
 	session_start();
 
 	if (!empty($_SESSION['error'])) {
-		echo $_SESSION['error'];
+		echo "<font color=white size='5pt'>" . $_SESSION['error'] . "</font>";
 		unset($_SESSION['error']);
 	}
 ?>
@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="scriptRegistro.js"></script>
 	<?php
 		include('conexion.php');
+		$actual = date('Y-m-d');
 	?>
 </head>
 <body background="Imagenes/2.jpg">
@@ -49,7 +50,7 @@
 				<label class="labelWhite">Codigo de Seguridad: </label><br>
 				<input type="text" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
 				<label class="labelWhite">Fecha de Expiracion: </label><br>
-				<input type="text" maxlength="10" class="redondeado" id="unVencimiento" name="unVencimiento"> <br>	
+				<input type="text" maxlength="10"class="redondeado" id="unVencimiento" name="unVencimiento" placeholder="aaaa-mm-dd"> <br>	
 				<input type="submit"class="boton" value="Ingresar"><br>
 				</form>  
 				
