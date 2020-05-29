@@ -62,7 +62,6 @@
 		}
 	 ?>
 		 <?php    
-
 					if (isset($_POST['nombre'])&&(mysqli_num_rows($result) <= 1 )){
 
 						if(isset($_FILES['imagen'])){
@@ -86,8 +85,14 @@
 							else{
 								echo "El tamaño de la imagen es demasiado grande";
 							}
+							$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Perfil = '" .$_POST["nombre" ]  ."' and nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'" ;
+							$result2=mysqli_query($conexion,$sql1);
+							if( mysqli_num_rows($result2) == 1 )
+								echo " Ya se encuentra el nombre de perfil ingresado" ;
+							else{
 							$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','$nombre_Imagen')";
 							$result=mysqli_query($conexion,$sql);
+							}
 							
 						}
 					}
