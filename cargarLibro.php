@@ -199,57 +199,63 @@ include('conexion.php');
 						else{
 							echo "El tamaño de la imagen es demasiado grande";
 						}
-					}	
+					}
 					
-						if(isset($_FILES['pdf'])){
-							$nombre_pdf = $_FILES ['pdf']['name'];
-							$tipo_pdf = $_FILES ['pdf']['type'];
-							$tamagno_pdf = $_FILES ['pdf']['size'];
-							if ($tamagno_pdf<=100000000){
-								if(($tipo_pdf == 'application/pdf')){
-									//Ruta de la carpeta destino
-									$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/pdfs/';
-									//Mover imagen del directorio temporal al directorio escogido
-									move_uploaded_file($_FILES['pdf']['tmp_name'], $carpeta_Destino.$nombre_pdf);
-									//header("Location: cargarLibro.php");
-								}
-								else {
-									echo "Solo se puede subir: pdf";
-								}
+					if(isset($_FILES['pdf'])){
+						$nombre_pdf = $_FILES ['pdf']['name'];
+						$tipo_pdf = $_FILES ['pdf']['type'];
+						$tamagno_pdf = $_FILES ['pdf']['size'];
+						if ($tamagno_pdf<=100000000){
+							if($tipo_pdf == 'application/pdf'){
+								//Ruta de la carpeta destino
+								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/pdfs/';
+								//Mover imagen del directorio temporal al directorio escogido
+								move_uploaded_file($_FILES['pdf']['tmp_name'], $carpeta_Destino.$nombre_pdf);
+								//header("Location: cargarLibro.php");
+							}
+							else {
+								echo "Solo se puede subir: pdf";
+							}
 								
-							}
-							else{
-								echo "El tamaño del pdf es demasiado grande";
-							}
 						}
-						$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
-						$fecha_2 = $_POST["fecha_Baja"]; //Recibe una string en formato dd-mm-yyyy 
+						else{
+							echo "El tamaño del pdf es demasiado grande";
+						}
+					}
 
-						$inicio = strtotime($fecha_1); //Convierte el string a formato de fecha en php
-						$baja = strtotime($fecha_2); //Convierte el string a formato de fecha en php
+					$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
+					$fecha_2 = $_POST["fecha_Baja"]; //Recibe una string en formato dd-mm-yyyy 
 
-						$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
-						$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
+					$inicio = strtotime($fecha_1); //Convierte el string a formato de fecha en php
+					$baja = strtotime($fecha_2); //Convierte el string a formato de fecha en php
 
-						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
-						 $result=mysqli_query($conexion,$sql);
+					$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
+					$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
+
+					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
+					$result=mysqli_query($conexion,$sql);
 						 
-						$mostrar=mysqli_fetch_array($result); 
-						 			 
+					$mostrar=mysqli_fetch_array($result); 
 
+					$sql3="SELECT ISBN from libro WHERE ISBN = '" .$_POST['ISBN']."'";
+					$result3=mysqli_query($conexion,$sql3);
 					
-					$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor,genero,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '" .$mostrar["id_Editorial"]."','$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."','" .$_POST["genero" ]."','".$_POST["ISBN"]."')";
-					$result=mysqli_query($conexion,$sql2);
-					ob_start();
- 					 echo "El Libro se ha cargado correctamente";
-					header("Location: Home.php");
-
+					if( mysqli_num_rows($result3) == 1 ){
+						echo "<font color=white  size='5pt'> Ya existe cargado un libro con ese ISBN </font>";
+					}	 
+					else{
+						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor,genero,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '" .$mostrar["id_Editorial"]."','$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."','" .$_POST["genero" ]."','".$_POST["ISBN"]."')";
+						$result=mysqli_query($conexion,$sql2);
+						ob_start();
+						echo "<font color=white  size='5pt'> El libro se ha cargado correctamente </font>";
+						header("Location: Home.php");
+					}
 					
 				}
 
-				else{
-					echo "Todos los campos deben estar completos";
-				}
+			else{
+				echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
+			}
 			?>
 	 </div>
 		
