@@ -48,13 +48,13 @@ include('conexion.php');
 					$result=mysqli_query($conexion,$sql);
 					
 					if( mysqli_num_rows($result) == 1 ){
-						echo "Esta noticia ya se encuentra cargado en el sistema" ;
+						echo "<font color=white  size='5pt'>Esta noticia ya se encuentra cargada en el sistema</font>";
 						//ingreso la noticia
 					}
 					else {
 						$sql= "INSERT INTO noticia(texto) VALUES ('" .$_POST["publish"]."')";
 						$result=mysqli_query($conexion,$sql);
-						echo "La noticia se ha cargado correctamente";
+						echo "<font color=white  size='5pt'> La noticia se ha cargado correctamente</font>";
 
 					}
 				}
