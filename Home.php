@@ -86,7 +86,6 @@
 
 </head>
 <body background="Imagenes/2.jpg">
-
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
 			<li><a href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>" class="botonInicio">Inicio</a></li>
