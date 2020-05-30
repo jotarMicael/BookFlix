@@ -117,13 +117,13 @@ include('conexion.php');
 					$result=mysqli_query($conexion,$sql);
 					
 					if( mysqli_num_rows($result) == 1 ){
-						echo "Este autor ya se encuentra ingresado" ;
+						echo "<font color=white  size='5pt'> El autor ya se encuentra ingresado </font>";
 						//ingreso el autor
 					}
 					else {
 						$sql= "INSERT INTO autoreslibro (nombreAutor, apellidoAutor,bibliografia) VALUES ('" .$_POST["nombreAutor"]."', '".$_POST["apellidoAutor"]."','".$_POST["bibliografia"]."' )";
 						$result=mysqli_query($conexion,$sql);
-						echo "El autor se ha cargado correctamente";
+						echo "<font color=white  size='5pt'> El autor se ha cargado correctamente </font>";
 
 					}
 				}
