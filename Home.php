@@ -104,9 +104,12 @@
 		    </div>
 				
 		    <div class="divBotones">
-			<label class="labelWhite">Buscar: </label>
-			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
-			
+			<form action="Busqueda.php" method="post">
+
+         		 <input class="text" type="search" name="busca" autofocus required size="18" autocomplete="on" >
+
+         		 <input type="submit" class="botonInicio" value="Buscar"></a>
+        	</form>
 		    </div>
 			
 			<div class="divBotones">
