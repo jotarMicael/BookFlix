@@ -39,13 +39,13 @@ include('conexion.php');
 					$result=mysqli_query($conexion,$sql);
 					
 					if( mysqli_num_rows($result) == 1 ){
-						echo "Este genero ya se encuentra cargado en el sistema" ;
+						echo "<font color=white  size='5pt'> Este genero ya se encuentra cargado en el sistema </font>";
 						//ingreso el genero
 					}
 					else {
 						$sql= "INSERT INTO genero (nombre_Genero) VALUES ('" .$_POST["nombreGenero"]."')";
 						$result=mysqli_query($conexion,$sql);
-						echo "El genero se ha cargado correctamente";
+						echo "<font color=white  size='5pt'> El genero se ha cargado correctamente </font>";
 
 					}
 				}
