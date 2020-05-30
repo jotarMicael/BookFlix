@@ -151,7 +151,7 @@
 			<label class="labelWhite"> <strong ><?php $mostrar=mysqli_fetch_array($result); echo $mostrar['nombre_Editorial']; ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
-			 <a href="" class="labelWhite"> <strong>Leer libro... </strong> </a>
+			 <a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>" class="labelWhite"> <strong>Leer libro... </strong> </a>
 			</div>
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
