@@ -39,13 +39,13 @@ include('conexion.php');
 					$result=mysqli_query($conexion,$sql);
 					
 					if( mysqli_num_rows($result) == 1 ){
-						echo "Esta Editorial ya se encuentra cargada en el sistema" ;
+						echo "<font color=white  size='5pt'> La editorial ya se encuentra cargada en el sistema </font>";
 						//ingresa la Editorial
 					}
 					else {
 						$sql= "INSERT INTO editorial (nombre_Editorial) VALUES ('" .$_POST["nombreEditorial"]."')";
 						$result=mysqli_query($conexion,$sql);
-						echo "La Editorial se ha cargado correctamente";
+						echo "<font color=white  size='5pt'> La editorial se ha cargado correctamente </font>";
 
 					}
 				}
