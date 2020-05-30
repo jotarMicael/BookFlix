@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include('conexion.php');
+//include('verificadorBusqueda.php');
 
 if (empty($_SESSION['usuario'])) {
 	header('Location: index.php');
@@ -9,9 +10,10 @@ if (!empty($_SESSION['error'])){
 	echo $_SESSION['error'];
 	unset($_SESSION['error']);}
  ?>
- <head>
+
 <!DOCTYPE html>
 <html>
+<head>
 <title>Busqueda</title>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link href="all.css" rel="stylesheet" type="text/css">
@@ -40,30 +42,21 @@ if (!empty($_SESSION['error'])){
 	    </div>  
 	</div>
 	<div class= "fondoBusqueda">
-		<?php $result = resultadoBusqueda(); ?>
+		<?php //$result = resultadoBusqueda(); 
+		$result = mysqli_query($conexion, "SELECT * FROM libros WHERE (nombre_Libro LIKE '%" . $_POST['busca'] . "%' or autor LIKE '%" . $_POST['busca'] . "%' or ISBN  LIKE '%" . $_POST['busca'] . "%') ");
+		 ?>
 		<?php
 	     if(mysqli_num_rows($result) == 0)
-	     	echo "No hay resultado de busqueda";
+		 echo "<font color=white  size='5pt'> No hay resultado de busqueda </font>";
 	     else {
-		 while($fila=mysqli_fetch_array($result, MYSQLI_ASSOC)) {?>
-		 	<div class="comentario">
-	  		<div class="imagenBusqueda">
-	  			<img src="foto.php?id=<?php echo $fila['id']; ?>">
-	    	</div>	    
-	    	<div class="cuerpoComentario">
-	    		<div class="barraTop">	
-	    			<h5 class="textoBarraTop"><?php echo $fila['nombreusuario'] . " " . $fila['nombre'] . " " . $fila['apellido'];?></h5>	
-	    		</div>
-	    	<div class="barraBot">
-	    			<a class="botonInicio" name="Visitar" href="visitarDestino.php?id=<?php echo  $fila['id']; ?>"> Visitar </a> 
-	    			<?php  $idEnvio = $fila['id']; if (verificarSeguido($idEnvio)){ ?>
-	    				<a class="botonInicio" name="dejarSeguir" href="dejarUsuario.php?id=<?php echo $idEnvio ; ?>"> Dejar de Seguir</a>
-	    			<?php } else {?>
-	    				<a class="botonInicio" href="seguirUsuario.php?id=<?php echo $idEnvio; ?>" name="Seguir"> Seguir </a>
-	    			<?php } ?>
-	    	</div>
-	    	</div>   
-	  	   </div>
+		 while($mostrar=mysqli_fetch_array($result) {?>
+		 	<div class="divLibro">
+				<a href="#"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
+				<br>
+				<td> <a href="vistaPrevia.php?libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
+				<br>				
+				<br>
+			</div>
 		<?php }} ?>
 	</div>
 	<div class="barraFin">
