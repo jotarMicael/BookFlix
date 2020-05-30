@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include('verificadorBusqueda.php');
-
+include('conexion.php');
 if (empty($_SESSION['usuario'])) {
 	header('Location: index.php');
 	exit;}
@@ -9,7 +9,7 @@ if (!empty($_SESSION['error'])){
 	echo $_SESSION['error'];
 	unset($_SESSION['error']);}
  ?>
-
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,11 +28,17 @@ if (!empty($_SESSION['error'])){
 		  <img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
 	  </div>
 	    <div class="divBotones">
-          <a class="botonInicio" href="miPerfil.php"> Perfil </a>
+		<?php
+				$result3 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result3) <> 1){
+		?>
+				<li><a class="botonInicio" href="miPerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a></li>
+			<?php }?>	
+				
 	    </div>
 	    <div class="divBotones">
         <form action="Busqueda.php" method="post">
-          <input class="text" type="search" name="busca" autofocus required size="18" maxlength="15" autocomplete="on" >
+          <input class="text" type="search" name="busca" autofocus required size="18" autocomplete="on" >
           <input type="submit" class="botonInicio" value="Buscar"></a>
         </form>
         </div>
@@ -59,6 +65,6 @@ if (!empty($_SESSION['error'])){
 		<?php }} ?>
 	</div>
 	<div class="barraFin">
-		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6</p>
+		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin</p>
     </div>
 </body>
