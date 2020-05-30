@@ -277,14 +277,14 @@ include('conexion.php');
 					$sql2= "UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro" ]."', id_Editorial= '" .$mostrar["id_Editorial"]."', fecha_Lanzamiento='$inicio', fecha_DeBaja= '$baja', imagenTapaLibro='$nombre_Imagen',pdf='$nombre_pdf',autor='".$_POST["nombreCompletoAutor"]."',genero='" .$_POST["genero" ]."',ISBN='".$_POST["ISBN"]."' WHERE id_Libro = $idLibro ";
 					$result=mysqli_query($conexion,$sql2) or die(mysql_error());
 					ob_start();
- 					echo "El Libro se ha modificado correctamente";
+					echo "<font color=white  size='5pt'> El libro se ha modificado correctamente</font>";
 					header("Location: Home.php");
 					}
 
 					
 				}
 				else{
-					echo "No se ha modificado ningun dato, pruebe nuevamente";
+					echo "<font color=white  size='5pt'> No se han modificado los datos</font>";
 				}
 
 			?>
