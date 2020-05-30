@@ -44,8 +44,9 @@ if (!empty($_SESSION['error'])){
 	<?php $result2 = resultadoBusqueda(); 
 		 ?>
 		<?php
-	     if(mysqli_num_rows($result2,  MYSQLI_ASSOC) == 0)
+	     if(mysqli_num_rows($result2) == 0){
 		 echo "<font color=white  size='5pt'> No hay resultado de busqueda </font>";
+		 }
 	     else {
 		 while($mostrar=mysqli_fetch_array($result2) {?>
 		 	<div class="divLibro">
