@@ -48,7 +48,7 @@ if (!empty($_SESSION['error'])){
 		 echo "<font color=white  size='5pt'> No hay resultado de busqueda </font>";
 		 }
 	     else {
-		 while($mostrar=mysqli_fetch_array($result2) {?>
+		 while($mostrar=mysqli_fetch_array($result2)) {?>
 		 	<div class="divLibro">
 				<a href="#"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
 				<br>
