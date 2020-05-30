@@ -1,7 +1,6 @@
 <?php 
 session_start();
-include('conexion.php');
-//include('verificadorBusqueda.php');
+include('verificadorBusqueda.php');
 
 if (empty($_SESSION['usuario'])) {
 	header('Location: index.php');
@@ -42,14 +41,13 @@ if (!empty($_SESSION['error'])){
 	    </div>  
 	</div>
 	<div class= "fondoBusqueda">
-		<?php //$result = resultadoBusqueda(); 
-		$result = mysqli_query($conexion, "SELECT * FROM libros WHERE (nombre_Libro LIKE '%" . $_POST['busca'] . "%' or autor LIKE '%" . $_POST['busca'] . "%' or ISBN  LIKE '%" . $_POST['busca'] . "%') ");
+	<?php $result2 = resultadoBusqueda(); 
 		 ?>
 		<?php
-	     if(mysqli_num_rows($result) == 0)
+	     if(mysqli_num_rows($result2,  MYSQLI_ASSOC) == 0)
 		 echo "<font color=white  size='5pt'> No hay resultado de busqueda </font>";
 	     else {
-		 while($mostrar=mysqli_fetch_array($result) {?>
+		 while($mostrar=mysqli_fetch_array($result2) {?>
 		 	<div class="divLibro">
 				<a href="#"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
 				<br>
