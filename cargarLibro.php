@@ -100,7 +100,7 @@ include('conexion.php');
 					<label class="labelWhite">Nombre del Libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreLibro" name="nombreLibro"><br>
 					<label class="labelWhite">ISBN: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="ISBN" length="13" name="ISBN"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="ISBN" maxlength="13" name="ISBN"><br>
 					<label class="labelWhite">Fecha de Lanzamiento: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Disponibilidad hasta: </label><br>
@@ -125,10 +125,10 @@ include('conexion.php');
 						?>
 					</select> <br> 
 					<br>
-					<label class="labelWhite">Autor: </label><br>
-					<select name="nombreCompletoAutor" id="nombreCompletoAutor">
+					<label class="labelWhite">Autor/es: </label><br>
+					<select multiple name="nombreCompletoAutor" id="nombreCompletoAutor[]">
 						<?php 
-							$sql= "SELECT nombreAutor,apellidoAutor FROM autoreslibro";
+							$sql= "SELECT nombre,apellido FROM autor";
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ningun autor creado";
@@ -136,17 +136,18 @@ include('conexion.php');
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
-
-						<option> <?php echo  $mostrar ['nombreAutor'] ." ". $mostrar['apellidoAutor'] ?> </option>
+						<option> Seleccione un autor </option>
+						<option> <?php echo  $mostrar ['nombre'] ." ". $mostrar['apellido'] ?> </option>
 
 						<?php 
 							}
 						}
 						?>
+					</select>
 					</select> <br>
 					<br>
 					<label class="labelWhite">Genero: </label><br>
-					<select name="genero" id="genero">
+					<select multiple name="genero" id="genero">
 						<?php 
 							$sql= "SELECT nombre_Genero FROM genero";
 							$result=mysqli_query($conexion,$sql);
@@ -168,7 +169,9 @@ include('conexion.php');
 					<br>
 					<label class="labelWhite">Seleccionar portada: </label>
 					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
-					<label class="labelWhite">Seleccionar pdf: </label>
+					<label class="labelWhite">Nombre del Capitulo: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="nombreCapitulo" name="nombreCapitulo"><br>
+					<label class="labelWhite">Seleccionar pdf del capitulo: </label>
 					<input type="file" class="redondeado" id="pdf" name="pdf" accept="application/pdf"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
@@ -251,19 +254,48 @@ include('conexion.php');
 					else{
 						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
 						$result=mysqli_query($conexion,$sql);
-						$mostrar=mysqli_fetch_array($result); 
+						$mostrar=mysqli_fetch_array($result);
+						while($mostrar=mysqli_fetch_array($result))
+							$idEdi = $mostrar["id_Editorial"];
+
 						
-						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,pdf,autor,genero,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '" .$mostrar["id_Editorial"]."','$inicio',  '$baja','$nombre_Imagen', '$nombre_pdf','".$_POST["nombreCompletoAutor"]."','" .$_POST["genero" ]."','".$_POST["ISBN"]."')";
-						$result=mysqli_query($conexion,$sql2);
-						ob_start();
-						echo "<font color=white  size='5pt'> El libro se ha cargado correctamente </font>";
-						header("Location: Home.php");
+						
+						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio',  '$baja','$nombre_Imagen','".$_POST["ISBN"]."')";
+						mysqli_query($conexion,$sql2);
+
+							$sql4="SELECT id_Libro from libro WHERE nombre_Libro = '" .$_POST["nombreLibro" ]."' ";
+							$result4=mysqli_query($conexion,$sql4);
+							while($mostrar3=mysqli_fetch_array($result4))
+								$idLibro= $mostrar3['id_Libro'];
+
+								
+						
+
+						foreach ($_POST['genero'] as $option){
+							
+							$sql5= "INSERT INTO generopertenecelibro (nombre_Genero,id_Libro) VALUES ('$option','$idLibro')";
+							$mysqli_query($conexion,$sql5);
+							echo "<font color=white  size='5pt'> El genero se ha cargado correctamente </font>";
+							}
+						
+					
+
+						
+						foreach ($_POST['nombreCompletoAutor'] as $option){
+							$porcion= explode(" ", $option);
+							$sql3="SELECT id_Autor from autor WHERE nombre = '" .$porcion[0]."' AND apellido = '" .$porcion[1]."'  ";
+							$result3=mysqli_query($conexion,$sql3);
+							$mostrar2=mysqli_fetch_array($result3);
+							$sql= "INSERT INTO autoreslibro (id_Autor,id_Libro) VALUES ('" .$mostrar2["id_Autor"]."','$idLibro')";
+							}
+							echo "<font color=white  size='5pt'> El libro se ha cargado correctamente </font>";
+							header("Location: cargarLibro.php");
 					}
 					
 				}
 
 			else{
-				echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
+				//echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
 			}
 			?>
 	 </div>
