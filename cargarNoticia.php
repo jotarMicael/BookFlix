@@ -6,7 +6,7 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
-	<title>Cargar Genero</title>
+	<title>Cargar Noticia</title>
 </head>
 <body background= "Imagenes/2.jpg">
 	<h3 class="tituloTerciarioConfiguracion">
