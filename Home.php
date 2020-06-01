@@ -128,6 +128,14 @@
 				<?php }?>
 			</div>
 			<div class="divBotones">
+			<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+					?>
+			<li><a href="verYCrearPerfiles.php" class="botonInicio">¡Hazte Premium!</a></li>
+				<?php }?>
+			</div>
+			<div class="divBotones">
 			<li><a href="cerrarSesion.php" class="botonInicio">Cerrar Sesión</a></li>
 			</div>
 				
@@ -144,6 +152,7 @@
 							<a class="botonInicio" href="cargarGenero.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Genero</a></li>
 							<a class="botonInicio" href="cargarNoticia.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Noticia</a></li>
 							<a class="botonInicio" href="cargarEditorial.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Editorial</a></li>
+							<a class="botonInicio" href="cargarTrailer.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Trailer</a></li>
 						</ul>
 						</li>
 							
