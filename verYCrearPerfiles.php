@@ -21,6 +21,16 @@
 	<div>	
 	<h3 class="tituloSecundarioRegistro"> ¡Bienvenido!: <strong> <?php echo $_SESSION['usuario']['nombre_Usuario']?>, ¡Que bueno tenerlo nuevamente! </strong></h3>
 		<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
+		<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) <> 1){
+					?>
+			<li><a href="hacersePremium.php" class="boton">¡Hazte Premium!</a></li>
+			<h3 class="tituloSecundarioRegistro"> ¡Y disfruta de beneficios Exclusivos! </h3>
+				<?php }?>
+			</div>
+			<br>
+			<br>
 		<div class="divRegistro">
 			<div class="registro">
 					<h3 class="tituloSecundarioRegistro"> Crear Perfil </h3>
