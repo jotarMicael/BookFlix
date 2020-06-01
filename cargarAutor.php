@@ -101,8 +101,6 @@ include('conexion.php');
 					<input type="text" class="redondeado" autocomplete="on" id="nombreAutor" name="nombreAutor"><br>
 					<label class="labelWhite">Apellido: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" name="apellidoAutor"><br>
-					<label class="labelWhite">Enlace a bibliografia: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="bibliografia" name="bibliografia"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
@@ -113,7 +111,7 @@ include('conexion.php');
 				if (isset($_POST['nombreAutor'])&&isset($_POST['apellidoAutor'])){
 
 					//Consulto en la bbdd si ya existe el autor que quiero ingresar
-					$sql= "SELECT apellidoAutor FROM autoreslibro WHERE apellidoAutor = '".$_POST['apellidoAutor']."'";
+					$sql= "SELECT apellido FROM autor WHERE apellido = '".$_POST['apellidoAutor']."'";
 					$result=mysqli_query($conexion,$sql);
 					
 					if( mysqli_num_rows($result) == 1 ){
@@ -121,7 +119,7 @@ include('conexion.php');
 						//ingreso el autor
 					}
 					else {
-						$sql= "INSERT INTO autoreslibro (nombreAutor, apellidoAutor,bibliografia) VALUES ('" .$_POST["nombreAutor"]."', '".$_POST["apellidoAutor"]."','".$_POST["bibliografia"]."' )";
+						$sql= "INSERT INTO autor (nombre,apellido) VALUES ('" .$_POST["nombreAutor"]."','".$_POST["apellidoAutor"]."')";
 						$result=mysqli_query($conexion,$sql);
 						echo "<font color=white  size='5pt'> El autor se ha cargado correctamente </font>";
 
