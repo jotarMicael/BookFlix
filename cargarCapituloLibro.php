@@ -151,7 +151,6 @@ include('conexion.php');
 						$result3=mysqli_query($conexion,$sql3);
 						$mostrar=mysqli_fetch_array($result3, MYSQLI_ASSOC);
 						
-						echo $_POST["nCap"]; echo $mostrar["id_Libro"]; echo $nombre_pdf;
 						$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar["id_Libro"]."','$nombre_pdf')";
 						$result2=mysqli_query($conexion,$sql2);
 						echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
