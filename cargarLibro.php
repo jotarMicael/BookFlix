@@ -126,7 +126,7 @@ include('conexion.php');
 					</select> <br> 
 					<br>
 					<label class="labelWhite">Autor/es: </label><br>
-					<select multiple name="nombreCompletoAutor" id="nombreCompletoAutor[]">
+					<select multiple name="nombreCompletoAutor[]" id="nombreCompletoAutor[]">
 						<?php 
 							$sql= "SELECT nombre,apellido FROM autor";
 							$result=mysqli_query($conexion,$sql);
@@ -147,7 +147,7 @@ include('conexion.php');
 					</select> <br>
 					<br>
 					<label class="labelWhite">Genero: </label><br>
-					<select multiple name="genero" id="genero">
+					<select name="genero[]" id="genero[]" multiple >
 						<?php 
 							$sql= "SELECT nombre_Genero FROM genero";
 							$result=mysqli_query($conexion,$sql);
@@ -252,11 +252,11 @@ include('conexion.php');
 						header("Location: cargarLibro.php");
 					}	 
 					else{
+
 						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
 						$result=mysqli_query($conexion,$sql);
-						$mostrar=mysqli_fetch_array($result);
-						while($mostrar=mysqli_fetch_array($result))
-							$idEdi = $mostrar["id_Editorial"];
+						$mostrar=mysqli_fetch_array($result, MYSQLI_ASSOC);
+						$idEdi = $mostrar["id_Editorial"];
 
 						
 						
@@ -265,30 +265,32 @@ include('conexion.php');
 
 							$sql4="SELECT id_Libro from libro WHERE nombre_Libro = '" .$_POST["nombreLibro" ]."' ";
 							$result4=mysqli_query($conexion,$sql4);
-							while($mostrar3=mysqli_fetch_array($result4))
-								$idLibro= $mostrar3['id_Libro'];
+							$mostrar3=mysqli_fetch_array($result4, MYSQLI_ASSOC);
+							$idLibro= $mostrar3['id_Libro'];
 
 								
 						
-
-						foreach ($_POST['genero'] as $option){
-							
+						$gen = $_POST['genero'];
+						foreach ($gen as $option){
 							$sql5= "INSERT INTO generopertenecelibro (nombre_Genero,id_Libro) VALUES ('$option','$idLibro')";
-							$mysqli_query($conexion,$sql5);
-							echo "<font color=white  size='5pt'> El genero se ha cargado correctamente </font>";
+							$result15=mysqli_query($conexion,$sql5);
+							
 							}
-						
+							
+							
 					
 
-						
-						foreach ($_POST['nombreCompletoAutor'] as $option){
+						$nombr=$_POST['nombreCompletoAutor'];
+						foreach ($nombr as $option){
 							$porcion= explode(" ", $option);
-							$sql3="SELECT id_Autor from autor WHERE nombre = '" .$porcion[0]."' AND apellido = '" .$porcion[1]."'  ";
+							$sql3="SELECT id_Autor from autor WHERE nombre = '$porcion[0]' AND apellido = '$porcion[1]'  ";
 							$result3=mysqli_query($conexion,$sql3);
-							$mostrar2=mysqli_fetch_array($result3);
+							$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
 							$sql= "INSERT INTO autoreslibro (id_Autor,id_Libro) VALUES ('" .$mostrar2["id_Autor"]."','$idLibro')";
+							$result5=mysqli_query($conexion,$sql);
 							}
 							echo "<font color=white  size='5pt'> El libro se ha cargado correctamente </font>";
+							
 							header("Location: cargarLibro.php");
 					}
 					
