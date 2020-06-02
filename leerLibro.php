@@ -14,7 +14,7 @@ mysqli_query($conexion,$sql1);
 
 }
 
-$sql="SELECT pdf from capitulo where id_Libro = '".$_GET['idLibro']."' AND nombre_Capitulo = '".$_GET['nCap']."'";
+$sql="SELECT pdf from capitulo where id_Libro = '".$_GET['idLibro']."' AND nombre_Capitulo = '".$_GET['nCap']."' ";
 $result=mysqli_query($conexion,$sql);
 $mostrar=mysqli_fetch_array($result);
 readfile('pdfs/'.$mostrar['pdf']);
