@@ -120,11 +120,11 @@
 			<!-- Aca se van a tomar los datos del libro que pertenecen a otra tabla para ser mostrados en la vista previa del libro -->
 		<?php 
 		  	// Consulta para obtener autores del libro
-		  $resultDos = mysqli_query($conexion, "SELECT nombre_Autor FROM autor INNER JOIN autoreslibro ON autor.id_Autor=autoreslibro.id_Autor WHERE id_Libro = '".$libro['id_Libro']."' ");
+		  $resultDos = mysqli_query($conexion, "SELECT nombre,apellido FROM autor INNER JOIN autoreslibro ON autor.id_Autor=autoreslibro.id_Autor WHERE id_Libro = '".$_GET['idLibro']."' ");
 			// Consulta para obtener el genero 
-		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero = generopertenecelibro.id_Genero WHERE id_Libro = '".$libro['id_Libro']."' ");
+		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero=generopertenecelibro.id_Genero WHERE id_Libro = '".$_GET['idLibro']."' ");
 	    	// Consulta para obtener la editorial
-		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' ");
+		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$_GET['idLibro']."' ");
 		  
 		  $sql="SELECT nombre_Editorial from editorial WHERE id_Editorial = '" .$_GET['idEdi']."'";
 		  $result=mysqli_query($conexion,$sql);
@@ -140,15 +140,24 @@
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite" >Autor/es: </label>
-			<label class="labelWhite"> <strong> <?php echo $_GET['autor'] ?> </strong></label> <br>
+			<label class="labelWhite"> <strong> <?php while($mostrar=mysqli_fetch_array($resultDos)) {
+				echo $mostrar['nombre'];?> <space> <?php echo $mostrar['apellido'];
+
+			}?> </strong></label> <br>
 			</div>
 			<div class="divMargin">
-			<label class="labelWhite">Genero: </label>
-			<label class="labelWhite"> <strong> <?php echo $_GET['genero'] ?> </strong> </label><br>
+			<label class="labelWhite">Genero/s: </label>
+			<label class="labelWhite"> <strong> <?php  while($mostrar2=mysqli_fetch_array($resultTres)) {
+				echo $mostrar2['nombre_Genero'];?> <space> 
+
+			<?php } ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite">Editorial: </label>
-			<label class="labelWhite"> <strong ><?php $mostrar=mysqli_fetch_array($result); echo $mostrar['nombre_Editorial']; ?> </strong> </label><br>
+			<label class="labelWhite"> <strong ><?php while($mostrar3=mysqli_fetch_array($resultCuatro)) {
+				echo $mostrar3['nombre_Editorial'];
+
+			} ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
 			 <a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>" class="labelWhite"> <strong>Leer libro... </strong> </a>
