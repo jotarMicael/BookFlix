@@ -165,7 +165,7 @@
 	</div>
 				<div class="divLibrosRandom">
 						<?php 
-							$sql="SELECT imagenTapaLibro,nombre_Libro,autor,id_Editorial,genero,id_Libro from libro";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro from libro";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
