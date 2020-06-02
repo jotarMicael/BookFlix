@@ -163,10 +163,10 @@
 			} ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
-			<?php while($mostrar4=mysqli_fetch_array($resultCinco)) {?>
-			 <a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $mostrar4['nombre_Capitulo'];?>" class="labelWhite"> Capitulo: <strong> <?php
-				echo $mostrar4['nombre_Capitulo'];?> <space> 
-
+			<?php $n=1; while($mostrar4=mysqli_fetch_array($resultCinco)) {?>
+			 <a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $mostrar4['nombre_Capitulo'];?>" class="labelWhite"> Capitulo <?php echo $n; ?>: <strong> <?php
+				 echo $mostrar4['nombre_Capitulo']; $n= $n+1;?> <space> 
+				
 			<?php } ?> </strong> </a>
 			</div>
 			<?php
