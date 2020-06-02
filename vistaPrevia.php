@@ -144,14 +144,14 @@
 			<div class="divMargin">
 			<label class="labelWhite" >Autor/es: </label>
 			<label class="labelWhite"> <strong> <?php while($mostrar=mysqli_fetch_array($resultDos)) {
-				echo $mostrar['nombre'];?> <space> <?php echo $mostrar['apellido'];
+				echo $mostrar['nombre'];?> <space> <?php echo $mostrar['apellido'].'/';
 
 			}?> </strong></label> <br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite">Genero/s: </label>
 			<label class="labelWhite"> <strong> <?php  while($mostrar2=mysqli_fetch_array($resultTres)) {
-				echo '-'.$mostrar2['nombre_Genero'];?> <space> 
+				echo $mostrar2['nombre_Genero'].'/';?>
 
 			<?php } ?> </strong> </label><br>
 			</div>
@@ -165,9 +165,9 @@
 			<div class="divMargin">
 			<?php $n=1; while($mostrar4=mysqli_fetch_array($resultCinco)) {?>
 			 <a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $mostrar4['nombre_Capitulo'];?>" class="labelWhite"> Capitulo <?php echo $n; ?>: <strong> <?php
-				 echo $mostrar4['nombre_Capitulo']; $n= $n+1;?> <space> 
+				 echo $mostrar4['nombre_Capitulo']."<br /> <br />"; $n= $n+1;?> 
 				
-			<?php } ?> </strong> </a>
+			 </strong> <?php } ?> </a>
 			</div>
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
