@@ -271,7 +271,10 @@ include('conexion.php');
 						
 						$gen = $_POST['genero'];
 						foreach ($gen as $option){
-							$sql5= "INSERT INTO generopertenecelibro (nombre_Genero,id_Libro) VALUES ('$option','$idLibro')";
+							$sql6="SELECT id_Genero from genero WHERE nombre_Genero = '$option' ";
+							$result6=mysqli_query($conexion,$sql6);
+							$mostrar5=mysqli_fetch_array($result6, MYSQLI_ASSOC);
+							$sql5= "INSERT INTO generopertenecelibro (id_Genero,id_Libro) VALUES ('" .$mostrar5["id_Genero"]."','$idLibro')";
 							$result15=mysqli_query($conexion,$sql5);
 							
 							}
