@@ -136,7 +136,6 @@ include('conexion.php');
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
-						<option> Seleccione un autor </option>
 						<option> <?php echo  $mostrar ['nombre'] ." ". $mostrar['apellido'] ?> </option>
 
 						<?php 
@@ -277,7 +276,8 @@ include('conexion.php');
 							
 							}
 							
-							
+						$sql6= "INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('" .$_POST["nombreCapitulo" ]."','$idLibro','$nombre_pdf')";
+						$result16=mysqli_query($conexion,$sql6);
 					
 
 						$nombr=$_POST['nombreCompletoAutor'];
