@@ -14,7 +14,7 @@
 		exit;
 	}
 	
-	 $result = mysqli_query($conexion, "SELECT * FROM cuenta WHERE nombre_Usuario = '" . $_POST['nickname'] . "' AND contraseña = '" . $_POST['contraseña'] . "' ");
+	 $result = mysqli_query($conexion, "SELECT * FROM cuentausuario WHERE nombre_Usuario = '" . $_POST['nickname'] . "' AND contraseña = '" . $_POST['contraseña'] . "' ");
 
 	if( mysqli_num_rows($result) == 0 ){
 		$_SESSION['error'] = 'Usuario y/o Contraseña incorrectos';
