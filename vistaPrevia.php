@@ -125,8 +125,11 @@
 		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero=generopertenecelibro.id_Genero WHERE id_Libro = '".$_GET['idLibro']."' ");
 	    	// Consulta para obtener la editorial
 		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$_GET['idLibro']."' ");
+			  // Consulta para obtener los capitulos de los libros
+		  $resultCinco = mysqli_query($conexion, "SELECT nombre_Capitulo FROM capitulo INNER JOIN libro ON libro.id_Libro = capitulo.id_Libro WHERE libro.id_Libro = '".$_GET['idLibro']."' ");
 		  
 		  $sql="SELECT nombre_Editorial from editorial WHERE id_Editorial = '" .$_GET['idEdi']."'";
+
 		  $result=mysqli_query($conexion,$sql);
 			 ?>
 		  
@@ -160,7 +163,11 @@
 			} ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
-			 <a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>" class="labelWhite"> <strong>Leer libro... </strong> </a>
+			<?php while($mostrar4=mysqli_fetch_array($resultCinco)) {?>
+			 <a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $mostrar4['nombre_Capitulo'];?>" class="labelWhite"> Capitulo: <strong> <?php
+				echo $mostrar4['nombre_Capitulo'];?> <space> 
+
+			<?php } ?> </strong> </a>
 			</div>
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
