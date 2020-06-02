@@ -151,7 +151,7 @@
 			<div class="divMargin">
 			<label class="labelWhite">Genero/s: </label>
 			<label class="labelWhite"> <strong> <?php  while($mostrar2=mysqli_fetch_array($resultTres)) {
-				echo $mostrar2['nombre_Genero'];?> <space> 
+				echo '-'.$mostrar2['nombre_Genero'];?> <space> 
 
 			<?php } ?> </strong> </label><br>
 			</div>
