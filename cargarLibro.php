@@ -103,8 +103,10 @@ include('conexion.php');
 					<input type="text" class="redondeado" autocomplete="on" id="ISBN" maxlength="13" name="ISBN"><br>
 					<label class="labelWhite">Fecha de Lanzamiento: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento" placeholder="aaaa-mm-dd"><br>
-					<label class="labelWhite">Disponibilidad hasta: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" length="13" name="fecha_Baja" placeholder="aaaa-mm-dd"><br>
+					<label class="labelWhite">Disponibilidad de basico hasta: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_BajaBasico" length="13" name="fecha_BajaBasico" placeholder="aaaa-mm-dd"><br>
+					<label class="labelWhite">Disponibilidad de premiun hasta: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_BajaPremium" length="13" name="fecha_BajaPremium" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
 					<select name="nombreEditorial" id="nombreEditorial">
@@ -179,18 +181,18 @@ include('conexion.php');
 		   	</div>
 			<?php 
 			
-				if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])&&isset($_POST['fecha_Lanzamiento'])&&isset($_POST['fecha_Baja'])&&isset($_FILES['imagen'])&&isset($_FILES['pdf'])){
+				if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])&&isset($_POST['fecha_Lanzamiento'])&&isset($_POST['fecha_BajaBasico'])&&isset($_FILES['imagen'])&&isset($_FILES['pdf'])){
 
 					if(isset($_FILES['imagen'])){
 
-						$nombre_Imagen = $_FILES ['imagen']['name'];
-						$tipo_Imagen = $_FILES ['imagen']['type'];
-						$tamagno_Imagen = $_FILES ['imagen']['size'];
+						$nombre_Imagen=$_FILES ['imagen']['name'];
+						$tipo_Imagen=$_FILES ['imagen']['type'];
+						$tamagno_Imagen=$_FILES ['imagen']['size'];
 
 						if ($tamagno_Imagen<=30000000){
-							if(($tipo_Imagen == "image/jpg") || ($tipo_Imagen == "image/png") || ($tipo_Imagen == "image/jpeg")){
+							if(($tipo_Imagen=="image/jpg") || ($tipo_Imagen =="image/png") || ($tipo_Imagen=="image/jpeg")){
 								//Ruta de la carpeta destino
-								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/Portadas/';
+								$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/Portadas/';
 								//Mover imagen del directorio temporal al directorio escogido
 								move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
 								header("Location: cargarLibro.php");
@@ -207,15 +209,15 @@ include('conexion.php');
 					
 					if(isset($_FILES['pdf'])){
 
-						$nombre_pdf = $_FILES ['pdf']['name'];
-						$tipo_pdf = $_FILES ['pdf']['type'];
-						$tamagno_pdf = $_FILES ['pdf']['size'];
+						$nombre_pdf=$_FILES['pdf']['name'];
+						$tipo_pdf=$_FILES['pdf']['type'];
+						$tamagno_pdf=$_FILES['pdf']['size'];
 
-						if ($tamagno_pdf<=100000000){
-							if($tipo_pdf == 'application/pdf'){
+						if ($tamagno_pdf<=99999){
+							if($tipo_pdf=="application/pdf"){
 
 								//Ruta de la carpeta destino
-								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/pdfs/';
+								$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/pdfs/';
 								//Mover imagen del directorio temporal al directorio escogido
 								move_uploaded_file($_FILES['pdf']['tmp_name'], $carpeta_Destino.$nombre_pdf);
 								//header("Location: cargarLibro.php");
@@ -233,15 +235,16 @@ include('conexion.php');
 					}
 
 					$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
-					$fecha_2 = $_POST["fecha_Baja"]; //Recibe una string en formato dd-mm-yyyy 
+					$fecha_2 = $_POST["fecha_BajaBasico"]; //Recibe una string en formato dd-mm-yyyy 
+					$fecha_3 = $_POST["fecha_BajaPremium"];
 
 					$inicio = strtotime($fecha_1); //Convierte el string a formato de fecha en php
 					$baja = strtotime($fecha_2); //Convierte el string a formato de fecha en php
+					$baja2 = strtotime($fecha_3);
 
 					$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
-					$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
-
-					
+					$baja = date('Y-m-d',$baja); //Lo comvierte a formato de fecha en MySQL
+					$baja2 = date('Y-m-d',$baja2);
 
 					$sql3="SELECT * from libro WHERE ISBN = '" .$_POST['ISBN']."' ";
 					$result3=mysqli_query($conexion,$sql3);
@@ -259,13 +262,14 @@ include('conexion.php');
 
 						
 						
-						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, imagenTapaLibro,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio',  '$baja','$nombre_Imagen','".$_POST["ISBN"]."')";
+						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."')";
 						mysqli_query($conexion,$sql2);
 
 							$sql4="SELECT id_Libro from libro WHERE nombre_Libro = '" .$_POST["nombreLibro" ]."' ";
 							$result4=mysqli_query($conexion,$sql4);
 							$mostrar3=mysqli_fetch_array($result4, MYSQLI_ASSOC);
-							$idLibro= $mostrar3['id_Libro'];
+							$idLibro=$mostrar3['id_Libro'];
+							echo $idLibro;
 
 								
 						
