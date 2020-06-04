@@ -122,17 +122,17 @@ include('conexion.php');
 					else {
 						if(isset($_FILES['pdf'])){
 
-							$nombre_pdf = $_FILES['pdf']['name'];
-							$tipo_pdf = $_FILES['pdf']['type'];
-							$tamagno_pdf = $_FILES['pdf']['size'];
+							$nombre_pdf=$_FILES['pdf']['name'];
+							$tipo_pdf=$_FILES['pdf']['type'];
+							$tamagno_pdf=$_FILES['pdf']['size'];
 	
-							if ($tamagno_pdf<=100000000){
-								if($tipo_pdf == 'application/pdf'){
+							if ($tamagno_pdf<=1000000000000){
+								if($tipo_pdf=='application/pdf'){
 	
 									//Ruta de la carpeta destino
-									$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/pdfs/';
+									$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/pdfs/';
 									//Mover imagen del directorio temporal al directorio escogido
-									move_uploaded_file($_FILES['pdf']['tmp_name'], $carpeta_Destino.$nombre_pdf);
+									move_uploaded_file($_FILES['pdf']['tmp_name'],$carpeta_Destino.$nombre_pdf);
 									//header("Location: cargarLibro.php");
 								}
 								else {
