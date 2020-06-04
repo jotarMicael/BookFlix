@@ -24,7 +24,6 @@ include('conexion.php');
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Modifique la noticia:</h2>
 			<div class="divConfiguracion">
-				
 			<div class="fondoComentarios">
 				<form method="POST"enctype="multipart/form-data">
 				<div class="comentario">
