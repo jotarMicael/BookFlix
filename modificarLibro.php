@@ -91,43 +91,20 @@ include('conexion.php');
 			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
 			<?php }?>
 			</div>
-				
-			<?php
-				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-				if(mysqli_num_rows($result) == 1){
-					?>
-					<ul class="nav">
-						<li><a class="botonInicio" href="" >Administrar datos</a>
-					
-						<ul>
-							<a class="botonInicio" href="cargarLibro.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Libro</a></li>
-							<a class="botonInicio" href="cargarAutor.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Autor</a></li>
-							<a class="botonInicio" href="cargarGenero.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Genero</a></li>
-							<a class="botonInicio" href="cargarNoticia.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Cargar Noticia</a></li>
-						</ul>
-						</li>
-							
-					
-					
-					</ul>
-
-				<?php
-				}
-			?>	
 	</div>
-			<h2 class="tituloSecundarioConfiguracion" >Modifique los datos que desee:</h2>
+			<h2 class="tituloSecundarioConfiguracion" >Modifique los datos del libro</h2>
 			<div class="divConfiguracion">
 				
 			<div class="registroConfiguracion">
-				  <form method="POST" action="modificarLibro.php?idLibro=<?php echo $_GET['idLibro'] ?>" enctype="multipart/form-data">
+				  <form method="POST" action="cargarLibro.php" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre del Libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreLibro" name="nombreLibro"><br>
 					<label class="labelWhite">ISBN: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="ISBN" maxlength="13" name="ISBN"><br>
 					<label class="labelWhite">Fecha de Lanzamiento: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" maxlength="10" name="fecha_Lanzamiento" placeholder="aaaa-mm-dd"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Disponibilidad hasta: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" maxlength="10" name="fecha_Baja" placeholder="aaaa-mm-dd"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="fecha_Baja" length="13" name="fecha_Baja" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
 					<select name="nombreEditorial" id="nombreEditorial">
@@ -148,10 +125,10 @@ include('conexion.php');
 						?>
 					</select> <br> 
 					<br>
-					<label class="labelWhite">Autor: </label><br>
-					<select name="nombreCompletoAutor" id="nombreCompletoAutor">
+					<label class="labelWhite">Autor/es: </label><br>
+					<select multiple name="nombreCompletoAutor[]" id="nombreCompletoAutor[]">
 						<?php 
-							$sql= "SELECT nombreAutor,apellidoAutor FROM autoreslibro";
+							$sql= "SELECT nombre,apellido FROM autor";
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ningun autor creado";
@@ -159,17 +136,17 @@ include('conexion.php');
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
-
-						<option> <?php echo  $mostrar ['nombreAutor'] ." ". $mostrar['apellidoAutor'] ?> </option>
+						<option> <?php echo  $mostrar ['nombre'] ." ". $mostrar['apellido'] ?> </option>
 
 						<?php 
 							}
 						}
 						?>
+					</select>
 					</select> <br>
 					<br>
 					<label class="labelWhite">Genero: </label><br>
-					<select name="genero" id="genero">
+					<select name="genero[]" id="genero[]" multiple >
 						<?php 
 							$sql= "SELECT nombre_Genero FROM genero";
 							$result=mysqli_query($conexion,$sql);
@@ -181,6 +158,7 @@ include('conexion.php');
 						?>
 
 						<option> <?php echo  $mostrar ['nombre_Genero'] ?> </option>
+				
 
 						<?php 
 							}
@@ -189,73 +167,76 @@ include('conexion.php');
 					</select>
 					</div>
 					<br>
-					<label class="labelWhite">Seleccionar portada: </label>
-					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
-					<label class="labelWhite">Seleccionar pdf: </label>
-					<input type="file" class="redondeado" id="pdf" name="pdf" accept="application/pdf"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
 		   	</div>	
 		   	</div>
 			<?php 
-				if (isset($_POST['nombreLibro'])||isset($_POST['ISBN'])||isset($_POST['fecha_Lanzamiento'])||isset($_POST['fecha_Baja'])||isset($_FILES['imagen'])||isset($_FILES['pdf'])){
+			
+				if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])&&isset($_POST['fecha_Lanzamiento'])&&isset($_POST['fecha_Baja'])/*&&isset($_FILES['imagen'])&&isset($_FILES['pdf'])*/){
 
-					if(isset($_FILES['imagen'])){
+				/*	if(isset($_FILES['imagen'])){
+
 						$nombre_Imagen = $_FILES ['imagen']['name'];
 						$tipo_Imagen = $_FILES ['imagen']['type'];
 						$tamagno_Imagen = $_FILES ['imagen']['size'];
+
 						if ($tamagno_Imagen<=30000000){
 							if(($tipo_Imagen == "image/jpg") || ($tipo_Imagen == "image/png") || ($tipo_Imagen == "image/jpeg")){
 								//Ruta de la carpeta destino
 								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/Portadas/';
 								//Mover imagen del directorio temporal al directorio escogido
 								move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
-								//header("Location: modificarLibro.php");
+								header("Location: cargarLibro.php");
 							}
 							else {
-								if(isset($_FILES['imagen'])){
-								echo "Solo se puede subir: png, jpg, jpeg";
-								}
+								echo " <font color=white  size='5pt'> Solo se puede subir: png, jpg, jpeg </font>";
 							}
 							
 						}
 						else{
-							echo "El tamaño de la imagen es demasiado grande";
+							echo "<font color=white  size='5pt'> El tamaño de la imagen es demasiado grande </font>";
 						}
-					}	
+					}
 					
-						//if(isset($_FILES['pdf'])){
-							$nombre_pdf = $_FILES ['pdf']['name'];
-							$tipo_pdf = $_FILES ['pdf']['type'];
-							$tamagno_pdf = $_FILES ['pdf']['size'];
-							if ($tamagno_pdf<=100000000){
-								if(($tipo_pdf == 'application/pdf')){
-									//Ruta de la carpeta destino
-									$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/pdfs/';
-									//Mover imagen del directorio temporal al directorio escogido
-									move_uploaded_file($_FILES['pdf']['tmp_name'], $carpeta_Destino.$nombre_pdf);
-									//header("Location: cargarLibro.php");
-								}
-								else {
-									if(isset($_FILES['pdf'])){
-									echo "Solo se puede subir: pdf";
-									}
-								}
+					if(isset($_FILES['pdf'])){
+
+						$nombre_pdf = $_FILES ['pdf']['name'];
+						$tipo_pdf = $_FILES ['pdf']['type'];
+						$tamagno_pdf = $_FILES ['pdf']['size'];
+
+						if ($tamagno_pdf<=100000000){
+							if($tipo_pdf == 'application/pdf'){
+
+								//Ruta de la carpeta destino
+								$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/pdfs/';
+								//Mover imagen del directorio temporal al directorio escogido
+								move_uploaded_file($_FILES['pdf']['tmp_name'], $carpeta_Destino.$nombre_pdf);
+								//header("Location: cargarLibro.php");
+							}
+							else {
+
+								echo "<font color=white  size='5pt'> Solo se puede subir pdf </font>";
+							}
 								
-							}
-							else{
-								echo "El tamaño del pdf es demasiado grande";
-							}
-				//		}
-						$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
-						$fecha_2 = $_POST["fecha_Baja"]; //Recibe una string en formato dd-mm-yyyy 
+						}
+						else{
 
-						$inicio = strtotime($fecha_1); //Convierte el string a formato de fecha en php
-						$baja = strtotime($fecha_2); //Convierte el string a formato de fecha en php
+							echo "<font color=white  size='5pt'> El tamaño del pdf es demasiado grande </font>";
+						}
+					}*/
 
-						$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
-						$baja = date('Y-m-d',$baja); //Lo comvierte a formato de fecha en MySQL
+					$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
+					$fecha_2 = $_POST["fecha_Baja"]; //Recibe una string en formato dd-mm-yyyy 
+
+					$inicio = strtotime($fecha_1); //Convierte el string a formato de fecha en php
+					$baja = strtotime($fecha_2); //Convierte el string a formato de fecha en php
+
+					$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
+					$baja = date('Y-m-d',$fin); //Lo comvierte a formato de fecha en MySQL
+
+					
 
 					$sql3="SELECT * from libro WHERE ISBN = '" .$_POST['ISBN']."' ";
 					$result3=mysqli_query($conexion,$sql3);
@@ -266,27 +247,56 @@ include('conexion.php');
 					}	 
 					else{
 
-					$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
-					$result=mysqli_query($conexion,$sql);
-						 
-					$mostrar=mysqli_fetch_array($result); 
+						$sql="SELECT id_Editorial from editorial WHERE nombre_Editorial = '" .$_POST['nombreEditorial']."'";
+						$result=mysqli_query($conexion,$sql);
+						$mostrar=mysqli_fetch_array($result, MYSQLI_ASSOC);
+						$idEdi = $mostrar["id_Editorial"];
+
+						
+						
+						$sql2= "UPDATE libro SET (nombre_Libro='" .$_POST["nombreLibro" ]."', id_Editorial='$idEdi', fecha_Lanzamiento='$inicio', fecha_DeBaja='$baja', imagenTapaLibro='$nombre_Imagen',ISBN='".$_POST["ISBN"]."')";
+						mysqli_query($conexion,$sql2);
+
+							$sql4="SELECT id_Libro from libro WHERE nombre_Libro = '" .$_POST["nombreLibro" ]."' ";
+							$result4=mysqli_query($conexion,$sql4);
+							$mostrar3=mysqli_fetch_array($result4, MYSQLI_ASSOC);
+							$idLibro= $mostrar3['id_Libro'];
+
+								
+						
+						$gen = $_POST['genero'];
+						foreach ($gen as $option){
+							$sql6="SELECT id_Genero from genero WHERE nombre_Genero = '$option' ";
+							$result6=mysqli_query($conexion,$sql6);
+							$mostrar5=mysqli_fetch_array($result6, MYSQLI_ASSOC);
+							$sql5= "UPDATE generopertenecelibro SET (id_Genero='" .$mostrar5["id_Genero"]."',id_Libro='$idLibro')";
+							$result15=mysqli_query($conexion,$sql5);
+							
+							}
+							
+						$sql6= "UPDATE capitulo SET(nombre_Capitulo='" .$_POST["nombreCapitulo" ]."',id_Libro='$idLibro',pdf='$nombre_pdf')";
+						$result16=mysqli_query($conexion,$sql6);
 					
 
-						 			 
-					$idLibro= $_GET['idLibro'];
-					$sql2= "UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro" ]."', id_Editorial= '" .$mostrar["id_Editorial"]."', fecha_Lanzamiento='$inicio', fecha_DeBaja= '$baja', imagenTapaLibro='$nombre_Imagen',pdf='$nombre_pdf',autor='".$_POST["nombreCompletoAutor"]."',genero='" .$_POST["genero" ]."',ISBN='".$_POST["ISBN"]."' WHERE id_Libro = $idLibro ";
-					$result=mysqli_query($conexion,$sql2) or die(mysql_error());
-					ob_start();
-					echo "<font color=white  size='5pt'> El libro se ha modificado correctamente</font>";
-					header("Location: Home.php");
+						$nombr=$_POST['nombreCompletoAutor'];
+						foreach ($nombr as $option){
+							$porcion= explode(" ", $option);
+							$sql3="SELECT id_Autor from autor WHERE nombre = '$porcion[0]' AND apellido = '$porcion[1]'  ";
+							$result3=mysqli_query($conexion,$sql3);
+							$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
+							$sql= "UPDATE autoreslibro SET (id_Autor='" .$mostrar2["id_Autor"]."',id_Libro='$idLibro')";
+							$result5=mysqli_query($conexion,$sql);
+							}
+							echo "<font color=white  size='5pt'> El libro se ha cargado correctamente </font>";
+							
+							header("Location: cargarLibro.php");
 					}
-
 					
 				}
-				else{
-					echo "<font color=white  size='5pt'> No se han modificado los datos</font>";
-				}
 
+			else{
+				//echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
+			}
 			?>
 	 </div>
 		
