@@ -59,7 +59,7 @@
 				?>
 
 				<tr>	
-					<div
+					<div>
 						<br>
 						<div class="imagenPerfil"><td> <image src="/BookFlix/ImagenesServer/<?php echo $mostrar['imagen'];?>" /> </td> &nbsp;&nbsp;</div>
 						<br>
@@ -111,7 +111,7 @@
 					}
 					else { 
 						if (mysqli_num_rows($result) == 2 )
-							echo "Solo se permiten crear hasta 2 usuarios en una cuenta basica";
+						echo "<font color=white  size='5pt'> Solo se permiten crear hasta 2 usuarios en una cuenta basica </font>";
 							
 					}
 
