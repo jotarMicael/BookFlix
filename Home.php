@@ -166,9 +166,11 @@
 	</div>
 				<div class="divLibrosRandom">
 						<?php 
-							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro from libro";
+							$actual=date('Y-m-d');
+							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
+								if(($mostrar['fecha_DeBaja'])>($actual)){
 						?>
 							<div class="divLibro">
 								<a href="#"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
@@ -179,7 +181,7 @@
 						<br>
 							</div>
 						<?php 
-							 } 
+							 } } 
 						 ?>
 				</div>
 				<div style="margin-left: 1080px; margin-top: 190px;" class="divNotificaciones">
