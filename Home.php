@@ -222,7 +222,7 @@
 					$porcion= explode(".",$option);
 					if(($porcion[1]=="mp4")||($porcion[1]=="flv")||($porcion[1]=="h264")||($porcion[1]=="divx")){
 				 ?>
-				 <div class="registroConfiguracion" width="260">
+				 <div class="registroConfiguracion">
 						<video width="320" height="240" controls>
   						<source src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>" type="video/mp4">
 						Your browser does not support the video tag.
