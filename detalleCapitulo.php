@@ -6,7 +6,7 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
-	<title>Cargar Genero</title>
+	<title>Detalle Del Capitulo</title>
 </head>
 <body background= "Imagenes/2.jpg">
 	<h3 class="tituloTerciarioConfiguracion">
@@ -31,25 +31,6 @@ include('conexion.php');
 				  </div>
 				
 		   	</div>
-			<?php 
-				if (isset($_POST['nombreGenero'])){
-
-					//Consulto en la bbdd si ya existe el genero que quiero ingresar
-					$sql= "SELECT nombre_Genero FROM genero WHERE nombre_Genero = '".$_POST['nombreGenero']."'";
-					$result=mysqli_query($conexion,$sql);
-					
-					if( mysqli_num_rows($result) == 1 ){
-						echo "<font color=white  size='5pt'> Este genero ya se encuentra cargado en el sistema </font>";
-						//ingreso el genero
-					}
-					else {
-						$sql= "INSERT INTO genero (nombre_Genero) VALUES ('" .$_POST["nombreGenero"]."')";
-						$result=mysqli_query($conexion,$sql);
-						echo "<font color=white  size='5pt'> El genero se ha cargado correctamente </font>";
-
-					}
-				}
-			?>
 	 </div>
 		
 	<div class="barraFin">
