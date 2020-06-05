@@ -172,7 +172,7 @@ include('conexion.php');
 					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
 					<label class="labelWhite">Nombre del Capitulo: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreCapitulo" name="nombreCapitulo"><br>
-					<label class="labelWhite">Seleccionar pdf del capitulo: </label>
+					<label class="labelWhite">Seleccionar pdf del capitulo o libro completo: </label>
 					<input type="file" class="redondeado" id="pdf" name="pdf" accept="application/pdf"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
