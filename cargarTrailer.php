@@ -95,7 +95,7 @@ include('conexion.php');
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del trailer</h2>
 			<div class="divConfiguracion">
 				  <div class="registroConfiguracion">
-				  <form action="cargarCapituloLibro.php" method="post" enctype="multipart/form-data">
+				  <form action="cargarTrailer.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">ISBN del libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="ISBN" name="ISBN"><br>
 					<label class="labelWhite">Seleccionar archivo: </label><br>
@@ -107,7 +107,7 @@ include('conexion.php');
 		   	</div>
 			<?php 
 			
-				if (isset($_POST['ISBN'])&&isset($_FILES['archivo'])){
+				if ((isset($_POST['ISBN'])&&(isset($_FILES['archivo'])))){
 
 						if(isset($_FILES['archivo'])){
 
@@ -123,7 +123,7 @@ include('conexion.php');
 								
 	
 									//Ruta de la carpeta destino
-									$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/archivos/';
+									$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/Archivos/';
 									//Mover imagen del directorio temporal al directorio escogido
 									move_uploaded_file($_FILES['archivo']['tmp_name'],$carpeta_Destino.$nombre_archivo);
 									//header("Location: cargarLibro.php");
@@ -139,15 +139,21 @@ include('conexion.php');
 						$sql3="SELECT id_Libro from libro WHERE ISBN ='" .$_POST['ISBN']."' ";
 						$result3=mysqli_query($conexion,$sql3);
 						$mostrar=mysqli_fetch_array($result3, MYSQLI_ASSOC);
+						if(mysqli_num_rows($result3) <> 0){
+							$sql2="INSERT INTO Trailer(archivo_Trailer,id_Libro) VALUES ('$nombre_archivo','".$mostrar["id_Libro"]."')";
+							$result2=mysqli_query($conexion,$sql2);
+							echo "<font color=white  size='5pt'> El Trailer se ha cargado correctamente </font>";
+						}
+						else{
+							echo "<font color=white  size='5pt'> No existe el libro con ese ISBN </font>";
+						}
 						
-						$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,archivo) VALUES ('".$_POST["nCap"]."','".$mostrar["id_Libro"]."','$nombre_archivo')";
-						$result2=mysqli_query($conexion,$sql2);
-						echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
+						
 
 					}
 					
 				
-				else echo "<font color=white  size='5pt'> Deben ingresarse todos los datos, de lo contrario, seguira mostrandose este mensaje </font>";
+				else{ echo "<font color=white  size='5pt'> Deben ingresarse todos los datos, de lo contrario, seguira mostrandose este mensaje </font>";}
 			?>
 	 </div>
 		
