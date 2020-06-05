@@ -210,6 +210,7 @@
 							<?php }
 							?>
 				</div>
+				<h2 class="tituloSecundarioConfiguracion" >¡Novedades!</h2>
 				<?php $sql6="SELECT * from trailer  ORDER BY RAND()
 					LIMIT 1 ";
 				$result6=mysqli_query($conexion,$sql6);
