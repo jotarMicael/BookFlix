@@ -215,7 +215,7 @@
 				while($mostrar6=mysqli_fetch_array($result6)){
 					$option=$mostrar6['archivo_Trailer'];
 					$porcion= explode(".",$option);
-					if($porcion[1]=="mp4"){
+					if(($porcion[1]=="mp4")||($porcion[1]=="flv")||($porcion[1]=="h264")||($porcion[1]=="divx")){
 				 ?>
 				 <div class= "registroConfiguracion">
 					
@@ -225,7 +225,6 @@
 						</video> 	
 						<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> Ya disponible, !AQUI! </strong> </a></td> <br> &nbsp;					
 					</div>
-
 				<?php } else{  ?>
 					<div class="divLibro">
 								<a href="#"><image width="80%" src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>"/></a><br><br>
