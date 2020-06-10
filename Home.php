@@ -230,9 +230,7 @@
 						<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> Ya disponible, !AQUI! </strong> </a></td> <br> &nbsp;					
 				</div>
 				<?php } 
-						
 						else{ ?>
-				
 								<a href="#"><image width="80%" src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>"/></a><br><br>
 								<br>
 								<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
@@ -241,8 +239,7 @@
 						<?php } ?>
 						<?php $resultado10 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 								if(mysqli_num_rows($resultado10) == 1){ ?>
-	    								<li><a class="botonInicio" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>
-										
+	    								<li><a class="botonInicio" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>		
 						<?php } }?>
 	    			</div>
 </body>
