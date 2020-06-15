@@ -101,7 +101,25 @@
 		    <div class="divBotones">
 		    	<img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
 		    </div>
-				
+			<label class="labelWhite">Autor/es: </label><br>
+					<select multiple name="nombreCompletoAutor[]" id="nombreCompletoAutor[]">
+						<?php 
+							$sql= "SELECT nombre,apellido FROM autor";
+							$result=mysqli_query($conexion,$sql);
+							if( mysqli_num_rows($result) == 0 )
+								echo " No hay ningun autor creado";
+							else {
+
+							while($mostrar=mysqli_fetch_array($result)){
+						?>
+						<option> <?php echo  $mostrar ['nombre'] ." ". $mostrar['apellido'] ?> </option>
+
+						<?php 
+							}
+						}
+						?>
+					</select>
+					
 		    <div class="divBotones">
 			<form action="Busqueda.php" method="post">
 
@@ -110,7 +128,6 @@
          		 <input type="submit" class="botonInicio" value="Buscar"></a>
         	</form>
 		    </div>
-			
 			<div class="divBotones">
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
@@ -212,7 +229,7 @@
 				</div>
 				<h2 class="tituloSecundarioConfiguracion" >¡Novedades!</h2>
 				<?php $sql6="SELECT * from trailer  ORDER BY RAND()
-					LIMIT 1 ";
+					LIMIT 3 ";
 				$result6=mysqli_query($conexion,$sql6);
 				while($mostrar6=mysqli_fetch_array($result6)){
 					$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro where id_Libro = '".$mostrar6['id_Libro']."'";

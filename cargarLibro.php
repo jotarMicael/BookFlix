@@ -170,6 +170,8 @@ include('conexion.php');
 					<br>
 					<label class="labelWhite">Seleccionar portada: </label>
 					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
+					<label class="labelWhite">Cantidad de Capitulos: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="cantCap" name="cantCap"><br>
 					<label class="labelWhite">Nombre del Capitulo: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreCapitulo" name="nombreCapitulo"><br>
 					<label class="labelWhite">Seleccionar pdf del capitulo o libro completo: </label>
@@ -181,7 +183,7 @@ include('conexion.php');
 		   	</div>
 			<?php 
 			
-				if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])&&isset($_POST['fecha_Lanzamiento'])&&isset($_POST['fecha_BajaBasico'])&&isset($_FILES['imagen'])&&isset($_FILES['pdf'])){
+				if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])&&isset($_POST['fecha_Lanzamiento'])&&isset($_POST['fecha_BajaBasico'])&&isset($_FILES['imagen'])&&isset($_FILES['pdf'])&&isset($_POST['cantCap'])){
 
 					if(isset($_FILES['imagen'])){
 
@@ -249,6 +251,7 @@ include('conexion.php');
 					$sql3="SELECT * from libro WHERE ISBN = '" .$_POST['ISBN']."' ";
 					$result3=mysqli_query($conexion,$sql3);
 
+					
 					if( mysqli_num_rows($result3) == 1 ){
 						echo "<font color=white  size='5pt'> Ya existe cargado un libro con ese ISBN </font>";
 						header("Location: cargarLibro.php");
@@ -261,8 +264,7 @@ include('conexion.php');
 						$idEdi = $mostrar["id_Editorial"];
 
 						
-						
-						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."')";
+						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN,capitulo) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."','".$_POST["cantCap"]."')";
 						mysqli_query($conexion,$sql2);
 
 							$sql4="SELECT id_Libro from libro WHERE nombre_Libro = '" .$_POST["nombreLibro" ]."' ";
