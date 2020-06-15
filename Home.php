@@ -102,7 +102,7 @@
 		    	<img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
 		    </div>
 			<div class="divBotones">
-			<form action="Busqueda.php" method="post">
+			<form action="Busqueda.php" method="POST" enctype="multipart/form-data">
 			<label class="labelWhite">Autor/es: </label><br>
 					<select name="nombreCompletoAutor" id="nombreCompletoAutor">
 					<option value="Todos">Todos</option>
