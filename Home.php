@@ -101,29 +101,71 @@
 		    <div class="divBotones">
 		    	<img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
 		    </div>
+			<div class="divBotones">
+			<form action="Busqueda.php" method="post">
 			<label class="labelWhite">Autor/es: </label><br>
-					<select multiple name="nombreCompletoAutor[]" id="nombreCompletoAutor[]">
+					<select name="nombreCompletoAutor" id="nombreCompletoAutor">
+					<option value="Todos">Todos</option>
 						<?php 
 							$sql= "SELECT nombre,apellido FROM autor";
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ningun autor creado";
 							else {
+							
+							while($mostrar=mysqli_fetch_array($result)){
+						?>
+						
+						<option> <?php echo  $mostrar ['nombre'] ." ". $mostrar['apellido'] ?> </option>
+
+						<?php 
+							}
+							
+						}
+						?>
+					</select> <br>
+					<label class="labelWhite">Genero: </label><br>
+					<select name="genero" id="genero" > 
+					<option value="Todos">Todos</option>
+						<?php 
+							$sql= "SELECT nombre_Genero FROM genero";
+							$result=mysqli_query($conexion,$sql);
+							if( mysqli_num_rows($result) == 0 )
+								echo " No hay ningun genero creado";
+							else {
 
 							while($mostrar=mysqli_fetch_array($result)){
 						?>
-						<option> <?php echo  $mostrar ['nombre'] ." ". $mostrar['apellido'] ?> </option>
+						
+						<option> <?php echo  $mostrar ['nombre_Genero'] ?> </option>
 
 						<?php 
 							}
 						}
 						?>
 					</select>
-					
-		    <div class="divBotones">
-			<form action="Busqueda.php" method="post">
+					<label class="labelWhite">Editorial: </label><br>
+					<select name="nombreEditorial" id="nombreEditorial" >
+					<option value="Todos">Todos</option>
+						<?php 
+							$sql= "SELECT nombre_Editorial FROM editorial";
+							$result=mysqli_query($conexion,$sql);
+							if( mysqli_num_rows($result) == 0 )
+								echo " No hay ninguna editorial creada";
+							else {
 
-         		 <input class="text" type="search" name="busca" autofocus required size="18" autocomplete="on" >
+							while($mostrar=mysqli_fetch_array($result)){
+						?>
+						<option> <?php echo $mostrar ['nombre_Editorial']; ?> </option>;
+						
+
+						<?php 
+							}
+						}
+						?>
+					</select> <br> 
+			
+         		 <input class="text" type="search" name="busca" autofocus  size="18" autocomplete="on" >
 
          		 <input type="submit" class="botonInicio" value="Buscar"></a>
         	</form>
