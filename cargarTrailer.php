@@ -112,14 +112,15 @@ include('conexion.php');
 						if(isset($_FILES['archivo'])){
 
 							$nombre_archivo=$_FILES['archivo']['name'];
-
-							$sql4="SELECT * from trailer WHERE archivo_Trailer='$nombre_archivo'";
-							$result4=mysqli_query($conexion,$sql4);
-							
 							$tipo_archivo=$_FILES['archivo']['type'];
 							$tamagno_archivo=$_FILES['archivo']['size'];
+
+							//$sql4="SELECT * from trailer WHERE archivo_Trailer='$nombre_archivo'";
+							//$result4=mysqli_query($conexion,$sql4);
+							
+							
 	
-							if ($tamagno_archivo<=1000000000000){
+							if ($tamagno_archivo<=150000000){
 								
 	
 									//Ruta de la carpeta destino

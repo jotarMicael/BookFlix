@@ -224,8 +224,8 @@
 			?>	
 	</div>
 				<h2 class="tituloSecundarioConfiguracion" >¡Novedades!</h2>
-				<?php $sql6="SELECT * from trailer  ORDER BY RAND()
-					LIMIT 3 ";
+				<?php $sql6="SELECT * from trailer
+				 ";
 				$result6=mysqli_query($conexion,$sql6);
 				while($mostrar6=mysqli_fetch_array($result6)){
 					$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro where id_Libro = '".$mostrar6['id_Libro']."'";
