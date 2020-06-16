@@ -244,7 +244,7 @@
 							 } } 
 						 ?>
 				</div>
-				<div style="margin-left: 1080px; margin-top: 230px;" class="divNotificaciones">
+				<div style="margin-left: 1080px; margin-top: 270px;" class="divNotificaciones">
 	<?php 
 							$sql="SELECT * from noticia ";
 							$result=mysqli_query($conexion,$sql);
