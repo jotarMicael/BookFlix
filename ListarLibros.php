@@ -82,8 +82,6 @@
 			top: 0px;
 		}
 	</style>
-
-
 </head>
 <body background="Imagenes/2.jpg">
 	<div id="menu" class="barraInicio">
@@ -225,83 +223,6 @@
 				}
 			?>	
 	</div>
-				<div class="divLibrosRandom">
-						<?php 
-							$actual=date('Y-m-d');
-							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro";
-							$result=mysqli_query($conexion,$sql);
-							while($mostrar=mysqli_fetch_array($result)){
-								if(($mostrar['fecha_DeBaja'])>($actual)){
-						?>
-							<div class="divLibro">
-								<a href="#"><image width="80%" src="/BookFlix/Portadas/<?php echo $mostrar['imagenTapaLibro'];?>"/></a><br><br>
-								<br>
-								<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
-								<br>
-								<br>
-							</div>
-						<?php 
-							 } } 
-						 ?>
-				</div>
-				<div style="margin-left: 1080px; margin-top: 230px;" class="divNotificaciones">
-	<?php 
-							$sql="SELECT * from noticia ";
-							$result=mysqli_query($conexion,$sql);
-							while($mostrar=mysqli_fetch_array($result)){
-						?>
-								<div class="cuerpoComentario">
-									<div class="barraTop-publicacion">
-									<label class="labelWhite"> <?php echo $mostrar['fecha'];?></label><br><br>
-									</div>
-									<div>
-	    								<label class="labelWhite"><?php echo $mostrar['texto'];?></label>
-	    							</div>
-	    							<div class="barraBot">
-									<?php $resultado = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-											if(mysqli_num_rows($resultado) == 1){ ?>
-	    										<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Eliminar Noticia</a></li>
-												<li><a class="botonInicio" href="modificarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>">Modificar Noticia</a></li>
-									<?php }?>
-	    							</div>
-											
-								</div>
-								
 
-							<?php }
-							?>
-				</div>
-				<h2 class="tituloSecundarioConfiguracion" >¡Novedades!</h2>
-				<?php $sql6="SELECT * from trailer  ORDER BY RAND()
-					LIMIT 3 ";
-				$result6=mysqli_query($conexion,$sql6);
-				while($mostrar6=mysqli_fetch_array($result6)){
-					$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro where id_Libro = '".$mostrar6['id_Libro']."'";
-					$result=mysqli_query($conexion,$sql);
-					$mostrar=mysqli_fetch_array($result, MYSQLI_ASSOC);
-					$option=$mostrar6['archivo_Trailer'];
-					$porcion= explode(".",$option);
-					if(($porcion[1]=="mp4")||($porcion[1]=="flv")||($porcion[1]=="h264")||($porcion[1]=="divx")){
-				 ?>
-				 <div class="registroConfiguracion">
-						<video width="320" height="240" controls>
-  						<source src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>" type="video/mp4">
-						Your browser does not support the video tag.
-						</video> 	
-						<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> Ya disponible, !AQUI! </strong> </a></td> <br> &nbsp;					
-				</div>
-				<?php } 
-						else{ ?>
-								<a href="#"><image width="80%" src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>"/></a><br><br>
-								<br>
-								<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
-								<br>
-								<br>
-						<?php } ?>
-						<?php $resultado10 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-								if(mysqli_num_rows($resultado10) == 1){ ?>
-	    								<li><a class="botonInicio" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>		
-						<?php } }?>
-	    			</div>
 </body>
 </html>
