@@ -98,6 +98,10 @@ include('conexion.php');
 				  <form action="cargarTrailer.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">ISBN del libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="ISBN" name="ISBN"><br>
+					<label class="labelWhite">Titulo: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="titulo" name="titulo"><br>
+					<label class="labelWhite">Descripcion: </label><br>
+					<input type="text" class="redondeado" autocomplete="on" id="descrip" name="descrip"><br>
 					<label class="labelWhite">Seleccionar archivo: </label><br>
 					<input type="file" class="redondeado" id="archivo" name="archivo"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
@@ -107,7 +111,7 @@ include('conexion.php');
 		   	</div>
 			<?php 
 			
-				if ((isset($_POST['ISBN'])&&(isset($_FILES['archivo'])))){
+				if ((isset($_POST['ISBN']))&&(isset($_FILES['archivo']))&&(isset($_POST['titulo']))&&(isset($_POST['descrip']))){
 
 						if(isset($_FILES['archivo'])){
 
@@ -138,21 +142,29 @@ include('conexion.php');
 								echo "<font color=white  size='5pt'> El tamaño del archivo es demasiado grande </font>";
 							}
 						}
+						if(empty($nombre_archivo)){
+							$_SESSION['error']='Se debe subir un archivo';
+							header("Location: cargarCapituloLibro.php");
+							exit;
+						}
+						else{
 
 						$sql3="SELECT id_Libro from libro WHERE ISBN ='" .$_POST['ISBN']."' ";
 						$result3=mysqli_query($conexion,$sql3);
 						$mostrar=mysqli_fetch_array($result3, MYSQLI_ASSOC);
+
 						if(mysqli_num_rows($result3) <> 0){
-							$sql2="INSERT INTO Trailer(archivo_Trailer,id_Libro) VALUES ('$nombre_archivo','".$mostrar["id_Libro"]."')";
+							$sql2="INSERT INTO trailer (archivo_Trailer,id_Libro,titulo,descripcion) VALUES ('$nombre_archivo','".$mostrar["id_Libro"]."','".$_POST['titulo']."','".$_POST['descrip']."') ";
 							$result2=mysqli_query($conexion,$sql2);
 							echo "<font color=white  size='5pt'> El Trailer se ha cargado correctamente </font>";
 						}
 						else{
 							echo "<font color=white  size='5pt'> No existe el libro con ese ISBN </font>";
 						}
+					
 						
 						
-
+						}
 					}
 					
 				

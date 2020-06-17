@@ -288,13 +288,18 @@
   						<source src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>" type="video/mp4">
 						Your browser does not support the video tag.
 						</video> 	
-						<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> ¡YA DISPONIBLE!,¿TE LO VAS A PERDER?</strong> </a></td> <br> &nbsp;					
+						
+						<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> <?php  echo $mostrar6['titulo'];  ?> </strong> </a></td> <br> &nbsp;	
+						<br>
+						<td>  <font color=white> <strong> <?php  echo $mostrar6['descripcion'];  ?> </strong> </font> </td> <br> &nbsp;						
 				</div>
 				<?php } 
 						else{ ?>
 								<a href="#"><image src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?> " width="15%"/></a><br><br>
 								<br>
-								<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong>¡YA DISPONIBLE!,¿TE LO VAS A PERDER?</strong> </a></td> <br> &nbsp;
+								<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> <?php  echo $mostrar6['titulo'];  ?> </strong> </a></td> <br> &nbsp;
+								<br>
+								<td>  <font color=white> <strong> <?php  echo $mostrar6['descripcion'];  ?> </strong> </font> </td> <br> &nbsp;	
 								<br>
 								<br>
 						<?php } ?>
