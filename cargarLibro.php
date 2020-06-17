@@ -105,7 +105,7 @@ include('conexion.php');
 					<input type="text" class="redondeado" autocomplete="on" id="fecha_Lanzamiento" length="13" name="fecha_Lanzamiento" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Disponibilidad de basico hasta: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="fecha_BajaBasico" length="13" name="fecha_BajaBasico" placeholder="aaaa-mm-dd"><br>
-					<label class="labelWhite">Disponibilidad de premiun hasta: </label><br>
+					<label class="labelWhite">Disponibilidad de premium hasta: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="fecha_BajaPremium" length="13" name="fecha_BajaPremium" placeholder="aaaa-mm-dd"><br>
 					<label class="labelWhite">Editorial: </label><br>
 					<div>
