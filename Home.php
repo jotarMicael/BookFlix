@@ -292,7 +292,7 @@
 				</div>
 				<?php } 
 						else{ ?>
-								<a href="#"><image width="80%" src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>"/></a><br><br>
+								<a href="#"><image src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?> " width="15%"/></a><br><br>
 								<br>
 								<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong>¡YA DISPONIBLE!,¿TE LO VAS A PERDER?</strong> </a></td> <br> &nbsp;
 								<br>
