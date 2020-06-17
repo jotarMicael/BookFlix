@@ -153,6 +153,12 @@ session_start();
 							}
 						}
 
+						if(empty($nombre_pdf)){
+							$_SESSION['error']='Se debe subir un pdf';
+							header("Location: cargarCapituloLibro.php");
+							exit;
+						}
+						else{
 						$sql3="SELECT id_Libro,capitulos from libro WHERE ISBN ='" .$_POST['ISBN']."' ";
 						$result3=mysqli_query($conexion,$sql3);
 						$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
@@ -177,6 +183,7 @@ session_start();
 						echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
 
 						}
+					}
 					}
 					
 				}
