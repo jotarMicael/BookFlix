@@ -1,4 +1,5 @@
-<?php session_start() ?>
+<?php session_start(); 
+include("conexion.php");?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,13 +7,6 @@
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg"> 
 	<script type="text/javascript" src="scriptIndex.js"></script>
-	<?php 
-		include("conexion.php");
-		if (!empty($_SESSION['error'])) {
-			echo "<font color=white  size='5pt'> '".$_SESSION['error']."' </font>";
-			unset($_SESSION['error']);
-		}
-	?>
 </head>
 <body background="Imagenes\2.jpg" >
 <img class="imagenTitulo" src="Imagenes\Titulo.png">
@@ -43,6 +37,12 @@
 			<label class="tituloCrearCuentaIndex" style="top: -1" >¿No tienes cuenta? </label>
 			<input type="submit" class="boton" value="Registrarse">
 	    </form>
+		<?php 
+		if (!empty($_SESSION['error'])) {
+			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);
+		}
+	?>
 		<div class="divBotones">
 	    <div class="barraFin">
 		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Valentin Gallardo 15292/9</p>
