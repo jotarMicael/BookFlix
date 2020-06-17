@@ -154,23 +154,23 @@ include('conexion.php');
 						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '".$mostrar["id_Libro"]."'";
 						$result5=mysqli_query($conexion,$sql5);
 
-						if( (mysqli_num_rows($result5)) >= ($mostrar["capitulos"])){
+						if( (mysqli_num_rows($result5)) == ($mostrar["capitulos"])){
 							echo "<font color=white  size='5pt'> No puede cargar mas capitulos para el libro </font>";
 
 						}
 
 						else {
 
-						if( mysqli_num_rows($result) == 1 ){
-						echo "<font color=white  size='5pt'> El capitulo ya se encuentra cargado </font>";
-						//ingreso el capitulo
-						}
+							if( mysqli_num_rows($result) == 1 ){
+							echo "<font color=white  size='5pt'> El capitulo ya se encuentra cargado </font>";
+							//ingreso el capitulo
+							}
 						
-						$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar["id_Libro"]."','$nombre_pdf')";
-						$result2=mysqli_query($conexion,$sql2);
-						echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
+							$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar["id_Libro"]."','$nombre_pdf')";
+							$result2=mysqli_query($conexion,$sql2);
+							echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
 
-					}
+						}
 					}
 					
 				}
