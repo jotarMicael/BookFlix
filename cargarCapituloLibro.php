@@ -145,18 +145,14 @@ session_start();
 									//Mover imagen del directorio temporal al directorio escogido
 									move_uploaded_file($_FILES['pdf']['tmp_name'],$carpeta_Destino.$nombre_pdf);
 									//header("Location: cargarLibro.php");
-								}
-								else {
-	
-									echo "<font color=white  size='5pt'> Solo se puede subir pdf </font>";
-								}
-									
+								}	
 							}
 							else{
 	
 								echo "<font color=white  size='5pt'> El tamaño del pdf es demasiado grande </font>";
 							}
 						}
+
 						$sql3="SELECT id_Libro,capitulos from libro WHERE ISBN ='" .$_POST['ISBN']."' ";
 						$result3=mysqli_query($conexion,$sql3);
 						$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
@@ -165,18 +161,20 @@ session_start();
 						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '$ideo' ";
 						$result5=mysqli_query($conexion,$sql5);
 
-						if( (mysqli_num_rows($result5))==($mostrar["capitulos"])){
-
-							$_SESSION['error']='No se puede cargar mas capitulos para el libro';
+						if($mostrar2['capitulos']==mysqli_num_rows($result5)){
+							$_SESSION['error']='Ya se encuentra cargado el permitido de capitulos para el libro';
 							header("Location: cargarCapituloLibro.php");
-
+						}
+						if(empty($mostrar2["id_Libro"])){
+							$_SESSION['error']='No existe libro con ese ISBN';
+							header("Location: cargarCapituloLibro.php");
 						}
 
-						else {
-								//ingreso el capitulo
-							$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar["id_Libro"]."','$nombre_pdf')";
-							$result2=mysqli_query($conexion,$sql2);
-							echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
+						else{
+						//ingreso el capitulo
+						$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar2["id_Libro"]."','$nombre_pdf')";
+						$result2=mysqli_query($conexion,$sql2);
+						echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
 
 						}
 					}
