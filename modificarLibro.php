@@ -120,8 +120,10 @@ include('conexion.php');
 		   	</div>	
 		   	</div>
 			<?php 
-				if (isset($_POST['nombreLibro']) && isset($_POST['ISBN']) && isset($_POST['fecha_Lanzamiento']) && isset($_POST['fecha_BajaBasico']) && isset($_POST['fecha_BajaPremium']) && isset($_FILES['imagen']) && isset($_POST['cantCap'])){
-					echo "<font color=white  size='5pt'> 34</font>";
+				if (/*isset($_POST['nombreLibro']) && */ isset($_POST['ISBN']) && isset($_POST['fecha_Lanzamiento']) && isset($_POST['fecha_BajaBasico']) && isset($_POST['fecha_BajaPremium']) && isset($_FILES['imagen']) && isset($_POST['cantCap'])){
+					
+				
+					
 					if(isset($_FILES['imagen'])){
 
 						$nombre_Imagen=$_FILES ['imagen']['name'];
@@ -152,7 +154,7 @@ include('conexion.php');
 						$nombre_Imagen=$mostrar7['imagenTapaLibro'];
 						
 					}
-					
+					echo "<font color=white  size='5pt'> L3465 </font>";
 
 					$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
 					$fecha_2 = $_POST["fecha_BajaBasico"]; //Recibe una string en formato dd-mm-yyyy 
@@ -166,17 +168,19 @@ include('conexion.php');
 					$baja = date('Y-m-d',$baja); //Lo comvierte a formato de fecha en MySQL
 					$baja2 = date('Y-m-d',$baja2);
 			
-					$sql2="UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro"]."', fecha_Lanzamiento= '$inicio', fecha_DeBaja= '$baja', fecha_DeBaja2='$baja2', imagenTapaLibro='$nombre_Imagen',ISBN='".$_POST["ISBN"]."',capitulos='".$_POST["cantCap"]."' WHERE id_Libro='".$_GET["idLibro"]."' ";
-					$result11=mysqli_query($conexion,$sql2);
+					//$sql2="UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro"]."', fecha_Lanzamiento= '$inicio', fecha_DeBaja= '$baja', fecha_DeBaja2='$baja2', imagenTapaLibro='$nombre_Imagen',ISBN='".$_POST["ISBN"]."',capitulos='".$_POST["cantCap"]."' WHERE id_Libro='".$_GET["idLibro"]."' ";
+					$sql2="UPDATE libro SET nombre_Libro='5', fecha_Lanzamiento= '2025-02-13', fecha_DeBaja= '2025-02-13', fecha_DeBaja2='2025-02-13', imagenTapaLibro='9.jpg',ISBN='412442142',capitulos='3' WHERE id_Libro='61' ";
 					echo "<font color=white  size='5pt'> Libro modificado exitosamente </font>";
+					$result11=mysqli_query($conexion,$sql2);
+					
 					header("Location: modificarLibro.php");
 					
 					
 				}
-
-			else{
-				//echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
-			}
+				else{
+					echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
+				}
+			
 			?>
 	 </div>
 		
