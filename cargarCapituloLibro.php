@@ -1,5 +1,16 @@
 <?php session_start(); 
 include('conexion.php');
+session_start();
+	if ($_SESSION['actualizar']==0){
+		$_SESSION['perfilImagen']= $_GET['img'];
+		$_SESSION['perfilNombre']= $_GET['perfil'];
+		$_SESSION['actualizar']=1;
+	}
+	
+	if (!empty($_SESSION['error'])) {
+		echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+		unset($_SESSION['error']);
+	}
  ?>
 <!DOCTYPE html>
 <html>
@@ -116,8 +127,8 @@ include('conexion.php');
 					$result=mysqli_query($conexion,$sql);
 					
 					if( mysqli_num_rows($result) == 1 ){
-						echo "<font color=white  size='5pt'> El capitulo ya se encuentra cargado </font>";
-						//ingreso el capitulo
+						$_SESSION['error']='El capitulo se encuentra cargado';
+						header("Location: cargarCapituloLibro.php");
 					}
 					else {
 						if(isset($_FILES['pdf'])){
@@ -146,26 +157,23 @@ include('conexion.php');
 								echo "<font color=white  size='5pt'> El tamaño del pdf es demasiado grande </font>";
 							}
 						}
-
 						$sql3="SELECT id_Libro,capitulos from libro WHERE ISBN ='" .$_POST['ISBN']."' ";
 						$result3=mysqli_query($conexion,$sql3);
-						$mostrar=mysqli_fetch_array($result3, MYSQLI_ASSOC);
+						$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
+						$ideo=$mostrar2["id_Libro"];
 
-						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '".$mostrar["id_Libro"]."'";
+						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '$ideo' ";
 						$result5=mysqli_query($conexion,$sql5);
 
-						if( (mysqli_num_rows($result5)) == ($mostrar["capitulos"])){
-							echo "<font color=white  size='5pt'> No puede cargar mas capitulos para el libro </font>";
+						if( (mysqli_num_rows($result5))==($mostrar["capitulos"])){
+
+							$_SESSION['error']='No se puede cargar mas capitulos para el libro';
+							header("Location: cargarCapituloLibro.php");
 
 						}
 
 						else {
-
-							if( mysqli_num_rows($result) == 1 ){
-							echo "<font color=white  size='5pt'> El capitulo ya se encuentra cargado </font>";
-							//ingreso el capitulo
-							}
-						
+								//ingreso el capitulo
 							$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar["id_Libro"]."','$nombre_pdf')";
 							$result2=mysqli_query($conexion,$sql2);
 							echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
@@ -174,7 +182,7 @@ include('conexion.php');
 					}
 					
 				}
-				else echo "<font color=white  size='5pt'> Deben ingresarse todos los datos, de lo contrario, seguira mostrandose este mensaje </font>";
+				
 			?>
 	 </div>
 		
