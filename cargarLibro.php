@@ -1,5 +1,16 @@
 <?php session_start(); 
 include('conexion.php');
+session_start();
+if ($_SESSION['actualizar']==0){
+	$_SESSION['perfilImagen']= $_GET['img'];
+	$_SESSION['perfilNombre']= $_GET['perfil'];
+	$_SESSION['actualizar']=1;
+}
+
+if (!empty($_SESSION['error'])) {
+	echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+	unset($_SESSION['error']);
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -263,6 +274,12 @@ include('conexion.php');
 						$mostrar=mysqli_fetch_array($result, MYSQLI_ASSOC);
 						$idEdi = $mostrar["id_Editorial"];
 
+						if(empty($nombre_Imagen) || (empty($nombre_pdf))){
+							$_SESSION['error']='Todos los campos deben estar completos';
+							header("Location: cargarLibro.php");
+						}
+
+						else{
 						
 						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN,capitulos) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."','".$_POST["cantCap"]."')";
 						mysqli_query($conexion,$sql2);
@@ -301,12 +318,13 @@ include('conexion.php');
 							echo "<font color=white  size='5pt'> El libro se ha cargado correctamente </font>";
 							
 							header("Location: cargarLibro.php");
+						}
 					}
-					
 				}
-
+				
+			
 			else{
-				//echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
+				echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
 			}
 			?>
 	 </div>
