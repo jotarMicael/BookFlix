@@ -2,7 +2,7 @@
 	session_start();
 
 	if (!empty($_SESSION['error'])) {
-		echo $_SESSION['error'];
+		echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
 		unset($_SESSION['error']);
 	}
 ?>
@@ -88,7 +88,7 @@
 									header("Location: verYCrearPerfiles.php");
 								}
 								else {
-									echo "Solo se puede subir: png, jpg, jpeg";
+									echo "<font color=white  size='5pt'> Solo se puede subir: png, jpg, jpeg </font>";
 								}
 								
 							}
@@ -97,11 +97,18 @@
 							}
 							$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Perfil = '" .$_POST["nombre" ]  ."' and nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'" ;
 							$result2=mysqli_query($conexion,$sql1);
-							if( mysqli_num_rows($result2) == 1 )
-								echo "<font color=white  size='5pt'> Ya posee un perfil con este nombre </font>";
+							if( mysqli_num_rows($result2) == 1 ){
+								$_SESSION['error']='Ya existe un perfil con este nombre';
+								header("Location: verYCrearPerfiles.php");}
 							else{
-							$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','$nombre_Imagen')";
-							$result=mysqli_query($conexion,$sql);
+								if(empty($nombre_Imagen)){
+									$_SESSION['error']='El perfil debe contener una imagen';
+									header("Location: verYCrearPerfiles.php");
+								}
+								else{
+									$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','$nombre_Imagen')";
+									$result=mysqli_query($conexion,$sql);
+								}
 							}
 							
 						}

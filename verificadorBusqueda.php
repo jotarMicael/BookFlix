@@ -5,9 +5,8 @@ function resultadoBusqueda(){
    $result=NULL;
    $nm=$_POST['nombreCompletoAutor'];
    $nm=explode(" ", $nm);
-   echo $nm[0];
    $nom=$nm[0];
-   echo $busca;
+   echo $_POST['genero'];
    if(empty($busca)){
     $busca='';
    }
