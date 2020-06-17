@@ -196,7 +196,7 @@ include('conexion.php');
 					
 				}
 				else{
-					echo "<font color=white  size='5pt'> Todos los campos deben estar completos </font>";
+					echo "<font color=white  size='5pt'> Modifique solo los campos que desee modificar </font>";
 				}
 			
 			?>

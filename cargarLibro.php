@@ -264,7 +264,7 @@ include('conexion.php');
 						$idEdi = $mostrar["id_Editorial"];
 
 						
-						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN,capitulo) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."','".$_POST["cantCap"]."')";
+						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN,capitulos) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."','".$_POST["cantCap"]."')";
 						mysqli_query($conexion,$sql2);
 
 							$sql4="SELECT id_Libro from libro WHERE nombre_Libro = '" .$_POST["nombreLibro" ]."' ";
