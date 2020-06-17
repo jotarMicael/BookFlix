@@ -111,7 +111,6 @@ include('conexion.php');
 				}
 					?>	
 			<div class="registroConfiguracion">
-			<?php echo $img ?>
 				  <form method="POST" action="modificarLibro.php" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre del Libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreLibro" name="nombreLibro" value="<?php echo $mostrar6['nombre_Libro']; ?>"><br>
