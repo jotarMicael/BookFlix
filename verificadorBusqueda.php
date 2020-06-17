@@ -16,7 +16,7 @@ function resultadoBusqueda(){
      INNER JOIN editorial e ON (e.id_Editorial = l.id_Editorial) 
      INNER JOIN autoreslibro al ON (al.id_Libro = l.id_Libro)
      INNER JOIN autor a ON (a.id_Autor = al.id_Autor)
-     WHERE l.nombre_Libro LIKE '%".$_POST['busca']."%' AND g.nombre_Genero = '".$_POST['genero']."' AND a.nombre LIKE 'Mary' AND e.nombre_Editorial = '".$_POST['nombreEditorial']."' ");
+     WHERE l.nombre_Libro LIKE '%".$_POST['busca']."%' AND g.nombre_Genero ='".$_POST['genero']."' AND a.nombre LIKE 'Mary' AND e.nombre_Editorial ='".$_POST['nombreEditorial']."' ");
    }
    else{
    $result=mysqli_query($conexion, "SELECT l.id_Libro,l.id_Editorial,l.fecha_Lanzamiento,l.imagenTapaLibro,l.ISBN,l.capitulos,l.nombre_Libro

@@ -228,7 +228,7 @@
 				<div class="divLibrosRandom">
 						<?php 
 							$actual=date('Y-m-d');
-							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro ORDER BY RAND()";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 								if(($mostrar['fecha_DeBaja'])>($actual)){

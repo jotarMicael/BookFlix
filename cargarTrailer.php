@@ -125,8 +125,10 @@ include('conexion.php');
 	
 									//Ruta de la carpeta destino
 									$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/Archivos/';
+
 									//Mover imagen del directorio temporal al directorio escogido
 									move_uploaded_file($_FILES['archivo']['tmp_name'],$carpeta_Destino.$nombre_archivo);
+									
 									//header("Location: cargarLibro.php");
 							}
 								
