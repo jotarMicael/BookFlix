@@ -154,7 +154,7 @@ include('conexion.php');
 						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '".$mostrar["id_Libro"]."'";
 						$result5=mysqli_query($conexion,$sql5);
 
-						if( mysqli_num_rows($result5) > $mostrar["capitulos"]){
+						if( (mysqli_num_rows($result5)) >= ($mostrar["capitulos"])){
 							echo "<font color=white  size='5pt'> No puede cargar mas capitulos para el libro </font>";
 
 						}
