@@ -478,6 +478,13 @@ div::after {
  	height: auto;
  	margin: auto;
  }
+ .divNoti{
+	height: auto;
+ 	display: flex;
+	justify-content: space-between;	
+	margin-top: 0px;
+	position: relative;
+ }
 
  .imagenPortada{
  	width: 100px;
