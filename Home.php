@@ -7,7 +7,7 @@
 	}
 	
 	if (!empty($_SESSION['error'])) {
-		echo "<font color=white  size='5pt'> '".$_SESSION['error']."' </font>";
+		echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
 		unset($_SESSION['error']);
 	}
 ?>

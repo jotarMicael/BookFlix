@@ -97,8 +97,21 @@ include('conexion.php');
 			<?php
 				$result5 = mysqli_query($conexion, "SELECT * FROM libro WHERE id_Libro = '".$_GET['idLibro']."' ");
 				$mostrar6=mysqli_fetch_array($result5, MYSQLI_ASSOC);
+				$idi=$_GET['idLibro'];
+				if(empty($idi)){
+					$idi=$_POST["idLibro"];
+				}
+				$img=$_GET['imagen'];
+				if(empty($img)){
+					if(isset($_FILES['imagen'])){
+						 $img=$_FILES ['imagen']['name'];}
+					else{
+						$img='JRV';
+					}
+				}
 					?>	
 			<div class="registroConfiguracion">
+			<?php echo $img ?>
 				  <form method="POST" action="modificarLibro.php" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre del Libro: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreLibro" name="nombreLibro" value="<?php echo $mostrar6['nombre_Libro']; ?>"><br>
@@ -111,16 +124,17 @@ include('conexion.php');
 					<label class="labelWhite">Disponibilidad de premiun hasta: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="fecha_BajaPremium" length="13" name="fecha_BajaPremium" placeholder="aaaa-mm-dd" value="<?php echo $mostrar6['fecha_DeBaja2']; ?>"><br>
 					<label class="labelWhite">Seleccionar portada: </label>
-					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg" value="<?php echo $mostrar6['imagenTapaLibro']; ?>"><br>
+					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg,image/jpg" value="<?php echo $img ?>" > <br>
 					<label class="labelWhite">Cantidad de Capitulos: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="cantCap" name="cantCap" value="<?php echo $mostrar6['capitulos']; ?>"><br>
+					<input type="hidden" class="boton" value="<?php echo $idi ?>" id="idLibro" name="idLibro"> <br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
 		   	</div>	
 		   	</div>
 			<?php 
-				if (/*isset($_POST['nombreLibro']) && */ isset($_POST['ISBN']) && isset($_POST['fecha_Lanzamiento']) && isset($_POST['fecha_BajaBasico']) && isset($_POST['fecha_BajaPremium']) && isset($_FILES['imagen']) && isset($_POST['cantCap'])){
+				if (isset($_POST['nombreLibro']) && isset($_POST['ISBN']) && isset($_POST['fecha_Lanzamiento']) && isset($_POST['fecha_BajaBasico']) && isset($_POST['fecha_BajaPremium']) && isset($_FILES['imagen']) && isset($_POST['cantCap'])){
 					
 				
 					
@@ -136,7 +150,7 @@ include('conexion.php');
 								$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/Portadas/';
 								//Mover imagen del directorio temporal al directorio escogido
 								move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
-								header("Location: modificarLibro.php");
+								$P=$_FILES ['imagen']['name'];
 							}
 							else {
 								echo " <font color=white  size='5pt'> Solo se puede subir: png, jpg, jpeg </font>";
@@ -144,18 +158,16 @@ include('conexion.php');
 							
 						}
 						else{
+
 							echo "<font color=white  size='5pt'> El tamaño de la imagen es demasiado grande </font>";
 						}
-					}
-					else{
-						//Me traigo la imagen que ya tenia de la bbdd para reinsertarla
-						$result10=mysqli_query($conexion, "SELECT imagenTapaLibro FROM libro WHERE id_Libro = '".$_GET['idLibro']."' ");
-						$mostrar7=mysqli_fetch_array($result10, MYSQLI_ASSOC);
-						$nombre_Imagen=$mostrar7['imagenTapaLibro'];
-						
-					}
-					echo "<font color=white  size='5pt'> L3465 </font>";
 
+					}else{
+						$P=$img;
+					}
+					
+					
+					
 					$fecha_1 = $_POST["fecha_Lanzamiento"]; //Recibe una string en formato dd-mm-yyyy 
 					$fecha_2 = $_POST["fecha_BajaBasico"]; //Recibe una string en formato dd-mm-yyyy 
 					$fecha_3 = $_POST["fecha_BajaPremium"];
@@ -167,13 +179,20 @@ include('conexion.php');
 					$inicio = date('Y-m-d',$inicio); //Lo comvierte a formato de fecha en MySQL
 					$baja = date('Y-m-d',$baja); //Lo comvierte a formato de fecha en MySQL
 					$baja2 = date('Y-m-d',$baja2);
-			
-					//$sql2="UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro"]."', fecha_Lanzamiento= '$inicio', fecha_DeBaja= '$baja', fecha_DeBaja2='$baja2', imagenTapaLibro='$nombre_Imagen',ISBN='".$_POST["ISBN"]."',capitulos='".$_POST["cantCap"]."' WHERE id_Libro='".$_GET["idLibro"]."' ";
-					$sql2="UPDATE libro SET nombre_Libro='5', fecha_Lanzamiento= '2025-02-13', fecha_DeBaja= '2025-02-13', fecha_DeBaja2='2025-02-13', imagenTapaLibro='9.jpg',ISBN='412442142',capitulos='3' WHERE id_Libro='61' ";
-					echo "<font color=white  size='5pt'> Libro modificado exitosamente </font>";
-					$result11=mysqli_query($conexion,$sql2);
 					
-					header("Location: modificarLibro.php");
+					//$sql2="UPDATE libro SET nombre_Libro='" .$_POST["nombreLibro"]."', fecha_Lanzamiento= '$inicio', fecha_DeBaja= '$baja', fecha_DeBaja2='$baja2', imagenTapaLibro='$nombre_Imagen',ISBN='".$_POST["ISBN"]."',capitulos='".$_POST["cantCap"]."' WHERE id_Libro='".$_GET["idLibro"]."' ";
+					if (empty($nombre_Imagen)){
+						$sql2="UPDATE libro SET nombre_Libro='".$_POST['nombreLibro']."', fecha_Lanzamiento= '$inicio', fecha_DeBaja= '$baja', fecha_DeBaja2='$baja2',ISBN='".$_POST["ISBN"]."',capitulos='".$_POST["cantCap"]."' WHERE id_Libro='$idi' ";
+					}
+					else{
+					$sql2="UPDATE libro SET nombre_Libro='".$_POST['nombreLibro']."', fecha_Lanzamiento= '$inicio', fecha_DeBaja= '$baja', fecha_DeBaja2='$baja2', imagenTapaLibro='$P',ISBN='".$_POST["ISBN"]."',capitulos='".$_POST["cantCap"]."' WHERE id_Libro='$idi' ";
+					}
+					
+					
+					$result11=mysqli_query($conexion,$sql2);
+					$_SESSION['error']='Libro modificado exitosamente';
+					header("Location: Home.php");
+					
 					
 					
 				}
