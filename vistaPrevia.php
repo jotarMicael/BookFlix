@@ -141,14 +141,14 @@
 			<div class="divMargin">
 			<label class="labelWhite" >Autor/es: </label>
 			<label class="labelWhite"> <strong> <?php while($mostrar=mysqli_fetch_array($resultDos)) {
-				echo $mostrar['nombre'];?> <space> <?php echo $mostrar['apellido'].'/';
+				echo $mostrar['nombre'];?> <space> <?php echo $mostrar['apellido'].' ';
 
 			}?> </strong></label> <br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite">Genero/s: </label>
 			<label class="labelWhite"> <strong> <?php  while($mostrar2=mysqli_fetch_array($resultTres)) {
-				echo $mostrar2['nombre_Genero'].'/';?>
+				echo $mostrar2['nombre_Genero'].' ';?>
 
 			<?php } ?> </strong> </label><br>
 			</div>
