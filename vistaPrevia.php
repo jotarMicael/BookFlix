@@ -81,10 +81,7 @@
 		    <div class="divBotones">
 		    	<img class="imagenBarraSuperior" src="Imagenes\TituloBarraSuperior.png">
 		    </div>
-		    <div class="divBotones">
-			<label class="labelWhite">Buscar: </label>
-			<input type="text" class="redondeado" autocomplete="on" id="libro" name="libro">
-		    </div>
+		    
 		    <div class="divBotones">
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");

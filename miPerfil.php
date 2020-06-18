@@ -20,10 +20,6 @@
           <a class="botonInicio" href="miPerfil.php?&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Mi Perfil</a>
 	    </div>
 	    <div class="divBotones">
-        <form action="Busqueda.php" method="post">
-          <input class="text" type="search" name="busca" autofocus required size="18" maxlength="15" autocomplete="on" >
-          <input type="submit" class="botonInicio" value="Buscar"></a>
-        </form>
         </div>
 	    <div class="divBotones">
             <a class="botonInicio" href="Configuracion.php?&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Configuracion </a>
