@@ -90,6 +90,7 @@ div::after {
 	color: white;
  	text-shadow: 2px 1px black;
  	font-family: sans-serif;
+ 	text-decoration: none;
 }
 .textoBarra{
  	font-family: oblique bold 120% cursive;  

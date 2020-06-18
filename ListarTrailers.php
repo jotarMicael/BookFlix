@@ -235,18 +235,18 @@
 					$porcion= explode(".",$option);
 					if(($porcion[1]=="mp4")||($porcion[1]=="flv")||($porcion[1]=="h264")||($porcion[1]=="divx")){
 				 ?>
-				 <div class="registroConfiguracion">
-						<video width="320" height="240" controls>
+				<div class="registroConfiguracion">
+						<video width="270" height="240" controls>
   						<source src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>" type="video/mp4">
 						Your browser does not support the video tag.
 						</video> 	
-						<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> <?php  echo $mostrar6['titulo'];  ?> </strong> </a></td> <br> &nbsp;	
+						
+						<td> <a class="labelWhite" href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> <?php  echo $mostrar6['titulo'];  ?> </strong> </a></td> <br> &nbsp;	
 						<br>
-						<td>  <font color=white> <strong> <?php  echo $mostrar6['descripcion'];  ?> </strong> </font> </td> <br> &nbsp;		
-				</div>
+						<td>  <font color=white> <strong> <?php  echo $mostrar6['descripcion'];  ?> </strong> </font> </td> <br> &nbsp;						
 				<?php } 
 						else{ ?>
-								<a href="#"><image width="80%" src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?>"/></a><br><br>
+								<a href="#"><image src="/BookFlix/Archivos/<?php echo $mostrar6['archivo_Trailer'];?> " width="15%"/></a><br><br>
 								<br>
 								<td> <a href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong> <?php  echo $mostrar6['titulo'];  ?> </strong> </a></td> <br> &nbsp;
 								<br>
@@ -258,6 +258,6 @@
 								if(mysqli_num_rows($resultado10) == 1){ ?>
 	    								<li><a class="botonInicio" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>		
 						<?php } }?>
-	    			</div>
+	    		</div>
 </body>
 </html>
