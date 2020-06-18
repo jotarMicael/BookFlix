@@ -225,7 +225,7 @@
 				}
 			?>	
 	</div>
-				<div class="divLibrosRandom">
+				<div class="divLibrosRandom" style="width:1450px; hight:auto;">
 						<?php 
 							$actual=date('Y-m-d');
 							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro ORDER BY RAND()";

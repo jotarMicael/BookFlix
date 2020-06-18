@@ -475,9 +475,9 @@ div::after {
  	position: center;
  	box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.3);
  	position: relative;
- 	width: 150px;
+ 	width: 250px;
  	height: auto;
- 	margin: auto;
+	 margin: auto;
  }
  .divNoti{
 	height: auto;
