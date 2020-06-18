@@ -288,7 +288,7 @@ if (!empty($_SESSION['error'])) {
 							$result4=mysqli_query($conexion,$sql4);
 							$mostrar3=mysqli_fetch_array($result4, MYSQLI_ASSOC);
 							$idLibro=$mostrar3['id_Libro'];
-							echo $idLibro;
+							
 
 								
 						
