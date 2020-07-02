@@ -189,9 +189,10 @@
 			<div class="divBotones">
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-				if(mysqli_num_rows($result) <> 1){
+				$result2 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentausuariotipopremiun WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if((mysqli_num_rows($result) <> 1)&&(mysqli_num_rows($result2) <> 1)){
 					?>
-			<li><a href="verYCrearPerfiles.php" class="botonInicio">¡Hazte Premium!</a></li>
+			<li><a href="addPremium.php" class="botonInicio">¡Hazte Premium!</a></li>
 				<?php }?>
 			</div>
 			<div class="divBotones">
