@@ -94,7 +94,7 @@ include('conexion.php');
 	</div>
     
     <div class="registro">
-				<h3 class="tituloSecundarioRegistro"> Perfiles creados </h3>
+				<h3 class="tituloSecundarioRegistro"> Perfiles</h3>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
                 <form method="POST" action="deletePerfil.php" enctype="multipart/form-data">
                 <select name="prf" id="prf">    

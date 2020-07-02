@@ -21,7 +21,12 @@ include('conexion.php');
 		<a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
 	    </div>
 	    <div class="divBotones">
-		<a class="botonInicio" href="deletePerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Perfil </a>
+		<a class="botonInicio" href="deletePerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Eliminar Perfiles </a>
+	    </div>
+		<div class="divBotones">
+		<form action="deleteAccount.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<input type="submit" class="boton" value="Eliminar Cuenta"><br>
+		</form>
 	    </div>
 	    <div class="divBotones">
 		<a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Configuracion </a>
