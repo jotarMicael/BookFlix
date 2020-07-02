@@ -112,12 +112,12 @@ include('conexion.php');
 		   	</div>
 			<?php 
 			
-				if (isset($_POST['nombreAutor'])&&isset($_POST['apellidoAutor'])){
+				if (!empty($_POST['nombreAutor'])&&!empty($_POST['apellidoAutor'])){
 					$sql= "SELECT id_Autor,nombre,apellido FROM autor WHERE apellido = '".$_POST['apellidoAutor']."' and nombre = '".$_POST['nombreAutor']."' ";
                     $result=mysqli_query($conexion,$sql);
                     $mostrar=mysqli_fetch_array($result);
 					if( mysqli_num_rows($result) == 1 ){  
-                        if (isset($_POST['newNombreAutor'])||isset($_POST['newApellidoAutor'])){
+                        if (!empty($_POST['newNombreAutor'])||!empty($_POST['newApellidoAutor'])){
                             if (empty($_POST['newNombreAutor']))
                                 $_POST['newNombreAutor']=$mostrar['nombre'];
                             if (empty($_POST['newApellidoAutor']))
@@ -135,7 +135,7 @@ include('conexion.php');
 					}
                 }
                 else
-                echo "<font color=white  size='5pt'> Debe ingresar nombre y apellido del autor a modificar </font>";
+                    echo "<font color=white  size='5pt'> Debe ingresar nombre y apellido del autor a modificar </font>";
 
 			?>
 	 </div>
