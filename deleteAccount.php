@@ -12,6 +12,7 @@
   unset($_SESSION["perfilImagen"]); 
   unset($_SESSION["perfilNombre"]);
   unset($_SESSION["usuario"]);
+  $_SESSION['error']='La cuenta ha sido eliminada del sistema';
   session_destroy();
   header("Location:index.php");
   exit;
