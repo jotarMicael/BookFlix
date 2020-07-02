@@ -121,7 +121,7 @@
 			// Consulta para obtener el genero 
 		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero=generopertenecelibro.id_Genero WHERE id_Libro = '".$_GET['idLibro']."' ");
 	    	// Consulta para obtener la editorial
-		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$_GET['idLibro']."' ");
+		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial,ISBN FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$_GET['idLibro']."' ");
 			  // Consulta para obtener los capitulos de los libros
 		  $resultCinco = mysqli_query($conexion, "SELECT nombre_Capitulo FROM capitulo INNER JOIN libro ON libro.id_Libro = capitulo.id_Libro WHERE libro.id_Libro = '".$_GET['idLibro']."' ");
 		  
@@ -155,7 +155,9 @@
 			<div class="divMargin">
 			<label class="labelWhite">Editorial: </label>
 			<label class="labelWhite"> <strong ><?php while($mostrar3=mysqli_fetch_array($resultCuatro)) {
-				echo $mostrar3['nombre_Editorial'];
+				echo $mostrar3['nombre_Editorial']; echo"<br>";echo"<br>";
+				 $ISBN = 'ISBN: ';
+				echo $ISBN; echo $mostrar3['ISBN'];
 
 			} ?> </strong> </label><br>
 			</div>
