@@ -1,6 +1,10 @@
 <?php session_start(); 
 
 include('conexion.php');
+if (!empty($_SESSION['error'])) {
+	echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+	unset($_SESSION['error']);
+}
 
  ?>
 <!DOCTYPE html>
@@ -12,10 +16,6 @@ include('conexion.php');
 	<script type="text/javascript" src="scriptConfiguracion.js"></script>
 </head>
 <body background= "Imagenes/2.jpg">
-	<h3 class="tituloTerciarioConfiguracion">
-		<?php if (!empty($_SESSION['error'])){
-    		echo $_SESSION['error'];
-			unset($_SESSION['error']);} ?> </h3>
 	<div class="barraInicio">	
 		<div class="divBotones"> 
 		<a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
@@ -24,14 +24,10 @@ include('conexion.php');
 		<a class="botonInicio" href="deletePerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Eliminar Perfiles </a>
 	    </div>
 		<div class="divBotones">
-		<form action="deleteAccount.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
-			<input type="submit" class="boton" value="Eliminar Cuenta"><br>
-		</form>
 	    </div>
 	    <div class="divBotones">
 		<a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Configuracion </a>
 	    </div>
-		
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Configuración</h2>
@@ -79,6 +75,23 @@ include('conexion.php');
 					<input type="submit" class="boton" value="Guardar Cambios"><br>
 					</form>
 		   		</div>
+			<div class="registroConfiguracion">
+			<form action="deleteAccount.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<input type="submit" class="boton" value="Eliminar Cuenta"><br>
+			</form>
+			<?php
+			$result2 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentausuariotipopremiun WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+			if(mysqli_num_rows($result2) == 1){
+			?>
+			 <br>;
+			<form action="addBasic.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<input type="submit" class="boton" value="Volver a Basico"><br>
+			</form>
+			</div>
+			<?php } ?>
+			
+			</div>
+			
 				   <?php
 				   				   		if (isset($_POST['unN°Tarjeta'])&&isset($_POST['unNombreTar'])&&isset($_POST['unApellidoTar'])&&isset($_POST['unCodigo'])&&isset($_POST['unVencimiento'])){
 											$consulta = "UPDATE cuentausuario SET numero_Tarjeta = '" . $_POST['unN°Tarjeta']. "', codigo_Seguridad = '" . $_POST['unCodigo']. "', nombre_Tarjeta='" . $_POST['unNombreTar']. "' , apellido_Tarjeta= '" . $_POST['unApellidoTar']. "' WHERE nombre_Usuario = '" . $_SESSION['usuario']['nombre_Usuario'] . "' ";
