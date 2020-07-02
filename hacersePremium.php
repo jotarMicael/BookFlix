@@ -117,25 +117,21 @@
 	</div>
 	<div class="divLibrosRandom" style="margin-left: 25%;">
 		<div class="divLibroVistaPrevia">
-			<!-- Aca se van a tomar los datos del libro que pertenecen a otra tabla para ser mostrados en la vista previa del libro -->
-		<?php 
-		  	// Consulta para obtener autores del libro
-		  $resultDos = mysqli_query($conexion, "SELECT nombre_Autor FROM autor INNER JOIN autoreslibro ON autor.id_Autor=autoreslibro.id_Autor WHERE id_Libro = '".$libro['id_Libro']."' ");
-			// Consulta para obtener el genero 
-		  $resultTres = mysqli_query($conexion, "SELECT nombre_Genero FROM genero INNER JOIN generopertenecelibro ON genero.id_Genero = generopertenecelibro.id_Genero WHERE id_Libro = '".$libro['id_Libro']."' ");
-	    	// Consulta para obtener la editorial
-		  $resultCuatro = mysqli_query($conexion, "SELECT nombre_Editorial FROM libro INNER JOIN editorial ON libro.id_Editorial = editorial.id_Editorial WHERE libro.id_Libro = '".$libro['id_Libro']."' ");
-		  
-		  $sql="SELECT nombre_Editorial from editorial WHERE id_Editorial = '" .$_GET['idEdi']."'";
-		  $result=mysqli_query($conexion,$sql);
-			 ?>
-		  
-		  	<div>
 			  <label class="labelWhite"> <strong> Haciendote Premium tendras acceso a leer libros exclusivos y a tener 4 perfiles en la cuenta.
-			  una vez realizado el pago de $1, ya podra disfrutar de los beneficios nombrados anteriormente. Si usted lo desea , la suscripcion se le renovara automaticamente.
-			   </strong></label><br>
+			  una vez realizado el pago de $1, ya podra disfrutar de los beneficios nombrados anteriormente. Haciendo click en el boton "Mejorar a Premium", se confirmara su peticion
+			  para ser un usuario premium, una vez que sea corroborada y validada su peticion, se le otorgará su beneficio. Haciendo esto, usted estara aceptando todos los terminos
+			  y condiciones expuestos en la plataforma.
+			   </strong></label><br> <br>
+			   <form action="addPremium.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			   <input type="submit" class="boton" value="Hacerse premium"><br>
+				</form> <br> <br>
+				<form action="verYCrearPerfiles.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			   <input type="submit" class="boton" value="Cancelar"><br>
+			   </form>
+		</form>	
+		</div>
 		
-	</div>
-
+	</div>	
+				
 </body>
 </html>
