@@ -52,7 +52,7 @@
 					$result=mysqli_query($conexion,$sql);
 					//
 					if( mysqli_num_rows($result) == 0 )
-						echo " No hay ningun perfil creado" ;
+					echo "<font color=white  size='5pt'> No hay ningun perfil creado </font>";
 					else {
 					$_SESSION['actualizar']=0;
 					while($mostrar=mysqli_fetch_array($result)){
