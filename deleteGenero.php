@@ -6,7 +6,7 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
-	<title>Editar Autor</title>
+	<title>Eliminar Genero</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
 		
@@ -92,19 +92,13 @@ include('conexion.php');
 			<?php }?>
 			</div>
 	</div>
-			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del autor que quiere editar</h2>
+			<h2 class="tituloSecundarioConfiguracion" >Ingrese el nombre del genero a eliminar</h2>
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-				  <form action="editarAutor.php" method="post" enctype="multipart/form-data">
+				  <form action="deleteGenero.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="nombreAutor" name="nombreAutor"><br>
-					<label class="labelWhite">Apellido: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" name="apellidoAutor"><br>
-                    <label class="labelWhite">Nuevo Nombre: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="newNombreAutor" name="newNombreAutor"><br>
-					<label class="labelWhite">Nuevo Apellido: </label><br>
-					<input type="text" class="redondeado" autocomplete="on" id="newApellidoAutor" name="newApellidoAutor"><br>
+					<input type="text" class="redondeado" autocomplete="on" id="genero" name="genero"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
@@ -112,30 +106,23 @@ include('conexion.php');
 		   	</div>
 			<?php 
 			
-				if (!empty($_POST['nombreAutor'])&&!empty($_POST['apellidoAutor'])){
-					$sql= "SELECT id_Autor,nombre,apellido FROM autor WHERE apellido = '".$_POST['apellidoAutor']."' and nombre = '".$_POST['nombreAutor']."' ";
+				if (!empty($_POST['genero'])){
+					$sql= "SELECT nombre_Genero FROM genero WHERE nombre_Genero= '".$_POST['genero']."' ";
                     $result=mysqli_query($conexion,$sql);
                     $mostrar=mysqli_fetch_array($result);
 					if( mysqli_num_rows($result) == 1 ){  
-                        if (!empty($_POST['newNombreAutor'])||!empty($_POST['newApellidoAutor'])){
-                            if (empty($_POST['newNombreAutor']))
-                                $_POST['newNombreAutor']=$mostrar['nombre'];
-                            if (empty($_POST['newApellidoAutor']))
-                                $_POST['newApellidoAutor']=$mostrar['apellido'];
-                            $sql= "UPDATE autor SET nombre='".$_POST['newNombreAutor']."', apellido='".$_POST['newApellidoAutor']."' WHERE id_Autor='".$mostrar['id_Autor']."'";
+                            $sql="DELETE FROM genero WHERE '".$_POST['genero']."'=nombre_Genero ";
 					        $result=mysqli_query($conexion,$sql);
-                            echo "<font color=white  size='5pt'> Modificado Correctamente </font>";
-                        }
-                        else
-                            echo "<font color=white  size='5pt'> Debe ingresar algun dato para modificar </font>";
-					}
+                            echo "<font color=white  size='5pt'> Eliminado Correctamente </font>";
+                    }
+				
 					else {
-						echo "<font color=white  size='5pt'> El autor ingresado no existe </font>";
+						echo "<font color=white  size='5pt'> El genero ingresado no existe </font>";
 
 					}
-                }
+				}
                 else
-                    echo "<font color=white  size='5pt'> Debe ingresar nombre y apellido del autor a modificar </font>";
+                    echo "<font color=white  size='5pt'> Debe ingresar nombre del genero a eliminar </font>";
 
 			?>
 	 </div>
