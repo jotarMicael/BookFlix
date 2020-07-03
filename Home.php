@@ -203,7 +203,9 @@
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 1){
 					?>
+					<li><a href="acceptPremiun.php" class="botonInicio">Peticiones a premium</a></li>
 					<ul class="nav">
+					
 						<li><a class="botonInicio" href="" >Administrar datos</a>
 					
 						<ul>
