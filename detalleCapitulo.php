@@ -29,8 +29,20 @@ include('conexion.php');
 				 echo $_GET['nCap']."<br /> <br />"?>  </strong>
 					
 				  </div>
+
+				  
 				
 		   	</div>
+			   <?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) == 0){
+					?>
+			<div class="divMargin">
+			<form>
+			<input type="submit" class="boton" onclick="return confirm()" value="Finalizar Lectura"><br> 
+     		</form> 
+			</div>
+			<?php }?>
 	 </div>
 		
 	<div class="barraFin">

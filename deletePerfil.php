@@ -97,20 +97,20 @@ include('conexion.php');
 				<h3 class="tituloSecundarioRegistro"> Perfiles</h3>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
                 <form method="POST" action="deletePerfil.php" enctype="multipart/form-data">
-                <select name="prf" id="prf">    
+                  
 				<?php
                     //Se fija si hay perfiles
                     
 					$sql="SELECT nombre_Perfil, imagen from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
 					$result=mysqli_query($conexion,$sql);
 					//
-					if( mysqli_num_rows($result) == 0 )
-                    echo "<font color=white  size='5pt'> Sin perfiles </font>";
+					if( mysqli_num_rows($result) == 0 ) {
+                    	echo "<font color=white  size='5pt'> La cuenta no posee ningun perfil </font>"; }
 					else {
 					$_SESSION['actualizar']=0;
 					while($mostrar=mysqli_fetch_array($result)){
 				?>
-
+				<select name="prf" id="prf">  
 				<tr>	
 					<div>
 						<br>
