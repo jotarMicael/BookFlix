@@ -34,11 +34,11 @@ include('conexion.php');
 				
 		   	</div>
 			   <?php
-				$sql2= "SELECT id_Capitulo FROM capitulo WHERE nombre_capitulo= '".$_GET['nCap']."'";
+				$sql2= "SELECT id_Capitulo FROM capitulo WHERE nombre_capitulo= '".$_GET['nCap']."' and id_Libro='".$_GET['idLibro']."' ";
   				$result2=mysqli_query($conexion,$sql2);
-				 $mostrar=mysqli_fetch_array($result2, MYSQLI_ASSOC);
+				$mostrar=mysqli_fetch_array($result2, MYSQLI_ASSOC);
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-				$result3 = mysqli_query($conexion, "SELECT nombre_Perfil FROM perfilleyocapitulo WHERE nombre_Perfil = '".$_SESSION['perfilNombre']."' ");
+				$result3 = mysqli_query($conexion, "SELECT nombre_Perfil FROM perfilleyocapitulo WHERE nombre_Perfil = '".$_SESSION['perfilNombre']."' and id_Capitulo = '".$mostrar['id_Capitulo']."'  ");
 				if((mysqli_num_rows($result) == 0)&&(mysqli_num_rows($result3) == 0)){
 					$_SESSION['idC']=$mostrar['id_Capitulo'];
 					?>
