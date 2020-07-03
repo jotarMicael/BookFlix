@@ -184,7 +184,7 @@ include('conexion.php');
 			
 				if (!empty($_POST['prf2'])){
 							//$sql= "UPDATE cuentausuariotipopremiun SET validada = 'Si' WHERE nombre_Usuario = '".$_POST['prf2']."'";
-							$sql= "DELETE FROM cuentausuariotipopremium WHERE '".$_POST['prf2']."'=nombre_Usuario";
+							$sql= "DELETE FROM cuentausuariotipopremiun WHERE '".$_POST['prf2']."'=nombre_Usuario";
 					        $result=mysqli_query($conexion,$sql);
                             echo "<font color=white  size='5pt'> La cuenta ha sido activada como basica </font>";
                 }
