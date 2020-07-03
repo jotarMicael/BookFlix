@@ -26,15 +26,22 @@ include('conexion.php');
 				<form action="publicarReseña.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
-	    		<div class="barraTop-publicacion">	
+	    		<div class="barraTop-publicacion">
+				<div>
+					<input type="checkbox" name="spoiler" id="spoiler">Spoiler
+				</div>
 	    		<h5 class="textoBarraTop"><?php echo $_SESSION['nombrePerfil']; ?></h5>		
 	    	</div>
 	    	<div>
 	    		<textarea cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"></textarea>
+				
 	    	</div>
 	    	<div class="barraBot">
+			
 	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
+				
 	    	</div>
+			
 	    
 	</div>
 	</form>	
