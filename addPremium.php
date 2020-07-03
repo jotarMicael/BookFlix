@@ -8,6 +8,6 @@
   ','No')";
   $result=mysqli_query($conexion,$sql);
   $_SESSION['error']='Peticion Generada correctamente';
-  header("Location:verYCrearPerfiles.php");
+  header("Location:Home.php");
   exit;
 ?>
