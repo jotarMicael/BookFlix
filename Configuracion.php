@@ -80,7 +80,7 @@ if (!empty($_SESSION['error'])) {
 			<input type="submit" class="boton" value="Eliminar Cuenta"><br>
 			</form>
 			<?php
-			$result2 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentausuariotipopremiun WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+			$result2 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentausuariotipopremiun WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' and validada='Si' ");
 			if(mysqli_num_rows($result2) == 1){
 			?>
 			 <br>;

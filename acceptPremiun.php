@@ -142,6 +142,56 @@ include('conexion.php');
 
 			?>
 	 </div>
+	 <div class="registro">
+				<h3 class="tituloSecundarioRegistro"> Peticiones a basico de los usuarios: </h3>
+                <form method="POST" action="acceptPremiun.php" enctype="multipart/form-data">
+                   
+				<?php
+                    
+					$sql3="SELECT nombre_Usuario,fecha_Vencimiento from cuentausuariotipopremiun WHERE validada='VB' ";
+					$result2=mysqli_query($conexion,$sql3);
+					if(mysqli_num_rows($result2) == 0) {
+                        echo "<font color=white  size='5pt'> No hay peticiones </font>"; }
+					else {
+                    
+					while($mostrar2=mysqli_fetch_array($result2)){
+				?>
+                <select name="prf2" id="prf2"> 
+				<tr>	
+					<div>
+						<br>
+                        
+                                
+                             <option value="<?php echo $mostrar2['nombre_Usuario'];?> "><?php echo $mostrar2['nombre_Usuario']; echo '  -  '; echo $mostrar2['fecha_Vencimiento']; ?></option>; 
+                             
+
+                             
+
+                        
+                    </div>
+				</tr>
+	 <?php 
+         }
+          
+		}
+	 ?>
+     <br>
+     </select> <br> <br> <br> 
+     <input type="submit" class="boton" onclick="return confirm()" value="Aceptar Peticion"><br> <br>
+     </form> 
+	</div>
+			<?php 
+			
+				if (!empty($_POST['prf2'])){
+							//$sql= "UPDATE cuentausuariotipopremiun SET validada = 'Si' WHERE nombre_Usuario = '".$_POST['prf2']."'";
+							$sql= "DELETE FROM cuentausuariotipopremium WHERE '".$_POST['prf2']."'=nombre_Usuario";
+					        $result=mysqli_query($conexion,$sql);
+                            echo "<font color=white  size='5pt'> La cuenta ha sido activada como basica </font>";
+                }
+
+
+			?>
+	 </div>
 		
 	<div class="barraFin">
 		<p class="textoBarra">Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Valentin Gallardo 15292/9</p>
