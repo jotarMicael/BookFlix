@@ -173,7 +173,7 @@
 				if(mysqli_num_rows($result) == 0){
 					?>
 			<div class="divMargin">
-			<form>
+			<form action="finishBook.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
 			<input type="submit" class="boton" onclick="return confirm()" value="Finalizar Lectura"><br> 
      		</form> 
 			</div>

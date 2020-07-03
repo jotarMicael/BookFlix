@@ -34,11 +34,16 @@ include('conexion.php');
 				
 		   	</div>
 			   <?php
+				$sql2= "SELECT id_Capitulo FROM capitulo WHERE nombre_capitulo= '".$_GET['nCap']."'";
+  				$result2=mysqli_query($conexion,$sql2);
+				 $mostrar=mysqli_fetch_array($result2, MYSQLI_ASSOC);
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-				if(mysqli_num_rows($result) == 0){
+				$result3 = mysqli_query($conexion, "SELECT nombre_Perfil FROM perfilleyocapitulo WHERE nombre_Perfil = '".$_SESSION['perfilNombre']."' ");
+				if((mysqli_num_rows($result) == 0)&&(mysqli_num_rows($result3) == 0)){
+					$_SESSION['idC']=$mostrar['id_Capitulo'];
 					?>
 			<div class="divMargin">
-			<form>
+			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data" onclick="return confirm();">
 			<input type="submit" class="boton" onclick="return confirm()" value="Finalizar Lectura"><br> 
      		</form> 
 			</div>

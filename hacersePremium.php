@@ -123,7 +123,7 @@
 			  y condiciones expuestos en la plataforma.
 			   </strong></label><br> <br>
 			   <form action="addPremium.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
-			   <input type="submit" class="boton" value="Hacerse premium"><br>
+			   <input type="submit" class="boton" value="Aceptar"><br>
 				</form> <br> <br>
 				<form action="verYCrearPerfiles.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
 			   <input type="submit" class="boton" value="Cancelar"><br>
