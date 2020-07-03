@@ -99,7 +99,7 @@ include('conexion.php');
                    
 				<?php
                     
-					$sql2="SELECT nombre_Usuario from cuentausuariotipopremiun WHERE validada='No' ";
+					$sql2="SELECT nombre_Usuario,fecha_Vencimiento from cuentausuariotipopremiun WHERE validada='No' ";
 					$result=mysqli_query($conexion,$sql2);
 					if(mysqli_num_rows($result) == 0) {
                         echo "<font color=white  size='5pt'> No hay peticiones </font>"; }
@@ -113,7 +113,7 @@ include('conexion.php');
 						<br>
                         
                                 
-                             <option><?php echo $mostrar['nombre_Usuario'];?></option> 
+                             <option value="<?php echo $mostrar['nombre_Usuario'];?> "><?php echo $mostrar['nombre_Usuario']; echo '  -  '; echo $mostrar['fecha_Vencimiento']; ?></option>; 
                              
 
                              

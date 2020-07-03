@@ -47,7 +47,14 @@ include('conexion.php');
 			<input type="submit" class="boton" onclick="return confirm()" value="Finalizar Lectura"><br> 
      		</form> 
 			</div>
-			<?php }?>
+			<?php }
+			else{
+				if(mysqli_num_rows($result) == 0){
+			?>
+			<form action="crearReseña.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<input type="submit" class="boton" onclick="return confirm()" value="Dejar Reseña"><br> 
+     		</form> 
+			 <?php } } ?>
 	 </div>
 		
 	<div class="barraFin">
