@@ -16,7 +16,7 @@
 	date_default_timezone_set('America/Argentina/Buenos_Aires');
 	$fecha= date('Y-m-d H:i:s');
 
-	$result = mysqli_query($conexion, "INSERT INTO interaccion(fechaHora,nombre_Perfil,id_Libro) VALUES ('" . $_POST['publish'] . "', '$fecha')");
+	$result = mysqli_query($conexion, "INSERT INTO interaccion(fechaHora,nombre_Perfil,id_Libro,nombre_Capitulo) VALUES ('" . $_POST['publish'] . "', '$fecha')");
 	header("Location: Home.php");
 	exit;
 ?>
