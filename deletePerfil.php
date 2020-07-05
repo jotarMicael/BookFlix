@@ -138,7 +138,8 @@ include('conexion.php');
 				if (!empty($_POST['prf'])){
                             $sql= "DELETE FROM perfil WHERE '".$_POST['prf']."'=nombre_Perfil and '". $_SESSION["usuario"]["nombre_Usuario"] ."'=nombre_Usuario ";
 					        $result=mysqli_query($conexion,$sql);
-                            echo "<font color=white  size='5pt'> Eliminado Correctamente </font>";
+							echo "<font color=white  size='5pt'> Eliminado Correctamente </font>";
+							header('Location: verYCrearPerfiles.php');
                 }
 
 
