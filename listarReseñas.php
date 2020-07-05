@@ -9,7 +9,7 @@
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptInicio.js"></script>
-	<title>Perfil</title>
+	<title>Reseñas</title>
 </head>
 <body background="Imagenes/2.jpg">
 	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
@@ -32,11 +32,12 @@
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
-	    		<textarea cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
+	    		<textarea disabled cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
+	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
 				</form>
 	    	</div>
             </div>
