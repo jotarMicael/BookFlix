@@ -37,7 +37,7 @@
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
+	    		<h5 class="textoBarraTop">  </h5>	
 				</form>
 	    	</div>
             </div>
