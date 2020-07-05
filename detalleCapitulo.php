@@ -28,11 +28,19 @@ include('conexion.php');
 					<a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $_GET['nCap'];?>" class="labelWhite"><strong> Leer: <?php
 				 echo $_GET['nCap']."<br /> <br />"?>  </strong>
 					
-				  </div>
-
+				  
 				  
 				
 		   	</div>
+			   </div>
+				  <div class="divMargin">
+			 <br> <br>
+			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
+			<input type="submit" class="boton" value="Ver Reseñas"><br> 
+     		</form> 
+			 </div>
 			   <?php
 				$sql2= "SELECT id_Capitulo FROM capitulo WHERE nombre_capitulo= '".$_GET['nCap']."' and id_Libro='".$_GET['idLibro']."' ";
   				$result2=mysqli_query($conexion,$sql2);
