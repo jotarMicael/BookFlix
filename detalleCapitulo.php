@@ -53,7 +53,13 @@ include('conexion.php');
 			?>
 			<form action="crearReseña.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
 			<input type="submit" class="boton" onclick="return confirm()" value="Dejar Reseña"><br> 
+     		</form>
+			 <div class="divMargin">
+			 <br> <br>
+			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<input type="submit" class="boton" onclick="return confirm()" value="Calificar"><br> 
      		</form> 
+			 </div>
 			 <?php } } ?>
 	 </div>
 		
