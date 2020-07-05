@@ -22,7 +22,6 @@
 							
 						?>
 				<div class="fondoComentarios">
-				<form action="crearReseña.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
@@ -32,13 +31,18 @@
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
-	    		<textarea disabled cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
+	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-	    		<h5 class="textoBarraTop">  </h5>	
+				<form action="crearReseña.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
+				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
+				<div>
+					<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+				</div>
+				
 	    	</div>
             </div>
 						<?php 
