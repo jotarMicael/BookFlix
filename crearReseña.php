@@ -20,26 +20,23 @@ include('conexion.php');
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese la reseña</h2>
-			
-				
 			<div class="fondoComentarios">
-				<form action="publicarReseña.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
+				<form action="crearReseña.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
 				<div>
 					<input type="checkbox" name="spoiler" id="spoiler">Spoiler
 				</div>
-	    		<h5 class="textoBarraTop"><?php echo $_SESSION['nombrePerfil']; ?></h5>		
+	    		<h5 class="textoBarraTop"><?php echo $_SESSION['perfilNombre']; ?></h5>		
 	    	</div>
 	    	<div>
 	    		<textarea cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"></textarea>
 				
 	    	</div>
 	    	<div class="barraBot">
-			
 	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
-				
+				</form>
 	    	</div>
 			
 	    
@@ -48,23 +45,22 @@ include('conexion.php');
 				
 		   	</div>
 			<?php 
-				if (isset($_POST['publish'])){
+				
+				if (!empty($_POST['publish'])){
+						if (empty($_POST['spoiler']))
+							$_POST['spoiler']='No';
+						else
+							$_POST['spoiler']='Si';
 
-					//Consulto en la bbdd si ya existe la noticia que quiero ingresar
-					$sql= "SELECT texto FROM noticia WHERE texto = '".$_POST['publish']."'";
-					$result=mysqli_query($conexion,$sql);
-					
-					if( mysqli_num_rows($result) == 1 ){
-						echo "<font color=white  size='5pt'>Esta noticia ya se encuentra cargada en el sistema</font>";
-						//ingreso la noticia
-					}
-					else {
-						$sql= "INSERT INTO noticia(texto) VALUES ('" .$_POST["publish"]."')";
+						$fechaHora=date('Y-m-d g:ia');
+						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto) VALUES ('$fechaHora',".$_SESSION["perfilNombre"]."',".$_POST['idLibro']."',".$_POST['spoiler']."',".$_POST['nCap']."'," .$_POST["publish"]."')";
 						$result=mysqli_query($conexion,$sql);
-						echo "<font color=white  size='5pt'> La noticia se ha cargado correctamente</font>";
+						echo "<font color=white  size='5pt'> La reseña se ha cargado correctamente</font>";
 
-					}
+					
 				}
+				else
+					echo 'Debe ingresar un texto';
 			?>
 	 </div>
 		
