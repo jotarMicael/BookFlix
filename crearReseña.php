@@ -21,7 +21,7 @@ include('conexion.php');
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese la reseña</h2>
 			<div class="fondoComentarios">
-				<form action="crearReseña.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
+				<form action="crearReseña.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
@@ -31,10 +31,12 @@ include('conexion.php');
 	    		<h5 class="textoBarraTop"><?php echo $_SESSION['perfilNombre']; ?></h5>		
 	    	</div>
 	    	<div>
-	    		<textarea cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"></textarea>
+	    		<textarea cols="3" rows="5" class="contenido-publicacion" name="publish" id="publish"></textarea>
 				
 	    	</div>
 	    	<div class="barraBot">
+				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
+				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
 	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
 				</form>
 	    	</div>
@@ -53,9 +55,10 @@ include('conexion.php');
 							$_POST['spoiler']='Si';
 
 						$fechaHora=date('Y-m-d g:ia');
-						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto) VALUES ('$fechaHora',".$_SESSION["perfilNombre"]."',".$_POST['idLibro']."',".$_POST['spoiler']."',".$_POST['nCap']."'," .$_POST["publish"]."')";
+						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"]."')";
 						$result=mysqli_query($conexion,$sql);
-						echo "<font color=white  size='5pt'> La reseña se ha cargado correctamente</font>";
+						$_SESSION['error']='La reseña se ha cargado correctamente';
+						header('Location: home.php');
 
 					
 				}
