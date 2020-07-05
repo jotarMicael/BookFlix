@@ -27,22 +27,19 @@
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
 				<div>
-					<input type="checkbox" name="spoiler" id="spoiler">Spoiler
+                <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
 				</div>
-	    		<h5 class="textoBarraTop"><?php echo $_SESSION['perfilNombre']; ?></h5>		
+	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
-	    		<textarea cols="3" rows="5" class="contenido-publicacion" name="publish" id="publish"></textarea>
+	    		<textarea cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
 				</form>
 	    	</div>
-			
-	    
-	</div>
+            </div>
 						<?php 
 							 } 
 						 ?>
