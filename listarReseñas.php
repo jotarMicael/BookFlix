@@ -18,7 +18,7 @@
 	<h2 class="tituloSecundarioConfiguracion" >Reseñas realizadas por otros usuarios...</h2>
 				
 						<?php 
-							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' and nombre_Capitulo='" .$_POST['nCap']."' ";
+							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' and nombre_Capitulo='" .$_POST['nCap']."' and reportada='No' ";
 							$result2=mysqli_query($conexion,$sql2);
 							while($mostrar2=mysqli_fetch_array($result2)){;
 								if(($mostrar2['spoiler'])=='Si'){

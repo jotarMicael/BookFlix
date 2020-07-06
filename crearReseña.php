@@ -56,7 +56,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 							$_POST['spoiler']='Si';
 
 						$fechaHora=date('Y-m-d g:ia');
-						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"]."')";
+						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto,reportada) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"].",'No')";
 						$result=mysqli_query($conexion,$sql);
 						$_SESSION['error']='La reseña se ha cargado correctamente';
 						header('Location: home.php');
