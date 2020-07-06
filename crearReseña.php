@@ -1,5 +1,6 @@
 <?php session_start(); 
 include('conexion.php');
+date_default_timezone_set('America/Argentina/Jujuy');
  ?>
 <!DOCTYPE html>
 <html>
