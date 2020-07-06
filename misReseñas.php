@@ -25,7 +25,8 @@
 				
 						<?php 
 							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler,nombre_Capitulo FROM reseña where nombre_Perfil='" .$_SESSION['perfilNombre']."' ";
-                            $result2=mysqli_query($conexion,$sql2);
+							$result2=mysqli_query($conexion,$sql2);
+							echo $_SESSION['perfilNombre'];
                             if (!empty($_SESSION['error'])) {
                                 echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
                                 unset($_SESSION['error']);
@@ -42,13 +43,12 @@
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Capitulo']; ?></h5>		
 	    	</div>
 	    	<div>
-				<form action="cancelarReporte.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+				<form action="modificarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 	    		<textarea disabled maxlength="80" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
-				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="submit" class="botonInicio" name="Modificar" value="Modificar">
 				</form>
 				<div>
