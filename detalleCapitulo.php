@@ -69,8 +69,10 @@ include('conexion.php');
 			 <div class="divMargin">
 			 <br> <br>
 			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="confirm();">
-			<input type="submit" class="boton" value="Calificar"><br> 
-     		</form> 
+			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			 <input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>"> 
+			 <input type="submit" class="boton" value="Calificar"><br> 
+     		 </form> 
 			 </div>
 			 <?php } } ?>
 	 </div>

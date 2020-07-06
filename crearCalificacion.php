@@ -22,7 +22,7 @@ include('conexion.php');
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-				  <form action="cargarEditorial.php" method="post" enctype="multipart/form-data">
+				  <form action="crearCalificacion.php" method="post" enctype="multipart/form-data">
                   <p>
                   <h3 class="tituloSecundarioConfiguracion" >Calificacion:</h3>
                   
@@ -40,8 +40,10 @@ include('conexion.php');
                         <label class="labelWhite">(De menor puntaje a mayor puntaje)</label>
                         <br>
                         <br>
-                        
-
+                     <?php if(!empty($_POST['idLibro'])){?>   
+                    <input type="hidden" name="idLibro2" id="idLibro2" value="<?php echo $_POST['idLibro'];?>">
+                    <input type="hidden" name="nCap2" id="nCap2" value="<?php echo $_POST['nCap'];?>"> 
+        <?php }?> 
                     <input type="submit" class="boton" value="Enviar calificacion">
                  </p>
 					</form>
@@ -51,9 +53,10 @@ include('conexion.php');
 			<?php 
 				if (isset($_POST['calificacion'])){
 
-						$sql= "INSERT INTO calificacion (nombre_Editorial) VALUES ('" .$_POST["calificacion"]."')";
+						$sql= "INSERT INTO calificacion (nombre_Perfil,id_Libro,valor,nombre_Capitulo) VALUES ('".$_SESSION['perfilNombre']."','".$_POST['idLibro2']."','" .$_POST["calificacion"]."','" .$_POST["nCap2"]."')";
 						$result=mysqli_query($conexion,$sql);
-						echo "<font color=white  size='5pt'> La editorial se ha cargado correctamente </font>";
+                        $_SESSION['error'] = "Puntaje Enviado";
+                        header("Location: Home.php");
 
 					
 				}
