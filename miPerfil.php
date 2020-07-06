@@ -57,11 +57,9 @@
 		</div>
 		<div class="nombrePanelPerfil">
 			<label class="labelWhite"><?php echo $_SESSION['perfilNombre'] ?> </label>
-			
 		</div>
 		<div class="nombrePanelPerfil">
-			
-			<label class="labelWhite"> Reseñas hechas... </label>
+		<a class="botonInicio" href="misReseñas.php"> Mis reseñas </a>
 		</div>
 	  <div class="barraFin">
 		<p class="textoBarra"> Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin </p>
