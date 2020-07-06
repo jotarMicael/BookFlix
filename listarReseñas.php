@@ -21,7 +21,7 @@
 							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' and nombre_Capitulo='" .$_POST['nCap']."' ";
 							$result2=mysqli_query($conexion,$sql2);
 							while($mostrar2=mysqli_fetch_array($result2)){;
-							if(($mostrar2['spoiler'])=='Si'){
+								if(($mostrar2['spoiler'])=='Si'){
 						?>
 			
 				<div class="fondoComentarios">
@@ -69,7 +69,7 @@
 	    	</div>
 	    	<div>
 				<form action="detalleComentario.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
-	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
+	    		<textarea disabled maxlength="80" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
