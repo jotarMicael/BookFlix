@@ -99,16 +99,16 @@ include('conexion.php');
                 <form method="POST" action="deletePerfil.php" enctype="multipart/form-data">
                   
 				<?php
+					echo $_SESSION["usuario"]["nombre_Usuario"];
                     //Se fija si hay perfiles
                     
-					$sql="SELECT nombre_Perfil, imagen from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
-					$result=mysqli_query($conexion,$sql);
-					//
-					if( mysqli_num_rows($result) == 0 ) {
+					$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
+					$result1=mysqli_query($conexion,$sql1);
+					
+					if( mysqli_num_rows($result1) == 0 ) {
                     	echo "<font color=white  size='5pt'> La cuenta no posee ningun perfil </font>"; }
 					else {
-					$_SESSION['actualizar']=0;
-					while($mostrar=mysqli_fetch_array($result)){
+					while($mostrar=mysqli_fetch_array($result1)){
 				?>
 				<select name="prf" id="prf">  
 				<tr>	
@@ -116,7 +116,8 @@ include('conexion.php');
 						<br>
                         
                                 
-                             <option><?php echo $mostrar['nombre_Perfil'];?></option> 
+							 <option><?php echo $mostrar['nombre_Perfil'];?></option> 
+							
                              
 
                              
@@ -130,13 +131,13 @@ include('conexion.php');
 		}
 	 ?>
      </select>
-     <input type="submit" class="boton" onclick="return confirm()" value="Eliminar"><br> 
+     <input type="submit" class="boton" onclick="confirm()" value="Eliminar"><br> 
      </form> 
 	</div>
 			<?php 
 			
 				if (!empty($_POST['prf'])){
-                            $sql= "DELETE FROM perfil WHERE '".$_POST['prf']."'=nombre_Perfil and '". $_SESSION["usuario"]["nombre_Usuario"] ."'=nombre_Usuario ";
+                            $sql= "DELETE FROM perfil WHERE '".$_POST['prf']."'=nombre_Perfil AND '". $_SESSION["usuario"]["nombre_Usuario"] ."'=nombre_Usuario ";
 					        $result=mysqli_query($conexion,$sql);
 							echo "<font color=white  size='5pt'> Eliminado Correctamente </font>";
 							header('Location: verYCrearPerfiles.php');
