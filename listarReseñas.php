@@ -36,12 +36,14 @@
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div  id="content" style="display:none">
+				<form action="detalleComentario.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
+				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
+				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-				<form action="detalleComentario.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
 				<div>
@@ -67,12 +69,14 @@
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
+				<form action="detalleComentario.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
+			<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
+				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-				<form action="detalleComentario.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
 				<div>
