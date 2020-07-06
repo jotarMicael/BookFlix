@@ -25,8 +25,14 @@ include('conexion.php');
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-				
-					<label class="labelWhite"> Este capitulo tiene una recomendacion de X estrellas por los usuarios que lo han leido. </label><br><br>
+					<?php     $sql2="SELECT sum(valor) FROM calificacion WHERE id_Libro=74 AND nombre_Capitulo='Libro Completo' ";
+							  $result2=mysqli_query($conexion,$sql2);
+							  foreach($result2 as $row)
+							  while($mostrar2=mysqli_fetch_array($result2))	
+							  echo $row['sum(valor)'];
+							  
+	  				?>
+					<label class="labelWhite"> Este capitulo tiene una recomendacion de <?php echo $row['sum(valor)'];?> estrellas por los usuarios que lo han leido. </label><br><br>
 					<a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $_GET['nCap'];?>" class="labelWhite"><strong> Leer: <?php
 				 echo $_GET['nCap']."<br /> <br />"?>  </strong>
 					
