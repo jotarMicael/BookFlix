@@ -41,7 +41,7 @@
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-				<form action="crearReseña.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
+				<form action="detalleComentario.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
 				<div>
@@ -72,7 +72,7 @@
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-				<form action="crearReseña.php" method="post" enctype="multipart/form-data">
+				<form action="detalleComentario.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
 				<div>
