@@ -8,7 +8,7 @@
 	<link href="all.css" rel="stylesheet" type="text/css">
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
-	<script type="text/javascript" src="scriptInicio.js"></script>
+	<script type="text/javascript" src="scriptMostrar.js"></script>
 	<title>Reseñas</title>
 </head>
 <body background="Imagenes/2.jpg">
@@ -26,12 +26,14 @@
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
+				<input class="form-check-input" type="checkbox" id="check" name="check" value="Ver spoiler" onclick="mostrarInput()">
 				<div>
+				
                 <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
-				</div>
+				</div >
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
-	    	<div>
+	    	<div  id="content" style="display:none">
 	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
