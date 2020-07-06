@@ -7,7 +7,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
-	<title>Crear Reseña</title>
+	<title>Comentarios</title>
 </head>
 <body background= "Imagenes/2.jpg">
 	<h3 class="tituloTerciarioConfiguracion">
@@ -35,7 +35,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
 				<div>
-					
+                <h5 class="textoBarraTop"><?php echo $mostrar['fechaHora']; ?></h5>
 				</div>
 	    		<h5 class="textoBarraTop"><?php echo $mostrar['nombre_Perfil']; ?></h5>		
 	    	</div>
