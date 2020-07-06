@@ -18,10 +18,10 @@
 	<h2 class="tituloSecundarioConfiguracion" >Reseñas realizadas por otros usuarios...</h2>
 				
 						<?php 
-							$sql2="SELECT fechaHora,nombre_Perfil,texto FROM reseña where id_Libro = '" .$_POST['idLibro']."' and nombre_Capitulo='" .$_POST['nCap']."' ";
+							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' and nombre_Capitulo='" .$_POST['nCap']."' ";
 							$result2=mysqli_query($conexion,$sql2);
 							while($mostrar2=mysqli_fetch_array($result2)){;
-							
+							if(($mostrar2['spoiler'])=='Si'){
 						?>
 			
 				<div class="fondoComentarios">
@@ -54,9 +54,40 @@
 			</div>
 			
 						<?php 
-							 } 
+							 }
+							else{
+								
 						 ?>
-					 
+						 <div class="fondoComentarios">
+				<div class="comentario">
+	    			<div class="cuerpoComentario">
+	    		<div class="barraTop-publicacion">
+				<div>
+                <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
+				</div >
+	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
+	    	</div>
+	    	<div>
+	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
+	    	</div>
+	    	<div class="barraBot">
+				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
+				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
+				<form action="crearReseña.php" method="post" enctype="multipart/form-data">
+				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
+				</form>
+				<div>
+					<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+				</div>
+				
+	    	</div>
+            </div>
+			</div>
+			<?php 
+				}
+			}
+								
+			  ?>	 
 
 				
 	
