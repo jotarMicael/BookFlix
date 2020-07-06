@@ -28,10 +28,9 @@
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
-				<input class="form-check-input" type="checkbox" id="check" name="check" value="Ver spoiler" onclick="mostrarInput()">
-
+				<h5 class="textoBarraTop">Ver spoiler...</h5>
+				<input class="form-check-input" type="checkbox" id="check" name="check" value="Ver spoiler" onclick="mostrarInput()">			
 				<div>
-				
                 <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
 				</div >
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
