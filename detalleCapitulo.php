@@ -6,6 +6,7 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript" src="scriptMostrar.js"></script>
 	<script type="text/javascript" src="scriptConfirm.js"></script>
 	<title>Detalle Del Capitulo</title>
 </head>
@@ -67,8 +68,8 @@ include('conexion.php');
      		</form>
 			 <div class="divMargin">
 			 <br> <br>
-			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
-			<input type="submit" class="boton" onclick="return confirm()" value="Calificar"><br> 
+			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="confirm();">
+			<input type="submit" class="boton" value="Calificar"><br> 
      		</form> 
 			 </div>
 			 <?php } } ?>
