@@ -60,10 +60,10 @@ include('conexion.php');
 			else{
 				if(mysqli_num_rows($result) == 0){
 			?>
-			<form action="crearReseña.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<form action="crearReseña.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
-			<input type="submit" class="boton" onclick="return confirm()" value="Dejar Reseña"><br> 
+			<input type="submit" class="boton" value="Dejar Reseña"><br> 
      		</form>
 			 <div class="divMargin">
 			 <br> <br>

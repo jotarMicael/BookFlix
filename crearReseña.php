@@ -16,13 +16,13 @@ date_default_timezone_set('America/Argentina/Jujuy');
 			unset($_SESSION['error']);} ?> </h3>
 	<div class="barraInicio">	
 		<div class="divBotones"> 
-		<a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
+		<a class="botonInicio" href="Home.php"> Inicio </a>
 	    </div>		
 	 </div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese la reseña</h2>
 			<div class="fondoComentarios">
-				<form action="crearReseña.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
+				<form action="crearReseña.php" method="post" enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
@@ -56,7 +56,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 							$_POST['spoiler']='Si';
 
 						$fechaHora=date('Y-m-d g:ia');
-						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto,reportada) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"].",'No')";
+						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto,reportada) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"]."','No')";
 						$result=mysqli_query($conexion,$sql);
 						$_SESSION['error']='La reseña se ha cargado correctamente';
 						header('Location: home.php');
