@@ -21,6 +21,7 @@
 							while($mostrar2=mysqli_fetch_array($result2)){;
 							
 						?>
+			
 				<div class="fondoComentarios">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
@@ -31,7 +32,7 @@
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
-	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
+	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
@@ -45,9 +46,12 @@
 				
 	    	</div>
             </div>
+			</div>
 						<?php 
 							 } 
 						 ?>
+					 
+
 				
 	
 	  <div class="barraFin">
