@@ -38,7 +38,6 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	    	</div>
 	    	<div>
 	    		<textarea disabled class="contenido-publicacion" name="publish" id="publish"> <?php echo $_POST['texto'];?></textarea>
-				
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
