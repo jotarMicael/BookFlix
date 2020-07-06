@@ -35,7 +35,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
 				<div>
-					<input type="checkbox" name="spoiler" id="spoiler">Spoiler
+					
 				</div>
 	    		<h5 class="textoBarraTop"><?php echo $mostrar['nombre_Perfil']; ?></h5>		
 	    	</div>
@@ -46,6 +46,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	    	<div class="barraBot">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
+                <h5 class="textoBarraTop">Comentario completo</h5>	
 				
 	    	</div>
 			
@@ -54,25 +55,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	</form>	
 				
 		   	</div>
-			<?php 
-				
-				if (!empty($_POST['publish'])){
-						if (empty($_POST['spoiler']))
-							$_POST['spoiler']='No';
-						else
-							$_POST['spoiler']='Si';
-
-						$fechaHora=date('Y-m-d g:ia');
-						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"]."')";
-						$result=mysqli_query($conexion,$sql);
-						$_SESSION['error']='La reseña se ha cargado correctamente';
-						header('Location: home.php');
-
-					
-				}
-				else
-					echo 'Debe ingresar un texto';
-			?>
+			
 	 </div>
 		
 	<div class="barraFin">
