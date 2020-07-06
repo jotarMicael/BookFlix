@@ -6,6 +6,7 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript" src="scriptConfirm.js"></script>
 	<title>Detalle Del Capitulo</title>
 </head>
 <body background= "Imagenes/2.jpg">
@@ -35,7 +36,7 @@ include('conexion.php');
 			   </div>
 				  <div class="divMargin">
 			 <br> <br>
-			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="confirm()">
 			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
 			<input type="submit" class="boton" value="Ver Reseñas"><br> 
@@ -51,8 +52,8 @@ include('conexion.php');
 					$_SESSION['idC']=$mostrar['id_Capitulo'];
 					?>
 			<div class="divMargin">
-			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data" onclick="return confirm();">
-			<input type="submit" class="boton" onclick="return confirm()" value="Finalizar Lectura"><br> 
+			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data" onclick="confirm()">
+			<input type="submit" class="boton" onclick="confirm()" value="Finalizar Lectura"><br> 
      		</form> 
 			</div>
 			<?php }

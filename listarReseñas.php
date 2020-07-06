@@ -9,6 +9,8 @@
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptMostrar.js"></script>
+	<script type="text/javascript" src="scriptConfirm.js"></script>
+	
 	<title>Reseñas</title>
 </head>
 <body background="Imagenes/2.jpg">
@@ -27,6 +29,7 @@
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
 				<input class="form-check-input" type="checkbox" id="check" name="check" value="Ver spoiler" onclick="mostrarInput()">
+
 				<div>
 				
                 <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
@@ -49,6 +52,7 @@
 	    	</div>
             </div>
 			</div>
+			
 						<?php 
 							 } 
 						 ?>

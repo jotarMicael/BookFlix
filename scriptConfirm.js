@@ -1,6 +1,6 @@
 function confirm(){
 
-    var respuesta=alert("¿Esta seguro que desea eliminar dicha informacion?");
+    var respuesta =confirm ('¿Esta seguro que desea eliminar dicha informacion?');
     
     if ((respuesta) == true)
         return true;
