@@ -99,7 +99,6 @@ include('conexion.php');
                 <form method="POST" action="deletePerfil.php" enctype="multipart/form-data">
                   
 				<?php
-					echo $_SESSION["usuario"]["nombre_Usuario"];
                     //Se fija si hay perfiles
                     
 					$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
