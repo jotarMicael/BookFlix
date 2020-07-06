@@ -103,6 +103,8 @@
 		    </div>
 			<div class="divBotones">
 			<form action="Busqueda.php" method="POST" enctype="multipart/form-data">
+		<div style="display: flex;">
+			<div>
 			<label class="labelWhite">Autor/es: </label><br>
 					<select name="nombreCompletoAutor" id="nombreCompletoAutor">
 					<option value="Todos">Todos</option>
@@ -124,6 +126,8 @@
 						}
 						?>
 					</select> <br>
+			</div>
+			<div>
 					<label class="labelWhite">Genero: </label><br>
 					<select name="genero" id="genero" > 
 					<option value="Todos">Todos</option>
@@ -144,6 +148,8 @@
 						}
 						?>
 					</select>
+			</div>
+			<div>
 					<label class="labelWhite">Editorial: </label><br>
 					<select name="nombreEditorial" id="nombreEditorial" >
 					<option value="Todos">Todos</option>
@@ -164,10 +170,13 @@
 						}
 						?>
 					</select> <br> 
-			
+			</div>
+			<div style="margin-left: 10px; margin-top: 17px;">
          		 <input class="text" type="search" name="busca" autofocus  size="18" autocomplete="on" >
 
          		 <input type="submit" class="botonInicio" value="Buscar"></a>
+         	</div>
+         </div>
         	</form>
 		    </div>
 			<div class="divBotones">
@@ -203,9 +212,11 @@
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 1){
 					?>
+					<div style="margin-top: 10px;">
 					<li><a href="acceptPremiun.php" class="botonInicio">Peticiones a premium</a></li>
+					</div>
+					<div style="position: relative; z-index: 3;">
 					<ul class="nav">
-					
 						<li><a class="botonInicio" href="" >Administrar datos</a>
 					
 						<ul>
@@ -233,9 +244,11 @@
 
 				<?php
 				}
-			?>	
+			?>
+				</div>	
 	</div>
-				<div class="divLibrosRandom" style="width:1450px; hight:auto;">
+		<div>
+				<div class="divLibrosRandom" style="width:1120px; hight:auto; display: flex;">
 						<?php 
 							$actual=date('Y-m-d');
 							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro ORDER BY RAND()";
@@ -254,7 +267,7 @@
 							 } } 
 						 ?>
 				</div>
-				<div style="margin-right: -60px; margin-top: 290px;" class="divNotificaciones">
+				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
 	<?php 
 							$sql="SELECT * from noticia ";
 							$result=mysqli_query($conexion,$sql);
@@ -281,6 +294,7 @@
 							<?php }
 							?>
 				</div>
+		</div>
 				<div style="margin-right: 2px; text-align: right;">
 				<h2 class="tituloSecundarioConfiguracion" >¡Nuevos Trailers!</h2></div>
 				<?php $sql6="SELECT * from trailer  ORDER BY RAND()
