@@ -14,6 +14,11 @@
 	
 	<title>Reportes de reseñas</title>
 </head>
+<div class="barraInicio" >
+		<div class="divBotones">
+          <a class="botonInicio" href="Home.php?&perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
+	    </div> 
+	</div>
 <body background="Imagenes/2.jpg">
 	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<h2 class="tituloSecundarioConfiguracion" >Reportes realizados por los usuarios: </h2>
