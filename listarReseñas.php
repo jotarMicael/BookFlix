@@ -1,5 +1,9 @@
 <?php session_start();
  include('conexion.php');
+ if (!empty($_SESSION['error'])) {
+	echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+	unset($_SESSION['error']);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +50,10 @@
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
 				<div>
+					<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+					<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 					<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+					</form>
 				</div>
 				
 	    	</div>
@@ -78,7 +85,10 @@
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
 				<div>
-					<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+					<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+						<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
+						<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+					</form>
 				</div>
 				
 	    	</div>
