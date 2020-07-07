@@ -122,7 +122,7 @@ if (!empty($_SESSION['error'])) {
 					<div>
 					<select name="nombreEditorial" id="nombreEditorial">
 						<?php 
-							$sql= "SELECT nombre_Editorial FROM editorial";
+							$sql= "SELECT nombre_Editorial FROM editorial WHERE disponible='Si' ";
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ninguna editorial creada";
@@ -161,7 +161,7 @@ if (!empty($_SESSION['error'])) {
 					<label class="labelWhite">Genero: </label><br>
 					<select name="genero[]" id="genero[]" multiple >
 						<?php 
-							$sql= "SELECT nombre_Genero FROM genero";
+							$sql= "SELECT nombre_Genero FROM genero WHERE disponible='Si' ";
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ningun genero creado";

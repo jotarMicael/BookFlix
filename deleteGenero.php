@@ -111,7 +111,8 @@ include('conexion.php');
                     $result=mysqli_query($conexion,$sql);
                     $mostrar=mysqli_fetch_array($result);
 					if( mysqli_num_rows($result) == 1 ){  
-                            $sql="DELETE FROM genero WHERE '".$_POST['genero']."'=nombre_Genero ";
+							//$sql="DELETE FROM genero WHERE '".$_POST['genero']."'=nombre_Genero ";
+							$sql= "UPDATE genero SET disponible = 'No' WHERE nombre_Genero = '".$_POST['genero']."' ";
 					        $result=mysqli_query($conexion,$sql);
                             echo "<font color=white  size='5pt'> Eliminado Correctamente </font>";
                     }
