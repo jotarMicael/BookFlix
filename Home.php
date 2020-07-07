@@ -6,10 +6,6 @@
 		$_SESSION['actualizar']=1;
 	}
 	
-	if (!empty($_SESSION['error'])) {
-		echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
-		unset($_SESSION['error']);
-	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,9 +21,10 @@
 		if (empty($_SESSION['usuario'])) {
 			header('Location: index.php');
 			exit;}
-		if (!empty($_SESSION['error'])){
-			echo $_SESSION['error'];
-			unset($_SESSION['error']);}
+		if (!empty($_SESSION['error'])) {
+			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);
+		}
  		?>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}

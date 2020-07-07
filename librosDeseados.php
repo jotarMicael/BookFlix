@@ -27,15 +27,21 @@
 	</div>
 	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<h2 class="tituloSecundarioConfiguracion" >Lista de Deseos:</h2>
-    <?php if (!empty($_SESSION['error'])){
-    		echo $_SESSION['error'];
-			unset($_SESSION['error']);} ?>
+    <?php if (!empty($_SESSION['error'])) {
+			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);
+		} ?>
 				
 						<?php 
 							$sql2="SELECT id_Libro from listadeseos where nombre_Perfil = '" .$_SESSION['perfilNombre']."' AND nombre_Capitulo='' ";
-							$result2=mysqli_query($conexion,$sql2);
+                            $result2=mysqli_query($conexion,$sql2);
+                            if(mysqli_num_rows($result2) == 0){ ?>
+                                <h2 class="tituloSecundarioConfiguracion" >No hay libros añadidos</h2>
+                        <?php
+                            }
+                            else{
 							while($mostrar2=mysqli_fetch_array($result2)){;
-							
+                            
 
 							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro from libro where id_Libro = '" .$mostrar2['id_Libro']."' ";
 							$result=mysqli_query($conexion,$sql);
@@ -55,7 +61,7 @@
 							</div>
                         <?php 
                         echo $_SESSION['perfilNombre'];
-							 } }
+							 } } }
 						 ?>
 				
 </body>
