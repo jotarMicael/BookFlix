@@ -105,6 +105,11 @@ include('conexion.php');
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
 			<input type="submit" class="boton" value="Dejar reseña"><br> 
+			<?php $sql9= "SELECT id_Libro FROM calificacion WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Capitulo='".$_GET['nCap']."' ";
+				$result8=mysqli_query($conexion,$sql9);
+				if(mysqli_num_rows($result8) == 0){
+			
+			?>
      		</form>
 			 <div class="divMargin">
 			 <br> <br>
@@ -114,7 +119,7 @@ include('conexion.php');
 			 <input type="submit" class="boton" value="Calificar"><br> 
      		 </form> 
 			 </div>
-			 <?php } } ?>
+			 <?php } } } ?>
 	 </div>
 		
 	<div class="barraFin">
