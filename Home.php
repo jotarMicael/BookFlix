@@ -282,6 +282,30 @@
 							</div>
 							<?php } ?>
 				</div>
+				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
+				<label class="labelWhite">Editoriales mas leidas: </label><br><br>
+				<?php 
+							$sql11="SELECT nombre_Editorial,leido FROM editorial GROUP BY nombre_Editorial ORDER BY leido DESC LIMIT 3 ";
+							$result11=mysqli_query($conexion,$sql11);
+							while($mostrar11=mysqli_fetch_array($result11))	{		
+						  ?>
+							<div class="cuerpoComentario">
+								<label class="labelWhite"> <?php echo $mostrar11['nombre_Editorial']; echo ' '; echo 'con';echo ' '; echo $mostrar11['leido'];echo ' '; echo 'leidos' ?></label><br><br>
+							</div>
+							<?php } ?>
+				</div>
+				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
+				<label class="labelWhite">Generos mas leidos: </label><br><br>
+				<?php 
+							$sql11="SELECT nombre_Genero,leido FROM genero GROUP BY nombre_Genero ORDER BY leido DESC LIMIT 3 ";
+							$result11=mysqli_query($conexion,$sql11);
+							while($mostrar11=mysqli_fetch_array($result11))	{		
+						  ?>
+							<div class="cuerpoComentario">
+								<label class="labelWhite"> <?php echo $mostrar11['nombre_Genero']; echo ' '; echo 'con';echo ' '; echo $mostrar11['leido'];echo ' '; echo 'leidos' ?></label><br><br>
+							</div>
+							<?php } ?>
+				</div>
 							<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
 	<?php 
 							$sql="SELECT * from noticia ";
