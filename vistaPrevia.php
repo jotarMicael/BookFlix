@@ -175,7 +175,10 @@
 							  $result4=mysqli_query($conexion,$sql4);
 
 							  foreach($result2 as $row)
-							  $pr=($row['sum(valor)'])/(mysqli_num_rows($result4))
+							  $pr=($row['sum(valor)'])/(mysqli_num_rows($result4));
+							  
+					   $sql10= "UPDATE libro SET puntaje = '$pr' WHERE id_Libro='".$_GET['idLibro']."' ";
+					   $result9=mysqli_query($conexion,$sql10);
 							 	  
 	  				?>
 			 <label class="labelWhite"> Este libro tiene una calificacion promedio de <strong><?php if(is_nan($pr)) $pr='(Sin calificaciones)'; echo $pr;?></strong> puntos por los usuarios que lo han leido. </label><br><br>
