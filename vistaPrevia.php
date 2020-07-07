@@ -167,6 +167,19 @@
 				 echo $mostrar4['nombre_Capitulo']."<br /> <br />"; $n= $n+1;?> 
 				
 			 </strong> <?php } ?> </a>
+
+			 <?php     $sql2="SELECT sum(valor) FROM calificacion WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Capitulo='' ";
+							  $result2=mysqli_query($conexion,$sql2);
+
+							  $sql4="SELECT id_Calificacion FROM calificacion WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Capitulo='' ";
+							  $result4=mysqli_query($conexion,$sql4);
+
+							  foreach($result2 as $row)
+							  $pr=($row['sum(valor)'])/(mysqli_num_rows($result4))
+							 	  
+	  				?>
+			 <label class="labelWhite"> Este libro tiene una calificacion promedio de <strong><?php if(is_nan($pr)) $pr='(Sin calificaciones)'; echo $pr;?></strong> puntos por los usuarios que lo han leido. </label><br><br>
+		
 			</div>
 			<?php $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Libro='".$_GET['titulo']."' ";
 				  $result3=mysqli_query($conexion,$sql3);
