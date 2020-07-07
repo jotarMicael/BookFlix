@@ -248,11 +248,15 @@
 		<div>
 		<a class="botonInicio" href="ultimosLibrosAñadidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Ultimos libros añadidos</a></li>
 		<a class="botonInicio" href="librosMasPopulares.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas populares</a></li>
-		<a class="botonInicio" href="librosMasLeidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas leidos</a></li>
 				<div class="divLibrosRandom" style="width:1120px; hight:auto; display: flex;">
 						<?php 
-							$actual=date('Y-m-d');
-							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro ORDER BY RAND()";
+                            $actual=date('Y-m-d');
+                            $sql2="SELECT id_Libro, COUNT( id_Libro ) AS total FROM perfilleyolibro GROUP BY id_Libro ORDER BY total DESC ";
+                            $result0=mysqli_query($conexion,$sql2);
+                            while($mostrar3=mysqli_fetch_array($result0)){
+                        
+
+							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro where id_Libro='".$mostrar3['id_Libro']."'";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 								if(($mostrar['fecha_DeBaja'])>($actual)){
@@ -265,7 +269,7 @@
 								<br>
 							</div>
 						<?php 
-							 } } 
+							 } } } 
 						 ?>
 				</div>
 				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
