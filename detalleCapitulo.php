@@ -43,10 +43,27 @@ include('conexion.php');
 			   </div>
 				  <div class="divMargin">
 			 <br> <br>
+			 <?php $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE nombre_Capitulo= '".$_GET['nCap']."' AND id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' ";
+				  $result3=mysqli_query($conexion,$sql3);
+				  if( mysqli_num_rows($result3) <> 1 ){?>
+					<form action="addListaDeseos.php" method="post" enctype="multipart/form-data" >
+					<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+					<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
+					<input type="submit" class="boton" value="Agregar a lista de deseos"><br> 
+				 	</form>  
+					 <br>
+			 <?php }?>
+				<form action="crearReseña.php" method="post" enctype="multipart/form-data" >
+				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
+				<input type="submit" class="boton" value="Dejar reseña"><br> 
+				 </form>  
+				 <br>
+				  
 			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="confirm()">
 			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
-			<input type="submit" class="boton" value="Ver Reseñas"><br> 
+			<input type="submit" class="boton" value="Ver reseñas"><br> 
      		</form> 
 			 </div>
 			   <?php
@@ -60,7 +77,7 @@ include('conexion.php');
 					?>
 			<div class="divMargin">
 			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data" onclick="confirm()">
-			<input type="submit" class="boton" onclick="confirm()" value="Finalizar Lectura"><br> 
+			<input type="submit" class="boton" onclick="confirm()" value="Finalizar lectura"><br> 
      		</form> 
 			</div>
 			<?php }
@@ -70,7 +87,7 @@ include('conexion.php');
 			<form action="crearReseña.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
-			<input type="submit" class="boton" value="Dejar Reseña"><br> 
+			<input type="submit" class="boton" value="Dejar reseña"><br> 
      		</form>
 			 <div class="divMargin">
 			 <br> <br>
