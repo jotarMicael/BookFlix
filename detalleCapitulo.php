@@ -25,7 +25,7 @@ include('conexion.php');
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-					<?php     $sql2="SELECT sum(valor) FROM calificacion WHERE id_Libro=74 AND nombre_Capitulo='Libro Completo' ";
+					<?php     $sql2="SELECT sum(valor) FROM calificacion WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Capitulo='".$_GET['nLibro']."' ";
 							  $result2=mysqli_query($conexion,$sql2);
 							  foreach($result2 as $row)
 							  $pr=($row['sum(valor)'])/(mysqli_num_rows($result2))

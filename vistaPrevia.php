@@ -187,12 +187,26 @@
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 0){
 					?>
+			<?php $sql8= "SELECT id_Libro FROM perfilleyolibro WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."'";
+				  $result8=mysqli_query($conexion,$sql8);
+				  if(mysqli_num_rows($result8) == 0){
+			 ?>
 			<div class="divMargin">
-			<form action="finishBook.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
-			<input type="submit" class="boton" onclick="return confirm()" value="Finalizar Lectura"><br> 
+			<form action="finishBook.php" method="post" enctype="multipart/form-data" onclick="confirm();">
+			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			<input type="submit" class="boton" value="Finalizar Lectura"><br> 
      		</form> 
 			</div>
-			<?php }?>
+			<?php }else{
+				?>
+				<div class="divMargin">
+			<form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			<input type="submit" class="boton" value="Calificar"><br> 
+     		</form> 
+			</div>
+			<?php }
+				}?>
 
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");

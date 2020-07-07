@@ -247,6 +247,7 @@
 	</div>
 		<div>
 		<a class="botonInicio" href="ultimosLibrosAñadidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Ultimos libros añadidos</a></li>
+		<a class="botonInicio" href="librosMasPopulares.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas populares</a></li>
 				<div class="divLibrosRandom" style="width:1120px; hight:auto; display: flex;">
 						<?php 
 							$actual=date('Y-m-d');
