@@ -34,7 +34,7 @@ include('conexion.php');
 	  				?>
 					<label class="labelWhite"> Este capitulo tiene una recomendacion promedio de <strong><?php echo $pr;?></strong> puntos por los usuarios que lo han leido. </label><br><br>
 					<a href="leerLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $_GET['nCap'];?>" class="labelWhite"><strong> Leer: <?php
-				 echo $_GET['nCap']."<br /> <br />"?>  </strong>
+				 echo $_GET['nCap']."<br /> <br />"?></strong></a>
 					
 				  
 				  
@@ -43,7 +43,15 @@ include('conexion.php');
 			   </div>
 				  <div class="divMargin">
 			 <br> <br>
-			 <?php $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE nombre_Capitulo= '".$_GET['nCap']."' AND id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' ";
+			 <?php 
+			 	  $sql4= "SELECT id_ListaDeseos FROM listadeseos WHERE nombre_Libro='".$_GET['nLibro']."' AND id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' ";
+				  $result4=mysqli_query($conexion,$sql4);
+				  if( mysqli_num_rows($result4) == 1 ){
+			 ?>	
+			 	 <h3 class="tituloSecundarioConfiguracion" > Ya posees el libro completo en tu lista de deseos </h3>;
+				  <?php }
+				  else {	
+			 	  $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE nombre_Capitulo= '".$_GET['nCap']."' AND id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' ";
 				  $result3=mysqli_query($conexion,$sql3);
 				  if( mysqli_num_rows($result3) <> 1 ){?>
 					<form action="addListaDeseos.php" method="post" enctype="multipart/form-data" >
@@ -52,7 +60,12 @@ include('conexion.php');
 					<input type="submit" class="boton" value="Agregar a lista de deseos"><br> 
 				 	</form>  
 					 <br>
-			 <?php }?>
+			 <?php }
+			 else{
+				?>
+				<h3 class="tituloSecundarioConfiguracion" > Ya posees este capitulo en tu lista de deseos </h3>
+			 <?php }
+			 }?>
 				<form action="crearReseña.php" method="post" enctype="multipart/form-data" >
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">

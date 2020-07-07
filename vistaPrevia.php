@@ -163,11 +163,26 @@
 			</div>
 			<div class="divMargin">
 			<?php $n=1; while($mostrar4=mysqli_fetch_array($resultCinco)) {?>
-			 <a href="detalleCapitulo.php?&idLibro=<?php echo $_GET['idLibro'];?>&perfil=<?php echo $_GET['perfil'];?>&nCap=<?php echo $mostrar4['nombre_Capitulo'];?>" class="labelWhite"> Capitulo <?php echo $n; ?>: <strong> <?php
+			 <a href="detalleCapitulo.php?&idLibro=<?php echo $_GET['idLibro'];?>&nLibro=<?php echo $_GET['titulo'];?>&nCap=<?php echo $mostrar4['nombre_Capitulo'];?>" class="labelWhite"> Capitulo <?php echo $n; ?>: <strong> <?php
 				 echo $mostrar4['nombre_Capitulo']."<br /> <br />"; $n= $n+1;?> 
 				
 			 </strong> <?php } ?> </a>
 			</div>
+			<?php $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Libro='".$_GET['titulo']."' ";
+				  $result3=mysqli_query($conexion,$sql3);
+				  if( mysqli_num_rows($result3) <> 1 ){?>
+					<form action="addLibroListaDeseos.php" method="post" enctype="multipart/form-data" >
+					<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+					<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
+					<input type="hidden" name="titulo" id="titulo" value="<?php echo $_GET['titulo'];?>">
+					<input type="submit" class="boton" value="Agregar a lista de deseos"><br> 
+				 	</form>  
+					 <br>
+			 <?php }
+			 else{
+				?>
+				<h3 class="tituloSecundarioConfiguracion" > Ya posees este libro en tu lista de deseos </h3>
+			 <?php }?>
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 0){
