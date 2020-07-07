@@ -211,6 +211,9 @@
      		</form> 
 			</div>
 			<?php }else{
+				$sql9= "SELECT id_Libro FROM calificacion WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."'";
+				$result8=mysqli_query($conexion,$sql9);
+				if(mysqli_num_rows($result8) == 0){
 				?>
 				<div class="divMargin">
 			<form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
@@ -218,7 +221,7 @@
 			<input type="submit" class="boton" value="Calificar"><br> 
      		</form> 
 			</div>
-			<?php }
+			<?php }}
 				}?>
 
 			<?php
