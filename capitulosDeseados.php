@@ -61,8 +61,9 @@
 			                    </div>
 								
 						<br>
-                        <form action="deleteLibrosDeseados.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
-					        <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $mostrar['id_Libro'];?>">
+                        <form action="deleteCapitulosDeseados.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+					        <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $mostrar2['id_Libro'];?>">
+                            <input type="hidden" name="nCap" id="nCap" value="<?php echo $mostrar2['nombre_Capitulo'];?>">
 					        <input type="submit" class="botonInicio" name="Eliminar" value="Eliminar">
 					    </form>
 							</div>
