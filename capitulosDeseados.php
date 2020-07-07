@@ -36,7 +36,7 @@
 							$sql2="SELECT id_Libro,nombre_Capitulo from listadeseos where nombre_Perfil = '" .$_SESSION['perfilNombre']."' AND nombre_Libro='' ";
                             $result2=mysqli_query($conexion,$sql2);
                             if(mysqli_num_rows($result2) == 0){ ?>
-                                <h2 class="tituloSecundarioConfiguracion" >No hay libros añadidos</h2>
+                                <h2 class="tituloSecundarioConfiguracion" >No hay capitulos añadidos</h2>
                         <?php
                             }
                             else{
