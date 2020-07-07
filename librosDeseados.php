@@ -26,10 +26,10 @@
 	    </div>  
 	</div>
 	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
-	<h2 class="tituloSecundarioConfiguracion" >Lecturas Recientes...</h2>
+	<h2 class="tituloSecundarioConfiguracion" >Lista de Deseos:</h2>
 				
 						<?php 
-							$sql2="SELECT id_Libro from perfilleelibro where nombre_Perfil = '" .$_GET['perfil']."'";
+							$sql2="SELECT id_Libro from listadeseos where nombre_Perfil = '" .$_SESSION['perfilNombre']."' AND nombre_Capitulo='' ";
 							$result2=mysqli_query($conexion,$sql2);
 							while($mostrar2=mysqli_fetch_array($result2)){;
 							
@@ -45,30 +45,11 @@
 								<br>
 								
 						<br>
+                        <a class="botonInicio" href="deleteCapitulosDeseados.php"> Eliminar </a>
 							</div>
 						<?php 
 							 } }
 						 ?>
 				
-	<div class="fondoPerfil">
-	<div class="panelPerfil">
-		<div class="imagenPanelPerfil">
-		<image src="/BookFlix/ImagenesServer/<?php echo $_SESSION['perfilImagen'];?>" width="100" />
-		</div>
-		<div class="nombrePanelPerfil">
-			<label class="labelWhite"><?php echo $_SESSION['perfilNombre'] ?> </label>
-		</div>
-		<div class="nombrePanelPerfil">
-		<a class="botonInicio" href="misReseñas.php"> Mis reseñas </a>
-		</div>
-		<div class="nombrePanelPerfil">
-		<a class="botonInicio" href="capitulosDeseados.php"> Lista de capitulos deseados </a>
-		</div>
-		<div class="nombrePanelPerfil">
-		<a class="botonInicio" href="librosDeseados.php"> Lista de libros deseados </a>
-		</div>
-	  <div class="barraFin">
-		<p class="textoBarra"> Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin </p>
-    </div>
 </body>
 </html>
