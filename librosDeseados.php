@@ -27,6 +27,9 @@
 	</div>
 	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<h2 class="tituloSecundarioConfiguracion" >Lista de Deseos:</h2>
+    <?php if (!empty($_SESSION['error'])){
+    		echo $_SESSION['error'];
+			unset($_SESSION['error']);} ?>
 				
 						<?php 
 							$sql2="SELECT id_Libro from listadeseos where nombre_Perfil = '" .$_SESSION['perfilNombre']."' AND nombre_Capitulo='' ";
@@ -45,9 +48,13 @@
 								<br>
 								
 						<br>
-                        <a class="botonInicio" href="deleteCapitulosDeseados.php"> Eliminar </a>
+                        <form action="deleteLibrosDeseados.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+					        <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $mostrar['id_Libro'];?>">
+					        <input type="submit" class="botonInicio" name="Eliminar" value="Eliminar">
+					    </form>
 							</div>
-						<?php 
+                        <?php 
+                        echo $_SESSION['perfilNombre'];
 							 } }
 						 ?>
 				
