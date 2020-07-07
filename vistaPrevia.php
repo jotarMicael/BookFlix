@@ -142,13 +142,15 @@
 			<label class="labelWhite" >Autor/es: </label>
 			<label class="labelWhite"> <strong> <?php while($mostrar=mysqli_fetch_array($resultDos)) {
 				echo $mostrar['nombre'];?> <space> <?php echo $mostrar['apellido'].' ';
-
+$ape=$mostrar['apellido'];
 			}?> </strong></label> <br>
 			</div>
 			<div class="divMargin">
 			<label class="labelWhite">Genero/s: </label>
 			<label class="labelWhite"> <strong> <?php  while($mostrar2=mysqli_fetch_array($resultTres)) {
-				echo $mostrar2['nombre_Genero'].' ';?>
+				echo $mostrar2['nombre_Genero'].' ';
+				$gen=$mostrar2['nombre_Genero'];
+				?>
 
 			<?php } ?> </strong> </label><br>
 			</div>
@@ -158,7 +160,7 @@
 				echo $mostrar3['nombre_Editorial']; echo"<br>";echo"<br>";
 				 $ISBN = 'ISBN: ';
 				echo $ISBN; echo $mostrar3['ISBN'];
-
+$edi=$mostrar3['nombre_Editorial'];
 			} ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
@@ -176,7 +178,7 @@
 
 							  foreach($result2 as $row)
 							  $pr=($row['sum(valor)'])/(mysqli_num_rows($result4));
-							  
+
 					   $sql10= "UPDATE libro SET puntaje = '$pr' WHERE id_Libro='".$_GET['idLibro']."' ";
 					   $result9=mysqli_query($conexion,$sql10);
 							 	  
@@ -210,6 +212,9 @@
 			<div class="divMargin">
 			<form action="finishBook.php" method="post" enctype="multipart/form-data" onclick="confirm();">
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			<input type="hidden" name="apellido" id="apellido" value="<?php echo $ape?>">
+			<input type="hidden" name="editorial" id="editorial" value="<?php echo $edi?>">
+			<input type="hidden" name="genero" id="genero" value="<?php echo $gen?>">
 			<input type="submit" class="boton" value="Finalizar Lectura"><br> 
      		</form> 
 			</div>

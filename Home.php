@@ -246,8 +246,8 @@
 				</div>	
 	</div>
 		<div>
-		<a class="botonInicio" href="ultimosLibrosAñadidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Ultimos libros añadidos</a></li>
-		<a class="botonInicio" href="librosMasPopulares.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas populares</a></li>
+		<a class="botonInicio" href="ultimosLibrosAñadidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Ultimos libros añadidos</a></li>  &nbsp
+		<a class="botonInicio" href="librosMasPopulares.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas populares</a></li>  &nbsp
 		<a class="botonInicio" href="librosMasLeidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas leidos</a></li>
 				<div class="divLibrosRandom" style="width:1120px; hight:auto; display: flex;">
 						<?php 
@@ -268,7 +268,20 @@
 							 } } 
 						 ?>
 				</div>
+				
+				          
 				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
+				<?php 
+							$sql11="SELECT nombre,apellido, COUNT(leido) AS total FROM autor GROUP BY apellido ORDER BY total DESC LIMIT 3";
+							$result11=mysqli_query($conexion,$sql11);
+							while($mostrar11=mysqli_fetch_array($result11))	{		
+						  ?>
+							<div class="cuerpoComentario">
+								<label class="labelWhite"> <?php echo $mostrar11['nombre'];echo $mostrar11['apellido'];?></label><br><br>
+							</div>
+							<?php } ?>
+				</div>
+							<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
 	<?php 
 							$sql="SELECT * from noticia ";
 							$result=mysqli_query($conexion,$sql);
