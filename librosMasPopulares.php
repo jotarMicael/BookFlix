@@ -247,10 +247,11 @@
 	</div>
 		<div>
         <a class="botonInicio" href="ultimosLibrosAñadidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Ultimos libros añadidos</a></li>
+		<a class="botonInicio" href="librosMasLeidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas leidos</a></li>
 				<div class="divLibrosRandom" style="width:1120px; hight:auto; display: flex;">
 						<?php 
 							$actual=date('Y-m-d');
-							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro ORDER BY puntaje DESC";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja,puntaje AS total from libro ORDER BY puntaje DESC";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 								if(($mostrar['fecha_DeBaja'])>($actual)){
@@ -260,6 +261,7 @@
 								<br>
 								<td> <a class="labelWhite" href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
 								<br>
+								<label class="labelWhite"> Puntaje total: <?php echo $mostrar['total'];?></label><br><br>
 								<br>
 							</div>
 						<?php 
