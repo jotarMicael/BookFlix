@@ -261,7 +261,7 @@
 								<br>
 								<td> <a class="labelWhite" href="vistaPrevia.php?&libro=<?php echo $mostrar['imagenTapaLibro'];?>&titulo=<?php echo $mostrar['nombre_Libro'];?>&autor=<?php echo $mostrar['autor'];?>&idEdi=<?php echo $mostrar['id_Editorial'];?>&genero=<?php echo $mostrar['genero'];?>&idLibro=<?php echo $mostrar['id_Libro'];?>&perfil=<?php echo $_GET['perfil'];?>"> <strong><?php echo $mostrar['nombre_Libro'];?> </strong> </a></td> <br> &nbsp;
 								<br>
-								<label class="labelWhite"> Puntaje total: <?php echo $mostrar['total'];?></label><br><br>
+								<label class="labelWhite"> Puntaje total: <?php echo round($mostrar['total'],2);?></label><br><br>
 								<br>
 							</div>
 						<?php 

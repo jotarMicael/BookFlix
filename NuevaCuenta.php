@@ -45,9 +45,9 @@
 				<label class="labelWhite">Apellido: </label><br>
 				<input type="text" class="redondeado" id="unApellidoTar" name="unApellidoTar"><br>
 				<label class="labelWhite">N° de Tarjeta: </label><br>
-				<input type="text" maxlength="16" class="redondeado" id="unN°Tarjeta" name="unN°Tarjeta"><br>
+				<input type="password" maxlength="16" class="redondeado" id="unN°Tarjeta" name="unN°Tarjeta"><br>
 				<label class="labelWhite">Codigo de Seguridad: </label><br>
-				<input type="text" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
+				<input type="password" maxlength="3" class="redondeado" id="unCodigo" name="unCodigo" > <br>
 				<label class="labelWhite">Fecha de Expiracion: </label><br>
 				<input type="text" maxlength="10"class="redondeado" id="unVencimiento" name="unVencimiento" placeholder="aaaa-mm-dd"> <br>	
 				<input type="submit"class="boton" value="Ingresar"><br>

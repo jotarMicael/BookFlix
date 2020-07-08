@@ -200,7 +200,7 @@ $edi=$mostrar3['nombre_Editorial'];
 					   $result9=mysqli_query($conexion,$sql10);
 							 	  
 	  				?>
-			 <label class="labelWhite"> Este libro tiene una calificacion promedio de <strong><?php if(is_nan($pr)) $pr='(Sin calificaciones)'; echo $pr;?></strong> puntos por los usuarios que lo han leido. </label><br><br>
+			 <label class="labelWhite"> Este libro tiene una calificacion promedio de <strong><?php if(is_nan($pr)) $pr='(Sin calificaciones)'; echo round($pr,2);?></strong> puntos por los usuarios que lo han leido. </label><br><br>
 		
 			</div>
 			<?php $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Libro='".$_GET['titulo']."' ";
