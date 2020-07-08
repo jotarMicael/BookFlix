@@ -187,6 +187,10 @@ if (!empty($_SESSION['error'])) {
 					<input type="text" class="redondeado" autocomplete="on" id="nombreCapitulo" name="nombreCapitulo"><br>
 					<label class="labelWhite">Seleccionar pdf del capitulo o libro completo: </label>
 					<input type="file" class="redondeado" id="pdf" name="pdf" accept="application/pdf"><br>
+					<div>	
+					<input type="checkbox" name="premium" > <strong class="labelWhite" >Contenido premium</strong><br>
+					</div>
+					<br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
