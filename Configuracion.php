@@ -24,6 +24,11 @@ if (!empty($_SESSION['error'])) {
 		<a class="botonInicio" href="deletePerfil.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Eliminar Perfiles </a>
 	    </div>
 		<div class="divBotones">
+			   		<form action="modificarPerfil.php" method="post" enctype="multipart/form-data">
+					<input type="submit" class="boton" value="Modificar perfil" onclick="return ConfirmDemo()"><br>
+					</form> 
+			   </div>
+		<div class="divBotones">
 	    </div>
 	    <div class="divBotones">
 		<a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Configuracion </a>

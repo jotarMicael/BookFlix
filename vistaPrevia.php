@@ -262,6 +262,7 @@ $edi=$mostrar3['nombre_Editorial'];
 		</div>
 		
 	</div>
+	
 
 </body>
 </html>
