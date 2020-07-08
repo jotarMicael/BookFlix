@@ -123,10 +123,9 @@ session_start();
 			
 				if (!empty($_POST['nPerfil'])){
 
-					
 					$sql= "SELECT nombre_Perfil FROM perfil WHERE nombre_Perfil = '".$_POST['nPerfil']."' and nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."'";
 					$result=mysqli_query($conexion,$sql);
-					if(mysqli_num_rows($result) <> 1){
+					if(mysqli_num_rows($result) <= 1){
 
 						if(!empty($_FILES['imagen'])){
 
