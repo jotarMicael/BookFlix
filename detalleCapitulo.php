@@ -70,12 +70,7 @@ include('conexion.php');
 				<h3 class="tituloSecundarioConfiguracion" > Ya posees este capitulo en tu lista de deseos </h3>
 			 <?php }
 			 }?>
-				<form action="crearReseña.php" method="post" enctype="multipart/form-data" >
-				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
-				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
-				<input type="submit" class="boton" value="Dejar reseña"><br> 
-				 </form>  
-				 <br>
+				
 				  
 			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="confirm()">
 			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">

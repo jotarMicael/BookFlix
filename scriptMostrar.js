@@ -1,5 +1,5 @@
 function mostrarInput() {
-    elemento = document.getElementById("content");
+    elemento = document.getElementById("content22");
     check = document.getElementById("check");
     
     if (check.checked) {

@@ -13,7 +13,22 @@
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptMostrar.js"></script>
-	<script type="text/javascript" src="scriptConfirm.js"></script>
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	
 	<title>Reseñas</title>
 </head>
@@ -39,25 +54,27 @@
 				</div >
 	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
 	    	</div>
-	    	<div  id="content" style="display:none">
-				<form action="detalleComentario.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+	    	<div  id="content22" style="display:none">
+				<form action="detalleComentario.php" method="post" enctype="multipart/form-data">
 	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
+			
 	    	<div class="barraBot">
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
-				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
+				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas..." onclick="return ConfirmDemo();">
 				</form>
-				<div>
+			<div>
 					<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 					<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
-					<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+					<input type="submit" class="botonInicio" name="Reportar" value="Reportar" onclick="return ConfirmDemo();">
 					</form>
-				</div>
+			</div>
 				
 	    	</div>
             </div>
+			</div>
 			</div>
 			
 						<?php 
@@ -65,7 +82,7 @@
 							else{
 								
 						 ?>
-						 <div class="fondoComentarios">
+				<div class="fondoComentarios">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
