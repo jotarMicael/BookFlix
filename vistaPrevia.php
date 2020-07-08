@@ -9,6 +9,23 @@
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptInicio.js"></script>
+	
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Vista Previa</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -188,12 +205,13 @@ $edi=$mostrar3['nombre_Editorial'];
 			</div>
 			<?php $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Libro='".$_GET['titulo']."' ";
 				  $result3=mysqli_query($conexion,$sql3);
-				  if( mysqli_num_rows($result3) <> 1 ){?>
+				  $result40= mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				  if(( mysqli_num_rows($result3) <> 1 )&&(mysqli_num_rows($result40) <> 1)){?>
 					<form action="addLibroListaDeseos.php" method="post" enctype="multipart/form-data" >
 					<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 					<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
 					<input type="hidden" name="titulo" id="titulo" value="<?php echo $_GET['titulo'];?>">
-					<input type="submit" class="boton" value="Agregar a lista de deseos"><br> 
+					<input type="submit" class="boton" value="Agregar a lista de deseos" onclick="return ConfirmDemo()"><br> 
 				 	</form>  
 					 <br>
 			 <?php }
@@ -210,12 +228,12 @@ $edi=$mostrar3['nombre_Editorial'];
 				  if(mysqli_num_rows($result8) == 0){
 			 ?>
 			<div class="divMargin">
-			<form action="finishBook.php" method="post" enctype="multipart/form-data" onclick="confirm();">
+			<form action="finishBook.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="apellido" id="apellido" value="<?php echo $ape?>">
 			<input type="hidden" name="editorial" id="editorial" value="<?php echo $edi?>">
 			<input type="hidden" name="genero" id="genero" value="<?php echo $gen?>">
-			<input type="submit" class="boton" value="Finalizar Lectura"><br> 
+			<input type="submit" class="boton" value="Finalizar Lectura" onclick="return ConfirmDemo()"><br> 
      		</form> 
 			</div>
 			<?php }else{
@@ -224,9 +242,9 @@ $edi=$mostrar3['nombre_Editorial'];
 				if(mysqli_num_rows($result8) == 0){
 				?>
 				<div class="divMargin">
-			<form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<form action="crearCalificacion.php" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
-			<input type="submit" class="boton" value="Calificar"><br> 
+			<input type="submit" class="boton" value="Calificar" onclick="return ConfirmDemo()"><br> 
      		</form> 
 			</div>
 			<?php }}
