@@ -96,12 +96,12 @@ session_start();
 		    </div>
 			<div class="divBotones">
 			<?php
-				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) <> 1){
 					?>
 			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
             <?php }
-            $result20 = mysqli_query($conexion, "SELECT nombre_Perfil FROM perfil WHERE nombre_Perfil = '".$_SESSION['perfilNombre']."' ");
+            $result20 = mysqli_query($conexion, "SELECT nombre_Perfil FROM perfil WHERE nombre_Perfil = '".$_SESSION['perfilNombre']."' AND nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."' ");
             $mostrar11=mysqli_fetch_array($result20, MYSQLI_ASSOC);
             ?>
 			</div>
@@ -109,11 +109,11 @@ session_start();
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del capitulo</h2>
 			<div class="divConfiguracion">
 				  <div class="registroConfiguracion">
-				  <form action="cargarCapituloLibro.php" method="post" enctype="multipart/form-data">
+				  <form action="modificarPerfil.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre de Perfil: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nPerfil" name="nPerfil" value="<?php echo $mostrar11['nombre_Perfil'] ?>"><br>
-					<label class="labelWhite">Seleccionar pdf del capitulo: </label><br>
-					<input type="file" class="redondeado" id="pdf" name="pdf" accept="application/pdf"><br>
+					<label class="labelWhite">Seleccionar imagen del capitulo: </label><br>
+					<input type="file" class="redondeado" id="imagen" name="imagen" accept="application/imagen"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
@@ -121,74 +121,60 @@ session_start();
 		   	</div>
 			<?php 
 			
-				if (isset($_POST['nPerfil'])&&isset($_POST['nCap'])){
+				if (!empty($_POST['nPerfil'])){
 
-					//Consulto en la bbdd si ya existe el capitulo que quiero ingresar
-					$sql= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo = '".$_POST['nCap']."'";
-					$result=mysqli_query($conexion,$sql);
 					
-						if(isset($_FILES['pdf'])){
+					$sql= "SELECT nombre_Perfil FROM perfil WHERE nombre_Perfil = '".$_POST['nPerfil']."' and nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."'";
+					$result=mysqli_query($conexion,$sql);
+					if(mysqli_num_rows($result) <> 1){
 
-							$nombre_pdf=$_FILES['pdf']['name'];
-							$tipo_pdf=$_FILES['pdf']['type'];
-							$tamagno_pdf=$_FILES['pdf']['size'];
+						if(!empty($_FILES['imagen'])){
+
+							$nombre_imagen=$_FILES['imagen']['name'];
+							$tipo_imagen=$_FILES['imagen']['type'];
+							$tamagno_imagen=$_FILES['imagen']['size'];
 	
-							if ($tamagno_pdf<=1000000000000){
-								if($tipo_pdf=='application/pdf'){
+							if ($tamagno_imagen<=1000000000000){
+								if(($tipo_Imagen == "image/jpg") || ($tipo_Imagen == "image/png") || ($tipo_Imagen == "image/jpeg")){
 	
 									//Ruta de la carpeta destino
-									$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/pdfs/';
+									$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/imagenes/';
 									//Mover imagen del directorio temporal al directorio escogido
-									move_uploaded_file($_FILES['pdf']['tmp_name'],$carpeta_Destino.$nombre_pdf);
+									move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_Destino.$nombre_imagen);
 									//header("Location: cargarLibro.php");
 								}	
 							}
 							else{
 	
-								echo "<font color=white  size='5pt'> El tamaño del pdf es demasiado grande </font>";
+								echo "<font color=white  size='5pt'> El tamaño del imagen es demasiado grande </font>";
 							}
 						}
 
-						if(empty($nombre_pdf)){
-							
+						if(empty($nombre_imagen)){
+                            $sql= "UPDATE perfil SET nombre_Perfil='".$_POST['nPerfil']."' WHERE nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."'";
+                            $result=mysqli_query($conexion,$sql);
+                            $_SESSION['error'] = "Modificacion exitosa";
+                            $_SESSION['perfilNombre']=$_POST['nPerfil'];
+                            header("Location: modificarPerfil.php");
 							exit;
 						}
 						else{
-						$sql3="SELECT id_Libro,capitulos from libro WHERE nPerfil ='" .$_POST['nPerfil']."' ";
-						$result3=mysqli_query($conexion,$sql3);
-						$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
-						$ideo=$mostrar2["id_Libro"];
+                            $sql= "UPDATE perfil SET nombre_Perfil='".$_POST['nPerfil']."' and  imagen='".$_POST['imagen']."' WHERE nombre_Perfil='".$_SESSION['perfilNombre']."' AND and nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."'  ";
+                            $result=mysqli_query($conexion,$sql);
+                            $_SESSION['error'] = "Modificacion exitosa";
+                            $_SESSION['perfilNombre']=$_POST['nPerfil'];
+                            header("Location: modificarPerfil.php");
+							exit;
+                        }
 
-						$sql20= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo = '".$_POST['nCap']."' and id_Libro='" .$mostrar2["id_Libro"]."' ";
-						$result20=mysqli_query($conexion,$sql20);
-						if(mysqli_num_rows($result20)==1){
-							$_SESSION['error']='El capitulo ya se encuentra cargado para este libro';
-							header("Location: cargarCapituloLibro.php");		
-						}
+                    }
+                    else{
+                        $_SESSION['error'] = "Ya posee un nombre de perfil identico con esta cuenta";
+                        header("Location: modificarPerfil.php");
 
-						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '$ideo' ";
-						$result5=mysqli_query($conexion,$sql5);
-
-						if($mostrar2['capitulos']==mysqli_num_rows($result5)){
-							$_SESSION['error']='Ya se encuentra cargado el permitido de capitulos para el libro';
-							header("Location: cargarCapituloLibro.php");
-						}
-						if(empty($mostrar2["id_Libro"])){
-							$_SESSION['error']='No existe libro con ese nPerfil';
-							header("Location: cargarCapituloLibro.php");
-						}
-
-						else{
-						//ingreso el capitulo
-						$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar2["id_Libro"]."','$nombre_pdf')";
-						$result2=mysqli_query($conexion,$sql2);
-						echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
-
-						}
-					}
+                    }
+                 }		
 					
-					
-				}
 				
 			?>
 	 </div>
