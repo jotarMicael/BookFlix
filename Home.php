@@ -15,6 +15,22 @@
 	<link rel="shortcut icon" href="logotipo.jpg"> 
 	<script type="text/javascript" src="scriptRegistro.js"></script>
 	<script type="text/javascript" src="scriptConfirm.js"></script>
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<?php
 		include('conexion.php');
 	?>
