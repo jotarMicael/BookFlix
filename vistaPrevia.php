@@ -255,7 +255,7 @@ $edi=$mostrar3['nombre_Editorial'];
 				if(mysqli_num_rows($result) == 1){
 					?>
 			<div class="divMargin">
-			 <a href="modificarLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&imagen=<?php echo $_GET['libro'];?>" class="labelWhite"> <strong>Modificar libro </strong> </a>
+			 <a href="modificarLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&imagen=<?php echo $_GET['libro'];?>" class="labelWhite" onclick="return ConfirmDemo()"> <strong>Modificar libro </strong> </a>
 			</div>
 				<?php }?>
 			</div>
