@@ -9,15 +9,15 @@ include('conexion.php');
 	<title>Cargar Noticia</title>
 </head>
 <body background= "Imagenes/2.jpg">
-	<h3 class="tituloTerciarioConfiguracion">
-		<?php if (!empty($_SESSION['error'])){
-    		echo $_SESSION['error'];
-			unset($_SESSION['error']);} ?> </h3>
+	<h3 class="tituloTerciarioConfiguracion"> </h3>
 	<div class="barraInicio">	
 		<div class="divBotones"> 
 		<a class="botonInicio" href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>"> Inicio </a>
 	    </div>		
 	 </div>
+	 <?php if (!empty($_SESSION['error'])){
+    		echo $_SESSION['error'];
+			unset($_SESSION['error']);} ?>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese la noticia</h2>	
 			<div class="fondoComentarios">

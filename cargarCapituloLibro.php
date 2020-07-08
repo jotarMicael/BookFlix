@@ -126,11 +126,6 @@ session_start();
 					$sql= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo = '".$_POST['nCap']."'";
 					$result=mysqli_query($conexion,$sql);
 					
-					if( mysqli_num_rows($result) == 1 ){
-						$_SESSION['error']='El capitulo se encuentra cargado';
-						header("Location: cargarCapituloLibro.php");
-					}
-					else {
 						if(isset($_FILES['pdf'])){
 
 							$nombre_pdf=$_FILES['pdf']['name'];
@@ -164,6 +159,13 @@ session_start();
 						$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
 						$ideo=$mostrar2["id_Libro"];
 
+						$sql20= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo = '".$_POST['nCap']."' and id_Libro='" .$mostrar2["id_Libro"]."' ";
+						$result20=mysqli_query($conexion,$sql20);
+						if(mysqli_num_rows($result20)==1){
+							$_SESSION['error']='El capitulo ya se encuentra cargado';
+							header("Location: cargarCapituloLibro.php");		
+						}
+
 						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '$ideo' ";
 						$result5=mysqli_query($conexion,$sql5);
 
@@ -184,7 +186,7 @@ session_start();
 
 						}
 					}
-					}
+					
 					
 				}
 				
