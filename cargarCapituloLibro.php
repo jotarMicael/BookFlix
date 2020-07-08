@@ -162,7 +162,7 @@ session_start();
 						$sql20= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo = '".$_POST['nCap']."' and id_Libro='" .$mostrar2["id_Libro"]."' ";
 						$result20=mysqli_query($conexion,$sql20);
 						if(mysqli_num_rows($result20)==1){
-							$_SESSION['error']='El capitulo ya se encuentra cargado';
+							$_SESSION['error']='El capitulo ya se encuentra cargado para este libro';
 							header("Location: cargarCapituloLibro.php");		
 						}
 
