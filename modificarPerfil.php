@@ -113,7 +113,7 @@ session_start();
 					<label class="labelWhite">Nombre de Perfil: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nPerfil" name="nPerfil" value="<?php echo $mostrar11['nombre_Perfil'] ?>"><br>
 					<label class="labelWhite">Seleccionar imagen del capitulo: </label><br>
-					<input type="file" class="redondeado" id="imagen" name="imagen" accept="application/imagen"><br>
+					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
 					<input type="submit" class="boton" value="Ingresar"><br>
 					</form>
 				  </div>
@@ -141,7 +141,7 @@ session_start();
 									$carpeta_Destino=$_SERVER ['DOCUMENT_ROOT'].'/BookFlix/imagenes/';
 									//Mover imagen del directorio temporal al directorio escogido
 									move_uploaded_file($_FILES['imagen']['tmp_name'],$carpeta_Destino.$nombre_imagen);
-									//header("Location: cargarLibro.php");
+									
 								}	
 							}
 							else{
@@ -159,7 +159,7 @@ session_start();
 							exit;
 						}
 						else{
-                            $sql= "UPDATE perfil SET nombre_Perfil='".$_POST['nPerfil']."' and  imagen='".$_POST['imagen']."' WHERE nombre_Perfil='".$_SESSION['perfilNombre']."' AND and nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."'  ";
+                            $sql= "UPDATE perfil SET nombre_Perfil='".$_POST['nPerfil']."', imagen='$nombre_imagen' WHERE nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."'  ";
                             $result=mysqli_query($conexion,$sql);
                             $_SESSION['error'] = "Modificacion exitosa";
                             $_SESSION['perfilNombre']=$_POST['nPerfil'];
