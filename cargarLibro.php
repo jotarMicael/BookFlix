@@ -332,7 +332,7 @@ if (!empty($_SESSION['error'])) {
 			
 				if (isset($_POST['nombreLibro'])&&isset($_POST['ISBN'])&&isset($_POST['fecha_Lanzamiento'])&&isset($_POST['fecha_BajaBasico'])&&isset($_FILES['imagen'])&&isset($_FILES['pdf'])&&isset($_POST['cantCap'])){
 
-					if(isset($_FILES['imagen'])){
+					if(!empty($_FILES['imagen'])){
 
 						$nombre_Imagen=$_FILES ['imagen']['name'];
 						$tipo_Imagen=$_FILES ['imagen']['type'];
@@ -356,7 +356,7 @@ if (!empty($_SESSION['error'])) {
 						}
 					}
 					
-					if(isset($_FILES['pdf'])){
+					if(!empty($_FILES['pdf'])){
 
 						$nombre_pdf=$_FILES['pdf']['name'];
 						$tipo_pdf=$_FILES['pdf']['type'];
@@ -416,8 +416,13 @@ if (!empty($_SESSION['error'])) {
 						}
 
 						else{
+
+							if(isset($_POST['premium']))
+								$_POST['premium']='Si';
+							else
+								$_POST['premium']='No';
 						
-						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN,capitulos) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."','".$_POST["cantCap"]."')";
+						$sql2= "INSERT INTO libro(nombre_Libro, id_Editorial, fecha_Lanzamiento, fecha_DeBaja, fecha_DeBaja2, imagenTapaLibro,ISBN,capitulos,premium) VALUES ('" .$_POST["nombreLibro" ]."', '$idEdi','$inicio', '$baja','$baja2','$nombre_Imagen','".$_POST["ISBN"]."','".$_POST["cantCap"]."','" .$_POST["premium" ]."')";
 						mysqli_query($conexion,$sql2);
 
 							$sql4="SELECT id_Libro from libro WHERE nombre_Libro = '" .$_POST["nombreLibro" ]."' ";
