@@ -37,9 +37,13 @@ return false;
 	<h2 class="tituloSecundarioConfiguracion" >Reseñas realizadas por otros usuarios...</h2>
 				
 						<?php 
-							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' and nombre_Capitulo='" .$_POST['nCap']."' and reportada='No' ";
-							$result2=mysqli_query($conexion,$sql2);	
-							while($mostrar2=mysqli_fetch_array($result2)){;
+							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' AND nombre_Capitulo='" .$_POST['nCap']."' AND reportada='No' ";
+							$result2=mysqli_query($conexion,$sql2);
+							if(mysqli_num_rows($result2)==0){ ?>
+								<h2 class="tituloSecundarioConfiguracion" >Todavia no hay reseñas realizadas</h2>;
+							<?php }
+						else{
+							while($mostrar2=mysqli_fetch_array($result2)){
 								if(($mostrar2['spoiler'])=='Si'){
 						?>
 			
@@ -66,14 +70,16 @@ return false;
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas..." onclick="return ConfirmDemo();">
 				</form>
 			<div>
+			<div>
 					<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 					<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 					<input type="submit" class="botonInicio" name="Reportar" value="Reportar" onclick="return ConfirmDemo();">
 					</form>
 			</div>
 				
-	    	</div>
+	    	
             </div>
+			</div>
 			</div>
 			</div>
 			
@@ -114,8 +120,10 @@ return false;
 			<?php 
 				}
 			}
-								
-			  ?>	 
+		}				
+			  ?>
+			</div>
+				 
 
 				
 	
