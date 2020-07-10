@@ -23,7 +23,7 @@
 		exit;
 	}
 	else{
-		$_SESSION['usuario'] = mysqli_fetch_array($result);	
+		$_SESSION['usuario'] = mysqli_fetch_array($result2);	
 		header('Location: verYCrearPerfiles.php');
 		exit;
 		}

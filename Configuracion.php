@@ -243,9 +243,7 @@ if (!empty($_SESSION['error'])) {
 					<input type="text" class="redondeado" autocomplete="on" id="nombre" name="nombre" value="<?php echo $_SESSION['usuario']['nombre']; ?>"><br>
 					<label class="labelWhite">Apellido: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="apellido" name="apellido" value="<?php echo $_SESSION['usuario']['apellido']; ?>"><br>
-					<label class="labelWhite">Imagen del perfil: </label><br>
-					<br>
-					<input type="file" accept="jpg" id="unImagen" name="unImagen"><br>
+
 					<br>
 					<input type="submit" class="boton" value="Guardar Cambios"><br>
 				  </div>
