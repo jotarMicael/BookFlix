@@ -260,11 +260,9 @@ include('conexion.php');
 				</tr>
 				
 				
-	 <?php 
-		 }
-		 ?>
 		 </select>
-		 <?php 
+		 <?php
+			} 
 		 }
 		 ?>
 		 <br><br>
@@ -272,7 +270,7 @@ include('conexion.php');
 	 <div>
      	<input type="submit" class="boton" onclick="confirm()" value="Eliminar"><br> 
      </div>
-	 </form> 
+	 		</form> 
 	</div>
 			<?php 
 			
