@@ -230,6 +230,8 @@ include('conexion.php');
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
                 <form method="POST" action="deletePerfil.php" enctype="multipart/form-data">
                   
+				
+				<select name="prf" id="prf">  
 				<?php
                     //Se fija si hay perfiles
                     
@@ -241,7 +243,6 @@ include('conexion.php');
 					else {
 					while($mostrar=mysqli_fetch_array($result1)){
 				?>
-				<select name="prf" id="prf">  
 				<tr>	
 					<div>
 						<br>
@@ -256,12 +257,16 @@ include('conexion.php');
                         
                     </div>
 				</tr>
+				
 	 <?php 
-         }
-          
-		}
-	 ?>
-     </select>
+		 }
+		 ?>
+		 </select>
+		 <?php 
+		 }
+		 ?>
+	 
+     
      <input type="submit" class="boton" onclick="confirm()" value="Eliminar"><br> 
      </form> 
 	</div>
