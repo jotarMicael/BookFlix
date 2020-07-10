@@ -89,6 +89,64 @@ return false;
 		}
 	 ?>
 		 <?php    
+		 			$sql26="SELECT nombre_Usuario from cuentausuariotipopremiun WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
+					$result26=mysqli_query($conexion,$sql26);
+
+					if(mysqli_num_rows($result26) == 1 ){
+						if (isset($_POST['nombre'])&&(mysqli_num_rows($result) <= 3 )){
+
+							if(isset($_FILES['imagen'])){
+								$nombre_Imagen = $_FILES ['imagen']['name'];
+								$tipo_Imagen = $_FILES ['imagen']['type'];
+								$tamagno_Imagen = $_FILES ['imagen']['size'];
+	
+								if ($tamagno_Imagen<=30000000){
+									if(($tipo_Imagen == "image/jpg") || ($tipo_Imagen == "image/png") || ($tipo_Imagen == "image/jpeg")){
+										//Ruta de la carpeta destino
+										$carpeta_Destino = $_SERVER ['DOCUMENT_ROOT'] . '/BookFlix/ImagenesServer/';
+										//Mover imagen del directorio temporal al directorio escogido
+										move_uploaded_file($_FILES['imagen']['tmp_name'], $carpeta_Destino.$nombre_Imagen);
+										header("Location: verYCrearPerfiles.php");
+									}
+									else {
+										echo "<font color=white  size='5pt'> Solo se puede subir: png, jpg, jpeg </font>";
+									}
+									
+								}
+								else{
+									echo "El tamaño de la imagen es demasiado grande";
+								}
+								$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Perfil = '" .$_POST["nombre" ]  ."' and nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'" ;
+								$result2=mysqli_query($conexion,$sql1);
+								if( mysqli_num_rows($result2) == 1 ){
+									$_SESSION['error']='Ya existe un perfil con este nombre';
+									header("Location: verYCrearPerfiles.php");}
+								else{
+									if(empty($nombre_Imagen)){
+										$_SESSION['error']='El perfil debe contener una imagen';
+										header("Location: verYCrearPerfiles.php");
+									}
+									else{
+										$sql= "INSERT INTO perfil (nombre_Perfil, nombre_Usuario, imagen) VALUES ('" .$_POST["nombre" ]  ."', '" .$_SESSION["usuario"]["nombre_Usuario"] ."','$nombre_Imagen')";
+										$result=mysqli_query($conexion,$sql);
+									}
+								}
+								
+							}
+							else{
+								echo "<font color=white  size='5pt'> Debe seleccionar una imagen de perfil </font>";
+							}
+						}
+						else { 
+							if (mysqli_num_rows($result) == 4 )
+							echo "<font color=white  size='5pt'> Solo se permiten crear hasta 4 usuarios en una cuenta premium </font>";
+								
+						}
+
+					}
+					else{
+
+					
 					if (isset($_POST['nombre'])&&(mysqli_num_rows($result) <= 1 )){
 
 						if(isset($_FILES['imagen'])){
@@ -137,6 +195,7 @@ return false;
 						if (mysqli_num_rows($result) == 2 )
 						echo "<font color=white  size='5pt'> Solo se permiten crear hasta 2 usuarios en una cuenta basica </font>";
 							
+					}
 					}
 
 				?>
