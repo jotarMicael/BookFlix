@@ -272,7 +272,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 
 						$mostrar19=mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-						$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Perfil,id_Libro,spoiler,nombre_Capitulo,texto,reportada) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$mostrar19["id_Perfil"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"]."','No')";
+						$sql= "INSERT INTO reseña(fechaHora,id_Perfil,id_Libro,spoiler,nombre_Capitulo,texto,reportada) VALUES ('$fechaHora','".$mostrar19["id_Perfil"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"]."','No')";
 						$result=mysqli_query($conexion,$sql);
 						$_SESSION['error']='La reseña se ha cargado correctamente';
 						header('Location: home.php');

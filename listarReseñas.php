@@ -37,13 +37,20 @@ return false;
 	<h2 class="tituloSecundarioConfiguracion" >Reseñas realizadas por otros usuarios...</h2>
 				
 						<?php 
-							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' AND nombre_Capitulo='" .$_POST['nCap']."' AND reportada='No' ";
+							$sql2="SELECT fechaHora,id_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' AND nombre_Capitulo='" .$_POST['nCap']."' AND reportada='No' ";
 							$result2=mysqli_query($conexion,$sql2);
 							if(mysqli_num_rows($result2)==0){ ?>
 								<h2 class="tituloSecundarioConfiguracion" >Todavia no hay reseñas realizadas</h2>;
 							<?php }
 						else{
+							
+
 							while($mostrar2=mysqli_fetch_array($result2)){
+								$sql25="SELECT nombre_Perfil FROM perfil WHERE id_Perfil='" .$mostrar2['id_Perfil']."' ";
+								$result25=mysqli_query($conexion,$sql25);
+								$mostrar25=mysqli_fetch_array($result25, MYSQLI_ASSOC);
+
+
 								if(($mostrar2['spoiler'])=='Si'){
 						?>
 			
@@ -56,7 +63,7 @@ return false;
 				<div>
                 <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
 				</div >
-	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
+	    		<h5 class="textoBarraTop"><?php echo $mostrar25['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div  id="content22" style="display:none">
 				<form action="detalleComentario.php" method="post" enctype="multipart/form-data">
@@ -64,7 +71,7 @@ return false;
 	    	</div>
 			
 	    	<div class="barraBot">
-				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
+				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar25['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas..." onclick="return ConfirmDemo();">
@@ -95,14 +102,14 @@ return false;
 				<div>
                 <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
 				</div >
-	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
+	    		<h5 class="textoBarraTop"><?php echo $mostrar25['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
 				<form action="detalleComentario.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 	    		<textarea disabled maxlength="80" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
-				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
+				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar25['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
