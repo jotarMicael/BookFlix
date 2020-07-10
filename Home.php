@@ -269,8 +269,14 @@ return false;
 				<div class="divLibrosRandom" style="width:1120px; hight:auto; display: flex;">
 						<?php 
 							$actual=date('Y-m-d');
-							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro ORDER BY RAND()";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja,fecha_DeBaja2 from libro ORDER BY RAND()";
 							$result=mysqli_query($conexion,$sql);
+							
+							$sql30="SELECT nombre_Usuario from cuentausuariotipopremiun where nombre_Usuario= '".$_SESSION['usuario']['nombre_Usuario']."'";
+							$result30=mysqli_query($conexion,$sql30);
+							if(mysqli_num_rows($result30) == 1)
+								$mostrar['fecha_DeBaja']=$mostrar['fecha_DeBaja2'];	
+								
 							while($mostrar=mysqli_fetch_array($result)){
 								if(($mostrar['fecha_DeBaja'])>($actual)){
 						?>

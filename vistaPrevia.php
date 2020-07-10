@@ -190,7 +190,8 @@ $edi=$mostrar3['nombre_Editorial'];
 				$result23=mysqli_query($conexion,$sql23);
 				$mostrar23=mysqli_fetch_array($result23, MYSQLI_ASSOC);
 					
-				echo $mostrar22['premium']; echo $mostrar23['validada'];
+				
+
 
 				if((($mostrar22['premium']=='Si')&&($mostrar23['validada']=='Si')||($mostrar23['validada']=='VB'))||($mostrar22['premium']=='No')){
 			
