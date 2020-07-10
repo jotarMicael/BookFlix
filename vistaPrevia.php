@@ -181,7 +181,30 @@ $edi=$mostrar3['nombre_Editorial'];
 			} ?> </strong> </label><br>
 			</div>
 			<div class="divMargin">
-			<?php $n=1; while($mostrar4=mysqli_fetch_array($resultCinco)) {?>
+			<?php
+				$sql22="SELECT premium FROM libro WHERE id_Libro='".$_GET['idLibro']."' ";
+				$result22=mysqli_query($conexion,$sql22);
+				$mostrar22=mysqli_fetch_array($result22, MYSQLI_ASSOC);
+
+				$sql23="SELECT validada FROM cuentausuariotipopremiun WHERE nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."' ";
+				$result23=mysqli_query($conexion,$sql23);
+				$mostrar23=mysqli_fetch_array($result23, MYSQLI_ASSOC);
+					
+				echo $mostrar22['premium']; echo $mostrar23['validada'];
+
+				if((($mostrar22['premium']=='Si')&&($mostrar23['validada']=='Si')||($mostrar23['validada']=='VB'))||($mostrar22['premium']=='No')){
+			
+				
+			
+
+			
+
+			
+			
+			
+			
+			
+			$n=1; while($mostrar4=mysqli_fetch_array($resultCinco)) {?>
 			 <a href="detalleCapitulo.php?&idLibro=<?php echo $_GET['idLibro'];?>&nLibro=<?php echo $_GET['titulo'];?>&nCap=<?php echo $mostrar4['nombre_Capitulo'];?>" class="labelWhite"> Capitulo <?php echo $n; ?>: <strong> <?php
 				 echo $mostrar4['nombre_Capitulo']."<br /> <br />"; $n= $n+1;?> 
 				
@@ -257,7 +280,11 @@ $edi=$mostrar3['nombre_Editorial'];
 			<div class="divMargin">
 			 <a href="modificarLibro.php?&idLibro=<?php echo $_GET['idLibro'];?>&imagen=<?php echo $_GET['libro'];?>" class="labelWhite" onclick="return ConfirmDemo()"> <strong>Modificar libro </strong> </a>
 			</div>
-				<?php }?>
+				<?php } 
+						}
+				else{?>
+						<h3 class="tituloSecundarioConfiguracion" > ¡Contenido exclusivo solo para usuarios<li><a href="hacersePremium.php" class="boton">Premium!</a></li> </h3>
+				<?php } ?>
 			</div>
 		</div>
 		
