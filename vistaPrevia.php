@@ -283,7 +283,7 @@ $edi=$mostrar3['nombre_Editorial'];
 				<?php } 
 						}
 				else{?>
-						<h3 class="tituloSecundarioConfiguracion" > ¡Contenido exclusivo solo para usuarios<li><a href="hacersePremium.php" class="boton">Premium!</a></li> </h3>
+						<h3 class="tituloSecundarioConfiguracion" > ¡Contenido exclusivo solo para usuarios <a href="hacersePremium.php" class="boton">Premium!</a> </h3>
 				<?php } ?>
 			</div>
 		</div>
