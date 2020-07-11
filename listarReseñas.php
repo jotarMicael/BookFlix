@@ -1,5 +1,6 @@
 <?php session_start();
  include('conexion.php');
+ date_default_timezone_set('America/Argentina/Jujuy');
  if (!empty($_SESSION['error'])) {
 	echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
 	unset($_SESSION['error']);

@@ -231,10 +231,12 @@ date_default_timezone_set('America/Argentina/Jujuy');
 				</div>	
 	</div>
      <img class="imagenTitulo" src="Imagenes\Titulo.png">
-     <?php $sql="SELECT fechaHora,nombre_Perfil from reseña where nombre_Capitulo = '" .$_POST['nCap']."' and texto = '" .$_POST['texto']."' ";
+     <?php $sql="SELECT fechaHora,id_Perfil from reseña where nombre_Capitulo = '" .$_POST['nCap']."' and texto = '" .$_POST['texto']."' ";
               $result=mysqli_query($conexion,$sql);
               while($mostrar=mysqli_fetch_array($result)){
-              
+				$sql25="SELECT nombre_Perfil FROM perfil WHERE id_Perfil='" .$mostrar['id_Perfil']."' ";
+				$result25=mysqli_query($conexion,$sql25);
+				$mostrar25=mysqli_fetch_array($result25, MYSQLI_ASSOC);
                             ?>
 			<div class="fondoComentarios">
 				
@@ -244,7 +246,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 				<div>
                 <h5 class="textoBarraTop"><?php echo $mostrar['fechaHora']; ?></h5>
 				</div>
-	    		<h5 class="textoBarraTop"><?php echo $mostrar['nombre_Perfil']; ?></h5>		
+	    		<h5 class="textoBarraTop"><?php echo $mostrar25['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
 	    		<textarea disabled class="contenido-publicacion" name="publish" id="publish"> <?php echo $_POST['texto'];?></textarea>
