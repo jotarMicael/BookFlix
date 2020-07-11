@@ -7,7 +7,22 @@ include('conexion.php');
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptMostrar.js"></script>
-	<script type="text/javascript" src="scriptConfirm.js"></script>
+	<script type="text/javascript">
+function ConfirmDemo(); {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Detalle Del Capitulo</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -64,10 +79,6 @@ include('conexion.php');
 	</style>
 </head>
 <body background= "Imagenes/2.jpg">
-	<h3 class="tituloTerciarioConfiguracion">
-		<?php if (!empty($_SESSION['error'])){
-    		echo $_SESSION['error'];
-			unset($_SESSION['error']);} ?> </h3>
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
 			<li><a href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>" class="botonInicio">Inicio</a></li>
@@ -228,7 +239,12 @@ include('conexion.php');
 				<?php
 				}
 			?>
+			
 				</div>	
+				<h3 class="tituloTerciarioConfiguracion">
+		<?php if (!empty($_SESSION['error'])){
+    		echo $_SESSION['error'];
+			unset($_SESSION['error']);} ?> </h3>
 	</div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" > Nombre: "<?php echo $_GET["nCap"]?>" </h2>
@@ -282,7 +298,7 @@ include('conexion.php');
 			 }?>
 				
 				  
-			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="confirm()">
+			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="ConfirmDemo();">
 			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
 			<input type="submit" class="boton" value="Ver reseñas"><br> 
@@ -298,8 +314,11 @@ include('conexion.php');
 					$_SESSION['idC']=$mostrar['id_Capitulo'];
 					?>
 			<div class="divMargin">
-			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data" onclick="confirm()">
-			<input type="submit" class="boton" onclick="confirm()" value="Finalizar lectura"><br> 
+			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data" onclick="ConfirmDemo();">
+			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
+			<input type="hidden" name="nLibro" id="nLibro" value="<?php echo $_GET['nLibro'];?>">
+			<input type="submit" class="boton" onclick="ConfirmDemo();" value="Finalizar lectura"><br> 
      		</form> 
 			</div>
 			<?php }
@@ -318,7 +337,7 @@ include('conexion.php');
      		</form>
 			 <div class="divMargin">
 			 <br> <br>
-			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="confirm();">
+			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="ConfirmDemo();;">
 			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			 <input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>"> 
 			 <input type="submit" class="boton" value="Calificar"><br> 
