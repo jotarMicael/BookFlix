@@ -283,7 +283,8 @@ return false;
 				  else {	
 			 	  $sql3= "SELECT id_ListaDeseos FROM listadeseos WHERE nombre_Capitulo= '".$_GET['nCap']."' AND id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' ";
 				  $result3=mysqli_query($conexion,$sql3);
-				  if( mysqli_num_rows($result3) <> 1 ){?>
+				  $result40= mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				  if(( mysqli_num_rows($result3) <> 1 )&&( mysqli_num_rows($result40) <> 1 )){?>
 					<form action="addListaDeseos.php" method="post" enctype="multipart/form-data" >
 					<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 					<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
@@ -292,9 +293,10 @@ return false;
 					 <br>
 			 <?php }
 			 else{
+				 	if( mysqli_num_rows($result40) <> 1 ){
 				?>
 				<h3 class="tituloSecundarioConfiguracion" > Ya posees este capitulo en tu lista de deseos </h3>
-			 <?php }
+			 <?php } }
 			 }?>
 				
 				  
