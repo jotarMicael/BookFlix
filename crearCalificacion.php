@@ -6,6 +6,22 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Calificar</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -232,7 +248,7 @@ include('conexion.php');
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-				  <form action="crearCalificacion.php" method="post" enctype="multipart/form-data">
+				  <form action="addCalificacion.php" method="post" enctype="multipart/form-data">
                   <p>
                   <h3 class="tituloSecundarioConfiguracion" >Calificacion:</h3>
                   
@@ -254,23 +270,13 @@ include('conexion.php');
                     <input type="hidden" name="idLibro2" id="idLibro2" value="<?php echo $_POST['idLibro'];?>">
                     <input type="hidden" name="nCap2" id="nCap2" value="<?php echo $_POST['nCap'];?>"> 
         <?php }?> 
-                    <input type="submit" class="boton" value="Enviar calificacion">
+                    <input type="submit" class="boton" onclick="return ConfirmDemo()" value="Enviar calificacion">
                  </p>
 					</form>
 				  </div>
 				
 		   	</div>
-			<?php 
-				if (isset($_POST['calificacion'])){
-
-						$sql= "INSERT INTO calificacion (nombre_Perfil,id_Libro,valor,nombre_Capitulo) VALUES ('".$_SESSION['perfilNombre']."','".$_POST['idLibro2']."','" .$_POST["calificacion"]."','" .$_POST["nCap2"]."')";
-						$result=mysqli_query($conexion,$sql);
-                        $_SESSION['error'] = "Puntaje Enviado";
-                        header("Location: Home.php");
-
-					
-				}
-			?>
+			   
 	 </div>
 		
 	<div class="barraFin">
