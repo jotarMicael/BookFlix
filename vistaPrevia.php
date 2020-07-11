@@ -182,6 +182,10 @@ $edi=$mostrar3['nombre_Editorial'];
 			</div>
 			<div class="divMargin">
 			<?php
+				
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				
+							
 				$sql22="SELECT premium FROM libro WHERE id_Libro='".$_GET['idLibro']."' ";
 				$result22=mysqli_query($conexion,$sql22);
 				$mostrar22=mysqli_fetch_array($result22, MYSQLI_ASSOC);
@@ -193,7 +197,7 @@ $edi=$mostrar3['nombre_Editorial'];
 				
 
 
-				if((($mostrar22['premium']=='Si')&&($mostrar23['validada']=='Si')||($mostrar23['validada']=='VB'))||($mostrar22['premium']=='No')){
+				if((($mostrar22['premium']=='Si')&&($mostrar23['validada']=='Si')||($mostrar23['validada']=='VB'))||($mostrar22['premium']=='No')||(mysqli_num_rows($result) ==1)){
 			
 				
 			
@@ -240,9 +244,11 @@ $edi=$mostrar3['nombre_Editorial'];
 					 <br>
 			 <?php }
 			 else{
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) ==0){
 				?>
 				<h3 class="tituloSecundarioConfiguracion" > Ya posees este libro en tu lista de deseos </h3>
-			 <?php }?>
+			 <?php }}?>
 			<?php
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) == 0){
