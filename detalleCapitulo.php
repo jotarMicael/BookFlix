@@ -7,6 +7,7 @@ include('conexion.php');
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptMostrar.js"></script>
+	<a href="javascript:history.back()"><img src="imagenes/12.png" height="33" width="100" alt="Botón" </a>
 	<script type="text/javascript">
 function ConfirmDemo() {
 //Ingresamos un mensaje a mostrar
