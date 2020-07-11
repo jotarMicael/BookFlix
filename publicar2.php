@@ -8,13 +8,13 @@
 					
 	if(mysqli_num_rows($result)==1){
 		$_SESSION['error'] = "Esta noticia ya se encuentra cargada en el sistema";
-		header("Location:cargarNoticia.php");
+		header("Location:modificarNoticia.php");
 	}
 	else{
 
 	if(empty($_POST['publish'])){
 		$_SESSION['error'] = "No se puede publicar un mensaje vacio";
-		header("Location: cargarNoticia.php");
+		header("Location: modificarNoticia.php");
 		exit;
 	}
 	else{
@@ -23,11 +23,11 @@
 
 	if(strlen($_POST['publish'])>140){
 		$_SESSION['error']="No se puede publicar un mensaje con mas de 140 caracteres";
-		header("Location: cargarNoticia.php");
+		header("Location: modificarNoticia.php");
 		exit;
 	}
 	else{
-		$sql= "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = '".$_POST['idNoti']."'";
+		$sql= "UPDATE noticia SET texto = '".$_POST['publish']."', fecha='$fecha' WHERE id_Noticia='".$_POST['idNoti']."' ";
 		$_SESSION['error']="Noticia modificada correctamente";
 		$result=mysqli_query($conexion,$sql);
 		header("Location: Home.php");

@@ -243,7 +243,7 @@ include('conexion.php');
 	    		<h5 class="textoBarraTop"><?php echo $_SESSION['nombrePerfil']; ?></h5>		
 	    	</div>
 	    	<div>
-	    		<textarea cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"></textarea>
+	    		<textarea cols="3" rows="5" class="contenido-publicacion" name ="publish" id="publish"></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="idNoti" id="idNoti" value="<?php echo $_GET['idNoti'];?>">
