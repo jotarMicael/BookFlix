@@ -231,6 +231,9 @@ session_start();
 				}
 			?>
 				</div>	
+				<?php if (!empty($_SESSION['error'])){
+    		echo $_SESSION['error'];
+			unset($_SESSION['error']);} ?> </h3>
 	</div>
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del capitulo</h2>
 			<div class="divConfiguracion">
@@ -248,6 +251,7 @@ session_start();
 				
 		   	</div>
 			<?php 
+			
 			
 				if (isset($_POST['ISBN'])&&isset($_FILES['pdf'])&&isset($_POST['nCap'])){
 
@@ -288,25 +292,36 @@ session_start();
 						$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
 						$ideo=$mostrar2["id_Libro"];
 
-						$sql20= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo = '".$_POST['nCap']."' and id_Libro='" .$mostrar2["id_Libro"]."' ";
-						$result20=mysqli_query($conexion,$sql20);
-						if(mysqli_num_rows($result20)==1){
-							$_SESSION['error']='El capitulo ya se encuentra cargado para este libro';
-							header("Location: cargarCapituloLibro.php");		
-						}
-
-						$sql5= "SELECT * FROM capitulo WHERE id_Libro = '$ideo' ";
+						$sql5= "SELECT * FROM capitulo WHERE id_Libro='$ideo' ";
 						$result5=mysqli_query($conexion,$sql5);
 
-						if($mostrar2['capitulos']==mysqli_num_rows($result5)){
+						if(($mostrar2['capitulos'])<(mysqli_num_rows($result5))){
 							$_SESSION['error']='Ya se encuentra cargado el permitido de capitulos para el libro';
+							echo "<font color=white  size='5pt'> Ya se encuentra cargado el permitido de capitulos para el libro </font>";
 							header("Location: cargarCapituloLibro.php");
+							
 						}
-						if(empty($mostrar2["id_Libro"])){
-							$_SESSION['error']='No existe libro con ese ISBN';
-							header("Location: cargarCapituloLibro.php");
-						}
+						else{
+						$sql3="SELECT id_Libro,capitulos from libro WHERE ISBN ='" .$_POST['ISBN']."' ";
+						$result3=mysqli_query($conexion,$sql3);
+						$mostrar2=mysqli_fetch_array($result3, MYSQLI_ASSOC);
+						$ideo=$mostrar2["id_Libro"];
 
+						
+
+						if(empty($mostrar2['id_Libro'])){
+							echo "<font color=white  size='5pt'> No existe libro con ese ISBN</font>";
+							header("Location: cargarCapituloLibro.php");
+						
+						$sql20= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo = '".$_POST['nCap']."' AND id_Libro='".$mostrar2['id_Libro']."' ";
+						$result20=mysqli_query($conexion,$sql20);
+						
+						if(mysqli_num_rows($result20)>=1){
+							$_SESSION['error']='El capitulo ya se encuentra cargado para este libro';
+							echo "<font color=white  size='5pt'> El capitulo ya se encuentra cargado para este libro </font>";
+							header("Location: cargarCapituloLibro.php");		
+						}
+						}
 						else{
 						//ingreso el capitulo
 						$sql2="INSERT INTO capitulo(nombre_Capitulo,id_Libro,pdf) VALUES ('".$_POST["nCap"]."','".$mostrar2["id_Libro"]."','$nombre_pdf')";
@@ -314,7 +329,9 @@ session_start();
 						echo "<font color=white  size='5pt'> El capitulo se ha cargado correctamente </font>";
 
 						}
+					
 					}
+				}
 					
 					
 				}
