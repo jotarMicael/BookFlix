@@ -233,13 +233,16 @@
 	<h2 class="tituloSecundarioConfiguracion" >Reportes realizados por los usuarios: </h2>
 				
 						<?php 
-							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler FROM reseña where reportada='Si' ";
+							$sql2="SELECT fechaHora,id_Perfil,texto,spoiler FROM reseña where reportada='Si' ";
                             $result2=mysqli_query($conexion,$sql2);
                             if (!empty($_SESSION['error'])) {
                                 echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
                                 unset($_SESSION['error']);
                             }
-							while($mostrar2=mysqli_fetch_array($result2)){;
+							while($mostrar2=mysqli_fetch_array($result2)){
+								$sql25="SELECT nombre_Perfil FROM perfil WHERE id_Perfil='" .$mostrar2['id_Perfil']."' ";
+								$result25=mysqli_query($conexion,$sql25);
+								$mostrar25=mysqli_fetch_array($result25, MYSQLI_ASSOC);
 						?>
 						 <div class="fondoComentarios">
 				<div class="comentario">
@@ -248,7 +251,7 @@
 				<div>
                 <h5 class="textoBarraTop"><?php echo $mostrar2['fechaHora']; ?></h5>	
 				</div >
-	    		<h5 class="textoBarraTop"><?php echo $mostrar2['nombre_Perfil']; ?></h5>		
+	    		<h5 class="textoBarraTop"><?php echo $mostrar25['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div>
 				<form action="cancelarReporte.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
