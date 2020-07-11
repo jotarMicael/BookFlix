@@ -262,6 +262,12 @@ return false;
 			?>
 				</div>	
 	</div>
+	<?php
+		if (!empty($_SESSION['error'])) {
+			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);
+		}
+ 		?>
 		<div>
 		<a class="botonInicio" href="ultimosLibrosAñadidos.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Ultimos libros añadidos</a></li>  &nbsp
 		<a class="botonInicio" href="librosMasPopulares.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Libros mas populares</a></li>  &nbsp
