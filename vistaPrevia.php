@@ -107,27 +107,6 @@ return false;
 			<li><a class="botonInicio" href="Configuracion.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>">Configuracion</a></li>
 			<?php }?>
 			</div>
-			<?php
-				/*$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
-				if(mysqli_num_rows($result) == 1){
-					?>
-					<ul class="nav">
-						<li><a class="botonInicio" href="" >Administrar datos</a>
-					
-						<ul>
-							<a class="botonInicio" href="cargarLibro.php">Cargar Libro</a></li>
-							<a class="botonInicio" href="cargarAutor.php">Cargar Autor</a></li>
-							<a class="botonInicio" href="cargarGenero.php">Cargar Genero</a></li>
-						</ul>
-						</li>
-							
-					
-					
-					</ul>
-
-				<?php
-				}*/
-			?>	
 	</div>
 	<div class="divLibrosRandom" style="margin-left: 25%;">
 		<div class="divLibroVistaPrevia">
@@ -239,6 +218,7 @@ $edi=$mostrar3['nombre_Editorial'];
 					<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 					<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
 					<input type="hidden" name="titulo" id="titulo" value="<?php echo $_GET['titulo'];?>">
+					<input type="hidden" name="libro" id="libro" value="<?php echo $_GET['libro'];?>">
 					<input type="submit" class="boton" value="Agregar a lista de deseos" onclick="return ConfirmDemo()"><br> 
 				 	</form>  
 					 <br>
