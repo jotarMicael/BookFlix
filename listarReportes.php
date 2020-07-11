@@ -266,7 +266,7 @@
 				<div>
 					<form action="eliminarReseñaAdmin.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 						<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
-						<input type="submit" class="botonInicio" name="Eliminar" value="Eliminar">
+						<input type="submit" class="botonInicio" name="Marcar Spoiler" value="Marcar Spoiler">
 					</form>
 				</div>
 				

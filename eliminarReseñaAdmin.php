@@ -1,9 +1,10 @@
 <?php
   include('conexion.php');
   session_start();
-  $sql= "DELETE FROM reseña WHERE texto = '".$_POST['texto']."'  ";
+  $sql= "UPDATE reseña SET spoiler='Si' WHERE texto='".$_POST['texto']."'";
+  //$sql= "DELETE FROM reseña WHERE texto = '".$_POST['texto']."'  ";
   $result=mysqli_query($conexion,$sql);
-  $_SESSION['error']='Comentario eliminado de forma exitosa';
+  $_SESSION['error']='Comentario marcado como spoiler de forma exitosa';
   header("Location:listarReportes.php");
   exit;
 ?>
