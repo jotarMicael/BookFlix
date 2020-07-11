@@ -63,9 +63,12 @@ include('conexion.php');
 </head>
 <body background= "Imagenes/2.jpg">
 	<h3 class="tituloTerciarioConfiguracion">
-		<?php if (!empty($_SESSION['error'])){
-    		echo $_SESSION['error'];
-			unset($_SESSION['error']);} ?> </h3>
+	<?php
+		if (!empty($_SESSION['error'])) {
+			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);
+		}
+ 		?>
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
 			<li><a href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>" class="botonInicio">Inicio</a></li>
@@ -229,6 +232,7 @@ include('conexion.php');
 				</div>	
 	</div>
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
+	 <form action="publicar2.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
 			<h2 class="tituloSecundarioConfiguracion" >Modifique la noticia:</h2>
 			<div class="divConfiguracion">
 			<div class="fondoComentarios">
@@ -242,21 +246,13 @@ include('conexion.php');
 	    		<textarea cols="3" rows="5" class="contenido-publicacion" name = "publish" id="publish"></textarea>
 	    	</div>
 	    	<div class="barraBot">
+				<input type="hidden" name="idNoti" id="idNoti" value="<?php echo $_GET['idNoti'];?>">
 	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
 	    	</div>
+			</form>
 				
 		   	</div>
-			<?php 
-				if (isset($_POST['publish'])){
-					
-					$sql= "UPDATE noticia SET texto = '".$_POST['publish']."' WHERE id_Noticia = '".$_GET['idNoti']."'";
-					$result=mysqli_query($conexion,$sql);
-					echo "La noticia se ha cargado correctamente";
-					header("Location: Home.php");
-
-					
-				}
-			?>
+			
 	 </div>
 		
 	<div class="barraFin">

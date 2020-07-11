@@ -225,9 +225,12 @@ include('conexion.php');
 			?>
 				</div>	
 	</div>
-	 <?php if (!empty($_SESSION['error'])){
-    		echo $_SESSION['error'];
-			unset($_SESSION['error']);} ?>
+	<?php
+		if (!empty($_SESSION['error'])) {
+			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);
+		}
+ 		?>
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese la noticia</h2>	
 			<div class="fondoComentarios">
 				<form action="publicar.php" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
