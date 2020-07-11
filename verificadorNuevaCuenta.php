@@ -96,6 +96,14 @@
 
 	 }
 
+	 $result15=mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentausuario WHERE numero_Tarjeta = '".$_POST['unN°Tarjeta']."' ");
+	 if(mysqli_num_rows($result15)==1){
+		$_SESSION['error'] = "Esta tarjeta ya ha sido utilizada en otra cuenta";
+		header('Location: NuevaCuenta.php');
+		exit;
+	 }
+
+
 	$validar=mysqli_num_rows(mysqli_query($link, "SELECT * FROM cuenta WHERE email = '" . $_POST['unEmail'] . "' or nombre_Usuario = '" . $_POST['unUsuario'] . "' "));
 
 	if(!$validar){

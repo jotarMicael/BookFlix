@@ -3,7 +3,8 @@
   session_start();
   $sql="DELETE FROM cuenta WHERE '".$_SESSION['usuario']['nombre_Usuario']."'=nombre_Usuario ";
   $result=mysqli_query($conexion,$sql);
-  $sql="DELETE FROM cuentausuario WHERE '".$_SESSION['usuario']['nombre_Usuario']."'=nombre_Usuario ";
+  //$sql="DELETE FROM cuentausuario WHERE '".$_SESSION['usuario']['nombre_Usuario']."'=nombre_Usuario ";
+  $sql= "UPDATE cuentausuario SET nombre_Usuario='', apellido_Tarjeta='',nombre_Tarjeta='',codigo_Seguridad='' WHERE nombre_Usuario='".$_SESSION['usuario']['nombre_Usuario']."'";
   $result=mysqli_query($conexion,$sql);
   $sql="DELETE FROM cuentausuariotipobasica WHERE '".$_SESSION['usuario']['nombre_Usuario']."'=nombre_Usuario ";
   $result=mysqli_query($conexion,$sql);
