@@ -243,9 +243,9 @@ include('conexion.php');
 				if (!empty($_POST['ISBN'])&&!empty($_POST['nombreCap'])){
 					$sql= "SELECT id_Libro FROM libro WHERE ISBN='".$_POST['ISBN']."' ";
 					$result=mysqli_query($conexion,$sql);
-					$sql2= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo='".$_POST['nombreCap']."' ";
-					$result2=mysqli_query($conexion,$sql2);
 					$mostrar=mysqli_fetch_array($result);
+					$sql2= "SELECT nombre_Capitulo FROM capitulo WHERE nombre_Capitulo='".$_POST['nombreCap']."' AND id_Libro='".$mostrar['id_Libro']."' ";
+					$result2=mysqli_query($conexion,$sql2);		
 					if((mysqli_num_rows($result)==1)&&(mysqli_num_rows($result2)==1)){  
                             $sql= "DELETE FROM capitulo WHERE '".$mostrar['id_Libro']."'=id_Libro and '".$_POST['nombreCap']."'=nombre_Capitulo ";
 					        $result=mysqli_query($conexion,$sql);
