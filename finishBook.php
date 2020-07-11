@@ -14,6 +14,12 @@
   $result=mysqli_query($conexion,$sql);
   
   $_SESSION['error']='El libro ha sido registrado como leido';
-  header("Location:Home.php");
-  exit;
+
+  $vr=$_POST['idLibro'];
+  $tit=$_POST['titulo'];
+  $lib=$_POST['libro'];
+  header("Location:vistaPrevia.php?idLibro=$vr&titulo=$tit&libro=$lib");
+
+  //header("Location:Home.php");
+  exit();
 ?>

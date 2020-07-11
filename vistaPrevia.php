@@ -243,6 +243,10 @@ $edi=$mostrar3['nombre_Editorial'];
 			<input type="hidden" name="apellido" id="apellido" value="<?php echo $ape?>">
 			<input type="hidden" name="editorial" id="editorial" value="<?php echo $edi?>">
 			<input type="hidden" name="genero" id="genero" value="<?php echo $gen?>">
+			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
+			<input type="hidden" name="titulo" id="titulo" value="<?php echo $_GET['titulo'];?>">
+			<input type="hidden" name="libro" id="libro" value="<?php echo $_GET['libro'];?>">
 			<input type="submit" class="boton" value="Finalizar Lectura" onclick="return ConfirmDemo()"><br> 
      		</form> 
 			</div>
