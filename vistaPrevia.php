@@ -261,7 +261,14 @@ $edi=$mostrar3['nombre_Editorial'];
 			<input type="submit" class="boton" value="Calificar" onclick="return ConfirmDemo()"><br> 
      		</form> 
 			</div>
-			<?php }}
+			<?php }
+					?>
+				<form action="crearReseña.php" method="post" enctype="multipart/form-data" >
+			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
+			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
+			<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Dejar reseña"><br> 	
+			<?php
+					}
 				}?>
 
 			<?php
