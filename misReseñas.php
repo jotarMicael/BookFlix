@@ -233,8 +233,13 @@
 	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<h2 class="tituloSecundarioConfiguracion" >Mis reseñas: </h2>
 				
-						<?php 
-							$sql2="SELECT fechaHora,nombre_Perfil,texto,spoiler,nombre_Capitulo FROM reseña where nombre_Perfil='" .$_SESSION['perfilNombre']."' ";
+						<?php
+							$sql3="SELECT id_Perfil FROM perfil WHERE nombre_Perfil='" .$_SESSION['perfilNombre']."' ";
+							$result3=mysqli_query($conexion,$sql3);
+
+							$mostrar19=mysqli_fetch_array($result3, MYSQLI_ASSOC);
+
+							$sql2="SELECT fechaHora,texto,spoiler,nombre_Capitulo FROM reseña where id_Perfil='" .$mostrar19['id_Perfil']."' ";
 							$result2=mysqli_query($conexion,$sql2);
 							echo $_SESSION['perfilNombre'];
                             if (!empty($_SESSION['error'])) {
