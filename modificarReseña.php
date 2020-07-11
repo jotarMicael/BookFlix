@@ -234,7 +234,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese la reseña</h2>
 			<div class="fondoComentarios">
-				<form action="modificarReseña.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
+				<form action="modReseña.php" method="post" onsubmit="return validar();" enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
@@ -262,26 +262,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	</form>	
 				
 		   	</div>
-			<?php 
-				
-				if (!empty($_POST['publish'])){
-						if (empty($_POST['spoiler']))
-							$_POST['spoiler']='No';
-						else
-							$_POST['spoiler']='Si';
-
-						$fechaHora=date('Y-m-d g:ia');
-                        //$sql= "INSERT INTO reseña(fechaHora,nombre_Perfil,id_Libro,spoiler,nombre_Capitulo,texto,reportada) VALUES ('$fechaHora','".$_SESSION["perfilNombre"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"].",'No')";
-                        $sql= "UPDATE reseña SET texto = '".$_POST['publish']."',spoiler='".$_POST['spoiler']."' WHERE texto='".$_POST['texto2']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."'";
-                        $result=mysqli_query($conexion,$sql);
-						$_SESSION['error']='La reseña se ha modificado correctamente';
-						header('Location:misReseñas.php');
-
-					
-				}
-				else
-					echo 'Debe ingresar un texto';
-			?>
+			
 	 </div>
 		
 	<div class="barraFin">
