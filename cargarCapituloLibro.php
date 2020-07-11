@@ -295,10 +295,17 @@ session_start();
 						$sql5= "SELECT * FROM capitulo WHERE id_Libro='$ideo' ";
 						$result5=mysqli_query($conexion,$sql5);
 
-						if(($mostrar2['capitulos'])<(mysqli_num_rows($result5))){
+						if(empty($mostrar2['id_Libro'])){
+							echo "<font color=white  size='5pt'> No existe libro con ese ISBN</font>";
+							header("Location: cargarCapituloLibro.php");
+							exit();
+						}
+
+						if(($mostrar2['capitulos'])==(mysqli_num_rows($result5))){
 							$_SESSION['error']='Ya se encuentra cargado el permitido de capitulos para el libro';
 							echo "<font color=white  size='5pt'> Ya se encuentra cargado el permitido de capitulos para el libro </font>";
 							header("Location: cargarCapituloLibro.php");
+							exit();
 							
 						}
 						else{
