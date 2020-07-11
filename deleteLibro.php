@@ -4,6 +4,22 @@ include('conexion.php');
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<title>Eliminar Libro</title>
@@ -231,7 +247,7 @@ include('conexion.php');
 				  <form action="deleteLibro.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">ISBN: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="ISBN" name="ISBN"><br>
-					<input type="submit" class="boton" value="Ingresar"><br>
+					<input type="submit" class="boton" value="Ingresar" onclick="return ConfirmDemo()"><br>
 					</form>
 				  </div>
 				
@@ -249,7 +265,7 @@ include('conexion.php');
                     }
 				
 					else {
-						echo "<font color=white  size='5pt'> La libro ingresado no existe </font>";
+						echo "<font color=white  size='5pt'> El libro ingresado no existe </font>";
 
 					}
 				}
