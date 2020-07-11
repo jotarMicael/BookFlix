@@ -231,7 +231,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 				</div>	
 	</div>
      <img class="imagenTitulo" src="Imagenes\Titulo.png">
-     <?php $sql="SELECT fechaHora,id_Perfil from reseña where nombre_Capitulo = '" .$_POST['nCap']."' and texto = '" .$_POST['texto']."' ";
+     <?php $sql="SELECT fechaHora,id_Perfil from reseña where id_Libro = '" .$_POST['idLibro']."' and texto = '" .$_POST['texto']."' ";
               $result=mysqli_query($conexion,$sql);
               while($mostrar=mysqli_fetch_array($result)){
 				$sql25="SELECT nombre_Perfil FROM perfil WHERE id_Perfil='" .$mostrar['id_Perfil']."' ";
