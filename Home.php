@@ -345,8 +345,8 @@ return false;
 	    							<div class="barraBot">
 									<?php $resultado = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 											if(mysqli_num_rows($resultado) == 1){ ?>
-	    										<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>" onclick="return confirm()">Eliminar Noticia</a></li>
-												<li><a class="botonInicio" href="modificarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>"onclick=" confirm()">Modificar Noticia</a></li>
+	    										<li><a class="botonInicio" href="eliminarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>" onclick="return ConfirmDemo()">Eliminar Noticia</a></li>
+												<li><a class="botonInicio" href="modificarNoticia.php?idNoti=<?php echo $mostrar['id_Noticia']?>"onclick=" return ConfirmDemo()">Modificar Noticia</a></li>
 									<?php }?>
 	    							</div>
 											
@@ -396,7 +396,7 @@ return false;
 						<?php } ?>
 						<?php $resultado10 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 								if(mysqli_num_rows($resultado10) == 1){ ?>
-	    								<li><a class="botonInicio" onclick="return confirm()" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>	
+	    								<li><a class="botonInicio" onclick="return ConfirmDemo()" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>	
 								</div>	
 						<?php } }?>
 	    		</div>

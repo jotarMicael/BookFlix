@@ -8,7 +8,7 @@ include('conexion.php');
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptMostrar.js"></script>
 	<script type="text/javascript">
-function ConfirmDemo(); {
+function ConfirmDemo() {
 //Ingresamos un mensaje a mostrar
 var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
 //Detectamos si el usuario acepto el mensaje
@@ -287,7 +287,7 @@ return false;
 					<form action="addListaDeseos.php" method="post" enctype="multipart/form-data" >
 					<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 					<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
-					<input type="submit" class="boton" value="Agregar a lista de deseos"><br> 
+					<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Agregar a lista de deseos"><br> 
 				 	</form>  
 					 <br>
 			 <?php }
@@ -298,10 +298,10 @@ return false;
 			 }?>
 				
 				  
-			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data" onclick="ConfirmDemo();">
+			 <form action="listarReseñas.php" method="post" enctype="multipart/form-data">
 			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
-			<input type="submit" class="boton" value="Ver reseñas"><br> 
+			<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Ver reseñas"><br> 
      		</form> 
 			 </div>
 			   <?php
@@ -314,11 +314,11 @@ return false;
 					$_SESSION['idC']=$mostrar['id_Capitulo'];
 					?>
 			<div class="divMargin">
-			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data" onclick="ConfirmDemo();">
+			<form action="finishCap.php?&nCap=<?php echo $_GET['nCap'];?>&perfil=<?php echo $_GET['perfil'];?>" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
 			<input type="hidden" name="nLibro" id="nLibro" value="<?php echo $_GET['nLibro'];?>">
-			<input type="submit" class="boton" onclick="ConfirmDemo();" value="Finalizar lectura"><br> 
+			<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Finalizar lectura"><br> 
      		</form> 
 			</div>
 			<?php }
@@ -328,7 +328,7 @@ return false;
 			<form action="crearReseña.php" method="post" enctype="multipart/form-data" >
 			<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			<input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>">
-			<input type="submit" class="boton" value="Dejar reseña"><br> 
+			<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Dejar reseña"><br> 
 			<?php $sql9= "SELECT id_Libro FROM calificacion WHERE id_Libro='".$_GET['idLibro']."' AND nombre_Perfil='".$_SESSION['perfilNombre']."' AND nombre_Capitulo='".$_GET['nCap']."' ";
 				$result8=mysqli_query($conexion,$sql9);
 				if(mysqli_num_rows($result8) == 0){
@@ -337,10 +337,10 @@ return false;
      		</form>
 			 <div class="divMargin">
 			 <br> <br>
-			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data" onclick="ConfirmDemo();;">
+			 <form action="crearCalificacion.php" method="post" enctype="multipart/form-data">
 			 <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_GET['idLibro'];?>">
 			 <input type="hidden" name="nCap" id="nCap" value="<?php echo $_GET['nCap'];?>"> 
-			 <input type="submit" class="boton" value="Calificar"><br> 
+			 <input type="submit" class="boton" onclick="return ConfirmDemo()" value="Calificar"><br> 
      		 </form> 
 			 </div>
 			 <?php } } } ?>
