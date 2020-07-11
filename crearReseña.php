@@ -63,10 +63,10 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	</style>
 </head>
 <body background= "Imagenes/2.jpg">
-	<h3 class="tituloTerciarioConfiguracion">
-		<?php if (!empty($_SESSION['error'])){
-    		echo $_SESSION['error'];
-			unset($_SESSION['error']);} ?> </h3>
+	<h3 class="tituloTerciarioConfiguracion"> </h3>
+	<?php if (!empty($_SESSION['error'])){
+    		echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);} ?> 
 	<div id="menu" class="barraInicio">
 			<div class="divBotones">
 			<li><a href="Home.php?perfil=<?php echo $_GET['perfil'];?>&img=<?php echo $_GET['img'];?>" class="botonInicio">Inicio</a></li>
@@ -108,6 +108,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 						?>
 					</select> <br>
 			</div>
+	
 			<div>
 					<label class="labelWhite">Genero: </label><br>
 					<select name="genero" id="genero" > 
