@@ -253,16 +253,25 @@ include('conexion.php');
                             if (empty($_POST['newNombreAutor']))
                                 $_POST['newNombreAutor']=$mostrar['nombre'];
                             if (empty($_POST['newApellidoAutor']))
-                                $_POST['newApellidoAutor']=$mostrar['apellido'];
+								$_POST['newApellidoAutor']=$mostrar['apellido'];
+							
+							$sql13= "SELECT id_Autor,nombre,apellido FROM autor WHERE apellido = '".$_POST['newApellidoAutor']."' and nombre = '".$_POST['newNombreAutor']."' ";
+							$result13=mysqli_query($conexion,$sql13);	
+
+							if( mysqli_num_rows($result13) == 0 ){
                             $sql= "UPDATE autor SET nombre='".$_POST['newNombreAutor']."', apellido='".$_POST['newApellidoAutor']."' WHERE id_Autor='".$mostrar['id_Autor']."'";
 					        $result=mysqli_query($conexion,$sql);
-                            echo "<font color=white  size='5pt'> Modificado Correctamente </font>";
+							echo "<font color=white  size='5pt'> Modificado Correctamente </font>";
+							}
+							else {
+								echo "<font color=white  size='5pt'> El autor ingresado ya existe </font>";
+							}
                         }
                         else
                             echo "<font color=white  size='5pt'> Debe ingresar algun dato para modificar </font>";
 					}
 					else {
-						echo "<font color=white  size='5pt'> El autor ingresado no existe </font>";
+						echo "<font color=white  size='5pt'> No existe el autor ingresado </font>";
 
 					}
                 }

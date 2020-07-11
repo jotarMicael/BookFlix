@@ -3,6 +3,22 @@ include('conexion.php');
  ?>
 <!DOCTYPE html>
 <html>
+<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
@@ -228,18 +244,19 @@ include('conexion.php');
     <div class="registro">
 				<h3 class="tituloSecundarioRegistro"> Perfiles</h3>
 				<!--En esta parte del codigo hay que consultar a la base de datos todos los perfiles que tiene cargados, y mostrarlos como un link. Ese link debe redireccionar al Home o Index.-->
-                <form method="POST" action="deletePerfil.php" enctype="multipart/form-data">
+                <form method="POST" action="elimPerfil.php" enctype="multipart/form-data">
                   
 				
 				<select name="prf" id="prf">  
 				<?php
                     //Se fija si hay perfiles
                     
-					$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Usuario = '" . $_SESSION["usuario"]["nombre_Usuario"] ."'";
+					$sql1="SELECT nombre_Perfil from perfil WHERE nombre_Usuario='" . $_SESSION["usuario"]["nombre_Usuario"] ."' AND nombre_Perfil='" . $_SESSION["perfilNombre"] ."'";
 					$result1=mysqli_query($conexion,$sql1);
 					
 					if( mysqli_num_rows($result1) == 0 ) {
-                    	echo "<font color=white  size='5pt'> La cuenta no posee ningun perfil </font>"; }
+						echo "<font color=white  size='5pt'> La cuenta no posee ningun perfil </font>";
+					 }
 					else {
 					while($mostrar=mysqli_fetch_array($result1)){
 				?>
@@ -268,21 +285,12 @@ include('conexion.php');
 		 <br><br>
 		 
 	 <div>
-     	<input type="submit" class="boton" onclick="confirm()" value="Eliminar"><br> 
+		 <input type="hidden" name="prf" id="prf" value="<?php echo $_POST['prf'];?>">
+     	<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Eliminar"><br> 
      </div>
 	 		</form> 
 	</div>
-			<?php 
 			
-				if (!empty($_POST['prf'])){
-                            $sql= "DELETE FROM perfil WHERE '".$_POST['prf']."'=nombre_Perfil AND '". $_SESSION["usuario"]["nombre_Usuario"] ."'=nombre_Usuario ";
-					        $result=mysqli_query($conexion,$sql);
-							echo "<font color=white  size='5pt'> Eliminado Correctamente </font>";
-							header("Location: deletePerfil.php");
-                }
-
-
-			?>
 	 </div>
 		
 	<div class="barraFin">
