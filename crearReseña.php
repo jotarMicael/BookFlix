@@ -233,7 +233,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	 <img class="imagenTitulo" src="Imagenes\Titulo.png">
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese la reseña</h2>
 			<div class="fondoComentarios">
-				<form action="crearReseña.php" method="post" enctype="multipart/form-data">
+				<form action="cargarReseña.php"  method="post" enctype="multipart/form-data">
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
 	    		<div class="barraTop-publicacion">
@@ -258,32 +258,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
 	</form>	
 				
 		   	</div>
-			<?php 
-				
-				if (!empty($_POST['publish'])){
-						if (empty($_POST['spoiler']))
-							$_POST['spoiler']='No';
-						else
-							$_POST['spoiler']='Si';
-
-						$fechaHora=date('Y-m-d g:ia');
-
-						$sql2="SELECT id_Perfil FROM perfil where nombre_Usuario = '" .$_SESSION['usuario']['nombre_Usuario']."' AND nombre_Perfil='" .$_SESSION['perfilNombre']."' ";
-						$result2=mysqli_query($conexion,$sql2);
-
-						$mostrar19=mysqli_fetch_array($result2, MYSQLI_ASSOC);
-
-						$sql= "INSERT INTO reseña(fechaHora,id_Perfil,id_Libro,spoiler,nombre_Capitulo,texto,reportada) VALUES ('$fechaHora','".$mostrar19["id_Perfil"]."','".$_POST['idLibro']."','".$_POST['spoiler']."','".$_POST['nCap']."','" .$_POST["publish"]."','No')";
-						$result=mysqli_query($conexion,$sql);
-						$_SESSION['error']='La reseña se ha cargado correctamente';
-						header("Location:home.php");
-						exit;
-
-					
-				}
-				else
-					echo 'Debe ingresar un texto';
-			?>
+			
 	 </div>
 		
 	<div class="barraFin">
