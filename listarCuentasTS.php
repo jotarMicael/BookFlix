@@ -224,24 +224,26 @@ include('conexion.php');
 			?>
 				</div>	
 	</div>
-			<h2 class="tituloSecundarioConfiguracion" >Expiracion de cuentas premium</h2>
-			<div class="divConfiguracion">
-            <?php
+			<h2 class="tituloSecundarioConfiguracion" >Expiracion de cuentas </h2>
+			<?php
 				$result2= mysqli_query($conexion, "SELECT DISTINCT nombre_Usuario,vencimientoBasico FROM cuentausuariotipobasica ORDER BY vencimientoBasico DESC ");
                 while($mostrar2=mysqli_fetch_array($result2)){
 			?>
+			<div class="divConfiguracion">
+            
 				  <div class="registroConfiguracion">
 				  <form action="cargarAutor.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre de usuario: </label>
 					<label class="labelWhite"><strong> <?php echo $mostrar2['nombre_Usuario'];?> </strong> </label><br>
 					<label class="labelWhite">Fecha de vencimiento: </label>
-					<label class="labelWhite"><strong> <?php echo $mostrar2['vencimientoBasico'];?> </strong> </label><br>
-					
-					</form>
+					<label class="labelWhite"><strong> <?php echo $mostrar2['vencimientoBasico'];?> </strong> </label>
+				  </form>
 				  </div>
 				
-		   	</div>
-                <?php }?>
+				  </div>
+                
+	 
+	 <?php }?>
 	 </div>
 		
 	<div class="barraFin">
