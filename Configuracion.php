@@ -175,7 +175,7 @@ if (!empty($_SESSION['error'])) {
 				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 				if(mysqli_num_rows($result) <> 1){
 					?>
-			<li><a href="verYCrearPerfiles.php" class="botonInicio">Cambiar de perfil</a></li>
+			<li><a href="modificarPerfil.php" class="botonInicio">Configurar perfil</a></li>
 				<?php }?>
 			</div>
 			<div class="divBotones">
