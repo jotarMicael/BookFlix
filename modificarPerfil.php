@@ -15,6 +15,22 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<title>Cargar Capitulo</title>
@@ -109,7 +125,7 @@ session_start();
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del capitulo</h2>
 			<div class="divConfiguracion">
 				  <div class="registroConfiguracion">
-				  <form action="modificarPerfil.php" method="post" enctype="multipart/form-data">
+				  <form action="modificarPerfil.php" method="post" onclick="return ConfirmDemo()" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre de Perfil: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nPerfil" name="nPerfil" value="<?php echo $mostrar11['nombre_Perfil'] ?>"><br>
 					<label class="labelWhite">Seleccionar imagen del capitulo: </label><br>
@@ -125,7 +141,7 @@ session_start();
 
 					$sql= "SELECT nombre_Perfil FROM perfil WHERE nombre_Perfil = '".$_POST['nPerfil']."' ";
 					$result=mysqli_query($conexion,$sql);
-					if(mysqli_num_rows($result) <= 1){
+					if(mysqli_num_rows($result) <> 1){
 
 						if(!empty($_FILES['imagen'])){
 
@@ -168,7 +184,7 @@ session_start();
 
                     }
                     else{
-                        $_SESSION['error'] = "Ya posee un nombre de perfil identico con esta cuenta";
+                        $_SESSION['error'] = "Ya existe un perfil con ese nombre";
                         header("Location: modificarPerfil.php");
 
                     }
