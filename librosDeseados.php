@@ -9,6 +9,22 @@
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptInicio.js"></script>
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Perfil</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -256,13 +272,13 @@
 								<br>
 								
 						<br>
-                        <form action="deleteLibrosDeseados.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+                        <form action="deleteLibrosDeseados.php" method="post" onclick="return ConfirmDemo()" enctype="multipart/form-data">
 					        <input type="hidden" name="idLibro" id="idLibro" value="<?php echo $mostrar['id_Libro'];?>">
 					        <input type="submit" class="botonInicio" name="Eliminar" value="Eliminar">
 					    </form>
 							</div>
                         <?php 
-                        echo $_SESSION['perfilNombre'];
+                        
 							 } } }
 						 ?>
 				
