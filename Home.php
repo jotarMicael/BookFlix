@@ -298,7 +298,10 @@ return false;
 						 ?>
 				</div>
 				
-				          
+				<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) == 1){
+					?>          
 				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
 				<label class="labelWhite">Autores mas leidos: </label><br><br>
 				<?php 
@@ -311,6 +314,11 @@ return false;
 							</div>
 							<?php } ?>
 				</div>
+				<?php } ?>
+				<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) == 1){
+					?>
 				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
 				<label class="labelWhite">Editoriales mas leidas: </label><br><br>
 				<?php 
@@ -323,6 +331,11 @@ return false;
 							</div>
 							<?php } ?>
 				</div>
+				<?php } ?>
+				<?php
+				$result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+				if(mysqli_num_rows($result) == 1){
+					?>
 				<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
 				<label class="labelWhite">Generos mas leidos: </label><br><br>
 				<?php 
@@ -335,6 +348,7 @@ return false;
 							</div>
 							<?php } ?>
 				</div>
+				<?php } ?>
 							<div style="margin-right: -1px; margin-top: 20px; position: relative; z-index: 1;" class="divNotificaciones">
 	<?php 
 							$sql="SELECT * from noticia ";
