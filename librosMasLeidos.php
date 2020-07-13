@@ -252,12 +252,12 @@
 				<div class="divLibrosRandom" style="width:1120px; hight:auto; display: flex;">
 						<?php 
                             $actual=date('Y-m-d');
-                            $sql2="SELECT id_Libro, COUNT( id_Libro ) AS total FROM perfilleyolibro GROUP BY id_Libro ORDER BY total DESC ";
+                            $sql2="SELECT id_Libro, COUNT( id_Libro ) AS total FROM perfilleyolibro GROUP BY id_Libro ORDER BY total DESC LIMIT 3 ";
                             $result0=mysqli_query($conexion,$sql2);
                             while($mostrar3=mysqli_fetch_array($result0)){
                         
 
-							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro where id_Libro='".$mostrar3['id_Libro']."'";
+							$sql="SELECT imagenTapaLibro,nombre_Libro,id_Editorial,id_Libro,fecha_DeBaja from libro where id_Libro='".$mostrar3['id_Libro']."' ";
 							$result=mysqli_query($conexion,$sql);
 							while($mostrar=mysqli_fetch_array($result)){
 								if(($mostrar['fecha_DeBaja'])>($actual)){
