@@ -227,7 +227,7 @@ include('conexion.php');
 			<h2 class="tituloSecundarioConfiguracion" >Expiracion de cuentas premium</h2>
 			<div class="divConfiguracion">
             <?php
-				$result2= mysqli_query($conexion, "SELECT nombre_Usuario,fecha_Vencimiento FROM cuentausuariotipopremiun  WHERE validada='Si' ORDER BY fecha_Vencimiento DESC  ");
+				$result2= mysqli_query($conexion, "(SELECT nombre_Usuario,fecha_Vencimiento FROM cuentausuariotipopremiun  WHERE validada='Si' ORDER BY fecha_Vencimiento DESC) UNION (SELECT nombre_Usuario,fecha_Vencimiento FROM cuentausuariotipobasica ORDER BY fecha_Vencimiento DESC) ");
                 while($mostrar2=mysqli_fetch_array($result2)){
 			?>
 				  <div class="registroConfiguracion">

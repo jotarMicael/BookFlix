@@ -89,6 +89,10 @@
 	 $expiracion =$_POST['unVencimiento'];
 	 $expiracion= date("Y-m-d", strtotime($expiracion));
 
+	 $actual2=date('Y-m-d');
+	 $fecha= strtotime('+1 month',strtotime($actual2));
+	 $fecha= date('Y-m-d',$fecha);
+
 	 if($actual>$expiracion){
 		$_SESSION['error'] = "Tarjeta vencida";
 		header('Location: NuevaCuenta.php');
@@ -109,7 +113,7 @@
 	if(!$validar){
 		mysqli_query($conexion, "INSERT INTO cuenta (nombre_Usuario, nombre,apellido, contraseña, email)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unNombre'] . "',  '" . $_POST['unApellido'] . "' ,'" . $_POST['unContraseña'] . "' ,'" . $_POST['unEmail'] . "')");
 		mysqli_query($conexion, "INSERT INTO cuentausuario (nombre_Usuario, numero_Tarjeta, codigo_Seguridad,nombre_Tarjeta,apellido_Tarjeta)VALUES ('" . $_POST['unUsuario'] . "', '" . $_POST['unN°Tarjeta'] . "', '" . $_POST['unCodigo'] . "', '" . $_POST['unNombreTar']. "','" . $_POST['unApellidoTar']. "')");
-		mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['unVencimiento'] . "')");
+		mysqli_query($conexion, "INSERT INTO cuentausuariotipobasica (nombre_Usuario , fecha_Vencimiento,vencimientoBasico)VALUES ('" . $_POST['unUsuario'] . "','" . $_POST['unVencimiento'] . "','$fecha')");
 
 		$result = mysqli_query($conexion, "SELECT * FROM cuenta WHERE nombre_Usuario = '" . $_POST['unUsuario'] . "' ");
 
