@@ -279,8 +279,9 @@
 						<?php } ?>
 						<?php $resultado10 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 								if(mysqli_num_rows($resultado10) == 1){ ?>
-	    								<li><a class="botonInicio" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>		
+	    								<li><a class="botonInicio" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>	
+	    		</div>	
 						<?php } }?>
-	    		</div>
+
 </body>
 </html>
