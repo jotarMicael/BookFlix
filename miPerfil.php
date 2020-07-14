@@ -190,8 +190,7 @@ return false;
 			?>
 				</div>	
 	</div>
-	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
-	<h2 class="tituloSecundarioConfiguracion" >Lecturas Recientes...</h2>
+	<h2 class="tituloSecundarioConfiguracion">Lecturas Recientes...</h2>
 				
 						<?php 
 							$sql2="SELECT id_Libro from perfilleelibro where nombre_Perfil = '" .$_GET['perfil']."'";
@@ -232,8 +231,10 @@ return false;
 		<div class="nombrePanelPerfil">
 		<a class="botonInicio" href="librosDeseados.php"> Lista de libros deseados </a>
 		</div>
+	  </div>
+	</div>
 	  <div class="barraFin">
 		<p class="textoBarra"> Gutierrez Matias 15257/5 - Jotar Micael 15388/6 - Gallardo Ucero Valentin </p>
-    </div>
+	  </div>
 </body>
 </html>

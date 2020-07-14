@@ -243,7 +243,6 @@ return false;
 			?>
 				</div>	
 	</div>
-	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<h2 class="tituloSecundarioConfiguracion" >Lista de Deseos:</h2>
     <?php if (!empty($_SESSION['error'])) {
 			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";

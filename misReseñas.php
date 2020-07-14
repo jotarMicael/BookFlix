@@ -230,7 +230,6 @@
 				</div>	
 	</div>
 <body background="Imagenes/2.jpg">
-	<img src="Imagenes/Titulo.png" class="imagenTituloRegistro">
 	<h2 class="tituloSecundarioConfiguracion" >Mis reseñas: </h2>
 				
 						<?php
