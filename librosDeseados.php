@@ -276,6 +276,7 @@ return false;
 					        <input type="submit" class="botonInicio" name="Eliminar" value="Eliminar">
 					    </form>
 							</div>
+							<br> <br>
                         <?php 
                         
 							 } } }
