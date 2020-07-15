@@ -419,9 +419,12 @@ return false;
 									<li><a class="botonInicio" onclick="return ConfirmDemo()" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>
 									<?php } ?>	
 						</div>
+						<br> <br>	
 						<?php  }?>
 	    							
-				</div>	
+				</div>
+				
+				
 					
 						
 
