@@ -67,7 +67,7 @@ return false;
 	    		<h5 class="textoBarraTop"><?php echo $mostrar25['nombre_Perfil']; ?></h5>		
 	    	</div>
 	    	<div  id="content22" style="display:none">
-				<form action="detalleComentario.php" method="post" enctype="multipart/form-data">
+				<form action="detalleComentario.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()" >
 	    		<textarea disabled maxlength="80" cols="10" rows="10" class="contenido-publicacion" name="publish" id="publish"><?php echo substr($mostrar2['texto'], 0, 80); ?></textarea>
 	    	</div>
 			
@@ -75,7 +75,7 @@ return false;
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar25['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
-				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas..." onclick="return ConfirmDemo();">
+				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
 				</form>
 			<div>
 			<div>

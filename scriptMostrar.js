@@ -1,6 +1,6 @@
 function mostrarInput() {
-    elemento = document.getElementById("content22");
-    check = document.getElementById("check");
+    elemento=document.getElementById("content22");
+    check=document.getElementById("check");
     
     if (check.checked) {
       elemento.style.display='block';
