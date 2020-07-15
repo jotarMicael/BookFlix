@@ -6,8 +6,7 @@ function resultadoBusqueda(){
    $nm=$_POST['nombreCompletoAutor'];
    $nm=explode(" ", $nm);
    $nom=$nm[0];
-   echo $_POST['genero'];
-   if(empty($busca)){
+   if(empty($_POST['busca'])){
     $busca='';
    }
    if(($_POST['genero'])=='Todos'){
@@ -16,7 +15,7 @@ function resultadoBusqueda(){
    if(($_POST['nombreEditorial'])=='Todos'){
       $_POST['nombreEditorial']='';
    }
-   if(($nm[0])=='Todos'){
+   if($_POST['nombreCompletoAutor']=='Todos'){
       $nm[0]='';
  }
 
