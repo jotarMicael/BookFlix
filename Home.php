@@ -413,13 +413,16 @@ return false;
 								<td>  <font color="white"> <strong> <?php  echo $mostrar['nombre_Libro']; ?> </strong> </font> </td> <br> &nbsp;	
 								<br>
 								<br>
-						<?php } ?>
-						</div>
-						<?php $resultado10 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+						<?php } 
+						 $resultado10 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 								if(mysqli_num_rows($resultado10) == 1){ ?>
-	    								<li><a class="botonInicio" onclick="return ConfirmDemo()" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>
+									<li><a class="botonInicio" onclick="return ConfirmDemo()" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>
+									<?php } ?>	
+						</div>
+						<?php  }?>
+	    							
 				</div>	
-					<?php } }?>	
+					
 						
 
 </body>
