@@ -269,7 +269,7 @@ return false;
 		
 			
 		<form action="tYC.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
-			   <input type="submit" class="boton" value="Terminos y condiciones"><br>
+			   <input type="submit" class="boton" value="Condiciones"><br>
 			   </form>
 		</div>
 	</div>
