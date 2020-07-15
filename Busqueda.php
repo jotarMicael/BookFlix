@@ -120,7 +120,8 @@ if (!empty($_SESSION['error'])){
 					<select name="genero" id="genero" > 
 					<option value="Todos">Todos</option>
 						<?php 
-							$sql= "SELECT nombre_Genero FROM genero";
+							//$sql= "SELECT nombre_Genero FROM genero";
+							$sql="SELECT DISTINCT nombre_Genero FROM genero g INNER JOIN generopertenecelibro gp ON (g.id_Genero=gp.id_Genero) WHERE (g.id_Genero=gp.id_Genero)"; 
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ningun genero creado";
