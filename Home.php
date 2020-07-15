@@ -123,7 +123,7 @@ return false;
 					<select name="nombreCompletoAutor" id="nombreCompletoAutor">
 					<option value="Todos">Todos</option>
 						<?php 
-							$sql= "SELECT nombre,apellido FROM autor";
+							$sql="SELECT DISTINCT a.nombre,a.apellido,a.id_Autor FROM autor a INNER JOIN autoreslibro al ON (al.id_Autor=a.id_Autor) INNER JOIN libro l ON (l.id_Libro=al.id_Libro) WHERE al.id_Libro=l.id_Libro";
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ningun autor creado";
