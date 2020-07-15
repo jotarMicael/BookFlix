@@ -245,8 +245,8 @@ return false;
 				</div>	
 	</div>
 	
-		<div class="divLibroVistaPrevia">
-				
+	<div class="registroConfiguracion">
+		<div>	
 			  <label class="labelWhite"> <strong>Haciendote Premium tendras acceso a leer libros exclusivos y a tener hasta 4 perfiles en la cuenta. Una vez realizado el pago de $1, ya podra disfrutar de los beneficios mencionados anteriormente. 
 			  Haciendo click en el boton "Mejorar a Premium", se confirmara su peticion para ser un usuario premium, una vez que sea corroborada y validada su peticion, 
 			  se le otorgará su beneficio. Haciendo esto, usted estara aceptando todos los terminos y condiciones expuestos en la plataforma.
@@ -254,7 +254,7 @@ return false;
 			   
 		 
 		 
-		<div>	   
+			   
 			   <form action="addPremium.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
 			   <input type="submit" class="boton" value="Aceptar"><br>
 				</form> <br> <br>
