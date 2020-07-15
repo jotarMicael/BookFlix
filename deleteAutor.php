@@ -244,12 +244,12 @@ return false;
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-				  <form action="deleteAutor.php" method="post" onclick="return ConfirmDemo()" enctype="multipart/form-data">
+				  <form action="deleteAutor.php" method="post"enctype="multipart/form-data">
 					<label class="labelWhite">Nombre: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nombreAutor" name="nombreAutor"><br>
 					<label class="labelWhite">Apellido: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="apellidoAutor" name="apellidoAutor"><br>
-					<input type="submit" class="boton" value="Ingresar"><br>
+					<input type="submit" class="boton" onclick="return ConfirmDemo()"  value="Ingresar"><br>
 					</form>
 				  </div>
 				

@@ -6,6 +6,22 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Eliminar Editorial</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -231,7 +247,7 @@ include('conexion.php');
 				  <form action="deleteEditorial.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="genero" name="genero"><br>
-					<input type="submit" class="boton" value="Ingresar"><br>
+					<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Ingresar"><br>
 					</form>
 				  </div>
 				

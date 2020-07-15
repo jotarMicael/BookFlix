@@ -246,7 +246,7 @@
 			?>
 				</div>	
 	</div>
-				<h2 class="tituloSecundarioConfiguracion" >¡Novedades!</h2>
+				<h2 class="tituloSecundarioConfiguracion" >Listado de trailers disponibles</h2>
 				<?php $sql6="SELECT * from trailer
 				 ";
 				$result6=mysqli_query($conexion,$sql6);
@@ -280,8 +280,8 @@
 						<?php $resultado10 = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
 								if(mysqli_num_rows($resultado10) == 1){ ?>
 	    								<li><a class="botonInicio" href="eliminarTrailer.php?archivo=<?php echo $mostrar6['archivo_Trailer'];?>">Eliminar Trailer</a></li>	
-	    		</div>	
-						<?php } }?>
+	    		</div>	<br><br>
+						<?php } }?> 
 
 </body>
 </html>

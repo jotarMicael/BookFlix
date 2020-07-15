@@ -244,10 +244,10 @@ return false;
 			<div class="divConfiguracion">
 				
 				  <div class="registroConfiguracion">
-				  <form action="deleteGenero.php" method="post" onclick="return ConfirmDemo()" enctype="multipart/form-data">
+				  <form action="deleteGenero.php" method="post"  enctype="multipart/form-data">
 					<label class="labelWhite">Nombre: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="genero" name="genero"><br>
-					<input type="submit" class="boton" value="Ingresar"><br>
+					<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Ingresar"><br>
 					</form>
 				  </div>
 				
