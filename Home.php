@@ -227,7 +227,7 @@ return false;
 				if(mysqli_num_rows($result) == 1){
 					?>
 					<div style="margin-top: 10px;">
-					<li><a href="acceptPremiun.php" class="botonInicio">Peticiones a premium</a></li>
+					<li><a href="acceptPremiun.php" class="botonInicio">Peticiones de cuentas</a></li>
 					</div>
 					<div style="position: relative; z-index: 3;">
 					<ul class="nav">

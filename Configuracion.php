@@ -14,6 +14,22 @@ if (!empty($_SESSION['error'])) {
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<title>Configuracion</title>
 	<script type="text/javascript" src="scriptConfiguracion.js"></script>
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
 		
@@ -276,7 +292,7 @@ if (!empty($_SESSION['error'])) {
 					</form>
 		   		</div>
 			<div class="registroConfiguracion">
-			<form action="deleteAccount.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<form action="deleteAccount.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
 			<input type="submit" class="boton" value="Eliminar Cuenta"><br>
 			</form>
 			<?php
@@ -284,7 +300,7 @@ if (!empty($_SESSION['error'])) {
 			if(mysqli_num_rows($result2) == 1){
 			?>
 			 <br>;
-			<form action="addBasic.php" method="post" enctype="multipart/form-data" onclick="return confirm();">
+			<form action="addBasic.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
 			<input type="submit" class="boton" value="Volver a Basico"><br>
 			</form>
 			</div>
