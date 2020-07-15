@@ -262,7 +262,7 @@ return false;
 				
 				<form action="verYCrearPerfiles.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
 			   <input type="submit" class="boton" value="Cancelar"><br>
-			   </form>
+			   </form> <br> <br>
 			   
 			   	
 		
