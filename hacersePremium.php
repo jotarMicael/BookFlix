@@ -272,6 +272,7 @@ return false;
 			   <input type="submit" class="boton" value="Condiciones"><br>
 			   </form>
 		</div>
+		
 	</div>
 		
 	
