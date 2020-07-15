@@ -168,7 +168,7 @@ return false;
 					<select name="nombreEditorial" id="nombreEditorial" >
 					<option value="Todos">Todos</option>
 						<?php 
-							$sql= "SELECT nombre_Editorial FROM editorial";
+							$sql="SELECT DISTINCT a.nombre_Editorial FROM editorial a INNER JOIN libro l ON (l.id_Editorial=a.id_Editorial) WHERE a.id_Editorial=l.id_Editorial ";
 							$result=mysqli_query($conexion,$sql);
 							if( mysqli_num_rows($result) == 0 )
 								echo " No hay ninguna editorial creada";
