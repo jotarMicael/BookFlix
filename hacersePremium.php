@@ -244,25 +244,38 @@ return false;
 			?>
 				</div>	
 	</div>
-	<div class="divLibrosRandom" style="margin-left: 25%;">
+	
 		<div class="divLibroVistaPrevia">
+				
 			  <label class="labelWhite"> <strong>Haciendote Premium tendras acceso a leer libros exclusivos y a tener hasta 4 perfiles en la cuenta. Una vez realizado el pago de $1, ya podra disfrutar de los beneficios mencionados anteriormente. 
 			  Haciendo click en el boton "Mejorar a Premium", se confirmara su peticion para ser un usuario premium, una vez que sea corroborada y validada su peticion, 
 			  se le otorgará su beneficio. Haciendo esto, usted estara aceptando todos los terminos y condiciones expuestos en la plataforma.
 			   </strong></label><br> <br>
-			   <form action="tYC.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
-			   <input type="submit" class="boton" value="Terminos y condiciones"><br>
-			   </form>
+			   
+		 
+		 
+		<div>	   
 			   <form action="addPremium.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
 			   <input type="submit" class="boton" value="Aceptar"><br>
 				</form> <br> <br>
+				
+				
 				<form action="verYCrearPerfiles.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
 			   <input type="submit" class="boton" value="Cancelar"><br>
 			   </form>
-		</form>	
-		</div>
+			   
+			   	
 		
-	</div>	
+		
+			
+		<form action="tYC.php" method="post" enctype="multipart/form-data" onclick="return ConfirmDemo()">
+			   <input type="submit" class="boton" value="Terminos y condiciones"><br>
+			   </form>
+		</div>
+	</div>
+		
+	
+	
 				
 </body>
 </html>
