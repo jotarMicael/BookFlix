@@ -38,7 +38,7 @@ return false;
 	<h2 class="tituloSecundarioConfiguracion" >Reseñas realizadas por otros usuarios...</h2>
 				
 						<?php 
-							$sql2="SELECT fechaHora,id_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."'";
+							$sql2="SELECT fechaHora,id_Perfil,texto,spoiler FROM reseña where id_Libro = '" .$_POST['idLibro']."' AND nombre_Capitulo='' ";
 							$result2=mysqli_query($conexion,$sql2);
 							if(mysqli_num_rows($result2)==0){ ?>
 								<h2 class="tituloSecundarioConfiguracion" >Todavia no hay reseñas realizadas</h2>;
