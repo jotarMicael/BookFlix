@@ -7,6 +7,22 @@ date_default_timezone_set('America/Argentina/Jujuy');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Comentarios</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -255,7 +271,18 @@ date_default_timezone_set('America/Argentina/Jujuy');
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
                 <h5 class="textoBarraTop">Comentario completo</h5>	
+				<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
+						
+						<?php if($mostrar25['nombre_Perfil']<>$_SESSION['perfilNombre']){ ?>
+							<input type="submit" class="botonInicio" name="Reportar" onclick="return ConfirmDemo()" value="Reportar">
+						<?php } ?>
+
+					</form>
+				</div>
 	    	</div>
+			
+			<div>
+					
 			
               
 	</div>			

@@ -115,7 +115,10 @@ return false;
 				<div>
 					<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 						<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
-						<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+						<?php if($mostrar25['nombre_Perfil']<>$_SESSION['perfilNombre']){ ?>
+							<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+						<?php } ?>
+
 					</form>
 				</div>
 				
