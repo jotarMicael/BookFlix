@@ -10,7 +10,22 @@
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptMostrar.js"></script>
-	<script type="text/javascript" src="scriptConfirm.js"></script>
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	
 	<title>Reportes de reseñas</title>
 	<style>
@@ -261,12 +276,12 @@
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
-				<input type="submit" class="botonInicio" name="Cancelar reporte" value="Cancelar reporte">
+				<input type="submit" class="botonInicio" name="Cancelar reporte" onclick="return ConfirmDemo()" value="Cancelar reporte">
 				</form>
 				<div>
 					<form action="eliminarReseñaAdmin.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 						<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
-						<input type="submit" class="botonInicio" name="Marcar Spoiler" value="Marcar Spoiler">
+						<input type="submit" class="botonInicio" name="Marcar Spoiler" onclick="return ConfirmDemo()" value="Marcar Spoiler">
 					</form>
 				</div>
 				
