@@ -7,6 +7,22 @@ date_default_timezone_set('America/Argentina/Jujuy');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Crear Reseña</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -253,7 +269,7 @@ date_default_timezone_set('America/Argentina/Jujuy');
                 <input type="hidden" name="texto2" id="texto2" value="<?php echo $_POST['texto'];?>">
         <?php } ?>
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
+	    		<input type="submit" class="botonInicio" name="Publicar" onclick="return ConfirmDemo()" value="Publicar">
 				</form>
 	    	</div>
 			
