@@ -219,7 +219,9 @@ return false;
 				<?php }?>
 			</div>
 			<div class="divBotones">
-			<li><a href="cerrarSesion.php" class="botonInicio">Cerrar Sesión</a></li>
+			<form action="cerrarSesion.php">
+			<input type="submit" class="botonInicio" name="Cerrar Sesion" onclick="return ConfirmDemo()" value="Cerrar Sesion">
+			</form>
 			</div>
 				
 			<?php

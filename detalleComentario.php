@@ -273,7 +273,9 @@ return false;
                 <h5 class="textoBarraTop">Comentario completo</h5>	
 				<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 						
-						<?php if($mostrar25['nombre_Perfil']<>$_SESSION['perfilNombre']){ ?>
+						<?php $result = mysqli_query($conexion, "SELECT nombre_Usuario FROM cuentaadministrador WHERE nombre_Usuario = '".$_SESSION['usuario']['nombre_Usuario']."' ");
+						$result3=mysqli_query($conexion, "SELECT texto FROM reseña WHERE texto='". $_POST['texto']."' AND spoiler='Si' ");
+				 if(($mostrar25['nombre_Perfil']<>$_SESSION['perfilNombre'])&&(mysqli_num_rows($result) <> 1)&&(mysqli_num_rows($result3) == 0)){ ?>
 							<input type="submit" class="botonInicio" name="Reportar" onclick="return ConfirmDemo()" value="Reportar">
 						<?php } ?>
 
