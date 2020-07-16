@@ -125,12 +125,12 @@ return false;
 			<h2 class="tituloSecundarioConfiguracion" >Ingrese los datos del capitulo</h2>
 			<div class="divConfiguracion">
 				  <div class="registroConfiguracion">
-				  <form action="modificarPerfil.php" method="post" onclick="return ConfirmDemo()" enctype="multipart/form-data">
+				  <form action="modificarPerfil.php" method="post" enctype="multipart/form-data">
 					<label class="labelWhite">Nombre de Perfil: </label><br>
 					<input type="text" class="redondeado" autocomplete="on" id="nPerfil" name="nPerfil" value="<?php echo $mostrar11['nombre_Perfil'] ?>"><br>
 					<label class="labelWhite">Seleccionar imagen del capitulo: </label><br>
 					<input type="file" class="redondeado" id="imagen" name="imagen" accept="image/png,image/jpeg"><br>
-					<input type="submit" class="boton" value="Ingresar"><br>
+					<input type="submit" class="boton" onclick="return ConfirmDemo()" value="Ingresar"><br>
 					</form>
 				  </div>
 				

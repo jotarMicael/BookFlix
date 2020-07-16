@@ -268,7 +268,6 @@ return false;
 
 							$sql2="SELECT fechaHora,texto,spoiler,nombre_Capitulo FROM reseña where id_Perfil='" .$mostrar19['id_Perfil']."' ";
 							$result2=mysqli_query($conexion,$sql2);
-							echo $_SESSION['perfilNombre'];
                             if (!empty($_SESSION['error'])) {
                                 echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
                                 unset($_SESSION['error']);
@@ -286,7 +285,7 @@ return false;
 	    	</div>
 	    	<div>
 				<form action="modificarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
-	    		<textarea disabled maxlength="80" class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
+	    		<textarea disabled class="contenido-publicacion" name="publish" id="publish"><?php echo $mostrar2['texto']; ?></textarea>
 	    	</div>
 	    	<div class="barraBot">
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
