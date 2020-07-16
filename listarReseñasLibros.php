@@ -75,7 +75,7 @@ return false;
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar25['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
-				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas..." onclick="return ConfirmDemo();">
+				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas..." onclick="return ConfirmDemo()">
 				</form>
 			<div>
 			<div>
@@ -111,13 +111,15 @@ return false;
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 				<input type="hidden" name="nCap" id="nCap" value="<?php echo $_POST['nCap'];?>">
 				<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-				<input type="submit" class="botonInicio" name="Ver mas..." value="Ver mas...">
+				<input type="submit" class="botonInicio" onclick="return ConfirmDemo()" name="Ver mas..." value="Ver mas...">
 				</form>
 				<div>
 					<form action="reportarReseña.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 						<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
 						<input type="hidden" name="idLibro" id="idLibro" value="<?php echo $_POST['idLibro'];?>">
-						<input type="submit" class="botonInicio" name="Reportar" value="Reportar">
+						<?php if($mostrar25['nombre_Perfil']<>$_SESSION['perfilNombre']){ ?>
+							<input type="submit" class="botonInicio" onclick="return ConfirmDemo()" name="Reportar" value="Reportar">
+						<?php } ?>
 					</form>
 				</div>
 				
