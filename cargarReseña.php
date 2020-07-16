@@ -1,6 +1,7 @@
 <?php 
 				 include('conexion.php');
-                 session_start();
+				 session_start();
+				 date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 				if (!empty($_POST['publish'])){
 						if (empty($_POST['spoiler']))
