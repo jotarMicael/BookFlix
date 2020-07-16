@@ -6,6 +6,22 @@ include('conexion.php');
 <head>
 	<link href="Estilos.css" rel="stylesheet" type="text/css">
 	<link rel="shortcut icon" href="logotipo.jpg">
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
 	<title>Cargar Noticia</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -190,7 +206,7 @@ include('conexion.php');
 				if(mysqli_num_rows($result) == 1){
 					?>
 					<div style="margin-top: 10px;">
-					<li><a href="acceptPremiun.php" class="botonInicio">Peticiones a premium</a></li>
+					<li><a href="acceptPremiun.php" class="botonInicio">Peticiones de cuentas</a></li>
 					</div>
 					<div style="position: relative; z-index: 3;">
 					<ul class="nav">
@@ -243,7 +259,7 @@ include('conexion.php');
 	    		<textarea cols="3" rows="5" class="contenido-publicacion" name="publish" id="publish"></textarea>
 	    	</div>
 	    	<div class="barraBot">
-	    		<input type="submit" class="botonInicio" name="Publicar" value="Publicar">
+	    		<input type="submit" class="botonInicio" name="Publicar" onclick="return ConfirmDemo()" value="Publicar">
 				</form>
 	    	</div>
 	    
