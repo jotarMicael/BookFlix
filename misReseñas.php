@@ -11,7 +11,35 @@
 	<link rel="shortcut icon" href="logotipo.jpg">
 	<script type="text/javascript" src="scriptMostrar.js"></script>
 	<script type="text/javascript" src="scriptConfirm.js"></script>
-	
+	<script type="text/javascript">
+function ConfirmDemo() {
+//Ingresamos un mensaje a mostrar
+var mensaje = confirm("¿Estas seguro de realizar dicha accion?");
+//Detectamos si el usuario acepto el mensaje
+if (mensaje) {
+
+return true;
+}
+//Detectamos si el usuario denegó el mensaje
+else {
+
+return false;
+}
+}
+</script>
+	<?php
+		include('conexion.php');
+	?>
+	<?php
+		if (empty($_SESSION['usuario'])) {
+			header('Location: index.php');
+			exit;}
+		if (!empty($_SESSION['error'])) {
+			echo "<font color=white  size='5pt'> ".$_SESSION['error']." </font>";
+			unset($_SESSION['error']);
+		}
+ 		?>
+	<style>
 	<title>Mis Reseñas</title>
 	<style>
 		body{background-color: #4642B8;padding: 15px;font-family: Arial;}
@@ -263,12 +291,12 @@
 	    	<div class="barraBot">
 				<input type="hidden" name="nP" id="nP" value="<?php echo $mostrar2['nombre_Perfil'];?>">
 				<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
-				<input type="submit" class="botonInicio" name="Modificar" value="Modificar">
+				<input type="submit" class="botonInicio" onclick="return ConfirmDemo()" name="Modificar" value="Modificar">
 				</form>
 				<div>
 					<form action="eliminarReseñaPerfil.php" method="post" onsubmit="confirm();" enctype="multipart/form-data">
 						<input type="hidden" name="texto" id="texto" value="<?php echo $mostrar2['texto'];?>">
-						<input type="submit" class="botonInicio" name="Eliminar" value="Eliminar">
+						<input type="submit" class="botonInicio" onclick="return ConfirmDemo()" name="Eliminar" value="Eliminar">
 					</form>
 				</div>
 				
