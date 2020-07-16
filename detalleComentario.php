@@ -246,7 +246,6 @@ return false;
 			?>
 				</div>	
 	</div>
-     <img class="imagenTitulo" src="Imagenes\Titulo.png">
      <?php $sql="SELECT fechaHora,id_Perfil from reseña where nombre_Capitulo = '" .$_POST['nCap']."' and texto = '" .$_POST['texto']."' ";
               $result=mysqli_query($conexion,$sql);
               while($mostrar=mysqli_fetch_array($result)){
@@ -254,7 +253,7 @@ return false;
 				$result25=mysqli_query($conexion,$sql25);
 				$mostrar25=mysqli_fetch_array($result25, MYSQLI_ASSOC);
                             ?>
-			<div class="fondoComentarios">
+			<div class="fondoComentarios" style="margin-top:300px">
 				
 				<div class="comentario">
 	    			<div class="cuerpoComentario">
